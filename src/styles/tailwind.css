@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+@theme {
+  --font-scale: 1.2;
+  --font-primary: Muli,sans-serif;
+  --color-red: #E30613;
+  --color-dark-red: #DB0007;
+  --color-burgundy: #800020;
+  --color-gold: #9C824A;
+  --color-blue: #063672;
+  --color-primary: var(--color-red);
+  --color-body: #F6F6F6;
+  --color-light: #F6F6F6;
+  --color-dark: #000000;
+  --color-text-dark: var(--color-dark);
+  --text-h1: calc(1rem * pow(var(--font-scale), 6));
+  --text-h1-sm: calc(var(--text-h1) * 0.9);
+  --text-h2: calc(1rem * pow(var(--font-scale), 5));
+  --text-h2-sm: calc(var(--text-h2) * 0.9);
+  --text-h3: calc(1rem * pow(var(--font-scale), 4));
+  --text-h3-sm: calc(var(--text-h3) * 0.9);
+  --text-h4: calc(1rem * pow(var(--font-scale), 3));
+  --text-h5: calc(1rem * pow(var(--font-scale), 2));
+  --text-h6: calc(1rem * var(--font-scale));
+}

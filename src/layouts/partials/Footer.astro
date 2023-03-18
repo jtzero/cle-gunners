@@ -1,0 +1,30 @@
+---
+import Social from "@/components/Social.astro";
+import social from "@/config/social.json";
+import { markdownify } from "@/lib/utils/textConverter";
+---
+
+<footer class="bg-white pt-6">
+  <div class="container text-center">
+    <div class="row items-center">
+      <div>
+        <Social source={social} className="social-icons" />
+      </div>
+    </div>
+  </div>
+</footer>
+<style>
+@import "../../styles/tailwind.css";
+.social-icons {
+  @apply space-x-4;
+  li {
+    @apply inline-block;
+    a {
+      @apply block h-11 w-11 rounded-full border border-primary bg-body text-center text-primary transition-all duration-300 hover:bg-primary hover:text-body;
+      svg {
+        @apply m-auto h-11;
+      }
+    }
+  }
+}
+</style>

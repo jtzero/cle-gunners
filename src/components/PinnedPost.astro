@@ -1,0 +1,56 @@
+---
+import { Image, render } from "astro:assets";
+import config from "@/config/config.json";
+import { fromBase } from "@/lib/fromBase";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const { post } = Astro.props;
+---
+
+<div class="tile flex flex-col items-center lg:flex-row justify-evenly" id={slugify(post.data.title)}>
+  <div class="w-full">
+  {
+    post.data.image && (
+      <Image
+        class="lg"
+        src={fromBase(post.data.image)}
+        alt={post.data.title}
+        width={post.data.parsedImageWidth}
+        height={post.data.parsedImageHeight}
+        class="w-full"
+        format="webp"
+      />
+    )
+  }
+  </div>
+  <div id="content" class="flex flex-col items-center p-2 w-full">
+    {
+    post.data.title && (
+    <h3 class="text-gold w-full text-center border-b-1 border-[#e1e1e1]">
+      {post.data.title}
+    </h3>
+    )
+    }
+    <div id="card-body">
+    {
+      post.body && (
+        <p class="text-lg dark:text-light text-dark" set:html={markdownify(post.body)}>
+        </p>
+      )
+
+    }
+    </div>
+  </div>
+</div>
+<style>
+#card-body {
+  text-align: center;
+}
+</style>

@@ -1,0 +1,21 @@
+{
+  "site": {
+    "title": "CLE Gunners",
+    "favicon": "/images/favicon.png",
+    "logo": "",
+    "logo_width": "",
+    "logo_height": "",
+    "logo_text": "Cleveland Arsenal"
+  },
+
+  "settings": {
+    "pagination": 5,
+    "summary_length": 140
+  },
+
+  "metadata": {
+    "meta_author": "jtzero",
+    "meta_image": "",
+    "meta_description": "Cleveland Arsenal"
+  }
+}

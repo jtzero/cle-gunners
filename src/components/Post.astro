@@ -1,0 +1,51 @@
+---
+import config from "@/config/config.json";
+import { fromBase } from "@/lib/fromBase";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const { summary_length } = config.settings;
+const { post } = Astro.props;
+---
+
+<div class="tile">
+  {
+    post.data.image && (
+      <Image
+        class="lg"
+        src={fromBase(post.data.image)}
+        alt={post.data.title}
+        width={445}
+        height={230}
+        format="webp"
+      />
+    )
+  }
+
+  <h3 class="h4 mt-2">
+    <a
+      href={fromBase(`/posts/${post.id}`)}
+      class="block font-normal text-primary hover:underline"
+    >
+      {post.data.title}
+    </a>
+  </h3>
+  {
+    post.body && (
+      <p class="text-lg text-dark dark:text-light">
+        {plainify(post.body?.slice(0, Number(summary_length)))}
+      </p>
+    )
+  }
+  <a
+    class="inline-block py-1 text-[15px] leading-[22px] text-primary"
+    href={`/posts/${post.id}`}>Read More</a
+  >
+</div>

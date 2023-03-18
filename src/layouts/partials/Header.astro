@@ -1,0 +1,166 @@
+---
+import { Image } from "astro:assets";
+import menu from "@/config/menu.json";
+
+import { fromBase } from "@/lib/fromBase";
+
+export interface ChildNavigationLink {
+  name: string;
+  url: string;
+}
+
+export interface NavigationLink {
+  name: string;
+  url: string;
+  hasChildren?: boolean;
+  children?: ChildNavigationLink[];
+}
+
+const { main }: { main: NavigationLink[] } = menu;
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="header">
+  <nav id="nav-container" class="fixed flex flex-col items-center justify-center">
+    <div id="nav-toggler" class="self-start">
+      <input id="nav-toggle" type="checkbox" class="hidden" />
+      <label
+        id="show-button"
+        for="nav-toggle"
+        class="order-2 flex cursor-pointer items-center md:order-1"
+      >
+        <svg class="size-[calc(1.5rem+1.5vw)] fill-white" viewBox="0 0 20 20">
+          <title>Menu Open</title>
+          <path d="M0 3h20v2H0V3z m0 6h20v2H0V9z m0 6h20v2H0V0z"></path>
+        </svg>
+      </label>
+      <label
+        id="hide-button"
+        for="nav-toggle"
+        class="order-2 hidden cursor-pointer items-center md:order-1"
+      >
+        <svg class="size-[calc(1.5rem+1.5vw)] fill-white" viewBox="0 0 20 20">
+          <title>Menu Close</title>
+          <polygon
+            points="11 9 22 9 22 11 11 11 11 22 9 22 9 11 -2 11 -2 9 9 9 9 -2 11 -2"
+            transform="rotate(45 10 10)"></polygon>
+        </svg>
+      </label>
+    </div>
+    <ul
+      id="nav-menu" class="nav-menu"
+    >
+      {
+        main.map((menu) => (
+          <li class="py-2 border-white flex justify-center">
+            <a id={menu.name} href={fromBase(menu.url)} class="text-4xl">{menu.name}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+
+  <div id="banner">
+    <div class="h-[55%] flex justify-evenly border-b-1 border-white xl:h-37">
+      <p class="self-end xl:self-end">
+        CLEVELAND
+      </p>
+      <div class="logo-container">
+        <div class="size-99.5/100 circle bg-white flex items-center justify-center">
+        {
+            <Image
+              src={fromBase("/images/banner/arsenal-guardian.png")}
+              width={2007}
+              height={2008}
+              alt="CLE-GUNNERS"
+              class="size-95/100"
+            />
+        }
+        </div>
+      </div>
+      <p class="self-end md:xl:self-end">
+        ARSENAL
+      </p>
+    </div>
+  </div>
+
+</header>
+<style>
+@import "../../styles/tailwind.css";
+
+:root {
+  --toggler-size: size-[calc(1.5rem+1.5vw)];
+  @theme {
+    --color-menu: var(--color-blue);
+  }
+}
+
+.logo-container {
+  @apply self-baseline flex h-[10rem] w-[10rem];
+  @apply sm:h-[10rem] sm:w-[10rem];
+  @apply md:items-center md:justify-center md:h-[19rem] md:w-[19rem] md:-mt-5;
+  @apply lg:h-[19rem] lg:w-[19rem] lg:-mt-5;
+  @apply xl:h-[20rem] xl:w-[20rem] xl:-mt-5;
+  @apply 2xl:h-[20rem] 2xl:w-[20rem] 2xl:-mt-5;
+}
+
+.circle {
+  border-radius: 50%;
+}
+
+.header {
+  @apply top-0 left-0 z-40 w-full pb-3.5 transition-all duration-300;
+  @apply bg-body;
+}
+
+#banner {
+  @apply bg-dark-red font-bold w-full text-white text-xl text-[calc(0.5rem+2vw)] h-34 md:h-64 xl:h-64;
+}
+
+#nav-toggler {
+  @apply ml-[2vw] mt-[0.5vw] mb-[calc(1rem+4vw)] size-[calc(2rem+3vw)] flex justify-center items-center bg-gold shadow-xl/30;
+  border-radius: 50%;
+}
+
+input#nav-toggle:checked ~ label#show-button {
+  @apply hidden;
+}
+
+input#nav-toggle:checked ~ label#hide-button {
+  @apply block;
+}
+
+#nav-container {
+  @apply sm:max-w-[25rem];
+}
+
+#nav-container:has(input#nav-toggle:checked) > #nav-menu {
+  @apply block w-full;
+
+}
+
+#nav-container:has(input#nav-toggle:checked) {
+  @apply bg-menu w-full shadow-2xl/90 shadow-menu;
+}
+
+#nav-container:has(> a:active ) > #nav-menu {
+  @apply hidden;
+}
+
+.nav-menu {
+  padding-bottom: var(--text-4xl);
+  @apply bg-menu text-white hidden w-full sm:max-w-1/2;
+}
+
+</style>
+<script>
+  document.addEventListener("astro:page-load", () => {
+    // FIXME
+    const navItem = document.getElementById("About");
+    const navToggle = document.getElementById("nav-toggle");
+    navItem.addEventListener('click', () => {
+      navToggle.checked = false;
+    });
+  });
+</script>

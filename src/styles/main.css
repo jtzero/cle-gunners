@@ -1,0 +1,19 @@
+
+@import "./tailwind.css";
+
+.shadow {
+  box-shadow: 0 10px 30px rgba(68, 74, 102, 0.1);
+}
+
+
+@layer base {
+  @import "./base.css";
+}
+
+@layer components {
+  .section {
+    @apply py-20;
+  }
+
+  @import "./buttons.css";
+}

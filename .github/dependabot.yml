@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "npm" # Replace with your package ecosystem (e.g., "bundler", "maven", "docker")
+    directory: "/" # Location of your manifest file (e.g., package.json)
+    schedule:
+      interval: "weekly"

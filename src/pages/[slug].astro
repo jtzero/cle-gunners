@@ -1,0 +1,39 @@
+---
+import config from "@/config/config.json";
+import Base from "@/layouts/Base.astro";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import type { CollectionEntry } from "astro:content";
+import { getEntry } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import PinnedPost from "@/components/PinnedPost.astro";
+
+export async function getStaticPaths() {
+  const posts = await getSinglePage("posts");
+  const totalPages = Math.ceil(posts.length / config.settings.pagination);
+  const paths = [];
+
+  for (let i = 0; i < totalPages; i++) {
+    paths.push({
+      params: {
+        slug: posts[i].id,
+      },
+    });
+  }
+  console.log(paths);
+  return paths;
+}
+const { slug } = Astro.params;
+const post = (await getEntry("posts", slug)) as CollectionEntry<"pages">;
+if (!post) {
+  return Astro.redirect("/404");
+}
+---
+
+<Base>
+  <div name="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
+  <div name="new" class="bg-light flex items-center justify-center flex-col">
+    <div class="w-3/4 mb-6 shadow bg-white">
+      <PinnedPost post={post} />
+    </div>
+  </div>
+</Base>

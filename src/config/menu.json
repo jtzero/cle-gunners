@@ -1,0 +1,16 @@
+{
+  "main": [
+    {
+      "name": "Home",
+      "url": "/"
+    },
+    {
+      "name": "About",
+      "url": "/#who-we-are"
+    },
+    {
+      "name": "Merch",
+      "url": "/coming-soon"
+    }
+  ]
+}

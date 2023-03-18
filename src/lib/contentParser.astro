@@ -1,0 +1,38 @@
+---
+import {
+  getCollection,
+  type CollectionEntry,
+  type CollectionKey,
+} from "astro:content";
+
+type PageData = {
+  title: string;
+  metaTitle?: string;
+  description?: string;
+  image?: string;
+  imageDimensions?: string;
+  parsedImageWidth: number;
+  parsedImageHeight: number;
+};
+
+export const getSinglePage = async <C extends CollectionKey>(
+  collectionName: C
+): Promise<CollectionEntry<C>[]> => {
+  const allPages = await getCollection(collectionName);
+
+  const removeIndex = allPages.filter((data) => data.id.match(/^(?!-)/));
+  const parsedDimentions = removeIndex.map((post) => {
+    const { imageDimensions } = post.data;
+    const [width, height] = (imageDimensions || "").split("x");
+    return {
+      ...post,
+      data: {
+        ...post.data,
+        parsedImageWidth: parseInt(width),
+        parsedImageHeight: parseInt(height),
+      }
+    };
+  });
+  return parsedDimentions;
+};
+---

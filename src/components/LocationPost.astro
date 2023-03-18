@@ -1,0 +1,34 @@
+---
+import config from "@/config/config.json";
+import { fromBase } from "@/lib/fromBase";
+import { getSinglePage } from "@/lib/contentParser.astro";
+import dateFormat from "@/lib/utils/dateFormat";
+import { humanize, plainify, slugify } from "@/lib/utils/textConverter";
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+
+type Props = {
+  post: CollectionEntry<"posts">;
+};
+
+const { summary_length } = config.settings;
+---
+
+<div class="tile border-t-2 border-t-dark-red lg:border-none flex items-center justify-evenly flex-col lg:flex-row-reverse">
+  <h3 class="h4 mt-2 text-center p-[1.5rem] text-gold">
+    MEET US FOR EVERY MATCH AT MERRY-ARTS
+  </h3>
+  <div class="items-center md:w-15/16 xl:w-3/8">
+    <a href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9" class="items-center flex">
+      <Image
+        class="lg"
+        src={fromBase("/images/merry-arts-map.png")}
+        alt="map"
+        width={1044}
+        height={600}
+        class="w-full"
+        format="webp"
+      />
+    </a>
+  </div>
+</div>
