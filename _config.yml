@@ -10,13 +10,13 @@ remote_theme: dieghernan/chulapa
 # Overall options for your site, would affect your site SEO
 # Default values are explained
 locale                  :     #default["en-US"] format language-TERRITORY , e.g fr, en-GB, es-MX, pt-BR
-title                   : Chulapa 101    #default["repository_name"]
+title                   : CLE-GUNNERS    #default["repository_name"]
 title_separator         :     #default [" | "]
-subtitle                : Chulapa Jekyll Theme starter pack    #default [your-repository-tagline]
-description             : Chulapa Jekyll Theme starter pack #default [your-repository-tagline]
+subtitle                : #Chulapa Jekyll Theme starter pack    #default [your-repository-tagline]
+description             : #Chulapa Jekyll Theme starter pack #default [your-repository-tagline]
 url                     :     #See baseurl - On Github Pages you may leave it blank - If you use CNAME use your domain
 baseurl                 :     #On Github Pages you may leave it blank. Have a look to: https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/
-repository              :     dieghernan/chulapa-101 # Needs to be set (e.g. dieghernan/chulapa)
+repository              : #    dieghernan/chulapa-101 # Needs to be set (e.g. dieghernan/chulapa)
 words_per_minute        :     #default[200]
 timezone                :     #"Europe/Madrid ,see https://jekyllrb.com/docs/configuration/options/ and https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
@@ -24,9 +24,9 @@ timezone                :     #"Europe/Madrid ,see https://jekyllrb.com/docs/con
 og_image                :     #default[author.avatar (see below)] or [github-avatar]
 twitter_site            :     #Avoid @
 author:
-  name                  :  Your Name   # Name Surname Company
+  name                  :  #Your Name   # Name Surname Company
   avatar                :     # Try a square file. Info: Your github avatar on https://github.com/[USERNAME].png
-  location              :  "Madrid, Spain"   # New York, USA
+  location              :  "Cleveland, Ohio"   # New York, USA
 #  links:
 #    - url:  #A link or email: https://twitter.com/jack, mail@example.com
 #      icon: # A Fontawesome 5 code: fab fa-twitter - see https://fontawesome.com/
@@ -50,7 +50,7 @@ analytics_id            :
 # - Simple Jekyll Search https://github.com/christian-fei/Simple-Jekyll-Search
 # - Fuse.js https://fusejs.io/
 search:
-  provider              : fusejs #Select a provider for enable search: lunr, algolia, simplesearch, fusejs
+  provider              : #fusejs #Select a provider for enable search: lunr, algolia, simplesearch, fusejs
   label                 :  #default ["Search"] Text on navbar when search is enabled
   landing_page          :  #default ["/search"] Link on navbar
   lunr_maxwords         :  #DEPRECATED, use maxwords
@@ -104,8 +104,8 @@ navbar:
     url     :  # default["url/baseurl"]
     img     :  # An small image, try 30x30px
   nav:
-  - title   : Blog # Label
-    url     : /blog/ # url
+  #- title   : Blog # Label
+  #  url     : /blog/ # url
   #- title   : Cheatsheets
   #  url     : /cheatsheets
   #- title   : Extras
