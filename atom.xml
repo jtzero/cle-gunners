@@ -1,0 +1,2042 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" >
+	<generator uri="https://dieghernan.github.io/chulapa" version="1.0.0">Chulapa</generator>
+	<link href="https://dieghernan.github.io/cle-gunners/atom.xml" rel="self" type="application/atom+xml" />
+	<link href="https://dieghernan.github.io/cle-gunners" rel="alternate" type="text/html" />
+	<updated>2025-06-09T17:03:44+00:00</updated>
+	<id>https://dieghernan.github.io/cle-gunners/atom.xml</id>
+	<title>Chulapa 101 | Chulapa Jekyll Theme starter pack</title>
+	<subtitle>Chulapa Jekyll Theme starter pack</subtitle>
+	<author>
+		<name>Your Name</name>
+					
+	</author>
+	<rights>(c) 2025, Your Name</rights>
+	
+	<logo></logo><entry>
+		<title type="html">Current skin</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20201231_current-skin/" rel="alternate" type="text/html" title="Current skin"/>
+		<published>2020-12-31T00:00:00+00:00</published>
+		<updated>2021-02-03T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20201231_current-skin/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20201231_current-skin/">
+		
+		
+		&lt;h3&gt;Showing al the different Bootstrap components available&lt;/h3&gt;
+		
+  		
+			&lt;img src=&#39;https://picsum.photos/id/1018/2000/2000&#39; &gt;
+			
+	&lt;p&gt;9 min.&lt;/p&gt;
+			&lt;p&gt;This is a demo page showing the different components of Bootstrap and how they look on this site under the current configuration.&lt;/p&gt;
+
+&lt;nav aria-label=&quot;Navigation&quot; class=&quot;container-lg chulapa-pagination  &quot;&gt;
+  &lt;ul class=&quot;col-lg-8 offset-lg-2 pagination chulapa-pagination-round px-0 &quot;&gt;
+    &lt;li class=&quot;page-item text-left mr-0 &quot;&gt;
+      &lt;a class=&quot;page-link border-0 px-4&quot; href=&quot;https://dieghernan.github.io/cle-gunners/20191127_acueduct-of-segovia/&quot; tabindex=&quot;-1&quot;&gt;
+	  &lt;i class=&quot;fa fa-chevron-left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;sr-only&quot;&gt;Previous&lt;/span&gt;
+	  &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;page-item border-0 disabled text-left ml-0 mr-auto d-none d-md-inline &quot;&gt;
+      &lt;p class=&quot;page-link chulapa-label&quot;&gt;The Acueduct of Segovia&lt;/p&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;page-item border-0 disabled text-left ml-0 mr-auto d-none d-sm-inline d-md-none &quot;&gt;
+      &lt;p class=&quot;page-link chulapa-label&quot;&gt;The Acueduct o...&lt;/p&gt;
+    &lt;/li&gt;
+	  &lt;li class=&quot;page-item disabled mx-auto invisible&quot;&gt;
+	   &lt;p class=&quot;page-link&quot;&gt;|&lt;/p&gt;
+	  &lt;/li&gt;	
+	  &lt;li class=&quot;page-item border-0 disabled text-right mr-0 ml-auto d-none d-sm-inline d-md-none invisible&quot;&gt;
+	    &lt;p class=&quot;page-link chulapa-label&quot;&gt;&lt;/p&gt;
+	  &lt;/li&gt;
+	  &lt;li class=&quot;page-item border-0 disabled text-right mr-0 ml-auto d-none d-md-inline invisible&quot;&gt;
+	    &lt;p class=&quot;page-link chulapa-label&quot;&gt;&lt;/p&gt;
+	  &lt;/li&gt;
+    &lt;li class=&quot;page-item text-right ml-0 invisible&quot;&gt;
+      &lt;a class=&quot;page-link border-0 px-4&quot; href=&quot;#&quot;&gt;
+	  &lt;i class=&quot;fa fa-chevron-right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;&lt;span class=&quot;sr-only&quot;&gt;Next&lt;/span&gt;&lt;/a&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;div class=&quot;container-lg my-1&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-8 offset-lg-2 col&quot;&gt;
+      &lt;i class=&quot;far fa-folder-open fa-xs&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/categories#skins&quot; class=&quot;badge chulapa-pill-bg-secondary p-category&quot; rel=&quot;tag&quot;&gt;skins&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;container-lg my-1&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-8 offset-lg-2 col&quot;&gt;
+      &lt;i class=&quot;fas fa-tag mr-1 fa-xs&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/tags#skin&quot; class=&quot;badge chulapa-pill-bg-primary p-category&quot; rel=&quot;tag&quot;&gt;skin&lt;/a&gt;
+      
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/tags#bootstrap&quot; class=&quot;badge chulapa-pill-bg-primary p-category&quot; rel=&quot;tag&quot;&gt;bootstrap&lt;/a&gt;
+      
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/tags#current-theme&quot; class=&quot;badge chulapa-pill-bg-primary p-category&quot; rel=&quot;tag&quot;&gt;current-theme&lt;/a&gt;
+      
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/tags#header-hero&quot; class=&quot;badge chulapa-pill-bg-primary p-category&quot; rel=&quot;tag&quot;&gt;header-hero&lt;/a&gt;
+      
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/tags#image&quot; class=&quot;badge chulapa-pill-bg-primary p-category&quot; rel=&quot;tag&quot;&gt;image&lt;/a&gt;
+      
+      &lt;a href=&quot;https://dieghernan.github.io/cle-gunners/tags#demo&quot; class=&quot;badge chulapa-pill-bg-primary p-category&quot; rel=&quot;tag&quot;&gt;demo&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- snippets/bootstrapdemo.html --&gt;
+&lt;!-- Taken from Bootswatch: Free themes for Bootstrap  https://bootswatch.com/ --&gt;
+&lt;style&gt;
+  .bs-docs-section {
+    margin-top: 4em;
+  }
+
+  .bs-docs-section .page-header h1 {
+    padding: 2rem 0;
+    font-size: 3rem;
+  }
+
+  .bs-component {
+    position: relative;
+  }
+
+  .bs-component+.bs-component {
+    margin-top: 1rem;
+  }
+
+  .bs-component .card {
+    margin-bottom: 1rem;
+  }
+
+  .bs-component .modal {
+    position: relative;
+    top: auto;
+    right: auto;
+    left: auto;
+    bottom: auto;
+    z-index: 1;
+    display: block;
+  }
+
+  .bs-component .modal-dialog {
+    width: 90%;
+  }
+
+  .bs-component .popover {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+    margin: 20px;
+  }
+&lt;/style&gt;
+
+&lt;div class=&quot;bs-docs-section clearfix&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;navbars&quot;&gt;Navbars&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;!-- Chulapa classic navbar expanding in lg or above --&gt;&lt;nav class=&quot;navbar navbar-expand-lg sticky-top navbar-chulapa border border-light my-2&quot;&gt;
+          &lt;div class=&quot;container-fluid mx-md-2&quot;&gt;
+            &lt;a class=&quot;navbar-brand font-weight-bold&quot; href=&quot;https://dieghernan.github.io/cle-gunners/&quot;&gt;Default&lt;/a&gt;&lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarToggler&quot; aria-controls=&quot;navbarToggler&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+              &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+            &lt;/button&gt;
+            &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarToggler&quot;&gt;
+              &lt;ul class=&quot;navbar-nav ml-auto&quot;&gt;&lt;li class=&quot;nav-item&quot;&gt;
+                  &lt;a class=&quot;nav-link &quot; href=&quot;https://dieghernan.github.io/cle-gunners/blog/&quot;&gt;Blog&lt;/a&gt;
+                &lt;/li&gt;&lt;li class=&quot;nav-item&quot;&gt;
+                  &lt;a class=&quot;nav-link &quot; href=&quot;https://dieghernan.github.io/cle-gunners/search&quot;&gt;
+                    &lt;span class=&quot;d-md-none p-0 pr-1&quot;&gt;Search&lt;/span&gt;
+                    &lt;i class=&quot;fa fa-search&quot; aria-hidden=&quot;true&quot;&gt;&lt;/i&gt;
+                    &lt;span class=&quot;sr-only&quot;&gt;Search&lt;/span&gt;
+                  &lt;/a&gt;
+                &lt;/li&gt;&lt;/ul&gt;
+            &lt;/div&gt;&lt;/div&gt;
+        &lt;/nav&gt;
+        &lt;nav class=&quot;navbar navbar-expand-lg navbar-dark bg-primary&quot;&gt;
+          &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;
+          &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarColor01&quot; aria-controls=&quot;navbarColor01&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarColor01&quot;&gt;
+            &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;
+              &lt;li class=&quot;nav-item active&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Features&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pricing&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;About&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;form class=&quot;form-inline my-2 my-lg-0&quot;&gt;
+              &lt;input class=&quot;form-control mr-sm-2&quot; type=&quot;text&quot; placeholder=&quot;Search&quot; /&gt;
+              &lt;button class=&quot;btn btn-secondary my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;nav class=&quot;navbar navbar-expand-lg navbar-dark bg-dark&quot;&gt;
+          &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;
+          &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarColor02&quot; aria-controls=&quot;navbarColor02&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarColor02&quot;&gt;
+            &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;
+              &lt;li class=&quot;nav-item active&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Features&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pricing&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;About&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;form class=&quot;form-inline my-2 my-lg-0&quot;&gt;
+              &lt;input class=&quot;form-control mr-sm-2&quot; type=&quot;text&quot; placeholder=&quot;Search&quot; /&gt;
+              &lt;button class=&quot;btn btn-secondary my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;nav class=&quot;navbar navbar-expand-lg navbar-light bg-light&quot;&gt;
+          &lt;a class=&quot;navbar-brand&quot; href=&quot;#&quot;&gt;Navbar&lt;/a&gt;
+          &lt;button class=&quot;navbar-toggler&quot; type=&quot;button&quot; data-toggle=&quot;collapse&quot; data-target=&quot;#navbarColor03&quot; aria-controls=&quot;navbarColor03&quot; aria-expanded=&quot;false&quot; aria-label=&quot;Toggle navigation&quot;&gt;
+            &lt;span class=&quot;navbar-toggler-icon&quot;&gt;&lt;/span&gt;
+          &lt;/button&gt;
+          &lt;div class=&quot;collapse navbar-collapse&quot; id=&quot;navbarColor03&quot;&gt;
+            &lt;ul class=&quot;navbar-nav mr-auto&quot;&gt;
+              &lt;li class=&quot;nav-item active&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Home &lt;span class=&quot;sr-only&quot;&gt;(current)&lt;/span&gt;
+                &lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Features&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Pricing&lt;/a&gt;
+              &lt;/li&gt;
+              &lt;li class=&quot;nav-item&quot;&gt;
+                &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;About&lt;/a&gt;
+              &lt;/li&gt;
+            &lt;/ul&gt;
+            &lt;form class=&quot;form-inline my-2 my-lg-0&quot;&gt;
+              &lt;input class=&quot;form-control mr-sm-2&quot; type=&quot;text&quot; placeholder=&quot;Search&quot; /&gt;
+              &lt;button class=&quot;btn btn-secondary my-2 my-sm-0&quot; type=&quot;submit&quot;&gt;Search&lt;/button&gt;
+            &lt;/form&gt;
+          &lt;/div&gt;
+        &lt;/nav&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;page-header&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-lg-12&quot;&gt;
+        &lt;h2 id=&quot;buttons&quot;&gt;Buttons&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;p class=&quot;bs-component&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-warning&quot;&gt;Warning&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-link&quot;&gt;Link&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-dark&quot;&gt;Dark&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-light&quot;&gt;Light&lt;/button&gt;
+      &lt;/p&gt;
+      &lt;p class=&quot;bs-component&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary disabled&quot;&gt;Primary&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary disabled&quot;&gt;Secondary&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-success disabled&quot;&gt;Success&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-info disabled&quot;&gt;Info&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-warning disabled&quot;&gt;Warning&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-danger disabled&quot;&gt;Danger&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-link disabled&quot;&gt;Link&lt;/button&gt;
+      &lt;/p&gt;
+      &lt;p class=&quot;bs-component&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-primary&quot;&gt;Primary&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-secondary&quot;&gt;Secondary&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-success&quot;&gt;Success&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-info&quot;&gt;Info&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-warning&quot;&gt;Warning&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-outline-danger&quot;&gt;Danger&lt;/button&gt;
+      &lt;/p&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group with nested dropdown&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+          &lt;div class=&quot;btn-group&quot; role=&quot;group&quot;&gt;
+            &lt;button id=&quot;btnGroupDrop1&quot; type=&quot;button&quot; class=&quot;btn btn-primary dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;btnGroupDrop1&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group with nested dropdown&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-success&quot;&gt;Success&lt;/button&gt;
+          &lt;div class=&quot;btn-group&quot; role=&quot;group&quot;&gt;
+            &lt;button id=&quot;btnGroupDrop2&quot; type=&quot;button&quot; class=&quot;btn btn-success dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;btnGroupDrop2&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group with nested dropdown&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-info&quot;&gt;Info&lt;/button&gt;
+          &lt;div class=&quot;btn-group&quot; role=&quot;group&quot;&gt;
+            &lt;button id=&quot;btnGroupDrop3&quot; type=&quot;button&quot; class=&quot;btn btn-info dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;btnGroupDrop3&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Button group with nested dropdown&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-danger&quot;&gt;Danger&lt;/button&gt;
+          &lt;div class=&quot;btn-group&quot; role=&quot;group&quot;&gt;
+            &lt;button id=&quot;btnGroupDrop4&quot; type=&quot;button&quot; class=&quot;btn btn-danger dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;&lt;/button&gt;
+            &lt;div class=&quot;dropdown-menu&quot; aria-labelledby=&quot;btnGroupDrop4&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Dropdown link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg&quot;&gt;Large button&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Default button&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-sm&quot;&gt;Small button&lt;/button&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row my-2&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;p class=&quot;bs-component&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-primary btn-lg btn-block&quot;&gt;Block level button&lt;/button&gt;
+      &lt;/p&gt;
+      &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 15px;&quot;&gt;
+        &lt;div class=&quot;btn-group btn-group-toggle&quot; data-toggle=&quot;buttons&quot;&gt;
+          &lt;label class=&quot;btn btn-primary active&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; checked=&quot;&quot; autocomplete=&quot;off&quot; /&gt; Active &lt;/label&gt;
+          &lt;label class=&quot;btn btn-primary&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; autocomplete=&quot;off&quot; /&gt; Check &lt;/label&gt;
+          &lt;label class=&quot;btn btn-primary&quot;&gt;
+            &lt;input type=&quot;checkbox&quot; autocomplete=&quot;off&quot; /&gt; Check &lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 15px;&quot;&gt;
+        &lt;div class=&quot;btn-group btn-group-toggle&quot; data-toggle=&quot;buttons&quot;&gt;
+          &lt;label class=&quot;btn btn-primary active&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;options&quot; id=&quot;option1&quot; autocomplete=&quot;off&quot; checked=&quot;&quot; /&gt; Active &lt;/label&gt;
+          &lt;label class=&quot;btn btn-primary&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;options&quot; id=&quot;option2&quot; autocomplete=&quot;off&quot; /&gt; Radio &lt;/label&gt;
+          &lt;label class=&quot;btn btn-primary&quot;&gt;
+            &lt;input type=&quot;radio&quot; name=&quot;options&quot; id=&quot;option3&quot; autocomplete=&quot;off&quot; /&gt; Radio &lt;/label&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;btn-group-vertical&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Button&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 15px;&quot;&gt;
+        &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Basic example&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;Left&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;Middle&lt;/button&gt;
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;Right&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 15px;&quot;&gt;
+        &lt;div class=&quot;btn-toolbar&quot; role=&quot;toolbar&quot; aria-label=&quot;Toolbar with button groups&quot;&gt;
+          &lt;div class=&quot;btn-group mr-2&quot; role=&quot;group&quot; aria-label=&quot;First group&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;1&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;2&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;3&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;4&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;btn-group mr-2&quot; role=&quot;group&quot; aria-label=&quot;Second group&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;5&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;6&lt;/button&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;7&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;btn-group&quot; role=&quot;group&quot; aria-label=&quot;Third group&quot;&gt;
+            &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot;&gt;8&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;typography&quot;&gt;Typography&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Headings --&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;h1&gt;Heading 1&lt;/h1&gt;
+        &lt;h2&gt;Heading 2&lt;/h2&gt;
+        &lt;h3&gt;Heading 3&lt;/h3&gt;
+        &lt;h4&gt;Heading 4&lt;/h4&gt;
+        &lt;h5&gt;Heading 5&lt;/h5&gt;
+        &lt;h6&gt;Heading 6&lt;/h6&gt;
+        &lt;h4&gt; Heading &lt;small class=&quot;text-muted&quot;&gt;with muted text&lt;/small&gt;
+        &lt;/h4&gt;
+        &lt;p class=&quot;lead&quot;&gt;Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;h3&gt;Example body text&lt;/h3&gt;
+        &lt;p&gt;Nullam quis risus eget &lt;a href=&quot;#&quot;&gt;urna mollis ornare&lt;/a&gt; vel eu leo. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula. &lt;/p&gt;
+        &lt;p&gt;
+          &lt;small&gt;This line of text is meant to be treated as fine print.&lt;/small&gt;
+        &lt;/p&gt;
+        &lt;p&gt;The following is &lt;strong&gt;rendered as bold text&lt;/strong&gt;. &lt;/p&gt;
+        &lt;p&gt;The following is &lt;em&gt;rendered as italicized text&lt;/em&gt;. &lt;/p&gt;
+        &lt;p&gt;An abbreviation of the word attribute is &lt;abbr title=&quot;attribute&quot;&gt;attr&lt;/abbr&gt;. &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;h3&gt;Emphasis classes&lt;/h3&gt;
+        &lt;p class=&quot;text-muted&quot;&gt;Fusce dapibus, tellus ac cursus commodo, tortor mauris nibh.&lt;/p&gt;
+        &lt;p class=&quot;text-primary&quot;&gt;Nullam id dolor id nibh ultricies vehicula ut id elit.&lt;/p&gt;
+        &lt;p class=&quot;text-secondary&quot;&gt;Pellentesque ornare sem lacinia quam venenatis vestibulum.&lt;/p&gt;
+        &lt;p class=&quot;text-warning&quot;&gt;Etiam porta sem malesuada magna mollis euismod.&lt;/p&gt;
+        &lt;p class=&quot;text-danger&quot;&gt;Donec ullamcorper nulla non metus auctor fringilla.&lt;/p&gt;
+        &lt;p class=&quot;text-success&quot;&gt;Duis mollis, est non commodo luctus, nisi erat porttitor ligula.&lt;/p&gt;
+        &lt;p class=&quot;text-info&quot;&gt;Maecenas sed diam eget risus varius blandit sit amet non magna.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Blockquotes --&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;h3 id=&quot;type-blockquotes&quot;&gt;Blockquotes&lt;/h3&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;blockquote class=&quot;blockquote&quot;&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+          &lt;footer class=&quot;blockquote-footer&quot;&gt;Someone famous in &lt;cite title=&quot;Source Title&quot;&gt;Source Title&lt;/cite&gt;
+          &lt;/footer&gt;
+        &lt;/blockquote&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;blockquote class=&quot;blockquote text-center&quot;&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+          &lt;footer class=&quot;blockquote-footer&quot;&gt;Someone famous in &lt;cite title=&quot;Source Title&quot;&gt;Source Title&lt;/cite&gt;
+          &lt;/footer&gt;
+        &lt;/blockquote&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;blockquote class=&quot;blockquote text-right&quot;&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.&lt;/p&gt;
+          &lt;footer class=&quot;blockquote-footer&quot;&gt;Someone famous in &lt;cite title=&quot;Source Title&quot;&gt;Source Title&lt;/cite&gt;
+          &lt;/footer&gt;
+        &lt;/blockquote&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- Syntax Highlight --&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h3 id=&quot;syntax&quot;&gt;Syntax Highlight&lt;/h3&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;h4&gt;Python&lt;/h4&gt;
+        &lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code id=&quot;clipboard_code1&quot;&gt;&lt;span class=&quot;nd&quot;&gt;@requires_authorization&lt;/span&gt;
+          &lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;somefunc&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;):&lt;/span&gt;
+              &lt;span class=&quot;sa&quot;&gt;r&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;A docstring&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;# interesting
+          &lt;/span&gt;        &lt;span class=&quot;k&quot;&gt;print&lt;/span&gt; &lt;span class=&quot;sh&quot;&gt;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gre&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;ater&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&#39;&lt;/span&gt;
+              &lt;span class=&quot;nf&quot;&gt;return &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;param2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;param1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mb&quot;&gt;0b10&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;l&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;ow&quot;&gt;or&lt;/span&gt; &lt;span class=&quot;bp&quot;&gt;None&lt;/span&gt;
+          
+          &lt;span class=&quot;k&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;SomeClass&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;k&quot;&gt;pass&lt;/span&gt;
+          
+          &lt;span class=&quot;o&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;message&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;sh&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;interpreter
+          &lt;/span&gt;&lt;span class=&quot;gp&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;prompt&lt;/span&gt;&lt;span class=&quot;sh&quot;&gt;&#39;&#39;&#39;&lt;/span&gt;
+          
+          &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;tables&quot;&gt;Tables&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component table-responsive&quot;&gt;
+        &lt;h3 id=&quot;tables-contextual&quot;&gt;Contextual classes&lt;/h3&gt;
+        &lt;table class=&quot;table table-hover table-responsive w-100 d-block d-table&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;col&quot;&gt;Type&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Column heading&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Column heading&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Column heading&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr class=&quot;table-active&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Active&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;Default&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-primary&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Primary&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-secondary&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Secondary&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-success&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Success&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-danger&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Danger&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-warning&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Warning&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-info&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Info&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-light&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Light&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr class=&quot;table-dark&quot;&gt;
+              &lt;th scope=&quot;row&quot;&gt;Dark&lt;/th&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+              &lt;td&gt;Column content&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 id=&quot;tables-stripped&quot;&gt;Stripped rows&lt;/h3&gt;
+        &lt;table class=&quot;table table-striped table-responsive w-100 d-block d-table&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Handle&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+              &lt;td&gt;Mark&lt;/td&gt;
+              &lt;td&gt;Otto&lt;/td&gt;
+              &lt;td&gt;@mdo&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+              &lt;td&gt;Jacob&lt;/td&gt;
+              &lt;td&gt;Thornton&lt;/td&gt;
+              &lt;td&gt;@fat&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
+              &lt;td&gt;Larry&lt;/td&gt;
+              &lt;td&gt;the Bird&lt;/td&gt;
+              &lt;td&gt;@twitter&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component table-responsive&quot;&gt;
+        &lt;h3 id=&quot;tables-bordered&quot;&gt;Bordered table&lt;/h3&gt;
+        &lt;table class=&quot;table table-bordered table-responsive w-100 d-block d-table&quot;&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;col&quot;&gt;#&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;First&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Last&lt;/th&gt;
+              &lt;th scope=&quot;col&quot;&gt;Handle&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;1&lt;/th&gt;
+              &lt;td&gt;Mark&lt;/td&gt;
+              &lt;td&gt;Otto&lt;/td&gt;
+              &lt;td&gt;@mdo&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;2&lt;/th&gt;
+              &lt;td&gt;Jacob&lt;/td&gt;
+              &lt;td&gt;Thornton&lt;/td&gt;
+              &lt;td&gt;@fat&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;th scope=&quot;row&quot;&gt;3&lt;/th&gt;
+              &lt;td&gt;Larry&lt;/td&gt;
+              &lt;td&gt;the Bird&lt;/td&gt;
+              &lt;td&gt;@twitter&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;div&gt;
+        &lt;h3 id=&quot;base&quot;&gt;Base table&lt;/h3&gt;
+        &lt;table&gt;
+          &lt;thead&gt;
+            &lt;tr&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+              &lt;th&gt;Header&lt;/th&gt;
+            &lt;/tr&gt;
+          &lt;/thead&gt;
+          &lt;tbody&gt;
+            &lt;tr&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+            &lt;/tr&gt;
+            &lt;tr&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+              &lt;td&gt;Cell&lt;/td&gt;
+            &lt;/tr&gt;
+          &lt;/tbody&gt;
+        &lt;/table&gt;
+      &lt;/div&gt;
+      &lt;!-- /example --&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;forms&quot;&gt;Forms&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;form&gt;
+          &lt;fieldset&gt;
+            &lt;legend&gt;Legend&lt;/legend&gt;
+            &lt;div class=&quot;form-group row&quot;&gt;
+              &lt;label for=&quot;staticEmail&quot; class=&quot;col-sm-2 col-form-label&quot;&gt;Email&lt;/label&gt;
+              &lt;div class=&quot;col-sm-10&quot;&gt;
+                &lt;input type=&quot;text&quot; readonly=&quot;&quot; class=&quot;form-control-plaintext&quot; id=&quot;staticEmail&quot; value=&quot;email@example.com&quot; /&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;exampleInputEmail1&quot;&gt;Email address&lt;/label&gt;
+              &lt;input type=&quot;email&quot; class=&quot;form-control&quot; id=&quot;exampleInputEmail1&quot; aria-describedby=&quot;emailHelp&quot; placeholder=&quot;Enter email&quot; /&gt;
+              &lt;small id=&quot;emailHelp&quot; class=&quot;form-text text-muted&quot;&gt;We&#39;ll never share your email with anyone else.&lt;/small&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;exampleInputPassword1&quot;&gt;Password&lt;/label&gt;
+              &lt;input type=&quot;password&quot; class=&quot;form-control&quot; id=&quot;exampleInputPassword1&quot; placeholder=&quot;Password&quot; /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;exampleSelect1&quot;&gt;Example select&lt;/label&gt;
+              &lt;select class=&quot;form-control&quot; id=&quot;exampleSelect1&quot;&gt;
+                &lt;option&gt;1&lt;/option&gt;
+                &lt;option&gt;2&lt;/option&gt;
+                &lt;option&gt;3&lt;/option&gt;
+                &lt;option&gt;4&lt;/option&gt;
+                &lt;option&gt;5&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;exampleSelect2&quot;&gt;Example multiple select&lt;/label&gt;
+              &lt;select multiple=&quot;&quot; class=&quot;form-control&quot; id=&quot;exampleSelect2&quot;&gt;
+                &lt;option&gt;1&lt;/option&gt;
+                &lt;option&gt;2&lt;/option&gt;
+                &lt;option&gt;3&lt;/option&gt;
+                &lt;option&gt;4&lt;/option&gt;
+                &lt;option&gt;5&lt;/option&gt;
+              &lt;/select&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;exampleTextarea&quot;&gt;Example textarea&lt;/label&gt;
+              &lt;textarea class=&quot;form-control&quot; id=&quot;exampleTextarea&quot; rows=&quot;3&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;form-group&quot;&gt;
+              &lt;label for=&quot;exampleInputFile&quot;&gt;File input&lt;/label&gt;
+              &lt;input type=&quot;file&quot; class=&quot;form-control-file&quot; id=&quot;exampleInputFile&quot; aria-describedby=&quot;fileHelp&quot; /&gt;
+              &lt;small id=&quot;fileHelp&quot; class=&quot;form-text text-muted&quot;&gt;This is some placeholder block-level help text for the above input. It&#39;s a bit lighter and easily wraps to a new line.&lt;/small&gt;
+            &lt;/div&gt;
+            &lt;fieldset class=&quot;form-group&quot;&gt;
+              &lt;legend&gt;Radio buttons&lt;/legend&gt;
+              &lt;div class=&quot;form-check&quot;&gt;
+                &lt;label class=&quot;form-check-label&quot;&gt;
+                  &lt;input type=&quot;radio&quot; class=&quot;form-check-input&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios1&quot; value=&quot;option1&quot; checked=&quot;&quot; /&gt; Option one is this and that&amp;mdash;be sure to include why it&#39;s great &lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;form-check&quot;&gt;
+                &lt;label class=&quot;form-check-label&quot;&gt;
+                  &lt;input type=&quot;radio&quot; class=&quot;form-check-input&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios2&quot; value=&quot;option2&quot; /&gt; Option two can be something else and selecting it will deselect option one &lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;form-check disabled&quot;&gt;
+                &lt;label class=&quot;form-check-label&quot;&gt;
+                  &lt;input type=&quot;radio&quot; class=&quot;form-check-input&quot; name=&quot;optionsRadios&quot; id=&quot;optionsRadios3&quot; value=&quot;option3&quot; disabled=&quot;&quot; /&gt; Option three is disabled &lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/fieldset&gt;
+            &lt;fieldset class=&quot;form-group&quot;&gt;
+              &lt;legend&gt;Checkboxes&lt;/legend&gt;
+              &lt;div class=&quot;form-check&quot;&gt;
+                &lt;label class=&quot;form-check-label&quot;&gt;
+                  &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; checked=&quot;&quot; /&gt; Option one is this and that&amp;mdash;be sure to include why it&#39;s great &lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;form-check disabled&quot;&gt;
+                &lt;label class=&quot;form-check-label&quot;&gt;
+                  &lt;input class=&quot;form-check-input&quot; type=&quot;checkbox&quot; value=&quot;&quot; disabled=&quot;&quot; /&gt; Option two is disabled &lt;/label&gt;
+              &lt;/div&gt;
+            &lt;/fieldset&gt;
+            &lt;fieldset class=&quot;form-group&quot;&gt;
+              &lt;legend&gt;Sliders&lt;/legend&gt;
+              &lt;label for=&quot;customRange1&quot;&gt;Example range&lt;/label&gt;
+              &lt;input type=&quot;range&quot; class=&quot;custom-range&quot; id=&quot;customRange1&quot; /&gt;
+            &lt;/fieldset&gt;
+            &lt;button type=&quot;submit&quot; class=&quot;btn btn-primary&quot;&gt;Submit&lt;/button&gt;
+          &lt;/fieldset&gt;
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4 offset-lg-1&quot;&gt;
+      &lt;form class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;fieldset disabled=&quot;&quot;&gt;
+            &lt;label class=&quot;control-label&quot; for=&quot;disabledInput&quot;&gt;Disabled input&lt;/label&gt;
+            &lt;input class=&quot;form-control&quot; id=&quot;disabledInput&quot; type=&quot;text&quot; placeholder=&quot;Disabled input here...&quot; disabled=&quot;&quot; /&gt;
+          &lt;/fieldset&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;fieldset&gt;
+            &lt;label class=&quot;control-label&quot; for=&quot;readOnlyInput&quot;&gt;Readonly input&lt;/label&gt;
+            &lt;input class=&quot;form-control&quot; id=&quot;readOnlyInput&quot; type=&quot;text&quot; placeholder=&quot;Readonly input here…&quot; readonly=&quot;&quot; /&gt;
+          &lt;/fieldset&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group has-success&quot;&gt;
+          &lt;label class=&quot;form-control-label&quot; for=&quot;inputSuccess1&quot;&gt;Valid input&lt;/label&gt;
+          &lt;input type=&quot;text&quot; value=&quot;correct value&quot; class=&quot;form-control is-valid&quot; id=&quot;inputValid&quot; /&gt;
+          &lt;div class=&quot;valid-feedback&quot;&gt;Success! You&#39;ve done it.&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group has-danger&quot;&gt;
+          &lt;label class=&quot;form-control-label&quot; for=&quot;inputDanger1&quot;&gt;Invalid input&lt;/label&gt;
+          &lt;input type=&quot;text&quot; value=&quot;wrong value&quot; class=&quot;form-control is-invalid&quot; id=&quot;inputInvalid&quot; /&gt;
+          &lt;div class=&quot;invalid-feedback&quot;&gt;Sorry, that username&#39;s taken. Try another?&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label class=&quot;col-form-label col-form-label-lg&quot; for=&quot;inputLarge&quot;&gt;Large input&lt;/label&gt;
+          &lt;input class=&quot;form-control form-control-lg&quot; type=&quot;text&quot; placeholder=&quot;.form-control-lg&quot; id=&quot;inputLarge&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label class=&quot;col-form-label&quot; for=&quot;inputDefault&quot;&gt;Default input&lt;/label&gt;
+          &lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Default input&quot; id=&quot;inputDefault&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label class=&quot;col-form-label col-form-label-sm&quot; for=&quot;inputSmall&quot;&gt;Small input&lt;/label&gt;
+          &lt;input class=&quot;form-control form-control-sm&quot; type=&quot;text&quot; placeholder=&quot;.form-control-sm&quot; id=&quot;inputSmall&quot; /&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;form-group&quot;&gt;
+          &lt;label class=&quot;control-label&quot;&gt;Input addons&lt;/label&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;div class=&quot;input-group mb-3&quot;&gt;
+              &lt;div class=&quot;input-group-prepend&quot;&gt;
+                &lt;span class=&quot;input-group-text&quot;&gt;$&lt;/span&gt;
+              &lt;/div&gt;
+              &lt;input type=&quot;text&quot; class=&quot;form-control&quot; aria-label=&quot;Amount (to the nearest dollar)&quot; /&gt;
+              &lt;div class=&quot;input-group-append&quot;&gt;
+                &lt;span class=&quot;input-group-text&quot;&gt;.00&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/form&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;fieldset&gt;
+          &lt;legend&gt;Custom forms&lt;/legend&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;div class=&quot;custom-control custom-radio&quot;&gt;
+              &lt;input type=&quot;radio&quot; id=&quot;customRadio1&quot; name=&quot;customRadio&quot; class=&quot;custom-control-input&quot; checked=&quot;&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customRadio1&quot;&gt;Toggle this custom radio&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;custom-control custom-radio&quot;&gt;
+              &lt;input type=&quot;radio&quot; id=&quot;customRadio2&quot; name=&quot;customRadio&quot; class=&quot;custom-control-input&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customRadio2&quot;&gt;Or toggle this other custom radio&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;custom-control custom-radio&quot;&gt;
+              &lt;input type=&quot;radio&quot; id=&quot;customRadio3&quot; name=&quot;customRadio&quot; class=&quot;custom-control-input&quot; disabled=&quot;&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customRadio3&quot;&gt;Disabled custom radio&lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;div class=&quot;custom-control custom-checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; class=&quot;custom-control-input&quot; id=&quot;customCheck1&quot; checked=&quot;&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customCheck1&quot;&gt;Check this custom checkbox&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;custom-control custom-checkbox&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; class=&quot;custom-control-input&quot; id=&quot;customCheck2&quot; disabled=&quot;&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customCheck2&quot;&gt;Disabled custom checkbox&lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;div class=&quot;custom-control custom-switch&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; class=&quot;custom-control-input&quot; id=&quot;customSwitch1&quot; checked=&quot;&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customSwitch1&quot;&gt;Toggle this switch element&lt;/label&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;custom-control custom-switch&quot;&gt;
+              &lt;input type=&quot;checkbox&quot; class=&quot;custom-control-input&quot; disabled=&quot;&quot; id=&quot;customSwitch2&quot; /&gt;
+              &lt;label class=&quot;custom-control-label&quot; for=&quot;customSwitch2&quot;&gt;Disabled switch element&lt;/label&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;select class=&quot;custom-select&quot;&gt;
+              &lt;option selected=&quot;&quot;&gt;Open this select menu&lt;/option&gt;
+              &lt;option value=&quot;1&quot;&gt;One&lt;/option&gt;
+              &lt;option value=&quot;2&quot;&gt;Two&lt;/option&gt;
+              &lt;option value=&quot;3&quot;&gt;Three&lt;/option&gt;
+            &lt;/select&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;form-group&quot;&gt;
+            &lt;div class=&quot;input-group mb-3&quot;&gt;
+              &lt;div class=&quot;custom-file&quot;&gt;
+                &lt;input type=&quot;file&quot; class=&quot;custom-file-input&quot; id=&quot;inputGroupFile02&quot; /&gt;
+                &lt;label class=&quot;custom-file-label&quot; for=&quot;inputGroupFile02&quot;&gt;Choose file&lt;/label&gt;
+              &lt;/div&gt;
+              &lt;div class=&quot;input-group-append&quot;&gt;
+                &lt;span class=&quot;input-group-text&quot;&gt;Upload&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+        &lt;/fieldset&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;navs&quot;&gt;Navs&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot; style=&quot;margin-bottom: 2rem;&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;h3 id=&quot;nav-tabs&quot;&gt;Tabs&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;ul class=&quot;nav nav-tabs&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link active&quot; data-toggle=&quot;tab&quot; href=&quot;#home&quot;&gt;Home&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; data-toggle=&quot;tab&quot; href=&quot;#profile&quot;&gt;Profile&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot;&gt;Disabled&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+            &lt;a class=&quot;nav-link dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/a&gt;
+            &lt;div class=&quot;dropdown-menu&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
+              &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+        &lt;div id=&quot;myTabContent&quot; class=&quot;tab-content&quot;&gt;
+          &lt;div class=&quot;tab-pane fade show active&quot; id=&quot;home&quot;&gt;
+            &lt;p&gt;Raw denim you probably haven&#39;t heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane fade&quot; id=&quot;profile&quot;&gt;
+            &lt;p&gt;Food truck fixie locavore, accusamus mcsweeney&#39;s marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane fade&quot; id=&quot;dropdown1&quot;&gt;
+            &lt;p&gt;Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney&#39;s organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;tab-pane fade&quot; id=&quot;dropdown2&quot;&gt;
+            &lt;p&gt;Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;h3 id=&quot;nav-pills&quot;&gt;Pills&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;ul class=&quot;nav nav-pills&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;&gt;Active&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+            &lt;a class=&quot;nav-link dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/a&gt;
+            &lt;div class=&quot;dropdown-menu&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
+              &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot;&gt;Disabled&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+      &lt;br /&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;ul class=&quot;nav nav-pills flex-column&quot;&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link active&quot; href=&quot;#&quot;&gt;Active&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item dropdown&quot;&gt;
+            &lt;a class=&quot;nav-link dropdown-toggle&quot; data-toggle=&quot;dropdown&quot; href=&quot;#&quot; role=&quot;button&quot; aria-haspopup=&quot;true&quot; aria-expanded=&quot;false&quot;&gt;Dropdown&lt;/a&gt;
+            &lt;div class=&quot;dropdown-menu&quot;&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Action&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Another action&lt;/a&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Something else here&lt;/a&gt;
+              &lt;div class=&quot;dropdown-divider&quot;&gt;&lt;/div&gt;
+              &lt;a class=&quot;dropdown-item&quot; href=&quot;#&quot;&gt;Separated link&lt;/a&gt;
+            &lt;/div&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link&quot; href=&quot;#&quot;&gt;Link&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;nav-item&quot;&gt;
+            &lt;a class=&quot;nav-link disabled&quot; href=&quot;#&quot;&gt;Disabled&lt;/a&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;h3 id=&quot;nav-breadcrumbs&quot;&gt;Breadcrumbs&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;ol class=&quot;breadcrumb&quot;&gt;
+          &lt;li class=&quot;breadcrumb-item active&quot;&gt;Home&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;ol class=&quot;breadcrumb&quot;&gt;
+          &lt;li class=&quot;breadcrumb-item&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;breadcrumb-item active&quot;&gt;Library&lt;/li&gt;
+        &lt;/ol&gt;
+        &lt;ol class=&quot;breadcrumb&quot;&gt;
+          &lt;li class=&quot;breadcrumb-item&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Home&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;breadcrumb-item&quot;&gt;
+            &lt;a href=&quot;#&quot;&gt;Library&lt;/a&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;breadcrumb-item active&quot;&gt;Data&lt;/li&gt;
+        &lt;/ol&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;h3 id=&quot;pagination&quot;&gt;Pagination&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div&gt;
+          &lt;ul class=&quot;pagination&quot;&gt;
+            &lt;li class=&quot;page-item disabled&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&amp;laquo;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item active&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;4&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;5&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&amp;raquo;&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;ul class=&quot;pagination pagination-lg&quot;&gt;
+            &lt;li class=&quot;page-item disabled&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&amp;laquo;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item active&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&amp;raquo;&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;ul class=&quot;pagination pagination-sm&quot;&gt;
+            &lt;li class=&quot;page-item disabled&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&amp;laquo;&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item active&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;1&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;2&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;3&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;4&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;5&lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li class=&quot;page-item&quot;&gt;
+              &lt;a class=&quot;page-link&quot; href=&quot;#&quot;&gt;&amp;raquo;&lt;/a&gt;
+            &lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;indicators&quot;&gt;Indicators&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;h3&gt;Alerts&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-warning&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;h4 class=&quot;alert-heading&quot;&gt;Warning!&lt;/h4&gt;
+          &lt;p class=&quot;mb-0&quot;&gt;Best check yo self, you&#39;re not looking too good. Nulla vitae elit libero, a pharetra augue. Praesent commodo cursus magna, &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;vel scelerisque nisl consectetur et&lt;/a&gt;. &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-danger&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;strong&gt;Oh snap!&lt;/strong&gt;
+          &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;Change a few things up&lt;/a&gt; and try submitting again.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-success&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;strong&gt;Well done!&lt;/strong&gt; You successfully read &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;this important alert message&lt;/a&gt;.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-info&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;strong&gt;Heads up!&lt;/strong&gt; This &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;alert needs your attention&lt;/a&gt;, but it&#39;s not super important.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-primary&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;strong&gt;Oh snap!&lt;/strong&gt;
+          &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;Change a few things up&lt;/a&gt; and try submitting again.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-secondary&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;strong&gt;Well done!&lt;/strong&gt; You successfully read &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;this important alert message&lt;/a&gt;.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-4&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;alert alert-dismissible alert-light&quot;&gt;
+          &lt;button type=&quot;button&quot; class=&quot;close&quot; data-dismiss=&quot;alert&quot;&gt;&amp;times;&lt;/button&gt;
+          &lt;strong&gt;Heads up!&lt;/strong&gt; This &lt;a href=&quot;#&quot; class=&quot;alert-link&quot;&gt;alert needs your attention&lt;/a&gt;, but it&#39;s not super important.
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div&gt;
+    &lt;h3&gt;Badges&lt;/h3&gt;
+    &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 40px;&quot;&gt;
+      &lt;span class=&quot;badge badge-primary&quot;&gt;Primary&lt;/span&gt;
+      &lt;span class=&quot;badge badge-secondary&quot;&gt;Secondary&lt;/span&gt;
+      &lt;span class=&quot;badge badge-success&quot;&gt;Success&lt;/span&gt;
+      &lt;span class=&quot;badge badge-danger&quot;&gt;Danger&lt;/span&gt;
+      &lt;span class=&quot;badge badge-warning&quot;&gt;Warning&lt;/span&gt;
+      &lt;span class=&quot;badge badge-info&quot;&gt;Info&lt;/span&gt;
+      &lt;span class=&quot;badge badge-light&quot;&gt;Light&lt;/span&gt;
+      &lt;span class=&quot;badge badge-dark&quot;&gt;Dark&lt;/span&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;bs-component&quot;&gt;
+      &lt;span class=&quot;badge badge-pill badge-primary&quot;&gt;Primary&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-secondary&quot;&gt;Secondary&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-success&quot;&gt;Success&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-danger&quot;&gt;Danger&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-warning&quot;&gt;Warning&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-info&quot;&gt;Info&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-light&quot;&gt;Light&lt;/span&gt;
+      &lt;span class=&quot;badge badge-pill badge-dark&quot;&gt;Dark&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;images&quot;&gt;Images&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;bs-docs-section&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col-lg-12 text-center&quot;&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/53/100/120&quot; class=&quot;mx-auto border border-primary d-inline&quot; alt=&quot;...&quot; /&gt;
+         &lt;img src=&quot;https://picsum.photos/seed/60/100&quot; class=&quot;mx-auto rounded-circle border border-primary d-inline&quot; alt=&quot;...&quot; /&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/70/150/120&quot; class=&quot;mx-auto rounded-pill border border-primary d-inline&quot; alt=&quot;...&quot; /&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/77/120&quot; class=&quot;mx-auto rounded-0 border border-primary d-inline&quot; alt=&quot;...&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;progress&quot;&gt;Progress&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;h3 id=&quot;progress-basic&quot;&gt;Basic&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar&quot; role=&quot;progressbar&quot; style=&quot;width: 25%;&quot; aria-valuenow=&quot;25&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h3 id=&quot;progress-alternatives&quot;&gt;Contextual alternatives&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar bg-success&quot; role=&quot;progressbar&quot; style=&quot;width: 25%&quot; aria-valuenow=&quot;25&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar bg-info&quot; role=&quot;progressbar&quot; style=&quot;width: 50%&quot; aria-valuenow=&quot;50&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar bg-warning&quot; role=&quot;progressbar&quot; style=&quot;width: 75%&quot; aria-valuenow=&quot;75&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar bg-danger&quot; role=&quot;progressbar&quot; style=&quot;width: 100%&quot; aria-valuenow=&quot;100&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h3 id=&quot;progress-multiple&quot;&gt;Multiple bars&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar&quot; role=&quot;progressbar&quot; style=&quot;width: 15%&quot; aria-valuenow=&quot;15&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;progress-bar bg-success&quot; role=&quot;progressbar&quot; style=&quot;width: 30%&quot; aria-valuenow=&quot;30&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+          &lt;div class=&quot;progress-bar bg-info&quot; role=&quot;progressbar&quot; style=&quot;width: 20%&quot; aria-valuenow=&quot;20&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h3 id=&quot;progress-striped&quot;&gt;Striped&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar progress-bar-striped&quot; role=&quot;progressbar&quot; style=&quot;width: 10%&quot; aria-valuenow=&quot;10&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar progress-bar-striped bg-success&quot; role=&quot;progressbar&quot; style=&quot;width: 25%&quot; aria-valuenow=&quot;25&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar progress-bar-striped bg-info&quot; role=&quot;progressbar&quot; style=&quot;width: 50%&quot; aria-valuenow=&quot;50&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar progress-bar-striped bg-warning&quot; role=&quot;progressbar&quot; style=&quot;width: 75%&quot; aria-valuenow=&quot;75&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar progress-bar-striped bg-danger&quot; role=&quot;progressbar&quot; style=&quot;width: 100%&quot; aria-valuenow=&quot;100&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;h4 id=&quot;progress-animated&quot;&gt;Animated&lt;/h4&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;progress&quot;&gt;
+          &lt;div class=&quot;progress-bar progress-bar-striped progress-bar-animated&quot; role=&quot;progressbar&quot; aria-valuenow=&quot;75&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width: 75%&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;containers&quot;&gt;Containers&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;jumbotron&quot;&gt;
+          &lt;h2 class=&quot;display-3&quot;&gt;Hello, world!&lt;/h2&gt;
+          &lt;p class=&quot;lead&quot;&gt;This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.&lt;/p&gt;
+          &lt;hr class=&quot;my-4&quot; /&gt;
+          &lt;p&gt;It uses utility classes for typography and spacing to space content out within the larger container.&lt;/p&gt;
+          &lt;p class=&quot;lead&quot;&gt;
+            &lt;a class=&quot;btn btn-primary btn-lg&quot; href=&quot;#&quot; role=&quot;button&quot;&gt;Learn more&lt;/a&gt;
+          &lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;h3 id=&quot;list-groups&quot;&gt;List groups&lt;/h3&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;ul class=&quot;list-group&quot;&gt;
+          &lt;li class=&quot;list-group-item d-flex justify-content-between align-items-center&quot;&gt; Cras justo odio &lt;span class=&quot;badge badge-primary badge-pill&quot;&gt;14&lt;/span&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;list-group-item d-flex justify-content-between align-items-center&quot;&gt; Dapibus ac facilisis in &lt;span class=&quot;badge badge-primary badge-pill&quot;&gt;2&lt;/span&gt;
+          &lt;/li&gt;
+          &lt;li class=&quot;list-group-item d-flex justify-content-between align-items-center&quot;&gt; Morbi leo risus &lt;span class=&quot;badge badge-primary badge-pill&quot;&gt;1&lt;/span&gt;
+          &lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-lg-6&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;list-group&quot;&gt;
+          &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action active&quot;&gt; Cras justo odio &lt;/a&gt;
+          &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action&quot;&gt;Dapibus ac facilisis in &lt;/a&gt;
+          &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action disabled&quot;&gt;Morbi leo risus &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row mt-2&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;list-group&quot;&gt;
+          &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action flex-column align-items-start active&quot;&gt;
+            &lt;div class=&quot;d-flex w-100 justify-content-between&quot;&gt;
+              &lt;h6 class=&quot;mb-1&quot;&gt;List group item heading&lt;/h6&gt;
+              &lt;small&gt;3 days ago&lt;/small&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;mb-1&quot;&gt;Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.&lt;/p&gt;
+            &lt;small&gt;Donec id elit non mi porta.&lt;/small&gt;
+          &lt;/a&gt;
+          &lt;a href=&quot;#&quot; class=&quot;list-group-item list-group-item-action flex-column align-items-start&quot;&gt;
+            &lt;div class=&quot;d-flex w-100 justify-content-between&quot;&gt;
+              &lt;h6 class=&quot;mb-1&quot;&gt;List group item heading&lt;/h6&gt;
+              &lt;small class=&quot;text-muted&quot;&gt;3 days ago&lt;/small&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;mb-1&quot;&gt;Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.&lt;/p&gt;
+            &lt;small class=&quot;text-muted&quot;&gt;Donec id elit non mi porta.&lt;/small&gt;
+          &lt;/a&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;h3 id=&quot;cards&quot;&gt;Cards&lt;/h3&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;h4 id=&quot;cards-bg&quot;&gt;Background&lt;/h4&gt;
+        &lt;div class=&quot;card bg-primary mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Primary card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card bg-secondary mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Secondary card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-white bg-success mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Success card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-white bg-danger mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Danger card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-white bg-warning mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Warning card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-white bg-info mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Info card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card bg-light mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Light card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-white bg-dark mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Dark card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;col-md-6&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;h4 id=&quot;cards-out&quot;&gt;Outline&lt;/h4&gt;
+        &lt;div class=&quot;card text-primary border-primary mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Primary card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-secondary border-secondary mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Secondary card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-success border-success mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Success card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-danger border-danger mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Danger card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-warning border-warning mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Warning card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card text-info border-info mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Info card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card border-light mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Light card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card border-dark mb-3&quot;&gt;
+          &lt;div class=&quot;card-header&quot;&gt;Header&lt;/div&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Dark card title&lt;/h5&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-lg-12&quot;&gt;
+    &lt;div class=&quot;bs-component&quot;&gt;
+      &lt;div class=&quot;card mb-3 border border-primary&quot;&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/17/750/325&quot; class=&quot;card-img-top&quot; alt=&quot;...&quot; /&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;h5 class=&quot;card-title&quot;&gt;Card title&lt;/h5&gt;
+          &lt;p class=&quot;card-text&quot;&gt;This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.&lt;/p&gt;
+          &lt;p class=&quot;card-text&quot;&gt;&lt;small class=&quot;text-muted&quot;&gt;Last updated 3 mins ago&lt;/small&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;card mb-3 border border-primary&quot;&gt;
+        &lt;div class=&quot;card-body&quot;&gt;
+          &lt;h5 class=&quot;card-title&quot;&gt;Card title&lt;/h5&gt;
+          &lt;p class=&quot;card-text&quot;&gt;This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.&lt;/p&gt;
+          &lt;p class=&quot;card-text&quot;&gt;&lt;small class=&quot;text-muted&quot;&gt;Last updated 3 mins ago&lt;/small&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;img src=&quot;https://picsum.photos/seed/57/750/325&quot; class=&quot;card-img-bottom&quot; alt=&quot;...&quot; /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;card mb-3&quot;&gt;
+          &lt;h3 class=&quot;card-header&quot;&gt;Card header&lt;/h3&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h5 class=&quot;card-title&quot;&gt;Special title treatment&lt;/h5&gt;
+            &lt;h6 class=&quot;card-subtitle text-muted&quot;&gt;Support card subtitle&lt;/h6&gt;
+          &lt;/div&gt;
+          &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; class=&quot;d-block user-select-none&quot; width=&quot;100%&quot; height=&quot;200&quot; aria-label=&quot;Placeholder: Image cap&quot; focusable=&quot;false&quot; role=&quot;img&quot; preserveAspectRatio=&quot;xMidYMid slice&quot; viewBox=&quot;0 0 318 180&quot; style=&quot;font-size:1.125rem;text-anchor:middle&quot;&gt;
+            &lt;rect width=&quot;100%&quot; height=&quot;100%&quot; fill=&quot;#868e96&quot;&gt;&lt;/rect&gt;
+            &lt;text x=&quot;50%&quot; y=&quot;50%&quot; fill=&quot;#dee2e6&quot; dy=&quot;.3em&quot;&gt;Image cap&lt;/text&gt;
+          &lt;/svg&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;ul class=&quot;list-group list-group-flush&quot;&gt;
+            &lt;li class=&quot;list-group-item&quot;&gt;Cras justo odio&lt;/li&gt;
+            &lt;li class=&quot;list-group-item&quot;&gt;Dapibus ac facilisis in&lt;/li&gt;
+            &lt;li class=&quot;list-group-item&quot;&gt;Vestibulum at eros&lt;/li&gt;
+          &lt;/ul&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Card link&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Another link&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;card-footer text-muted&quot;&gt; 2 days ago &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;card&quot;&gt;
+          &lt;div class=&quot;card-body&quot;&gt;
+            &lt;h4 class=&quot;card-title&quot;&gt;Card title&lt;/h4&gt;
+            &lt;h6 class=&quot;card-subtitle mb-2 text-muted&quot;&gt;Card subtitle&lt;/h6&gt;
+            &lt;p class=&quot;card-text&quot;&gt;Some quick example text to build on the card title and make up the bulk of the card&#39;s content.&lt;/p&gt;
+            &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Card link&lt;/a&gt;
+            &lt;a href=&quot;#&quot; class=&quot;card-link&quot;&gt;Another link&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;bs-docs-section&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-lg-12&quot;&gt;
+      &lt;div class=&quot;page-header&quot;&gt;
+        &lt;h2 id=&quot;dialogs&quot;&gt;Dialogs&lt;/h2&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col&quot;&gt;
+      &lt;h3&gt;Popovers&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 3em;&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; title=&quot;Popover Title&quot; data-container=&quot;body&quot; data-toggle=&quot;popover&quot; data-placement=&quot;left&quot; data-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&quot;&gt;Left&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; title=&quot;Popover Title&quot; data-container=&quot;body&quot; data-toggle=&quot;popover&quot; data-placement=&quot;top&quot; data-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&quot;&gt;Top&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; title=&quot;Popover Title&quot; data-container=&quot;body&quot; data-toggle=&quot;popover&quot; data-placement=&quot;bottom&quot; data-content=&quot;Vivamus
+                sagittis lacus vel augue laoreet rutrum faucibus.&quot;&gt;Bottom&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; title=&quot;Popover Title&quot; data-container=&quot;body&quot; data-toggle=&quot;popover&quot; data-placement=&quot;right&quot; data-content=&quot;Vivamus sagittis lacus vel augue laoreet rutrum faucibus.&quot;&gt;Right&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;h3&gt;Tooltips&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot; style=&quot;margin-bottom: 3em;&quot;&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;left&quot; title=&quot;Tooltip on left&quot;&gt;Left&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;top&quot; title=&quot;Tooltip on top&quot;&gt;Top&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;bottom&quot; title=&quot;Tooltip on bottom&quot;&gt;Bottom&lt;/button&gt;
+        &lt;button type=&quot;button&quot; class=&quot;btn btn-secondary&quot; data-toggle=&quot;tooltip&quot; data-placement=&quot;right&quot; title=&quot;Tooltip on right&quot;&gt;Right&lt;/button&gt;
+      &lt;/div&gt;
+      &lt;h3&gt;Toasts&lt;/h3&gt;
+      &lt;div class=&quot;bs-component&quot;&gt;
+        &lt;div class=&quot;toast show&quot; role=&quot;alert&quot; aria-live=&quot;assertive&quot; aria-atomic=&quot;true&quot;&gt;
+          &lt;div class=&quot;toast-header&quot;&gt;
+            &lt;strong class=&quot;mr-auto&quot;&gt;Bootstrap&lt;/strong&gt;
+            &lt;small&gt;11 mins ago&lt;/small&gt;
+            &lt;button type=&quot;button&quot; class=&quot;ml-2 mb-1 close&quot; data-dismiss=&quot;toast&quot; aria-label=&quot;Close&quot;&gt;
+              &lt;span aria-hidden=&quot;true&quot;&gt;&amp;times;&lt;/span&gt;
+            &lt;/button&gt;
+          &lt;/div&gt;
+          &lt;div class=&quot;toast-body&quot;&gt; Hello, world! This is a toast message. &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;h2 id=&quot;chulapa-comp&quot;&gt;
+  &lt;span class=&quot;chulapa&quot;&gt;Chulapa&lt;/span&gt; components
+&lt;/h2&gt;
+
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;This is a demo page showing the different components of Bootstrap and how they look on this site under the current configuration.&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="bootstrap"/><category term="current-theme"/><category term="demo"/><category term="header-hero"/><category term="image"/><category term="skin"/>
+	</entry><entry>
+		<title type="html">The Acueduct of Segovia</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20191127_acueduct-of-segovia/" rel="alternate" type="text/html" title="The Acueduct of Segovia"/>
+		<published>2019-11-27T00:00:00+00:00</published>
+		<updated>2019-11-27T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20191127_acueduct-of-segovia/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20191127_acueduct-of-segovia/">
+		
+		
+		&lt;h3&gt;20 centuries ago&lt;/h3&gt;
+		
+  		
+			&lt;img src=&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Acueducto_Segovia_noche.JPG/1024px-Acueducto_Segovia_noche.JPG&#39; &gt;
+			
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;The &lt;strong&gt;Aqueduct of Segovia&lt;/strong&gt; (Spanish: &lt;em&gt;Acueducto de Segovia&lt;/em&gt;; more accurately, the aqueduct bridge) is a Roman aqueduct in Segovia, Spain. It is one of the best-preserved elevated Roman aqueducts and the foremost symbol of Segovia, as evidenced by its presence on the city’s coat of arms.&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name></name></author>
+		<summary type="html">&lt;p&gt;The &lt;strong&gt;Aqueduct of Segovia&lt;/strong&gt; (Spanish: &lt;em&gt;Acueducto de Segovia&lt;/em&gt;; more accurately, the aqueduct bridge) is a Roman aqueduct in Segovia, Spain. It is one of the best-preserved elevated Roman aqueducts and the foremost symbol of Segovia, as evidenced by its presence on the city’s coat of arms.&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="downtown"/><category term="image"/><category term="landscape"/><category term="project-links"/><category term="trips"/><category term="wikipedia"/>
+	</entry><entry>
+		<title type="html">A landing page</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20190803_landing-page/" rel="alternate" type="text/html" title="A landing page"/>
+		<published>2019-08-03T00:00:00+00:00</published>
+		<updated>2019-08-03T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20190803_landing-page/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20190803_landing-page/">
+		
+		
+		&lt;h3&gt;With image header&lt;/h3&gt;
+		
+  		
+			&lt;img src=&#39;https://dieghernan.github.io/chulapa/assets/img/site/transparent.png&#39; &gt;
+			
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;A simple landing page with an image on top. Transparencies (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;png&lt;/code&gt;) works better on this combination.&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Octocat</name><uri>https://github.com/github/</uri></author>
+		<summary type="html">&lt;p&gt;A simple landing page with an image on top. Transparencies (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;png&lt;/code&gt;) works better on this combination.&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="demo"/><category term="example"/><category term="guest-author"/><category term="image"/><category term="layout"/>
+	</entry><entry>
+		<title type="html">Dean Village</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20190502_dean-village/" rel="alternate" type="text/html" title="Dean Village"/>
+		<published>2019-05-02T00:00:00+00:00</published>
+		<updated>2019-05-02T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20190502_dean-village/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20190502_dean-village/">
+		
+  		
+			&lt;img src=&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Well_Court%2C_Dean_Village%2C_Edinburgh_%2844485996381%29.jpg/800px-Well_Court%2C_Dean_Village%2C_Edinburgh_%2844485996381%29.jpg&#39; &gt;
+			
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Dean Village&lt;/strong&gt; (from &lt;em&gt;dene&lt;/em&gt;, meaning ‘&lt;em&gt;deep valley&lt;/em&gt;’) is a former village immediately northwest of the city centre of Edinburgh, Scotland. It was known as the “Water of Leith Village” and was the centre of a successful grain milling area for more than 800 years. At one time there were no fewer than eleven working mills there, driven by the strong currents of the Water of Leith.&lt;/p&gt;
+
+  &lt;p class=&quot;blockquote-footer&quot;&gt;From &lt;a href=&quot;https://en.wikipedia.org/wiki/Dean_Village&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;That was a blockquote with a footer added via kramdown. See &lt;a href=&quot;https://getbootstrap.com/docs/4.5/content/typography/&quot;&gt;Bootstrap Typography&lt;/a&gt; 
+to understand &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.blockquote-footer&lt;/code&gt; class.
+&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Well_Court%2C_Dean_Village%2C_Edinburgh_%2844485996381%29.jpg/800px-Well_Court%2C_Dean_Village%2C_Edinburgh_%2844485996381%29.jpg&quot; alt=&quot;Dean Village&quot; /&gt;&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name></name></author>
+		<summary type="html">&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Dean Village&lt;/strong&gt; (from &lt;em&gt;dene&lt;/em&gt;, meaning ‘&lt;em&gt;deep valley&lt;/em&gt;’) is a former village immediately northwest of the city centre of Edinburgh, Scotland. It was known as the “Water of Leith Village” and was the centre of a successful grain milling area for more than 800 years. At one time there were no fewer than eleven working mills there, driven by the strong currents of the Water of Leith.&lt;/p&gt;
+
+  &lt;p class=&quot;blockquote-footer&quot;&gt;From &lt;a href=&quot;https://en.wikipedia.org/wiki/Dean_Village&quot;&gt;Wikipedia&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</summary>
+		<category term="posts"/>
+		<category term="bootstrap"/><category term="demo"/><category term="downtown"/><category term="edinburgh"/><category term="image"/><category term="kramdown"/><category term="landscape"/><category term="trips"/><category term="wikipedia"/>
+	</entry><entry>
+		<title type="html">Urban art</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20181109_urban_art/" rel="alternate" type="text/html" title="Urban art"/>
+		<published>2018-11-09T00:00:00+00:00</published>
+		<updated>2018-11-09T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20181109_urban_art/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20181109_urban_art/">
+		
+		
+		&lt;h3&gt;Creativity is everywhere&lt;/h3&gt;
+		
+  		
+			&lt;img src=&#39;https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Madrid_-_Graffiti_11.jpg/407px-Madrid_-_Graffiti_11.jpg&#39; &gt;
+			
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;Urban artists can use anything as a canvas to express their art&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Madrid_-_Graffiti_11.jpg/407px-Madrid_-_Graffiti_11.jpg&quot; alt=&quot;Grunge is not dead&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;caption&quot;&gt;Picture by &lt;a href=&quot;https://commons.m.wikimedia.org/wiki/User:Zarateman&quot;&gt;Zarateman&lt;/a&gt;&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name></name></author>
+		<summary type="html">&lt;p&gt;Urban artists can use anything as a canvas to express their art&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="downtown"/><category term="image"/><category term="street"/><category term="urban art"/>
+	</entry><entry>
+		<title type="html">Flake it till you make it</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150226_flake-it-till-you-make-it/" rel="alternate" type="text/html" title="Flake it till you make it"/>
+		<published>2015-02-26T00:00:00+00:00</published>
+		<updated>2018-09-21T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150226_flake-it-till-you-make-it/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150226_flake-it-till-you-make-it/">
+		
+		
+		&lt;h3&gt;Excerpt from Soulshaping by Jeff Brown&lt;/h3&gt;
+		
+  		
+	&lt;p&gt;2 min.&lt;/p&gt;
+			&lt;p&gt;Under what circumstances should we step off a path? When is it essential that we finish what we start? If I bought a bag of peanuts and had an allergic reaction, no one would fault me if I threw it out. If I ended a relationship with a woman who hit me, no one would say that I had a commitment problem. But if I walk away from a seemingly secure route because my soul has other ideas, I am a flake?&lt;/p&gt;
+
+&lt;p&gt;The truth is that no one else can definitively know the path we are here to walk. It’s tempting to listen—many of us long for the omnipotent other—but unless they are genuine psychic intuitives, they can’t know. All others can know is their own truth, and if they’ve actually done the work to excavate it, they will have the good sense to know that they cannot genuinely know anyone else’s. Only soul knows the path it is here to walk. Since you are the only one living in your temple, only you can know its scriptures and interpretive structure.&lt;/p&gt;
+
+&lt;p&gt;At the heart of the struggle are two very different ideas of success—survival-driven and soul-driven. For survivalists, success is security, pragmatism, power over others. Success is the absence of material suffering, the nourishing of the soul be damned. It is an odd and ironic thing that most of the material power in our world often resides in the hands of younger souls. Still working in the egoic and material realms, they love the sensations of power and focus most of their energy on accumulation. Older souls tend not to be as materially driven. They have already played the worldly game in previous lives and they search for more subtle shades of meaning in this one—authentication rather than accumulation. They are often ignored by the culture at large, although they really are the truest warriors.&lt;/p&gt;
+
+&lt;p&gt;A soulful notion of success rests on the actualization of our innate image. Success is simply the completion of a soul step, however unsightly it may be. We have finished what we started when the lesson is learned. What a fear-based culture calls a wonderful opportunity may be fruitless and misguided for the soul. Staying in a passionless relationship may satisfy our need for comfort, but it may stifle the soul. Becoming a famous lawyer is only worthwhile if the soul demands it. It is an essential failure if you are called to be a monastic this time around. If you need to explore and abandon ten careers in order to stretch your soul toward its innate image, then so be it. Flake it till you make it.&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;Under what circumstances should we step off a path? When is it essential that we finish what we start? If I bought a bag of peanuts and had an allergic reaction, no one would fault me if I threw it out. If I ended a relationship with a woman who hit me, no one would say that I had a commitment problem. But if I walk away from a seemingly secure route because my soul has other ideas, I am a flake?&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="manuscript"/><category term="random"/>
+	</entry><entry>
+		<title type="html">Test markdown</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150220_test-markdown/" rel="alternate" type="text/html" title="Test markdown"/>
+		<published>2015-02-20T00:00:00+00:00</published>
+		<updated>2015-02-20T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150220_test-markdown/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150220_test-markdown/">
+		
+		
+		&lt;h3&gt;Each post also has a subtitle&lt;/h3&gt;
+		
+  		
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;You can write regular &lt;a href=&quot;http://markdowntutorial.com/&quot;&gt;markdown&lt;/a&gt; here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to &lt;a href=&quot;http://markdowntutorial.com/&quot;&gt;take 5 minutes to learn how to write in markdown&lt;/a&gt; - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Here is some bold text&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;here-is-a-secondary-heading&quot;&gt;Here is a secondary heading&lt;/h2&gt;
+
+&lt;p&gt;Here’s a useless table:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Number&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Next number&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Previous number&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Five&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Six&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Four&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Ten&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Eleven&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Nine&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Seven&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Eight&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Six&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Two&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Three&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;One&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;How about a yummy crepe?&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://s3-media3.fl.yelpcdn.com/bphoto/cQ1Yoa75m2yUFFbY2xwuqw/348s.jpg&quot; alt=&quot;Crepe&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Here’s a code chunk:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;var foo = function(x) {
+  return(x + 5);
+}
+foo(3)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And here is the same code with syntax highlighting:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;foo&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;x&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nf&quot;&gt;foo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;You can write regular &lt;a href=&quot;http://markdowntutorial.com/&quot;&gt;markdown&lt;/a&gt; here and Jekyll will automatically convert it to a nice webpage.  I strongly encourage you to &lt;a href=&quot;http://markdowntutorial.com/&quot;&gt;take 5 minutes to learn how to write in markdown&lt;/a&gt; - it’ll teach you how to transform regular text into bold/italics/headings/tables/etc.&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="exciting-stuff"/><category term="markdown"/>
+	</entry><entry>
+		<title type="html">To be</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150213_hamlet-monologue/" rel="alternate" type="text/html" title="To be"/>
+		<published>2015-02-13T00:00:00+00:00</published>
+		<updated>2015-02-13T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150213_hamlet-monologue/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150213_hamlet-monologue/">
+		
+		
+		&lt;h3&gt;… or not to be?&lt;/h3&gt;
+		
+  		
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;To be, or not to be–that is the question:
+Whether ‘tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune
+Or to take arms against a sea of troubles
+And by opposing end them. To die, to sleep–
+No more–and by a sleep to say we end
+The heartache, and the thousand natural shocks
+That flesh is heir to. ‘Tis a consummation
+Devoutly to be wished. To die, to sleep–
+To sleep–perchance to dream: ay, there’s the rub,
+For in that sleep of death what dreams may come
+When we have shuffled off this mortal coil,
+Must give us pause. There’s the respect
+That makes calamity of so long life.
+For who would bear the whips and scorns of time,
+Th’ oppressor’s wrong, the proud man’s contumely
+The pangs of despised love, the law’s delay,
+The insolence of office, and the spurns
+That patient merit of th’ unworthy takes,
+When he himself might his quietus make
+With a bare bodkin? Who would fardels bear,
+To grunt and sweat under a weary life,
+But that the dread of something after death,
+The undiscovered country, from whose bourn
+No traveller returns, puzzles the will,
+And makes us rather bear those ills we have
+Than fly to others that we know not of?
+Thus conscience does make cowards of us all,
+And thus the native hue of resolution
+Is sicklied o’er with the pale cast of thought,
+And enterprise of great pitch and moment
+With this regard their currents turn awry
+And lose the name of action. – Soft you now,
+The fair Ophelia! – Nymph, in thy orisons
+Be all my sins remembered.&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;To be, or not to be–that is the question:
+Whether ‘tis nobler in the mind to suffer
+The slings and arrows of outrageous fortune
+Or to take arms against a sea of troubles
+And by opposing end them. To die, to sleep–
+No more–and by a sleep to say we end
+The heartache, and the thousand natural shocks
+That flesh is heir to. ‘Tis a consummation
+Devoutly to be wished. To die, to sleep–
+To sleep–perchance to dream: ay, there’s the rub,
+For in that sleep of death what dreams may come
+When we have shuffled off this mortal coil,
+Must give us pause. There’s the respect
+That makes calamity of so long life.
+For who would bear the whips and scorns of time,
+Th’ oppressor’s wrong, the proud man’s contumely
+The pangs of despised love, the law’s delay,
+The insolence of office, and the spurns
+That patient merit of th’ unworthy takes,
+When he himself might his quietus make
+With a bare bodkin? Who would fardels bear,
+To grunt and sweat under a weary life,
+But that the dread of something after death,
+The undiscovered country, from whose bourn
+No traveller returns, puzzles the will,
+And makes us rather bear those ills we have
+Than fly to others that we know not of?
+Thus conscience does make cowards of us all,
+And thus the native hue of resolution
+Is sicklied o’er with the pale cast of thought,
+And enterprise of great pitch and moment
+With this regard their currents turn awry
+And lose the name of action. – Soft you now,
+The fair Ophelia! – Nymph, in thy orisons
+Be all my sins remembered.&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="manuscript"/><category term="wikipedia"/>
+	</entry><entry>
+		<title type="html">Dear diary</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150127_dear-diary/" rel="alternate" type="text/html" title="Dear diary"/>
+		<published>2015-01-27T00:00:00+00:00</published>
+		<updated>2015-01-27T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150127_dear-diary/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150127_dear-diary/">
+		
+  		
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;What is it with that Mary girl?  Dragging me to school every day. As if I had a choice.  What you don’t hear in those nursery rhymes is that she starves me if I don’t go to school with her; it’s the only way I can stay alive!  I’m thinking about being adopted by Little Bo Peep, sure I may get lost, but anything is better than being with Mary and those little brats at school (shudder, shudder).&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;What is it with that Mary girl?  Dragging me to school every day. As if I had a choice.  What you don’t hear in those nursery rhymes is that she starves me if I don’t go to school with her; it’s the only way I can stay alive!  I’m thinking about being adopted by Little Bo Peep, sure I may get lost, but anything is better than being with Mary and those little brats at school (shudder, shudder).&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="diary"/><category term="manuscript"/><category term="random"/><category term="school"/>
+	</entry><entry>
+		<title type="html">Soccer</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150119_soccer/" rel="alternate" type="text/html" title="Soccer"/>
+		<published>2015-01-19T00:00:00+00:00</published>
+		<updated>2015-01-19T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150119_soccer/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150119_soccer/">
+		
+		
+		&lt;h3&gt;Best sport ever!&lt;/h3&gt;
+		
+  		
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;From Wikipedia:&lt;/p&gt;
+
+&lt;p&gt;Association football, more commonly known as football or soccer,[2] is a sport played between two teams of eleven players with a spherical ball. It is played by 250 million players in over 200 countries, making it the world’s most popular sport.[3][4][5][6] The game is played on a rectangular field with a goal at each end. The object of the game is to score by getting the ball into the opposing goal.&lt;/p&gt;
+
+&lt;p&gt;The goalkeepers are the only players allowed to touch the ball with their hands or arms while it is in play and then only in their penalty area. Outfield players mostly use their feet to strike or pass the ball, but may use their head or torso to strike the ball instead. The team that scores the most goals by the end of the match wins. If the score is level at the end of the game, either a draw is declared or the game goes into extra time and/or a penalty shootout depending on the format of the competition. The Laws of the Game were originally codified in England by The Football Association in 1863. Association football is governed internationally by the International Federation of Association Football (FIFA; French: Fédération Internationale de Football Association) which organises a World Cup every four years.[7]&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;From Wikipedia:&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="exciting-stuff"/><category term="random"/><category term="wikipedia"/>
+	</entry><entry>
+		<title type="html">Pirates arrrr</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150115_pirates/" rel="alternate" type="text/html" title="Pirates arrrr"/>
+		<published>2015-01-15T00:00:00+00:00</published>
+		<updated>2015-01-15T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150115_pirates/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150115_pirates/">
+		
+  		
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;Piracy is typically an act of robbery or criminal violence at sea. The term can include acts committed on land, in the air, or in other major bodies of water or on a shore. It does not normally include crimes committed against persons traveling on the same vessel as the perpetrator (e.g. one passenger stealing from others on the same vessel). The term has been used throughout history to refer to raids across land borders by non-state agents.&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;Piracy is typically an act of robbery or criminal violence at sea. The term can include acts committed on land, in the air, or in other major bodies of water or on a shore. It does not normally include crimes committed against persons traveling on the same vessel as the perpetrator (e.g. one passenger stealing from others on the same vessel). The term has been used throughout history to refer to raids across land borders by non-state agents.&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="pirates"/><category term="random"/><category term="wikipedia"/>
+	</entry><entry>
+		<title type="html">First post!</title>
+		<link href="https://dieghernan.github.io/cle-gunners/20150104_first-post/" rel="alternate" type="text/html" title="First post!"/>
+		<published>2015-01-04T00:00:00+00:00</published>
+		<updated>2015-01-04T00:00:00+00:00</updated>
+		<id>https://dieghernan.github.io/cle-gunners/20150104_first-post/</id>
+		<content type="html" xml:base="https://dieghernan.github.io/cle-gunners/20150104_first-post/">
+		
+  		
+	&lt;p&gt;1 min.&lt;/p&gt;
+			&lt;p&gt;This is my first post, how exciting!&lt;/p&gt;
+
+		</content>
+		
+		<author>
+			<name>Your Name</name></author>
+		<summary type="html">&lt;p&gt;This is my first post, how exciting!&lt;/p&gt;
+</summary>
+		<category term="posts"/>
+		<category term="exciting-stuff"/><category term="random"/>
+	</entry></feed>
