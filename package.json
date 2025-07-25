@@ -13,6 +13,7 @@
   },
   "comments": {
     "phin": "added only to force astrojs to use a non vuln version",
+    "file-type": "added only to force astro-imagetools to use a non vuln version"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
@@ -24,6 +25,7 @@
     "astro-font": "^1.0.0",
     "astro-imagetools": "^0.9.0",
     "date-fns": "^4.1.0",
+    "file-type": "^17.1.3",
     "fuse.js": "^7.1.0",
     "marked": "^16.0.0",
     "phin": "^3.7.1",
