@@ -15,7 +15,7 @@ const { post } = Astro.props;
 ---
 
 <div class="tile flex flex-col items-center lg:flex-row justify-evenly" id={slugify(post.data.title)}>
-  <div class="w-full">
+  <div id="tile-image" class={`w-full ${post.data.image ? "" : "hidden"}`}>
   {
     post.data.image && (
       <Image
@@ -32,11 +32,11 @@ const { post } = Astro.props;
   </div>
   <div id="content" class="flex flex-col items-center p-2 w-full">
     {
-    post.data.title && (
-    <h3 class="text-gold w-full text-center border-b-1 border-[#e1e1e1]">
-      {post.data.title}
-    </h3>
-    )
+      post.data.title && (
+        <h3 class="text-gold w-full text-center border-b-1 border-[#e1e1e1]">
+          {post.data.title}
+        </h3>
+      )
     }
     <div id="card-body">
     {
@@ -44,7 +44,6 @@ const { post } = Astro.props;
         <p class="text-lg dark:text-light text-dark" set:html={markdownify(post.body)}>
         </p>
       )
-
     }
     </div>
   </div>
