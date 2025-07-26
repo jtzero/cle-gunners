@@ -9,10 +9,11 @@ import type { CollectionEntry } from "astro:content";
 
 type Props = {
   post: CollectionEntry<"posts">;
+  styling: string;
 };
 
 const { summary_length } = config.settings;
-const { post } = Astro.props;
+const { post, styling } = Astro.props;
 ---
 
 <div class="tile">

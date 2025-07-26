@@ -9,12 +9,14 @@ import type { CollectionEntry } from "astro:content";
 
 type Props = {
   post: CollectionEntry<"posts">;
+  styling: string;
 };
 
+const { post, styling } = Astro.props;
 const { summary_length } = config.settings;
 ---
 
-<div class="tile border-t-2 border-t-dark-red lg:border-none flex items-center justify-evenly flex-col lg:flex-row-reverse">
+<div class={`${styling} tile border-t-2 border-t-dark-red lg:border-none flex items-center justify-evenly flex-col lg:flex-row-reverse`}>
   <h3 class="h4 mt-2 text-center p-[1.5rem] text-gold">
     MEET US FOR EVERY MATCH AT MERRY-ARTS
   </h3>
