@@ -7,7 +7,7 @@
 
 
 @layer base {
-  @import "./base.css";
+  @import "@/styles/base.css";
 }
 
 @layer components {

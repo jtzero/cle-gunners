@@ -11,8 +11,8 @@ type PageData = {
   description?: string;
   image?: string;
   imageDimensions?: string;
-  parsedImageWidth: number;
-  parsedImageHeight: number;
+  parsedImageWidth?: number;
+  parsedImageHeight?: number;
 };
 
 export const getSinglePage = async <C extends CollectionKey>(

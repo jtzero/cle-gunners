@@ -15,7 +15,7 @@ const sortedPinnedPosts = sortByWeight(pinnedPosts);
     {
       sortedPinnedPosts.map((post) => {
         return (
-          <PinnedPost post={post} styling="tile w-3/4 mb-6 shadow bg-white" />
+        <PinnedPost post={post} styling={`tile w-3/4 mb-6 shadow bg-white ${post.data.additionalStyling}`} />
         );
       })
     }
