@@ -22,11 +22,11 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="header">
-  <nav id="nav-container" class="fixed flex flex-col items-center justify-center">
-    <div id="nav-toggler" class="self-start">
-      <input id="nav-toggle" type="checkbox" class="hidden" />
+  <nav  id="nav-container" data-testid="nav-container" class="fixed flex flex-col items-center justify-center">
+    <div  id="nav-toggler" data-testid="nav-toggler" class="self-start">
+      <input  id="nav-toggle" data-testid="nav-toggle" type="checkbox" class="hidden" />
       <label
-        id="show-button"
+         id="show-button" data-testid="show-button"
         for="nav-toggle"
         class="order-2 flex cursor-pointer items-center md:order-1"
       >
@@ -36,7 +36,7 @@ const currentPath = Astro.url.pathname;
         </svg>
       </label>
       <label
-        id="hide-button"
+         id="hide-button" data-testid="hide-button"
         for="nav-toggle"
         class="order-2 hidden cursor-pointer items-center md:order-1"
       >
@@ -49,7 +49,7 @@ const currentPath = Astro.url.pathname;
       </label>
     </div>
     <ul
-      id="nav-menu" class="nav-menu"
+       id="nav-menu" data-testid="nav-menu" class="nav-menu"
     >
       {
         main.map((menu) => (
@@ -61,13 +61,13 @@ const currentPath = Astro.url.pathname;
     </ul>
   </nav>
 
-  <div id="banner">
-    <div id="banner-split">
+  <div  id="banner" data-testid="banner">
+    <div  id="banner-split" data-testid="banner-split">
       <p class="self-end text-center w-[96px] sm:w-[15vw]">
         CLEVELAND
       </p>
       <div class="logo-container">
-        <div id="logo-base" class="size-99/100 circle bg-white flex items-center justify-center">
+        <div  id="logo-base" data-testid="logo-base" class="size-99/100 circle bg-white flex items-center justify-center">
         {
             <Image
               src={fromBase("/images/banner/arsenal-guardian.png")}
