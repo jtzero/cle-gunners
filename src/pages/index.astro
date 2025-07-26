@@ -14,15 +14,11 @@ const sortedPinnedPosts = sortByWeight(pinnedPosts);
 
 <Base>
   <div name="pinned-items" class="bg-light flex items-center justify-center flex-col">
-    <div class="w-3/4 mb-6 shadow bg-white">
-      <LocationPost />
-    </div>
+    <LocationPost styling="w-3/4 mb-6 shadow bg-white"/>
     {
       sortedPinnedPosts.map((post) => {
         return (
-          <div class="w-3/4 mb-6 shadow bg-white">
-            <PinnedPost post={post} />
-          </div>
+          <PinnedPost post={post} styling="tile w-3/4 mb-6 shadow bg-white" />
         );
       })
     }

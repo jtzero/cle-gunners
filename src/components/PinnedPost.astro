@@ -9,12 +9,13 @@ import type { CollectionEntry } from "astro:content";
 
 type Props = {
   post: CollectionEntry<"posts">;
+  styling: string;
 };
 
-const { post } = Astro.props;
+const { post, styling } = Astro.props;
 ---
 
-<div class="tile flex flex-col items-center lg:flex-row justify-evenly" id={slugify(post.data.title)}>
+<div class={`${styling} flex flex-col items-center lg:flex-row justify-evenly`} id={slugify(post.data.title)}>
   <div id="tile-image" class={`w-full ${post.data.image ? "" : "hidden"}`}>
   {
     post.data.image && (

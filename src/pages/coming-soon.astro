@@ -8,9 +8,7 @@ const entry = (await getEntry("pages", "coming-soon")) as CollectionEntry<"pages
 ---
 
 <Base title={entry.data.title} metaTitle={entry.data.metaTitle}>
-  <div class="bg-light flex items-center justify-center flex-col">
-    <div class="w-3/4 mb-6 shadow bg-white">
-      <PinnedPost post={entry} />
-    </div>
+  <div id="posts-container" class="bg-light flex items-center justify-center flex-col">
+    <PinnedPost post={entry} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
   </div>
 </Base>
