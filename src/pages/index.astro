@@ -1,13 +1,10 @@
 ---
 import Base from "@/layouts/Base.astro";
-import Post from "@/layouts/partials/Post.astro";
 import PinnedPost from "@/components/PinnedPost.astro";
 import LocationPost from "src/components/LocationPost.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByDate, sortByWeight } from "@/lib/utils/sortFunctions";
 
-//const posts = await getSinglePage("posts");
-//const sortPostByDate = sortByDate(posts);
 const pinnedPosts = await getSinglePage("pinnedPosts");
 const sortedPinnedPosts = sortByWeight(pinnedPosts);
 ---
@@ -23,17 +20,4 @@ const sortedPinnedPosts = sortByWeight(pinnedPosts);
       })
     }
   </div>
-  <!--
-  <div name="new" class="bg-light flex items-center justify-center flex-col">
-    {
-      sortPostByDate.map((post) => {
-        return (
-          <div class="w-3/4 mb-6 shadow bg-white">
-            <Post post={post} />
-          </div>
-        );
-      })
-    }
-    </div>
-    -->
 </Base>
