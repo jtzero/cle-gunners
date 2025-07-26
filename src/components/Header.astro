@@ -67,14 +67,14 @@ const currentPath = Astro.url.pathname;
         CLEVELAND
       </p>
       <div class="logo-container">
-        <div class="size-99.5/100 circle bg-white flex items-center justify-center">
+        <div id="logo-base" class="size-99/100 circle bg-white flex items-center justify-center">
         {
             <Image
               src={fromBase("/images/banner/arsenal-guardian.png")}
               width={2007}
               height={2008}
               alt="CLE-GUNNERS"
-              class="size-95/100"
+              class="size-99.5/100"
             />
         }
         </div>
@@ -97,7 +97,7 @@ const currentPath = Astro.url.pathname;
 }
 
 .header {
-  @apply top-0 left-0 z-40 w-full pb-3.5 transition-all duration-300;
+  @apply top-0 left-0 z-40 w-full pb-[calc(3.5vw+1.5rem)] transition-all duration-300;
   @apply bg-body;
 }
 
