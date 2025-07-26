@@ -62,8 +62,8 @@ const currentPath = Astro.url.pathname;
   </nav>
 
   <div id="banner">
-    <div class="h-[55%] flex justify-evenly border-b-1 border-white xl:h-37">
-      <p class="self-end xl:self-end">
+    <div id="banner-split">
+      <p class="self-end text-center w-[96px] sm:w-[15vw]">
         CLEVELAND
       </p>
       <div class="logo-container">
@@ -79,7 +79,7 @@ const currentPath = Astro.url.pathname;
         }
         </div>
       </div>
-      <p class="self-end md:xl:self-end">
+      <p class="self-end text-center w-[96px] sm:w-[15vw]">
         ARSENAL
       </p>
     </div>
@@ -96,26 +96,29 @@ const currentPath = Astro.url.pathname;
   }
 }
 
-.logo-container {
-  @apply self-baseline flex h-[10rem] w-[10rem];
-  @apply sm:h-[10rem] sm:w-[10rem];
-  @apply md:items-center md:justify-center md:h-[19rem] md:w-[19rem] md:-mt-5;
-  @apply lg:h-[19rem] lg:w-[19rem] lg:-mt-5;
-  @apply xl:h-[20rem] xl:w-[20rem] xl:-mt-5;
-  @apply 2xl:h-[20rem] 2xl:w-[20rem] 2xl:-mt-5;
-}
-
-.circle {
-  border-radius: 50%;
-}
-
 .header {
   @apply top-0 left-0 z-40 w-full pb-3.5 transition-all duration-300;
   @apply bg-body;
 }
 
 #banner {
-  @apply bg-dark-red font-bold w-full text-white text-xl text-[calc(0.5rem+2vw)] h-34 md:h-64 xl:h-64;
+  @apply bg-dark-red font-bold w-full text-white text-[calc(0.5rem+2vw)] h-30 sm:h-40 md:h-50 lg:h-60 xl:h-64;
+}
+
+#banner-split {
+  @apply h-[70%] flex border-b-1 border-white justify-evenly xl:h-37;
+}
+
+.logo-container {
+  @apply self-baseline flex h-[9rem] w-[9rem];
+  @apply sm:h-[12rem] sm:w-[12rem];
+  @apply md:h-[15rem] md:w-[15rem];
+  @apply lg:h-[18rem] lg:w-[18rem];
+  @apply xl:h-[19rem] xl:w-[19rem];
+}
+
+.circle {
+  border-radius: 50%;
 }
 
 #nav-toggler {
