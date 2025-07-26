@@ -4,7 +4,7 @@ import social from "@/config/social.json";
 import { markdownify } from "@/lib/utils/textConverter";
 ---
 
-<footer class="bg-white pt-6">
+<footer class="footer flex-0 bg-white pt-6 flex-grow">
   <div class="container text-center">
     <div class="row items-center">
       <div>
@@ -14,7 +14,7 @@ import { markdownify } from "@/lib/utils/textConverter";
   </div>
 </footer>
 <style>
-@import "../../styles/tailwind.css";
+@import "@/styles/tailwind.css";
 .social-icons {
   @apply space-x-4;
   li {
@@ -27,4 +27,5 @@ import { markdownify } from "@/lib/utils/textConverter";
     }
   }
 }
+
 </style>
