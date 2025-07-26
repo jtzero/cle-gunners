@@ -30,10 +30,9 @@ if (!post) {
 ---
 
 <Base>
-  <div name="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
-  <div name="new" class="bg-light flex items-center justify-center flex-col">
-    <div class="w-3/4 mb-6 shadow bg-white">
-      <PinnedPost post={post} />
+  <div data-testid="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
+    <div data-testid="posts-container" class="bg-light flex items-center justify-center flex-col">
+      <PinnedPost post={entry} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
     </div>
   </div>
 </Base>

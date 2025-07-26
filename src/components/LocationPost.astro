@@ -16,7 +16,7 @@ const { post, styling } = Astro.props;
 const { summary_length } = config.settings;
 ---
 
-<div name="location-post" class={`${styling} tile border-t-2 border-t-dark-red flex flex-col items-center lg:border-none lg:flex-row-reverse`}>
+<div data-testid="location-post" class={`${styling} tile border-t-2 border-t-dark-red flex flex-col items-center lg:border-none lg:flex-row-reverse`}>
   <h3 class="h4 mt-2 text-center p-[1.5rem] text-gold">
     MEET US FOR EVERY MATCH AT MERRY-ARTS
   </h3>
