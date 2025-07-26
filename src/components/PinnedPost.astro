@@ -12,45 +12,73 @@ type Props = {
   styling: string;
 };
 
-const { post, styling } = Astro.props;
+const { post, styling, displayReadMore } = Astro.props;
+const { imageDimensions } = post.data;
+
+const showReadMore = (() => {
+  if (displayReadMore !== undefined) {
+    return displayReadMore;
+  } else {
+    return (post.data?.posts || []).length > 0;
+  }
+})();
+const [width, height] = (imageDimensions || "").split("x");
+if (imageDimensions) {
+  post.data.parsedImageWidth = parseInt(width);
+  post.data.parsedImageHeight = parseInt(height);
+}
 ---
 
 <div class={`${styling} flex flex-col items-center lg:flex-row justify-evenly`} id={slugify(post.data.title)}>
-  <div  id="tile-image" data-testid="tile-image" class={`w-full ${post.data.image ? "" : "hidden"}`}>
+  <div data-testid="tile-image-container" class={`tile-image-container w-auto ${post.data.image ? "" : "hidden"}`}>
   {
-    post.data.image && (
+    post.data.image && ! post.data.imagePlacement && (
       <Image
         class="lg"
         src={fromBase(post.data.image)}
         alt={post.data.title}
         width={post.data.parsedImageWidth}
         height={post.data.parsedImageHeight}
-        class="w-full"
+        class="w-auto tile-image"
         format="webp"
       />
     )
   }
   </div>
-  <div  id="content" data-testid="content" class="flex flex-col items-center p-2 w-full">
+  <div id="content" data-testid="content" class="tile-content flex flex-col items-center w-full">
     {
       post.data.title && (
-        <h3 class="text-gold w-full text-center border-b-1 border-[#e1e1e1]">
+        <h3 class="text-gold w-full text-center pt-2 border-b-1 border-[#e1e1e1]">
           {post.data.title}
         </h3>
       )
     }
-    <div  id="card-body" data-testid="card-body">
-    {
-      post.body && (
-        <p class="text-lg dark:text-light text-dark" set:html={markdownify(post.body)}>
-        </p>
-      )
-    }
+    <div id="card-body" class="align-center pt-2 grid grid-wrap" data-testid="card-body">
+      {
+        post.data.image && post.data.imagePlacement == 'body' && (
+          <Image
+            class="lg"
+            src={fromBase(post.data.image)}
+            alt={post.data.title}
+            width={post.data.parsedImageWidth}
+            height={post.data.parsedImageHeight}
+            class="w-auto tile-image"
+            format="webp"
+          />
+        )
+      }
+      {
+        (post.body || "") != "" && (
+          <div class="text-lg dark:text-light p-2 a-tag-underline"><Fragment set:html={markdownify(post.body)} /></div>
+        )
+      }
+      {
+        (showReadMore && (
+        <a class="bg-primary text-white rounded-full px-5 my-2 grid max-w-[8rem] align-center justify-self-center" href={fromBase(`/${post.id}`)}>Read More</a>
+        ))
+      }
     </div>
   </div>
 </div>
 <style>
-#card-body {
-  text-align: center;
-}
 </style>

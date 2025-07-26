@@ -8,31 +8,52 @@ import Base from "@/layouts/Base.astro";
 import PinnedPost from "@/components/PinnedPost.astro";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage("posts");
-  const totalPages = Math.ceil(posts.length / config.settings.pagination);
+  const posts = await getSinglePage("pinnedPosts");
+  const allPosts = posts.filter((post) => (post.data.posts || []).length != 0);
+  const totalPages = Math.ceil(allPosts.length / config.settings.pagination);
   const paths = [];
 
   for (let i = 0; i < totalPages; i++) {
     paths.push({
       params: {
-        slug: posts[i].id,
+        slug: allPosts[i].id,
       },
     });
   }
-  console.log(paths);
   return paths;
 }
 const { slug } = Astro.params;
-const post = (await getEntry("posts", slug)) as CollectionEntry<"pages">;
-if (!post) {
+const post = (await getEntry("pinnedPosts", slug)) as CollectionEntry<"posts">;
+if (post.data.posts.length == 0) {
   return Astro.redirect("/404");
 }
+const { imageDimensions } = post.data;
+const [width, height] = (imageDimensions || "").split("x");
+if (imageDimensions) {
+  post.data.parsedImageWidth = parseInt(width);
+  post.data.parsedImageHeight = parseInt(height);
+}
+const hasSubPosts = (post.data?.posts || []).length > 0;
+const collectSubPosts = async (posts: Array) => {
+  return Promise.all(posts.map(async (subPostInfo) => {
+    return (await getEntry("posts", subPostInfo.id)) as CollectionEntry<"posts">;
+  }));
+};
+
+const subPosts = await collectSubPosts(post.data?.posts || []);
 ---
 
 <Base>
   <div data-testid="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
-    <div data-testid="posts-container" class="bg-light flex items-center justify-center flex-col">
-      <PinnedPost post={post} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
-    </div>
+    {
+    (hasSubPosts) ? (
+      subPosts.map((subPost) => (
+        <PinnedPost post={subPost} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" displayReadMore={false}/>
+      ))
+    ) : (
+      <div data-testid="posts-container" class="bg-light flex items-center justify-center flex-col">
+        <PinnedPost post={post} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
+      </div>
+    )
   </div>
 </Base>
