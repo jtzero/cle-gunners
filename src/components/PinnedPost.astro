@@ -6,6 +6,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import dateFormat from "@/lib/utils/dateFormat";
 import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
+import ConditionalATag from "@/components/ConditionalATag.astro";
 
 type Props = {
   post: CollectionEntry<"posts">;
@@ -33,15 +34,17 @@ if (imageDimensions) {
   <div data-testid="tile-image-container" class={`tile-image-container w-auto ${post.data.image ? "" : "hidden"}`}>
   {
     post.data.image && ! post.data.imagePlacement && (
-      <Image
-        class="lg"
-        src={fromBase(post.data.image)}
-        alt={post.data.title}
-        width={post.data.parsedImageWidth}
-        height={post.data.parsedImageHeight}
-        class="w-auto tile-image"
-        format="webp"
-      />
+      <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
+          <Image
+            class="lg"
+            src={fromBase(post.data.image)}
+            alt={post.data.title}
+            width={post.data.parsedImageWidth}
+            height={post.data.parsedImageHeight}
+            class="w-auto tile-image"
+            format="webp"
+          />
+      </ConditionalATag>
     )
   }
   </div>
@@ -56,15 +59,17 @@ if (imageDimensions) {
     <div id="card-body" class="align-center pt-2 grid grid-wrap" data-testid="card-body">
       {
         post.data.image && post.data.imagePlacement == 'body' && (
-          <Image
-            class="lg"
-            src={fromBase(post.data.image)}
-            alt={post.data.title}
-            width={post.data.parsedImageWidth}
-            height={post.data.parsedImageHeight}
-            class="w-auto tile-image"
-            format="webp"
-          />
+          <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
+            <Image
+              class="lg"
+              src={fromBase(post.data.image)}
+              alt={post.data.title}
+              width={post.data.parsedImageWidth}
+              height={post.data.parsedImageHeight}
+              class="w-auto tile-image"
+              format="webp"
+            />
+          </ConditionalATag>
         )
       }
       {
