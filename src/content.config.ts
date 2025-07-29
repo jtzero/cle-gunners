@@ -9,6 +9,7 @@ const postsCollection = defineCollection({
     image: z.string().optional(),
     imageDimensions: z.string().optional(),
     imagePlacement: z.string().optional(),
+    imageLink: z.string().optional(),
     metaTitle: z.string().optional(),
   }),
 });
