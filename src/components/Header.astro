@@ -28,7 +28,7 @@ const currentPath = Astro.url.pathname;
       <label
          id="show-button" data-testid="show-button"
         for="nav-toggle"
-        class="order-2 flex cursor-pointer items-center md:order-1"
+        class="show-button"
       >
         <svg class="size-[calc(1.5rem+1.5vw)] fill-white" viewBox="0 0 20 20">
           <title>Menu Open</title>
@@ -38,7 +38,7 @@ const currentPath = Astro.url.pathname;
       <label
          id="hide-button" data-testid="hide-button"
         for="nav-toggle"
-        class="order-2 hidden cursor-pointer items-center md:order-1"
+        class="hide-button"
       >
         <svg class="size-[calc(1.5rem+1.5vw)] fill-white" viewBox="0 0 20 20">
           <title>Menu Close</title>
@@ -131,7 +131,15 @@ input#nav-toggle:checked ~ label#show-button {
 }
 
 input#nav-toggle:checked ~ label#hide-button {
-  @apply block;
+  @apply flex;
+}
+
+.show-button {
+  @apply order-2 cursor-pointer flex justify-center items-center md:order-1 size-[100%];
+}
+
+.hide-button {
+  @apply order-2 hidden cursor-pointer flex justify-center items-center md:order-1 size-[100%];
 }
 
 #nav-container {
@@ -140,7 +148,6 @@ input#nav-toggle:checked ~ label#hide-button {
 
 #nav-container:has(input#nav-toggle:checked) > #nav-menu {
   @apply block w-full;
-
 }
 
 #nav-container:has(input#nav-toggle:checked) {
