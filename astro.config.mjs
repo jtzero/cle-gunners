@@ -19,8 +19,8 @@ async function getHighlighter() {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://jztero.github.io",
-  base: (process.env.BASE || "") === "" ? "/cle-gunners" : process.env.BASE,
+  site: "https://clevelandgooners.com",
+  base: (process.env.BASE || ""),
   trailingSlash: false ? "always" : "never",
   vite: { plugins: [tailwindcss()] },
   integrations: [react(), sitemap(), mdx()],
