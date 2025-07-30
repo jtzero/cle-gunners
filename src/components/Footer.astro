@@ -7,27 +7,19 @@ import social from "@/config/social.json";
   <div class="container text-center">
     <div class="row items-center">
       <div>
-        <Social source={social} className="social-icons" />
       </div>
     </div>
   </div>
 </footer>
 <style>
 @import "@/styles/tailwind.css";
+:root {
+  --safe-area-max-inset-bottom: env(safe-area-max-inset-bottom, 36px);
+  --bottom-bar-height: 50px;
+}
 .footer {
-  bottom: env(safe-area-inset-bottom, 0px);
+  height: var(--bottom-bar-height);
+  padding-bottom: var(--safe-area-max-inset-bottom);
+  bottom: calc(env(safe-area-inset-bottom, 0px) - var(--safe-area-max-inset-bottom))
 }
-.social-icons {
-  @apply space-x-4;
-  li {
-    @apply inline-block;
-    a {
-      @apply block h-11 w-11 rounded-full border border-primary bg-body text-center text-primary transition-all duration-300 hover:bg-primary hover:text-body;
-      svg {
-        @apply m-auto h-11;
-      }
-    }
-  }
-}
-
 </style>

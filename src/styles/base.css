@@ -3,7 +3,8 @@ html {
 }
 
 body {
-  @apply bg-body font-primary font-normal leading-relaxed;
+  /* the android "chin" uses the body to determine the color */
+  @apply bg-white font-primary font-normal leading-relaxed;
 }
 
 h1,
