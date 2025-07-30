@@ -54,7 +54,7 @@ const currentPath = Astro.url.pathname;
       {
         main.map((menu) => (
           <li class="py-2 border-white flex justify-center">
-            <a id={menu.name} href={fromBase(menu.url)} class="text-4xl">{menu.name}</a>
+            <a id={menu.name} href={fromBase(menu.url)} class="text-4xl text-center">{menu.name}</a>
           </li>
         ))
       }
