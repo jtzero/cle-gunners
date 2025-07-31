@@ -9,7 +9,6 @@
   },
 
   "settings": {
-    "pagination": 5,
     "summary_length": 140
   },
 

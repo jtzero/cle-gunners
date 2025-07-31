@@ -5,6 +5,10 @@
       "url": "/"
     },
     {
+      "name": "Songbook",
+      "url": "/songbook"
+    },
+    {
       "name": "About",
       "url": "/#who-we-are"
     },

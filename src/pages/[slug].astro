@@ -8,22 +8,28 @@ import Base from "@/layouts/Base.astro";
 import Post from "@/components/Post.astro";
 
 export async function getStaticPaths() {
-  const posts = await getSinglePage("pinnedPosts");
-  const allPosts = posts.filter((post) => (post.data.posts || []).length != 0);
-  const totalPages = Math.ceil(allPosts.length / config.settings.pagination);
-  const paths = [];
-
-  for (let i = 0; i < totalPages; i++) {
-    paths.push({
+  const pinnedPosts = await getSinglePage("pinnedPosts");
+  const metaPinnedPosts = pinnedPosts.filter((post) => (post.data.posts || []).length != 0);
+  const posts = await getSinglePage("posts");
+  const metaOnlyPosts = posts.filter((post) => (post.data.posts || []).length != 0);
+  const paths = metaPinnedPosts.concat(metaOnlyPosts).map((post) => {;
+    return {
       params: {
-        slug: allPosts[i].id,
+        slug: post.id,
       },
-    });
-  }
+    };
+  });
   return paths;
 }
 const { slug } = Astro.params;
-const post = (await getEntry("pinnedPosts", slug)) as CollectionEntry<"posts">;
+const post = await (getEntry("pinnedPosts", slug) as CollectionEntry<"posts">).then((pinnedPost) => {
+  if (pinnedPost) {
+    return pinnedPost;
+  } else {
+    return getEntry("posts", slug) as CollectionEntry<"posts">;
+  }
+});
+
 if (post.data.posts.length == 0) {
   return Astro.redirect("/404");
 }
@@ -41,6 +47,7 @@ const collectSubPosts = async (posts: Array) => {
 };
 
 const subPosts = await collectSubPosts(post.data?.posts || []);
+/*I think the hasSubPosts  is currently always true */
 ---
 
 <Base>
@@ -48,11 +55,11 @@ const subPosts = await collectSubPosts(post.data?.posts || []);
     {
     (hasSubPosts) ? (
       subPosts.map((subPost) => (
-        <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" displayReadMore={false}/>
+        <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white" displayReadMore={false}/>
       ))
     ) : (
       <div data-testid="posts-container" class="bg-light flex items-center justify-center flex-col">
-        <Post post={post} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
+        <Post post={post} styling="tile w-3/4 mb-6 shadow bg-white" />
       </div>
     )
   </div>
