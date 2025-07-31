@@ -10,7 +10,11 @@ const postsCollection = defineCollection({
     imageDimensions: z.string().optional(),
     imagePlacement: z.string().optional(),
     imageLink: z.string().optional(),
+    video: z.string().optional(),
+    videoDimensions: z.string().optional(),
+    videoPlacement: z.string().optional(),
     metaTitle: z.string().optional(),
+    posts: z.array(reference("posts")).optional(),
   }),
 });
 

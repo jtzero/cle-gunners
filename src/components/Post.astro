@@ -28,12 +28,43 @@ if (imageDimensions) {
   post.data.parsedImageWidth = parseInt(width);
   post.data.parsedImageHeight = parseInt(height);
 }
+const [videoWidth, videoHeight] = (post.data.videoDimensions || "").split("x");
+if (post.data.videoDmensions) {
+  post.data.parsedVideoWidth = parseInt(width);
+  post.data.parsedVideoHeight = parseInt(height);
+}
+const hasVideo = (post.data.video !== undefined);
+const hasMultimedia = (hasVideo || post.data.image);
+const multimediaPlacement = (post.data.imagePlacement || post.data.videoPlacement);
+const hasHeaderMultimedia = hasMultimedia && !multimediaPlacement
+const topBorderWithHeaderMedia = hasHeaderMultimedia ? '' : 'border-t-2 border-red';
+let tileWithHeaderMedia = (() => {
+  if (width == height && !multimediaPlacement) {
+    return 'tile-with-square-header-media';
+  } else if (hasHeaderMultimedia) {
+    return 'tile-with-header-media';
+  } else {
+    return 'tile-with-body-media';
+  }
+})();
+const hasTextBody = (post.body || "") != "";
+const tileBodyClass = (() => {
+  if (hasHeaderMultimedia) {
+    return 'tile-body-without-body-media'
+  } else if (hasMultimedia && multimediaPlacement == 'body') {
+    if (!hasTextBody) {
+      return 'tile-body-with-only-body-media';
+    } else {
+      return 'tile-body-with-body-media';
+    }
+  }
+})();
 ---
 
-<div class={`${styling} flex flex-col items-center lg:flex-row justify-evenly`} id={slugify(post.data.title)}>
-  <div data-testid="tile-image-container" class={`tile-image-container w-auto ${post.data.image ? "" : "hidden"}`}>
+<div class={`${styling} tile ${tileWithHeaderMedia} items-center lg:flex-row justify-evenly ${topBorderWithHeaderMedia}`} id={slugify(post.data.title)}>
+  <div data-testid="tile-header-image-container" class={`tile-image-container w-auto sm:w-full ${hasHeaderMultimedia ? "" : "hidden"}`}>
   {
-    post.data.image && ! post.data.imagePlacement && (
+    post.data.image && !multimediaPlacement && (
       <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
           <Image
             class="lg"
@@ -47,8 +78,20 @@ if (imageDimensions) {
       </ConditionalATag>
     )
   }
+  {
+    hasVideo && !multimediaPlacement && (
+      <iframe
+        class="h-auto w-full sm:min-h-[300px]"
+        src={post.data.video}
+        title={post.data.title}
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+    )
+  }
   </div>
-  <div id="content" data-testid="content" class="tile-content flex flex-col items-center w-full">
+  <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full">
     {
       post.data.title && (
         <h3 class="text-gold w-full text-center pt-2 border-b-1 border-divider">
@@ -56,9 +99,21 @@ if (imageDimensions) {
         </h3>
       )
     }
-    <div id="card-body" class="align-center pt-2 grid grid-wrap" data-testid="card-body">
+    <div data-testid="tile-body" class={`tile-body ${tileBodyClass} align-center pt-2`}>
       {
-        post.data.image && post.data.imagePlacement == 'body' && (
+        hasVideo && multimediaPlacement == 'body' && (
+          <iframe
+            class="h-auto w-full sm:min-h-[300px]"
+            src={post.data.video}
+            title={post.data.title}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        )
+      }
+      {
+        post.data.image && multimediaPlacement == 'body' && (
           <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
             <Image
               class="lg"
@@ -72,18 +127,63 @@ if (imageDimensions) {
           </ConditionalATag>
         )
       }
+      <span data-testid="tile-body-text" class={`flex flex-col items-center pb-4  ${hasTextBody ? "" : "hidden"}`}>
       {
-        (post.body || "") != "" && (
-          <div class="text-lg p-2 a-tag-underline"><Fragment set:html={markdownify(post.body)} /></div>
+        hasTextBody && (
+          <div class="tile-body-hero-text text-lg p-2 a-tag-underline text-center"><Fragment set:html={markdownify(post.body)} /></div>
         )
       }
       {
         (showReadMore && (
-        <a class="bg-primary text-white rounded-full px-5 my-2 grid max-w-[8rem] align-center justify-self-center" href={fromBase(`/${post.id}`)}>Read More</a>
+        <a class="bg-primary text-white rounded-full px-5 my-2 max-w-[8rem] max-h-[2rem] align-center justify-self-center" href={fromBase(`/${post.id}`)}>Read More</a>
         ))
       }
+      </span>
     </div>
   </div>
 </div>
 <style>
+@import "@/styles/tailwind.css";
+.tile-with-square-header-media {
+  @apply grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  height: auto;
+  @variant sm {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    height: auto;
+  }
+}
+.tile-with-header-media {
+  @apply grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  height: auto;
+}
+.tile-with-header-media > .tile-image-container {
+  align-self: stretch;
+}
+.tile-body-hero-text {
+  white-space-collapse: preserve-breaks;
+}
+.tile-body-hero-text > p{
+  white-space-collapse: preserve-breaks;
+  white-space: pre-line;
+}
+.tile-body-with-body-media {
+  @apply grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  justify-items: center;
+  width: 100%;
+  @variant sm {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+  @variant lg {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
 </style>
