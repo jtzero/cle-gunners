@@ -9,17 +9,13 @@ import PinnedPost from "@/components/PinnedPost.astro";
 
 export async function getStaticPaths() {
   const posts = await getSinglePage("pinnedPosts");
-  const allPosts = posts.filter((post) => (post.data.posts || []).length != 0);
-  const totalPages = Math.ceil(allPosts.length / config.settings.pagination);
-  const paths = [];
-
-  for (let i = 0; i < totalPages; i++) {
-    paths.push({
+  const paths = posts.filter((post) => (post.data.posts || []).length != 0).map((post) => {;
+    return {
       params: {
-        slug: allPosts[i].id,
+        slug: post.id,
       },
-    });
-  }
+    };
+  });
   return paths;
 }
 const { slug } = Astro.params;
