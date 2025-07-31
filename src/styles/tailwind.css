@@ -13,6 +13,7 @@
   --color-body: #F6F6F6;
   --color-light: #F6F6F6;
   --color-dark: #000000;
+  --color-divider: #e1e1e1;
   --color-text-dark: var(--color-dark);
   --text-h1: calc(1rem * pow(var(--font-scale), 6));
   --text-h1-sm: calc(var(--text-h1) * 0.9);

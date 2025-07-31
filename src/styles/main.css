@@ -8,6 +8,9 @@
 
 @layer base {
   @import "@/styles/base.css";
+  a {
+    @apply text-red underline;
+  }
 }
 
 @layer components {
