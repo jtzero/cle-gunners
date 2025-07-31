@@ -28,12 +28,20 @@ if (imageDimensions) {
   post.data.parsedImageWidth = parseInt(width);
   post.data.parsedImageHeight = parseInt(height);
 }
+const [videoWidth, videoHeight] = (post.data.videoDimensions || "").split("x");
+if (post.data.videoDimensions) {
+  post.data.parsedVideoWidth = parseInt(width);
+  post.data.parsedVideoHeight = parseInt(height);
+}
+const hasVideo = (post.data.video !== undefined);
+const hasMultimedia = (hasVideo || post.data.image);
+const multimediaPlacement = (post.data.imagePlacement || post.data.videoPlacement);
 ---
 
 <div class={`${styling} flex flex-col items-center lg:flex-row justify-evenly`} id={slugify(post.data.title)}>
-  <div data-testid="tile-image-container" class={`tile-image-container w-auto ${post.data.image ? "" : "hidden"}`}>
+  <div data-testid="tile-image-container" class={`tile-image-container w-auto ${hasMultimedia ? "" : "hidden"}`}>
   {
-    post.data.image && ! post.data.imagePlacement && (
+    post.data.image && !multimediaPlacement && (
       <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
           <Image
             class="lg"
@@ -56,9 +64,23 @@ if (imageDimensions) {
         </h3>
       )
     }
-    <div id="card-body" class="align-center pt-2 grid grid-wrap" data-testid="card-body">
+    <div data-testid="tile-body" class="tile-body align-center pt-2 grid grid-wrap" data-testid="card-body">
       {
-        post.data.image && post.data.imagePlacement == 'body' && (
+        hasVideo && multimediaPlacement == 'body' && (
+          <iframe
+            class=""
+            src={post.data.video}
+            width={videoWidth}
+            height={videoHeight}
+            title={post.data.title}
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        )
+      }
+      {
+        post.data.image && multimediaPlacement == 'body' && (
           <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
             <Image
               class="lg"
@@ -74,7 +96,7 @@ if (imageDimensions) {
       }
       {
         (post.body || "") != "" && (
-          <div class="text-lg p-2 a-tag-underline"><Fragment set:html={markdownify(post.body)} /></div>
+          <div class="tile-body-hero-text text-lg p-2 a-tag-underline text-center"><Fragment set:html={markdownify(post.body)} /></div>
         )
       }
       {
@@ -86,4 +108,16 @@ if (imageDimensions) {
   </div>
 </div>
 <style>
+.tile-body-hero-text {
+  padding-top: 10%;
+  white-space-collapse: preserve-breaks;
+}
+.tile-body-hero-text > p{
+  white-space-collapse: preserve-breaks;
+  white-space: pre-line;
+}
+.tile-body {
+  grid-template-columns: minmax(560px, 1fr) repeat(auto-fit, minmax(560px, 1fr));
+  width: 100%;
+}
 </style>
