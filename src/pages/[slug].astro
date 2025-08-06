@@ -5,7 +5,7 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import type { CollectionEntry } from "astro:content";
 import { getEntry } from "astro:content";
 import Base from "@/layouts/Base.astro";
-import PinnedPost from "@/components/PinnedPost.astro";
+import Post from "@/components/Post.astro";
 
 export async function getStaticPaths() {
   const posts = await getSinglePage("pinnedPosts");
@@ -48,11 +48,11 @@ const subPosts = await collectSubPosts(post.data?.posts || []);
     {
     (hasSubPosts) ? (
       subPosts.map((subPost) => (
-        <PinnedPost post={subPost} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" displayReadMore={false}/>
+        <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" displayReadMore={false}/>
       ))
     ) : (
       <div data-testid="posts-container" class="bg-light flex items-center justify-center flex-col">
-        <PinnedPost post={post} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
+        <Post post={post} styling="tile w-3/4 mb-6 shadow bg-white border-t-2 border-red" />
       </div>
     )
   </div>
