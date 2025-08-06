@@ -1,21 +1,21 @@
 ---
 import Base from "@/layouts/Base.astro";
-import PinnedPost from "@/components/PinnedPost.astro";
+import Post from "@/components/Post.astro";
 import LocationPost from "src/components/LocationPost.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByDate, sortByWeight } from "@/lib/utils/sortFunctions";
 
 const pinnedPosts = await getSinglePage("pinnedPosts");
-const sortedPinnedPosts = sortByWeight(pinnedPosts);
+const sortedPosts = sortByWeight(pinnedPosts);
 ---
 
 <Base>
   <div data-testid="pinned-items" class="bg-light flex items-center justify-center flex-col">
     <LocationPost styling="w-3/4 mb-6 shadow bg-white"/>
     {
-      sortedPinnedPosts.map((post) => {
+      sortedPosts.map((post) => {
         return (
-        <PinnedPost post={post} styling={`tile w-3/4 mb-6 shadow bg-white ${post.data.additionalStyling}`} />
+        <Post post={post} styling={`tile w-3/4 mb-6 shadow bg-white ${post.data.additionalStyling}`} />
         );
       })
     }
