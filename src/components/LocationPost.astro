@@ -16,17 +16,17 @@ const { post, styling } = Astro.props;
 const { summary_length } = config.settings;
 ---
 
-<div data-testid="location-post" class={`${styling} tile border-t-2 border-t-dark-red flex flex-col items-center lg:border-none lg:flex-row-reverse`}>
-  <div class="flex flex-col items-center justify-center text-center">
-    <h3 class="h4 mt-2 text-center p-[1.5rem] text-gold border-b-1 border-divider">
+<div data-testid="location-post" class={`${styling} tile border-t-2 border-t-dark-red flex flex-col lg:border-none lg:flex-row-reverse`}>
+  <div class="flex flex-col items-center justify-around text-center lg:w-1/2">
+    <h3 class="h4 mt-2 text-center pt-2 text-gold border-b-1 border-divider text-balance">
       Join us for every Premier League match at Merry Arts Pub & Grille
     </h3>
     <div data-testid="links" class="pb-2 mx-[1.5rem]">
-      <a class="block border-b-1 border-divider p-2" href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9">15607 1/2 Detroit Ave, Lakewood, OH 44107</a>
-      <a class="block p-2" href="https://merryartspubandgrille.com">https://merryartspubandgrille.com</a>
+      <a class="block border-b-1 border-divider p-1" href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9">15607 1/2 Detroit Ave, Lakewood, OH 44107</a>
+      <a class="block p-1" href="https://merryartspubandgrille.com">https://merryartspubandgrille.com</a>
     </div>
   </div>
-  <div class="items-center md:w-15/16 flex-grow xl:w-3/8">
+  <div class="items-center md:w-[100%] flex-grow lg:w-3/8">
     <a href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9" class="items-center flex">
       <Image
         class="lg"
