@@ -13,6 +13,7 @@ const postsCollection = defineCollection({
     video: z.string().optional(),
     videoDimensions: z.string().optional(),
     videoPlacement: z.string().optional(),
+    videoOrientation: z.string().optional(),
     metaTitle: z.string().optional(),
     posts: z.array(reference("posts")).optional(),
   }),
