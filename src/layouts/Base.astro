@@ -190,3 +190,10 @@ const { title, metaTitle, description, image, noindex, canonical } =
     <Footer />
   </body>
 </html>
+<style is:global>
+  /* kludge as there is a conflict in astro and tailwind */
+  h3 {
+    font-size: var(--text-h3);
+    font-weight: bold;
+  }
+</style>
