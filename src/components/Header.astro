@@ -122,7 +122,7 @@ const currentPath = Astro.url.pathname;
 }
 
 #nav-toggler {
-  @apply ml-[2vw] mt-[0.5vw] mb-[calc(1rem+4vw)] size-[calc(2rem+3vw)] flex justify-center items-center bg-gold shadow-xl/30;
+  @apply ml-[2vw] mt-[0.5vw] mb-[2vw] size-[calc(2rem+3vw)] flex justify-center items-center bg-gold shadow-xl/30;
   border-radius: 50%;
 }
 
@@ -159,8 +159,9 @@ input#nav-toggle:checked ~ label#hide-button {
 }
 
 .nav-menu {
+  background-color: transparent;
   padding-bottom: var(--text-4xl);
-  @apply bg-menu text-white hidden w-full max-w-[20rem];
+  @apply text-white hidden w-full max-w-[20rem];
 }
 
 </style>
