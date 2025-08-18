@@ -1,15 +1,13 @@
 ---
-import { Image, render } from "astro:assets";
-import config from "@/config/config.json";
+import { Image } from "astro:assets";
 import { fromBase } from "@/lib/fromBase";
-import { getSinglePage } from "@/lib/contentParser.astro";
-import dateFormat from "@/lib/utils/dateFormat";
-import { humanize, markdownify, slugify } from "@/lib/utils/textConverter";
+import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
 import ConditionalATag from "@/components/ConditionalATag.astro";
 
 type Props = {
   post: CollectionEntry<"posts">;
+  displayReadMore?: boolean;
   styling: string;
 };
 
