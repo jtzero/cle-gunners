@@ -97,7 +97,7 @@ const tileBodyClass = (() => {
         </h3>
       )
     }
-    <div data-testid="tile-body" class={`tile-body ${tileBodyClass} align-center pt-2`}>
+    <div data-testid="tile-body" class={`tile-body ${tileBodyClass} max-w-[100%] align-center pt-2`}>
       {
         hasVideo && multimediaPlacement == 'body' && (
           <iframe
@@ -125,10 +125,10 @@ const tileBodyClass = (() => {
           </ConditionalATag>
         )
       }
-      <span data-testid="tile-body-text" class={`flex flex-col items-center p-4  ${hasTextBody ? "" : "hidden"}`}>
+      <span data-testid="tile-body-text" class={`flex flex-col items-center p-4 max-w-[100%] ${hasTextBody ? "" : "hidden"}`}>
       {
         hasTextBody && (
-          <div class="tile-body-hero-text text-lg p-2 a-tag-underline text-center"><Fragment set:html={markdownify(post.body)} /></div>
+          <div class="tile-body-hero-text text-lg p-2 a-tag-underline text-center wrap-break-word"><Fragment set:html={markdownify(post.body)} /></div>
         )
       }
       {
@@ -163,6 +163,7 @@ const tileBodyClass = (() => {
   align-self: stretch;
 }
 .tile-body-hero-text {
+  max-width: 100%;
   white-space-collapse: preserve-breaks;
 }
 .tile-body-hero-text > p{
