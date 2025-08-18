@@ -1,25 +1,27 @@
 ---
-import Social from "@/components/Social.astro";
+import { IoLogoGithub } from "react-icons/io5";
 import social from "@/config/social.json";
 ---
 
-<footer class="footer flex-0 bg-white pt-6">
-  <div class="container text-center">
-    <div class="row items-center">
-      <div>
-      </div>
-    </div>
-  </div>
+<footer class="footer grid grid-cols-2 grid-rows-[100%] bg-white px-5 items-center">
+  <div/>
+  <a
+    class="justify-self-end"
+    aria-label="github"
+    href={social.github}
+    target="_blank"
+    rel="noopener noreferrer nofollow"
+  >
+    <IoLogoGithub size={35} />
+  </a>
 </footer>
 <style>
 @import "@/styles/tailwind.css";
 :root {
   --safe-area-max-inset-bottom: env(safe-area-max-inset-bottom, 36px);
-  --bottom-bar-height: 50px;
 }
 .footer {
-  height: var(--bottom-bar-height);
   padding-bottom: var(--safe-area-max-inset-bottom);
-  bottom: calc(env(safe-area-inset-bottom, 0px) - var(--safe-area-max-inset-bottom))
+  padding-top: 15px;
 }
 </style>
