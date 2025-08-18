@@ -127,7 +127,7 @@ const tileBodyClass = (() => {
           </ConditionalATag>
         )
       }
-      <span data-testid="tile-body-text" class={`flex flex-col items-center pb-4  ${hasTextBody ? "" : "hidden"}`}>
+      <span data-testid="tile-body-text" class={`flex flex-col items-center p-4  ${hasTextBody ? "" : "hidden"}`}>
       {
         hasTextBody && (
           <div class="tile-body-hero-text text-lg p-2 a-tag-underline text-center"><Fragment set:html={markdownify(post.body)} /></div>
