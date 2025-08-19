@@ -4,14 +4,25 @@ import { fromBase } from "@/lib/fromBase";
 import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
 import ConditionalATag from "@/components/ConditionalATag.astro";
+import type { PostType } from "@/content.config";
 
 type Props = {
-  post: CollectionEntry<"posts">;
+  post: CollectionEntry<"posts"> | PostType;
   displayReadMore?: boolean;
   styling: string;
+  headerStyling?: string;
+  topBorderStyling?: string;
+  heroTextStyling?: string;
 };
 
-const { post, styling, displayReadMore } = Astro.props;
+const {
+  post,
+  displayReadMore = false,
+  styling,
+  topBorderStyling = "border-t-2 border-red",
+  headerStyling = "",
+  heroTextStyling = ""
+} = Astro.props;
 const { imageDimensions } = post.data;
 
 const showReadMore = (() => {
@@ -35,7 +46,7 @@ const hasVideo = (post.data.video !== undefined);
 const hasMultimedia = (hasVideo || post.data.image);
 const multimediaPlacement = (post.data.imagePlacement || post.data.videoPlacement);
 const hasHeaderMultimedia = hasMultimedia && !multimediaPlacement
-const topBorderWithHeaderMedia = hasHeaderMultimedia ? '' : 'border-t-2 border-red';
+const topBorderWithHeaderMedia = hasHeaderMultimedia ? '' : topBorderStyling;
 let tileWithHeaderMedia = (() => {
   if (width == height && !multimediaPlacement) {
     return 'tile-with-square-header-media';
@@ -55,6 +66,8 @@ const tileBodyClass = (() => {
     } else {
       return 'tile-body-with-body-media';
     }
+  } else {
+    return '';
   }
 })();
 ---
@@ -92,7 +105,7 @@ const tileBodyClass = (() => {
   <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full">
     {
       post.data.title && (
-        <h3 class="text-gold w-full text-center pt-2 border-b-1 border-divider">
+        <h3 class={`${headerStyling} text-gold w-full text-center pt-2 border-b-1 border-divider`}>
           {post.data.title}
         </h3>
       )
@@ -128,7 +141,7 @@ const tileBodyClass = (() => {
       <span data-testid="tile-body-text" class={`flex flex-col items-center p-4 max-w-[100%] ${hasTextBody ? "" : "hidden"}`}>
       {
         hasTextBody && (
-          <div class="tile-body-hero-text text-lg p-2 a-tag-underline text-center wrap-break-word"><Fragment set:html={markdownify(post.body)} /></div>
+        <div class={`${heroTextStyling} tile-body-hero-text text-lg p-2 a-tag-underline text-center wrap-break-word`}><Fragment set:html={markdownify(post.body)} /></div>
         )
       }
       {
