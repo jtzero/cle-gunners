@@ -1,22 +1,24 @@
 import { glob } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
 
+const zPost = z.object({
+  title: z.string().optional(),
+  date: z.date(),
+  image: z.string().optional(),
+  imageDimensions: z.string().optional(),
+  imagePlacement: z.string().optional(),
+  imageLink: z.string().optional(),
+  video: z.string().optional(),
+  videoDimensions: z.string().optional(),
+  videoPlacement: z.string().optional(),
+  videoOrientation: z.string().optional(),
+  metaTitle: z.string().optional(),
+  posts: z.array(reference("posts")).optional(),
+});
+
 const postsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
-  schema: z.object({
-    title: z.string().optional(),
-    date: z.date(),
-    image: z.string().optional(),
-    imageDimensions: z.string().optional(),
-    imagePlacement: z.string().optional(),
-    imageLink: z.string().optional(),
-    video: z.string().optional(),
-    videoDimensions: z.string().optional(),
-    videoPlacement: z.string().optional(),
-    videoOrientation: z.string().optional(),
-    metaTitle: z.string().optional(),
-    posts: z.array(reference("posts")).optional(),
-  }),
+  schema: zPost,
 });
 
 const pinnedPostsCollection = defineCollection({
@@ -45,6 +47,7 @@ const pagesCollection = defineCollection({
   }),
 });
 
+export type PostType = z.infer<typeof zPost>;
 export const collections = {
   posts: postsCollection,
   pinnedPosts: pinnedPostsCollection,

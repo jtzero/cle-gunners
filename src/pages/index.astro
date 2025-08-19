@@ -3,7 +3,9 @@ import Base from "@/layouts/Base.astro";
 import Post from "@/components/Post.astro";
 import LocationPost from "src/components/LocationPost.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
-import { sortByDate, sortByWeight } from "@/lib/utils/sortFunctions";
+import { sortByWeight } from "@/lib/utils/sortFunctions";
+import notifications from "@/content/notifications.json";
+import type { PostType } from "@/content.config";
 
 const pinnedPosts = await getSinglePage("pinnedPosts");
 const sortedPosts = sortByWeight(pinnedPosts);
@@ -11,6 +13,20 @@ const sortedPosts = sortByWeight(pinnedPosts);
 
 <Base>
   <div data-testid="pinned-items" class="bg-light flex items-center justify-center flex-col">
+    {
+      Object.entries(notifications).filter(([_id, data]) => data.enabled).map(([id, data]) => {
+        const post: PostType = { id: id, body: data.body, data: { title: id } };
+        return (
+          <Post
+            post={post}
+            styling="w-3/4 mb-6 shadow bg-blue text-white"
+            headerStyling="text-white !text-[3rem]"
+            topBorderStyling="border-t-2 border-blue-300"
+            heroTextStyling="inline-flex text-[2rem]"
+            />
+        );
+      })
+    }
     <LocationPost styling="w-3/4 mb-6 shadow bg-white"/>
     {
       sortedPosts.map((post) => {
