@@ -38,8 +38,8 @@ const fetchArsenalFixtures = async (
     redirect: "follow",
   };
 
-  const API_ENDPOINT = `https://v3.football.api-sports.io/fixtures?team=${id}&from=${startOfThisWeek}&to=${endOfThisWeek}`;
-  const response = await fetch(API_ENDPOINT, requestOptions);
+  const api_endpoint = `https://v3.football.api-sports.io/fixtures?team=${id}&from=${startOfThisWeek}&to=${endOfThisWeek}`;
+  const response = await fetch(api_endpoint, requestOptions);
 
   if (!response.ok) {
     throw new Error(`HTTP error! status: ${response.status}`);
@@ -51,18 +51,12 @@ const fetchArsenalFixtures = async (
 };
 
 const writeDataToFile = async (filePath: string, data: any) => {
-  try {
-    // Convert the JavaScript object to a JSON string
-    // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
-    const jsonString = JSON.stringify(data, null, 2);
+  // Convert the JavaScript object to a JSON string
+  // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
+  const jsonString = JSON.stringify(data, null, 2);
 
-    // Write the string to the file
-    fs.writeFileSync(filePath, jsonString, "utf-8");
-
-    console.log("JSON data has been written to data.json successfully.");
-  } catch (error) {
-    console.error("Error writing file:", error);
-  }
+  // Write the string to the file
+  fs.writeFileSync(filePath, jsonString, "utf-8");
 };
 
 try {
@@ -72,6 +66,7 @@ try {
     throw new Error("API key not found in environment variables.");
   }
 
+  console.log("Fetching team ID...");
   const id = await fetchTeamID(api_key);
   //https://media.api-sports.io/football/teams/{team_id}.png
   // Get the start and end of the current week (Sunday to Saturday)
@@ -85,6 +80,7 @@ try {
     "yyyy-MM-dd",
   ); // Sunday
 
+  console.log("Fetching Fixtures...");
   const results = fetchArsenalFixtures(
     api_key,
     id,
@@ -92,7 +88,9 @@ try {
     endOfThisWeek,
   );
   const filePath = `${appRoot.path}/src/fixtures/{startOfThisWeek}-{endOfThisWeek}.json`;
+  console.log("Writing data to file...");
   writeDataToFile(filePath, results);
 } catch (error) {
   console.error("Error fetching data:", error);
+  process.exit(1);
 }
