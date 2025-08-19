@@ -2,14 +2,12 @@
 import config from "@/config/config.json";
 import { fromBase } from "@/lib/fromBase";
 import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
 
 type Props = {
-  post: CollectionEntry<"posts">;
   styling: string;
 };
 
-const { post, styling } = Astro.props;
+const { styling } = Astro.props;
 const { summary_length } = config.settings;
 ---
 
