@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "check": "astro check",
     "format": "prettier -w .",
-    "get-data": "ts-node bin/get-data.ts"
+    "get-data": "node --loader ts-node/esm bin/get-data.ts"
   },
   "comments": {
     "phin": "added only to force astrojs to use a non vuln version",
