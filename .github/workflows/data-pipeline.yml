@@ -1,0 +1,38 @@
+name: Data Pipeline
+
+on:
+  schedule:
+    # Runs at 12:00 AM UTC every day
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+    # Allows for manual triggering from the GitHub Actions tab
+
+jobs:
+  run-script-and-commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # This permission is required to commit changes
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run data-fetching script
+        env:
+          API_SPORTS_API_KEY: ${{ secrets.API_SPORTS_API_KEY }}
+        run: npx ts-node bin/get-data.ts
+
+      - name: Commit and push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: automated data update"
+          file_pattern: 'src/content/fixtures/*'
