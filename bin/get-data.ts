@@ -1,6 +1,6 @@
 import * as fs from "fs";
 import { format, startOfWeek, endOfWeek } from "date-fns";
-import * as appRoot from "app-root-path";
+import appRoot from "app-root-path";
 
 const fetchTeamID = async (api_key: string) => {
   const headers = new Headers();
@@ -11,7 +11,7 @@ const fetchTeamID = async (api_key: string) => {
     headers: headers,
     redirect: "follow",
   };
-  const api_endpoint = `https://v3.football.api-sports.io/teams?name=arsenal`;
+  const api_endpoint = `https://v3.football.api-sports.io/teams?name=arsenal&country=england`;
   const response = await fetch(api_endpoint, requestOptions);
 
   if (!response.ok) {
@@ -19,8 +19,7 @@ const fetchTeamID = async (api_key: string) => {
   }
 
   const data = await response.json();
-  console.log(data);
-  return data["team"]["id"];
+  return data.response[0]["team"]["id"];
 };
 
 const fetchArsenalFixtures = async (
@@ -87,8 +86,8 @@ try {
     startOfThisWeek,
     endOfThisWeek,
   );
-  const filePath = `${appRoot.path}/src/fixtures/{startOfThisWeek}-{endOfThisWeek}.json`;
-  console.log("Writing data to file...");
+  const filePath = `${appRoot.path}/src/content/fixtures/${startOfThisWeek}-${endOfThisWeek}.json`;
+  console.log("Writing data to file...", filePath);
   writeDataToFile(filePath, results);
 } catch (error) {
   console.error("Error fetching data:", error);
