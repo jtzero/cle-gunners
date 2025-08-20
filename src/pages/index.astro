@@ -6,6 +6,9 @@ import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByWeight } from "@/lib/utils/sortFunctions";
 import notifications from "@/content/notifications.json";
 import type { PostType } from "@/content.config";
+import { getFixtures } from "@/lib/getFixtures";
+
+const fixtures = await getFixtures(new Date());
 
 const pinnedPosts = await getSinglePage("pinnedPosts");
 const sortedPosts = sortByWeight(pinnedPosts);
