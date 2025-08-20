@@ -30,7 +30,7 @@ jobs:
 
       - name: Run data-fetching script
         env:
-          API_SPORTS_API_KEY: ${{ secrets.API_SPORTS_API_KEY }}
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
         run: npm run get-data
 
       - name: Commit and push changes
