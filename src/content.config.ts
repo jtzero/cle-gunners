@@ -1,7 +1,7 @@
 import { glob } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
 
-const zPost = z.object({
+const postSchema = z.object({
   title: z.string().optional(),
   date: z.date(),
   image: z.string().optional(),
@@ -18,7 +18,7 @@ const zPost = z.object({
 
 const postsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
-  schema: zPost,
+  schema: postSchema,
 });
 
 const pinnedPostsCollection = defineCollection({
@@ -47,9 +47,95 @@ const pagesCollection = defineCollection({
   }),
 });
 
-export type PostType = z.infer<typeof zPost>;
+const matchSchema = z.object({
+  area: z.object({
+    id: z.number(),
+    name: z.string(),
+    code: z.string(),
+    flag: z.string(),
+  }),
+  competition: z.object({
+    id: z.number(),
+    name: z.string(),
+    code: z.string(),
+    type: z.string(),
+    emblem: z.string(),
+  }),
+  season: z.object({
+    id: z.number(),
+    startDate: z.string().date(),
+    endDate: z.string().date(),
+    currentMatchday: z.number(),
+    winner: z.number().nullable(),
+  }),
+  id: z.number(),
+  utcDate: z.string().datetime(),
+  status: z.string(),
+  matchday: z.number(),
+  stage: z.string(),
+  group: z.number().nullable(),
+  lastUpdated: z.string().datetime(),
+  homeTeam: z.object({
+    id: z.number(),
+    name: z.string(),
+    shortName: z.string(),
+    tla: z.string(),
+    crest: z.string(),
+  }),
+  awayTeam: z.object({
+    id: z.number(),
+    name: z.string(),
+    shortName: z.string(),
+    tla: z.string(),
+    crest: z.string(),
+  }),
+  score: z.object({
+    winner: z.number().nullable(),
+    duration: z.string(),
+    fullTime: z.object({
+      home: z.number().nullable(),
+      away: z.number().nullable(),
+    }),
+    halfTime: z.object({
+      home: z.number().nullable(),
+      away: z.number().nullable(),
+    }),
+  }),
+  odds: z.object({
+    msg: z.string(),
+  }),
+  referees: z.array(z.object({}).optional()),
+});
+
+const fixturesCollection = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "src/content/fixtures" }),
+  schema: z.object({
+    filters: z.object({
+      dateFrom: z.string().date().optional(),
+      dateTo: z.string().date().optional(),
+      permission: z.string(),
+      competitions: z.coerce.number().optional(),
+      limit: z.number(),
+    }),
+    resultSet: z.object({
+      count: z.number(),
+      competitions: z.string(),
+      first: z.string().date(),
+      last: z.string().date(),
+      played: z.number(),
+      wins: z.number(),
+      draws: z.number(),
+      losses: z.number(),
+    }),
+    matches: z.array(matchSchema),
+  }),
+});
+
+export type MatchType = z.infer<typeof matchSchema>;
+export type PostType = z.infer<typeof postSchema>;
 export const collections = {
   posts: postsCollection,
   pinnedPosts: pinnedPostsCollection,
   pages: pagesCollection,
+  fixtures: fixturesCollection,
 };
