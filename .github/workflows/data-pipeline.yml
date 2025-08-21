@@ -3,14 +3,18 @@ name: Data Pipeline
 on:
   workflow_dispatch:
     inputs:
+      date:
+        type: string
+        description: 'The date to run on'
+        default: ''
       branch:
         description: 'The branch to deploy'
         required: true
         default: 'data-pipeline'
         type: string
   schedule:
-    # Run every Monday morningat midnight
-    - cron: '0 0 * * 1'
+    # Run every Wednesday morning at midnight
+    - cron: '0 0 * * 3'
 
 jobs:
   get-data-and-pr:
@@ -35,7 +39,7 @@ jobs:
       - name: Run data-fetching script
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
-        run: npm run get-data
+        run: npm run get-data -- ${{ inputs.date }}
 
       - name: Log changes
         run: git status

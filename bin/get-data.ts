@@ -1,6 +1,8 @@
 import * as fs from "fs";
-import { format, startOfWeek, endOfWeek } from "date-fns";
+import { format } from "date-fns";
 import appRoot from "app-root-path";
+
+const startDateArg = process.argv[0];
 
 const fetchTeamID = async (api_key: string, season: number) => {
   const headers = new Headers();
@@ -42,14 +44,34 @@ const fetchPremierLeageID = async (api_key: string) => {
   return data.id;
 };
 
+const getSeasonYear = (thisYear: number, month: number): number => {
+  if (month < 3) {
+    return thisYear - 1;
+  } else {
+    return thisYear;
+  }
+};
+
+const getNextWeek = (day: Date) => {
+  const init = new Date();
+  init.setDate(day.getDate() + 7);
+  return init;
+};
+
+const getTomorrow = (day: Date) => {
+  const init = new Date();
+  init.setDate(day.getDate() + 1);
+  return init;
+};
+
 const buildRequestURL = (
   id: string,
   leagueID: string,
   season: number,
-  startOfThisWeek: string,
-  endOfThisWeek: string,
+  startDate: string,
+  endDate: string,
 ) => {
-  return `https://api.football-data.org/v4/teams/${id}/matches?season=${season}&competitions=${leagueID}&dateFrom=${startOfThisWeek}&dateTo=${endOfThisWeek}`;
+  return `https://api.football-data.org/v4/teams/${id}/matches?season=${season}&competitions=${leagueID}&dateFrom=${startDate}&dateTo=${endDate}`;
 };
 
 const fetchArsenalFixtures = async (api_key: string, requestURL: string) => {
@@ -92,32 +114,30 @@ try {
     );
   }
 
-  const today = new Date();
-  const startOfThisWeek = format(
-    startOfWeek(today, { weekStartsOn: 1 }),
-    "yyyy-MM-dd",
-  ); // Monday
-  const endOfThisWeek = format(
-    endOfWeek(today, { weekStartsOn: 1 }),
-    "yyyy-MM-dd",
-  ); // Sunday
+  const initialDate = startDateArg ? new Date(startDateArg) : new Date();
+  const nextWeek = getNextWeek(initialDate);
+  const startDate = getTomorrow(initialDate);
+  const thisMonth = nextWeek.getMonth();
+  const seasonYear = getSeasonYear(nextWeek.getFullYear(), thisMonth);
   console.log("Fetching League ID...");
   const leagueID = await fetchPremierLeageID(api_key);
   console.log("Fetching team ID...");
-  const id = await fetchTeamID(api_key, today.getFullYear());
+  const id = await fetchTeamID(api_key, seasonYear);
   console.log("ID fetched:", id);
+  const startDateStr = format(startDate, "yyyy-MM-dd");
+  const nextWeekStr = format(nextWeek, "yyyy-MM-dd");
 
   const requestURL = buildRequestURL(
     id,
     leagueID,
-    today.getFullYear(),
-    startOfThisWeek,
-    endOfThisWeek,
+    seasonYear,
+    startDateStr,
+    nextWeekStr,
   );
   console.log("Fetching Fixtures from:", requestURL);
   const results = await fetchArsenalFixtures(api_key, requestURL);
   console.log("Fixtures fetched:", results.resultSet.count);
-  const filePath = `${appRoot.path}/src/content/fixtures/${startOfThisWeek}-${endOfThisWeek}.json`;
+  const filePath = `${appRoot.path}/src/content/fixtures/${startDateStr}.json`;
   console.log("Writing data to file...", filePath);
   writeDataToFile(filePath, results);
 } catch (error) {
