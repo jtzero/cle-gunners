@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2025-08-18",
-    "dateTo": "2025-08-24",
+    "dateFrom": "2025-08-20",
+    "dateTo": "2025-08-26",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
