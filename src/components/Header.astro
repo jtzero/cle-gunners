@@ -13,6 +13,7 @@ export interface NavigationLink {
   name: string;
   url: string;
   hasChildren?: boolean;
+  jsCloseMenu?: boolean;
   children?: ChildNavigationLink[];
 }
 
@@ -34,7 +35,7 @@ const { main }: { main: NavigationLink[] } = menu;
         </svg>
       </label>
       <label
-         id="hide-button" data-testid="hide-button"
+        id="hide-button" data-testid="hide-button"
         for="nav-toggle"
         class="hide-button"
       >
@@ -52,7 +53,7 @@ const { main }: { main: NavigationLink[] } = menu;
       {
         main.map((menu) => (
           <li class="py-4 border-white flex justify-center">
-            <a id={menu.name} href={fromBase(menu.url)} class="text-4xl text-center">{menu.name}</a>
+            <a data-js-close={menu.jsCloseMenu} id={menu.name} href={fromBase(menu.url)} class="text-4xl text-center">{menu.name}</a>
           </li>
         ))
       }
@@ -165,11 +166,11 @@ input#nav-toggle:checked ~ label#hide-button {
 </style>
 <script>
   document.addEventListener("astro:page-load", () => {
-    // FIXME
-    const navItem = document.getElementById("About");
-    const navToggle = document.getElementById("nav-toggle");
-    navItem.addEventListener('click', () => {
-      navToggle.checked = false;
+    [...document.querySelectorAll('[data-js-close=true]')].map((navItem) => {
+      const navToggle = document.getElementById("nav-toggle");
+      navItem.addEventListener('click', () => {
+        navToggle.checked = false;
+      });
     });
   });
 </script>

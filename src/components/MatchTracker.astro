@@ -1,0 +1,50 @@
+---
+import Tile from "@/components/Tile.astro";
+
+---
+<Tile id="match-tracker" styling={`w-3/4 mb-6 shadow bg-white`}>
+  <Fragment slot="title"><span class="p-2" updates="match-date"></span></Fragment>
+  <Fragment slot="body">
+    <div class="grid grid-cols-[1fr_auto_1fr] p-4">
+      <div class="text-xl font-bold grid-cols-1 grid-rows-2 align-center">
+        <img updates="home-team-image" src="" class="min-size-[100px]" />
+        <div updates="home-team-name" class="text-center"></div>
+      </div>
+      <h1 class="text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]">VS</h1>
+      <div class="text-xl font-bold grid-cols-1 grid-rows-2 align-center">
+        <img updates="away-team-image" src="" class="min-size-[100px]" />
+        <div updates="away-team-name" class="text-center"></div>
+      </div>
+    </div>
+  </Fragment>
+</Tile>
+<script>
+  import { startOfWeek, format } from "date-fns";
+
+  const midWeek = format(startOfWeek(new Date(), { weekStartsOn: 3 }), 'yyyy-MM-dd');
+  fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
+    const json = await response.json();
+    const nearestMatch = json.matches[0];
+    Array.from(document.querySelectorAll('[updates]')).map((el) => {
+      if (el.getAttribute('updates') == 'away-team-image') {
+        el.src = nearestMatch.awayTeam.crest;
+      } else if (el.getAttribute('updates') == 'home-team-image') {
+        el.src = nearestMatch.homeTeam.crest;
+      } else if (el.getAttribute('updates') == 'away-team-name') {
+        el.textContent = nearestMatch.awayTeam.shortName;
+      } else if (el.getAttribute('updates') == 'home-team-name') {
+        el.textContent = nearestMatch.homeTeam.shortName;
+      } else if (el.getAttribute('updates') == 'match-date') {
+        const converted = new Intl.DateTimeFormat(undefined, {
+          weekday: 'long',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+        }).format(new Date(nearestMatch.utcDate));
+
+        el.textContent = converted;
+      }
+    });
+  });
+</script>
