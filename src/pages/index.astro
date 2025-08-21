@@ -1,15 +1,12 @@
 ---
 import Base from "@/layouts/Base.astro";
 import Post from "@/components/Post.astro";
+import MatchTracker from "@/components/MatchTracker.astro";
 import LocationPost from "src/components/LocationPost.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByWeight } from "@/lib/utils/sortFunctions";
 import notifications from "@/content/notifications.json";
 import type { PostType } from "@/content.config";
-import { getFixtures } from "@/lib/getFixtures";
-
-const fixtures = await getFixtures(new Date());
-
 const pinnedPosts = await getSinglePage("pinnedPosts");
 const sortedPosts = sortByWeight(pinnedPosts);
 ---
@@ -31,6 +28,7 @@ const sortedPosts = sortByWeight(pinnedPosts);
       })
     }
     <LocationPost styling="w-3/4 mb-6 shadow bg-white"/>
+    <MatchTracker />
     {
       sortedPosts.map((post) => {
         return (

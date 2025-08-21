@@ -10,7 +10,13 @@
     },
     {
       "name": "About",
-      "url": "/#who-we-are"
+      "url": "/#who-we-are",
+      "jsCloseMenu": true
+    },
+    {
+      "name": "Next Match",
+      "url": "/#match-tracker",
+      "jsCloseMenu": true
     },
     {
       "name": "Merch",

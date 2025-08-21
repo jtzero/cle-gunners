@@ -1,26 +1,49 @@
 import { format, startOfWeek, endOfWeek } from "date-fns";
-import { getCollection, getEntry, type CollectionEntry } from "astro:content";
+import {
+  getCollection,
+  getEntry,
+  getEntries,
+  type CollectionEntry,
+} from "astro:content";
 
 import { type MatchType } from "@/content.config";
 
-const matchWeekOf = (from = new Date()): string => {
+const entryDateRange = (from: Date): string => {
   const startOfThisWeek = format(
-    startOfWeek(from, { weekStartsOn: 1 }),
+    startOfWeek(from, { weekStartsOn: 3 }),
     "yyyy-MM-dd",
-  ); // Monday
+  ); // Wednesay
   const endOfThisWeek = format(
-    endOfWeek(from, { weekStartsOn: 1 }),
+    endOfWeek(from, { weekStartsOn: 3 }),
     "yyyy-MM-dd",
-  ); // Sunday
+  ); // TuesdayNextWeek
 
   return `${startOfThisWeek}-${endOfThisWeek}`;
 };
 
-export const getFixtures = async (from = new Date()): Promise<MatchType[]> => {
-  const matchWeek = matchWeekOf(from);
+const tap = (ret: any, closure) => {
+  closure(ret);
+  return ret;
+};
+
+export const getNextFixture = async (
+  from: Date = new Date(),
+): Promise<MatchType | undefined> => {
+  const matchWeek = entryDateRange(from);
+  const nextWeek = tap(new Date(from), (dt: Date) => {
+    dt.setDate(dt.getDate() + 7);
+  });
+  const nextMatchWeek = entryDateRange(nextWeek);
   const entry = (await getEntry(
     "fixtures",
     matchWeek,
   )) as CollectionEntry<"fixtures">;
-  return entry.data.matches;
+  const ret = await getEntries([
+    { collection: "fixtures", id: matchWeek },
+    { collection: "fixtures", id: nextMatchWeek },
+  ]);
+  return [...ret]
+    .filter(Boolean)
+    .flatMap((e) => e.data.matches)
+    .sort((a, b) => a.utcDate.localeCompare(b.utcDate))[0];
 };
