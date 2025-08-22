@@ -74,10 +74,9 @@ import Tile from "@/components/Tile.astro";
   document.addEventListener("astro:page-load", () => {
 
     const today = new Date();
-    const formattedToday = format(today, 'yyyy-MM-dd');
     const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
 
-    const cache = localStorage.getItem(formattedToday);
+    const cache = localStorage.getItem(midWeek);
     if (cache) {
       const nearestMatch = JSON.parse(cache);
       updateTracker(nearestMatch);
@@ -98,7 +97,7 @@ import Tile from "@/components/Tile.astro";
           nearestMatch = nextWeekJson.matches[0];
         });
       }
-      localStorage.setItem(formattedToday, JSON.stringify(nearestMatch));
+      localStorage.setItem(midWeek, JSON.stringify(nearestMatch));
       updateTracker(nearestMatch);
     });
   });
