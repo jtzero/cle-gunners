@@ -6,11 +6,11 @@ import Tile from "@/components/Tile.astro";
   <Fragment slot="title"><span class="p-2" updates="match-date"></span></Fragment>
   <Fragment slot="body">
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
-      <div class="text-xl font-bold grid-cols-1 grid-rows-2 align-center">
+      <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
         <img updates="home-team-image" src="" class="min-size-[100px]" />
         <div updates="home-team-name" class="text-center"></div>
       </div>
-      <h1 class="text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]">VS</h1>
+      <h1 data-spinner class="spinner text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"></h1>
       <div class="text-xl font-bold grid-cols-1 grid-rows-2 align-center">
         <img updates="away-team-image" src="" class="min-size-[100px]" />
         <div updates="away-team-name" class="text-center"></div>
@@ -18,6 +18,25 @@ import Tile from "@/components/Tile.astro";
     </div>
   </Fragment>
 </Tile>
+<style>
+.spinner {
+  width: 24px; /* Adjust size as needed */
+  height: 24px; /* Adjust size as needed */
+  border: 3px solid rgba(0, 0, 0, 0.3); /* Border color and transparency */
+  border-top-color: #3498db; /* Top border color for the spinning effect */
+  border-radius: 50%; /* Makes it a circle */
+  animation: spin 1s linear infinite; /* Apply the spinning animation */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  100% {
+    transform: rotate(360deg); /* End at 360 degrees, completing a full rotation */
+  }
+}
+</style>
 <script>
   import { startOfWeek, format } from "date-fns";
 
@@ -46,5 +65,13 @@ import Tile from "@/components/Tile.astro";
         el.textContent = converted;
       }
     });
+    Array.from(document.querySelectorAll('[data-spinner]')).map((el) => {
+      el.classList.remove('spinner');
+      el.textContent = 'VS';
+    });
+    Array.from(document.querySelectorAll('[data-show-after-load]')).map((el) => {
+      el.classList.remove('hidden');
+    });
+
   });
 </script>
