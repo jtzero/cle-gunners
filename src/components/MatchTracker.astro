@@ -75,7 +75,7 @@ import Tile from "@/components/Tile.astro";
 
     const today = new Date();
     const formattedToday = format(today, 'yyyy-MM-dd');
-    const midWeek = format(startOfWeek(today, { weekStartsOn: 3 }), 'yyyy-MM-dd');
+    const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
 
     const cache = localStorage.getItem(formattedToday);
     if (cache) {
