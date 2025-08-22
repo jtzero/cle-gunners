@@ -39,26 +39,7 @@ import Tile from "@/components/Tile.astro";
 </style>
 <script>
   import { startOfWeek, format, addDays } from "date-fns";
-
-  // TODO: check on off season
-  // TODO: check bye week
-  const today = new Date();
-  const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
-  fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
-    const json = await response.json();
-    let nearestMatch: Date| undefined = undefined;
-    const sortedMatches = json.matches.sort((a, b) => a.utcDate.localeCompare(b.utcDate));
-    const laterThanNow = sortedMatches.filter((match) => {
-      return new Date(match.utcDate).getTime() > today.getTime();
-    });
-    nearestMatch = laterThanNow[0];
-    if (!nearestMatch) {
-      const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
-      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(async (nextWeekResponse) => {
-        const nextWeekJson = await nextWeekResponse.json();
-        nearestMatch = nextWeekJson.matches[0];
-      });
-    }
+  const updateTracker = (nearestMatch) => {
     Array.from(document.querySelectorAll('[updates]')).map((el) => {
       if (el.getAttribute('updates') == 'away-team-image') {
         el.src = nearestMatch.awayTeam.crest;
@@ -87,6 +68,38 @@ import Tile from "@/components/Tile.astro";
     Array.from(document.querySelectorAll('[data-show-after-load]')).map((el) => {
       el.classList.remove('hidden');
     });
+  };
 
+
+  document.addEventListener("astro:page-load", () => {
+
+    const today = new Date();
+    const formattedToday = format(today, 'yyyy-MM-dd');
+    const midWeek = format(startOfWeek(today, { weekStartsOn: 3 }), 'yyyy-MM-dd');
+
+    const cache = localStorage.getItem(formattedToday);
+    if (cache) {
+      const nearestMatch = JSON.parse(cache);
+      updateTracker(nearestMatch);
+      return;
+    }
+    fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
+      const json = await response.json();
+      let nearestMatch: Date| undefined = undefined;
+      const sortedMatches = json.matches.sort((a, b) => a.utcDate.localeCompare(b.utcDate));
+      const laterThanNow = sortedMatches.filter((match) => {
+        return new Date(match.utcDate).getTime() > today.getTime();
+      });
+      nearestMatch = laterThanNow[0];
+      if (!nearestMatch) {
+        const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+        await fetch(`/api/fixtures/${nextMidWeek}.json`).then(async (nextWeekResponse) => {
+          const nextWeekJson = await nextWeekResponse.json();
+          nearestMatch = nextWeekJson.matches[0];
+        });
+      }
+      localStorage.setItem(formattedToday, JSON.stringify(nearestMatch));
+      updateTracker(nearestMatch);
+    });
   });
 </script>
