@@ -2,27 +2,7 @@ import * as fs from "fs";
 import { format } from "date-fns";
 import appRoot from "app-root-path";
 
-const startDateArg = process.argv[0];
-
-const fetchTeamID = async (api_key: string, season: number) => {
-  const headers = new Headers();
-  headers.append("X-Auth-Token", api_key);
-
-  const requestOptions: RequestInit = {
-    method: "GET",
-    headers: headers,
-    redirect: "follow",
-  };
-  const api_endpoint = `https://api.football-data.org/v4/competitions/PL/teams?season=${season}`;
-  const response = await fetch(api_endpoint, requestOptions);
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(`HTTP error! resonse: ${data.Message}`);
-  }
-
-  return data.teams.filter((team: any) => team.shortName === "Arsenal")[0].id;
-};
+const startDateArg = process.argv[2];
 
 const fetchPremierLeageID = async (api_key: string) => {
   const headers = new Headers();
@@ -38,10 +18,34 @@ const fetchPremierLeageID = async (api_key: string) => {
 
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(`HTTP error! resonse: ${data.Message}`);
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
   }
 
   return data.id;
+};
+
+const fetchTeamID = async (api_key: string, season: number) => {
+  const headers = new Headers();
+  headers.append("X-Auth-Token", api_key);
+
+  const requestOptions: RequestInit = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  const api_endpoint = `https://api.football-data.org/v4/competitions/PL/teams?season=${season}`;
+  const response = await fetch(api_endpoint, requestOptions);
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
+  }
+
+  return data.teams.filter((team: any) => team.shortName === "Arsenal")[0].id;
 };
 
 const getSeasonYear = (thisYear: number, month: number): number => {
@@ -87,11 +91,12 @@ const fetchArsenalFixtures = async (api_key: string, requestURL: string) => {
   const api_endpoint = requestURL;
   const response = await fetch(api_endpoint, requestOptions);
 
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
-  }
-
   const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
+  }
 
   return data;
 };
@@ -119,6 +124,8 @@ try {
   const startDate = getTomorrow(initialDate);
   const thisMonth = nextWeek.getMonth();
   const seasonYear = getSeasonYear(nextWeek.getFullYear(), thisMonth);
+  console.log(startDateArg, initialDate, nextWeek, thisMonth);
+  console.log("Season:", seasonYear);
   console.log("Fetching League ID...");
   const leagueID = await fetchPremierLeageID(api_key);
   console.log("Fetching team ID...");
