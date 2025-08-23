@@ -1,4 +1,5 @@
 ---
+import type { CollectionEntry } from "astro:content";
 import Base from "@/layouts/Base.astro";
 import Post from "@/components/Post.astro";
 import MatchTracker from "@/components/MatchTracker.astro";
@@ -6,9 +7,9 @@ import LocationPost from "src/components/LocationPost.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByWeight } from "@/lib/utils/sortFunctions";
 import notifications from "@/content/notifications.json";
-import type { PostType } from "@/content.config";
 const pinnedPosts = await getSinglePage("pinnedPosts");
 const sortedPosts = sortByWeight(pinnedPosts);
+type PostType = CollectionEntry<"posts">;
 ---
 
 <Base>

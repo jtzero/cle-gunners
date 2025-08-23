@@ -45,7 +45,7 @@ const collectSubPosts = async (posts: Array) => {
   }));
 };
 
-const subPosts = await collectSubPosts(post.data?.posts || []);
+const subPosts = [...await collectSubPosts(post.data?.posts || [])].filter(Boolean);
 /*I think the hasSubPosts  is currently always true */
 ---
 
