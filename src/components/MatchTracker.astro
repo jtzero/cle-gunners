@@ -105,6 +105,7 @@ import Tile from "@/components/Tile.astro";
   };
 
   document.addEventListener("astro:page-load", () => {
+    checkForMatches();
     setInterval(checkForMatches, 600000);
   });
 </script>
