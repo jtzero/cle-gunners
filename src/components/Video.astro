@@ -1,0 +1,44 @@
+---
+
+type Props = {
+  url: string;
+  title: string;
+  width: number;
+  height: number;
+  orientation?: string;
+};
+
+const { url, title, width, height, orientation } = Astro.props;
+
+const isRemoteVideo = url.startsWith("http");
+---
+{
+  isRemoteVideo && (
+  <iframe
+    class="h-auto w-full sm:min-h-[300px]"
+    src={url}
+    title={title}
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+  ></iframe>
+  )
+  ||
+  (
+    <video
+      class={`h-auto w-full sm:min-h-[300px] max-h-[500px]`}
+      src={url}
+      title={title}
+      width={width}
+      height={height}
+      controls
+      playsinline
+      muted
+      loop
+      poster={url}
+      preload="metadata"
+      style={`--aspect-ratio: ${width}/${height};`}
+    >
+    </video>
+  )
+}

@@ -1,10 +1,10 @@
 ---
 title: That's Alright
-date: 2020-01-01
+date: 2020-01-05
 video: https://www.youtube.com/embed/1MqLehx0Uno?si=iGMGljdQbZymIT6D
 videoDimensions: 560x315
 videoPlacement: body
-viedoOrientation: portrait
+orientation: portrait
 ---
 
 What do you think of Tottenham?
