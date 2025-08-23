@@ -77,10 +77,13 @@ import Tile from "@/components/Tile.astro";
     const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
 
     const cache = localStorage.getItem(midWeek);
+
     if (cache) {
-      const nearestMatch = JSON.parse(cache);
-      updateTracker(nearestMatch);
-      return;
+      const cacheParsed = JSON.parse(cache)
+      if (new Date(cacheParsed.utcDate).getTime() > today.getTime()) {
+        updateTracker(cacheParsed);
+        return;
+      }
     }
     fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
       const json = await response.json();
