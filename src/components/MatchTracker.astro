@@ -3,7 +3,7 @@ import Tile from "@/components/Tile.astro";
 
 ---
 <Tile id="match-tracker" styling={`w-3/4 mb-6 shadow bg-white`}>
-  <Fragment slot="title"><span class="p-2" updates="match-date"></span></Fragment>
+  <Fragment slot="title"><span data-show-after-load updates="match-date" class="hidden p-2"></span></Fragment>
   <Fragment slot="body">
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
       <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
@@ -11,7 +11,7 @@ import Tile from "@/components/Tile.astro";
         <div updates="home-team-name" class="text-center"></div>
       </div>
       <h1 data-spinner class="spinner text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"></h1>
-      <div class="text-xl font-bold grid-cols-1 grid-rows-2 align-center">
+      <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
         <img updates="away-team-image" src="" class="min-size-[100px]" />
         <div updates="away-team-name" class="text-center"></div>
       </div>
@@ -39,11 +39,42 @@ import Tile from "@/components/Tile.astro";
 </style>
 <script>
   import { startOfWeek, format, addDays } from "date-fns";
+  const removeSpinner = () => {
+    Array.from(document.querySelectorAll('[data-spinner]')).map((el) => {
+      el.classList.remove('spinner');
+      el.textContent = 'VS';
+    });
+  };
+  const showData = () => {
+    Array.from(document.querySelectorAll('[data-show-after-load]')).map((el) => {
+      el.classList.remove('hidden');
+    });
+  };
+  const SrcImagesToUpdate = 2;
   const updateTracker = (nearestMatch) => {
+    let imageLoadCount = 0;
     Array.from(document.querySelectorAll('[updates]')).map((el) => {
       if (el.getAttribute('updates') == 'away-team-image') {
+        imageLoadCount++;
+        el.addEventListener('load', () => {
+          console.log('imageLoaded', imageLoadCount);
+          if (imageLoadCount == SrcImagesToUpdate) {
+            removeSpinner();
+            showData();
+            imageLoadCount = 0;
+          }
+        });
         el.src = nearestMatch.awayTeam.crest;
       } else if (el.getAttribute('updates') == 'home-team-image') {
+        imageLoadCount++;
+        el.addEventListener('load', () => {
+          console.log('imageLoaded', imageLoadCount);
+          if (imageLoadCount == SrcImagesToUpdate) {
+            removeSpinner();
+            showData();
+            imageLoadCount = 0;
+          }
+        });
         el.src = nearestMatch.homeTeam.crest;
       } else if (el.getAttribute('updates') == 'away-team-name') {
         el.textContent = nearestMatch.awayTeam.shortName;
@@ -60,13 +91,6 @@ import Tile from "@/components/Tile.astro";
 
         el.textContent = converted;
       }
-    });
-    Array.from(document.querySelectorAll('[data-spinner]')).map((el) => {
-      el.classList.remove('spinner');
-      el.textContent = 'VS';
-    });
-    Array.from(document.querySelectorAll('[data-show-after-load]')).map((el) => {
-      el.classList.remove('hidden');
     });
   };
 
