@@ -17,7 +17,6 @@ const postSchema = z.object({
   videoPlacement: z.string().optional(),
   videoOrientation: z.string().optional(),
   metaTitle: z.string().optional(),
-  posts: z.array(reference("posts")).optional(),
 });
 
 const postsCollection = defineCollection({
@@ -48,6 +47,7 @@ const pagesCollection = defineCollection({
     image: z.string().optional(),
     imageDimensions: z.string().optional(),
     layout: z.string().optional(),
+    posts: z.array(z.string()).optional(),
   }),
 });
 

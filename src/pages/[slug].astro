@@ -1,65 +1,38 @@
 ---
-import config from "@/config/config.json";
+import * as fs from 'fs';
+import * as server from "astro:config/server"
 import Base from "@/layouts/Base.astro";
-import { getSinglePage } from "@/lib/contentParser.astro";
-import type { CollectionEntry } from "astro:content";
-import { getEntry } from "astro:content";
+import { getCollection, getEntry, getEntries } from "astro:content";
 import Post from "@/components/Post.astro";
 
 export async function getStaticPaths() {
-  const pinnedPosts = await getSinglePage("pinnedPosts");
-  const metaPinnedPosts = pinnedPosts.filter((post) => (post.data.posts || []).length != 0);
-  const posts = await getSinglePage("posts");
-  const metaOnlyPosts = posts.filter((post) => (post.data.posts || []).length != 0);
-  const paths = metaPinnedPosts.concat(metaOnlyPosts).map((post) => {;
-    return {
-      params: {
-        slug: post.id,
-      },
-    };
+  const pages = await getCollection("pages", (page)=> {
+    return !fs.existsSync(`${server.srcDir}/${page.filePath}`);
   });
-  return paths;
+  return pages.map((page) => {
+    return {
+        params: {
+          slug: page.id,
+        },
+      };
+  });
 }
 const { slug } = Astro.params;
-const post = await (getEntry("pinnedPosts", slug) as CollectionEntry<"posts">).then((pinnedPost) => {
-  if (pinnedPost) {
-    return pinnedPost;
-  } else {
-    return getEntry("posts", slug) as CollectionEntry<"posts">;
-  }
-});
+const page = await getEntry("pages", slug);
 
-if (post.data.posts.length == 0) {
+if (!page) {
   return Astro.redirect("/404");
 }
-const { imageDimensions } = post.data;
-const [width, height] = (imageDimensions || "").split("x");
-if (imageDimensions) {
-  post.data.parsedImageWidth = parseInt(width);
-  post.data.parsedImageHeight = parseInt(height);
-}
-const hasSubPosts = (post.data?.posts || []).length > 0;
-const collectSubPosts = async (posts: Array) => {
-  return Promise.all(posts.map(async (subPostInfo) => {
-    return (await getEntry("posts", subPostInfo.id)) as CollectionEntry<"posts">;
-  }));
-};
+const subPosts = await getEntries(page.data.posts.map((post_id) => { return {collection: 'posts', id: post_id } } ));
 
-const subPosts = [...await collectSubPosts(post.data?.posts || [])].filter(Boolean);
-/*I think the hasSubPosts  is currently always true */
 ---
 
-<Base>
+<Base title={page.data.title} metaTitle={page.data.metaTitle}>
   <div data-testid="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
     {
-    (hasSubPosts) ? (
       subPosts.map((subPost) => (
         <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white" displayReadMore={false}/>
       ))
-    ) : (
-      <div data-testid="posts-container" class="bg-light flex items-center justify-center flex-col">
-        <Post post={post} styling="tile w-3/4 mb-6 shadow bg-white" />
-      </div>
-    )
+    }
   </div>
 </Base>
