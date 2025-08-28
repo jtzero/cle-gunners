@@ -7,12 +7,12 @@ import Tile from "@/components/Tile.astro";
   <Fragment slot="body">
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
       <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
-        <img updates="home-team-image" src="" class="min-size-[100px]" />
+        <img updates="home-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
         <div updates="home-team-name" class="text-center"></div>
       </div>
       <h1 data-spinner class="spinner text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"></h1>
       <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
-        <img updates="away-team-image" src="" class="min-size-[100px]" />
+        <img updates="away-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
         <div updates="away-team-name" class="text-center"></div>
       </div>
     </div>
