@@ -62,7 +62,7 @@ const getNextWeek = (day: Date) => {
   return init;
 };
 
-const getInThirteenDays = (day: Day) => {
+const getInThirteenDays = (day: Date) => {
   const init = new Date(day);
   init.setDate(init.getDate() + 13);
   return init;
