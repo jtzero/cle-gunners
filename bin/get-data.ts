@@ -123,7 +123,7 @@ try {
 
   const today = new Date();
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
-  const endDate = startDateArg ? getNext week(startDate) : getInThirteenDays(today);
+  const endDate = startDateArg ? getNextWeek(startDate) : getInThirteenDays(today);
   const thisMonth = startDate.getMonth();
   const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
   console.log(startDateArg, startDate, endDate, thisMonth);
