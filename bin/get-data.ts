@@ -126,7 +126,7 @@ try {
   const endDate = startDateArg ? getNext week(startDate) : getInThirteenDays(today);
   const thisMonth = startDate.getMonth();
   const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
-  console.log(startDateArg, initialDate, start date, endDate, thisMonth);
+  console.log(startDateArg, startDate, endDate, thisMonth);
   console.log("Season:", seasonYear);
   console.log("Fetching League ID...");
   const leagueID = await fetchPremierLeageID(api_key);
