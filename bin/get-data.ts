@@ -57,19 +57,18 @@ const getSeasonYear = (thisYear: number, month: number): number => {
 };
 
 const getNextWeek = (day: Date) => {
-  const init = new Date();
-  return new Date(init.setDate(day.getDate() + 7));
+  const init = new Date(day);
+  return new Date(init.setDate(init.getDate() + 7));
 };
 
 const getInThirteenDays = (day: Date) => {
-  const init = new Date();
-  return new Date(init.setDate(day.getDate() + 13));
+  const init = new Date(day);
+  return new Date(init.setDate(init.getDate() + 13));
 };
 
 const getTomorrow = (day: Date) => {
-  const init = new Date();
-  init.setDate(day.getDate() + 1);
-  return init;
+  const init = new Date(day);
+  return new Date(init.setDate(init.getDate() + 1));
 };
 
 const buildRequestURL = (
