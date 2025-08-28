@@ -102,7 +102,7 @@ import Tile from "@/components/Tile.astro";
   };
 
   const checkForMatches = async () => {
-    const today = new Date(2025, 8, 1);
+    const today = new Date();
     const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
     let checks = [midWeek]
     const cache = localStorage.getItem(midWeek);
