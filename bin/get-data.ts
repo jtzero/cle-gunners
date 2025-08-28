@@ -57,11 +57,13 @@ const getSeasonYear = (thisYear: number, month: number): number => {
 };
 
 const getNextWeek = (day: Date) => {
-  return new Date(day.getDate() + 7);
+  const init = new Date();
+  return new Date(init.setDate(day.getDate() + 7));
 };
 
 const getInThirteenDays = (day: Date) => {
-  return new Date(day.getDate() + 13);
+  const init = new Date();
+  return new Date(init.setDate(day.getDate() + 13));
 };
 
 const getTomorrow = (day: Date) => {
