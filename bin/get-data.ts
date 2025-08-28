@@ -57,15 +57,11 @@ const getSeasonYear = (thisYear: number, month: number): number => {
 };
 
 const getNextWeek = (day: Date) => {
-  const init = new Date();
-  init.setDate(day.getDate() + 7);
-  return init;
+  return new Date(day.getDate() + 7);
 };
 
 const getInThirteenDays = (day: Date) => {
-  const init = new Date(day);
-  init.setDate(init.getDate() + 13);
-  return init;
+  return new Date(init.getDate() + 13);
 };
 
 const getTomorrow = (day: Date) => {
@@ -125,12 +121,12 @@ try {
     );
   }
 
-  const initialDate = startDateArg ? new Date(startDateArg) : new Date();
-  const startDate = getNextWeek(initialDate);
-  const nextWeek = getInThirteenDays(initialDate);
-  const thisMonth = nextWeek.getMonth();
-  const seasonYear = getSeasonYear(nextWeek.getFullYear(), thisMonth);
-  console.log(startDateArg, initialDate, nextWeek, thisMonth);
+  const today = new Date();
+  const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
+  const endDate = startDateArg ? getNext week(startDate) : getInThirteenDays(today);
+  const thisMonth = startDate.getMonth();
+  const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
+  console.log(startDateArg, initialDate, start date, endDate, thisMonth);
   console.log("Season:", seasonYear);
   console.log("Fetching League ID...");
   const leagueID = await fetchPremierLeageID(api_key);
@@ -138,14 +134,14 @@ try {
   const id = await fetchTeamID(api_key, seasonYear);
   console.log("ID fetched:", id);
   const startDateStr = format(startDate, "yyyy-MM-dd");
-  const nextWeekStr = format(nextWeek, "yyyy-MM-dd");
+  const nextDateStr = format(endDate, "yyyy-MM-dd");
 
   const requestURL = buildRequestURL(
     id,
     leagueID,
     seasonYear,
     startDateStr,
-    nextWeekStr,
+    endDateStr,
   );
   console.log("Fetching Fixtures from:", requestURL);
   const results = await fetchArsenalFixtures(api_key, requestURL);
