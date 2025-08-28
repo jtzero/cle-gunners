@@ -61,7 +61,7 @@ const getNextWeek = (day: Date) => {
 };
 
 const getInThirteenDays = (day: Date) => {
-  return new Date(init.getDate() + 13);
+  return new Date(day.getDate() + 13);
 };
 
 const getTomorrow = (day: Date) => {
