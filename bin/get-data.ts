@@ -134,7 +134,7 @@ try {
   const id = await fetchTeamID(api_key, seasonYear);
   console.log("ID fetched:", id);
   const startDateStr = format(startDate, "yyyy-MM-dd");
-  const nextDateStr = format(endDate, "yyyy-MM-dd");
+  const endDateStr = format(endDate, "yyyy-MM-dd");
 
   const requestURL = buildRequestURL(
     id,
