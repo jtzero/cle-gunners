@@ -94,16 +94,22 @@ import Tile from "@/components/Tile.astro";
     });
   };
 
+  const laterThanNow = (matches) => {
+    const sortedMatches = matches.sort((a, b) => a.utcDate.localeCompare(b.utcDate));
+    return sortedMatches.filter((match) => {
+      return new Date(match.utcDate).getTime() > today.getTime();
+    });
+  };
 
   const checkForMatches = async () => {
     const today = new Date();
     const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
-
+    let checks = [midWeek]
     const cache = localStorage.getItem(midWeek);
 
     if (cache) {
       const cacheParsed = JSON.parse(cache)
-      if (new Date(cacheParsed.utcDate).getTime() > today.getTime()) {
+      if (cacheParsed?.utcDate && new Date(cacheParsed.utcDate).getTime() > today.getTime()) {
         updateTracker(cacheParsed);
         return;
       }
@@ -111,20 +117,30 @@ import Tile from "@/components/Tile.astro";
     fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
       const json = await response.json();
       let nearestMatch: Date| undefined = undefined;
-      const sortedMatches = json.matches.sort((a, b) => a.utcDate.localeCompare(b.utcDate));
-      const laterThanNow = sortedMatches.filter((match) => {
-        return new Date(match.utcDate).getTime() > today.getTime();
-      });
-      nearestMatch = laterThanNow[0];
+      
+      nearestMatch = laterThanNow(json.matches)[0];
       if (!nearestMatch) {
         const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+        checks.push(nextMidWeek);
         await fetch(`/api/fixtures/${nextMidWeek}.json`).then(async (nextWeekResponse) => {
           const nextWeekJson = await nextWeekResponse.json();
-          nearestMatch = nextWeekJson.matches[0];
+          nearestMatch = laterThanNow(nextWeekJson.matches)[0];
         });
       }
-      localStorage.setItem(midWeek, JSON.stringify(nearestMatch));
-      updateTracker(nearestMatch);
+      if (!nearestMatch) {
+        const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+        checks.push(thirdMidWeek);
+        await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(async (thirdWeekResponse) => {
+          const thirdWeekJson = await thirdWeekResponse.json();
+          nearestMatch = laterThanNow(thirdWeekJson.matches)[0];
+        });
+      }
+      if (!nearestMatch) {
+        localStorage.setItem(midWeek, JSON.stringify(nearestMatch));
+        updateTracker(nearestMatch);
+      } else {
+        console.log('no match found in', checks); 
+      }
     });
   };
 
