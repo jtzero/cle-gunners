@@ -15,6 +15,8 @@ const pinnedPostsCollection = defineCollection({
     date: z.date(),
     image: z.string().optional(),
     imageDimensions: z.string().optional(),
+    imagePlacement: z.string().optional(),
+    videoPlacement: z.string().optional(),
     posts: z.array(reference("posts")).optional(),
     additionalStyling: z.string().optional(),
     weight: z.number().optional(),
