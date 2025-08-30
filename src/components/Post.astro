@@ -45,8 +45,22 @@ if (post.data?.videoDimensions) {
 }
 const hasVideo = (post.data?.video !== undefined);
 const hasMultimedia = (hasVideo || post.data.image);
-const multimediaPlacement = (post.data.imagePlacement || post.data.videoPlacement);
-const hasHeaderMultimedia = hasMultimedia && !multimediaPlacement
+const multimediaInfo = (() => {
+  const placement = (post.data?.imagePlacement || post.data?.videoPlacement);
+  const placementNotSet = placement == undefined;
+  if (hasMultimedia) {
+    if (placementNotSet) {
+      return { size: undefined, placement: 'header' };
+    } else {
+      const matches = /^(sm|md|lg|xl|2xl|3xl|4xl|5xl)?:?(.+)$/.exec(placement)
+      return { size: matches[1], placement: matches[2] };
+    }
+  } else {
+    return { size: undefined, placement: 'header' };
+  }
+})();
+const multimediaPlacement = multimediaInfo.placement == 'body' ? 'body' : undefined;
+const hasHeaderMultimedia = (post.data?.imagePlacement || post.data?.videoPlacement) && multimediaInfo.placement == 'header';
 const topBorderWithHeaderMedia = hasHeaderMultimedia ? '' : topBorderStyling;
 let tileWithHeaderMedia = (() => {
   if (width == height && !multimediaPlacement) {
@@ -61,7 +75,7 @@ const hasTextBody = (post.body || "") != "";
 const tileBodyClass = (() => {
   if (hasHeaderMultimedia) {
     return 'tile-body-without-body-media'
-  } else if (hasMultimedia && multimediaPlacement == 'body') {
+  } else if (hasMultimedia && multimediaInfo.placement == 'body') {
     if (!hasTextBody) {
       return 'tile-body-with-only-body-media';
     } else {
@@ -71,6 +85,23 @@ const tileBodyClass = (() => {
     return '';
   }
 })();
+
+const showHeaderImageClass = (() => {
+  if (multimediaInfo.size && multimediaInfo.placement == 'body') {
+    return `${multimediaInfo.size}:hidden block`;
+  } else {
+    return '';
+  }
+})();
+
+const showBodyImageClass = (() => {
+  if (multimediaInfo.size && multimediaInfo.placement == 'body') {
+    return `hidden ${multimediaInfo.size}:block`;
+  } else {
+    return '';
+  }
+})();
+
 ---
 <Tile id={slugify(post.data.title)} styling={`${styling} ${tileWithHeaderMedia} ${topBorderWithHeaderMedia}` } headerStyling={headerStyling} bodyStyling={`${heroTextStyling} ${tileBodyClass}`}>
   <Fragment slot="header">
@@ -78,12 +109,11 @@ const tileBodyClass = (() => {
     post.data.image && !multimediaPlacement && (
       <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
           <Image
-            class="lg"
             src={fromBase(post.data.image)}
             alt={post.data.title}
             width={post.data.parsedImageWidth}
             height={post.data.parsedImageHeight}
-            class="w-auto tile-image"
+            class=`w-auto tile-image ${showHeaderImageClass}`
             format="webp"
           />
       </ConditionalATag>
@@ -113,15 +143,14 @@ const tileBodyClass = (() => {
       )
     }
     {
-      post.data.image && multimediaPlacement == 'body' && (
+      post.data.image && multimediaInfo.placement == 'body' && (
         <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
           <Image
-            class="lg"
             src={fromBase(post.data.image)}
             alt={post.data.title}
             width={post.data.parsedImageWidth}
             height={post.data.parsedImageHeight}
-            class="w-auto tile-image"
+            class=`w-auto tile-image ${showBodyImageClass}`
             format="webp"
           />
         </ConditionalATag>
