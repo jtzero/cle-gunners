@@ -48,6 +48,7 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: automated data update"
+          draft: always-true
           branch: "data-update"
           base: "main"
           title: "Fixture Data Update"
