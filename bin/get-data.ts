@@ -61,9 +61,9 @@ const getNextWeek = (day: Date) => {
   return new Date(init.setDate(init.getDate() + 7));
 };
 
-const getInThirteenDays = (day: Date) => {
+const getInTwoWeeks = (day: Date) => {
   const init = new Date(day);
-  return new Date(init.setDate(init.getDate() + 13));
+  return new Date(init.setDate(init.getDate() + 14));
 };
 
 const getTomorrow = (day: Date) => {
@@ -124,7 +124,7 @@ try {
 
   const today = new Date();
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
-  const endDate = startDateArg ? getNextWeek(startDate) : getInThirteenDays(today);
+  const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
   const thisMonth = startDate.getMonth();
   const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
   console.log(startDateArg, startDate, endDate, thisMonth);

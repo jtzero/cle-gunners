@@ -13,8 +13,8 @@ on:
         default: 'data-pipeline'
         type: string
   schedule:
-    # Run every Wednesday morning at midnight
-    - cron: '0 0 * * 3'
+    # Run every Thursday morning at midnight
+    - cron: '0 0 * * 4'
 
 jobs:
   get-data-and-pr:
