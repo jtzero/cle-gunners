@@ -7,6 +7,6 @@ orientation: portrait
 ---
 We've got super Mik Arteta
 He knows exactly what we need.
-Gabi in the back,
-Gabi at attack,
+Gabi at the back,
+Saka at attack,
 Arsenal are gonna win the league.
