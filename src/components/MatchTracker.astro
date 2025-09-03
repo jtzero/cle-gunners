@@ -108,10 +108,15 @@ import Tile from "@/components/Tile.astro";
     const cache = localStorage.getItem(midWeek);
 
     if (cache) {
-      const cacheParsed = JSON.parse(cache)
-      if (cacheParsed?.utcDate && new Date(cacheParsed.utcDate).getTime() > today.getTime()) {
-        updateTracker(cacheParsed);
-        return;
+      try {
+        const cacheParsed = JSON.parse(cache)
+        if (cacheParsed?.utcDate && new Date(cacheParsed.utcDate).getTime() > today.getTime()) {
+          updateTracker(cacheParsed);
+          return;
+        }
+      } catch (e) {
+        console.log('error parsing cache, clearing', e);
+        localStorage.removeItem(midWeek);
       }
     }
     fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
