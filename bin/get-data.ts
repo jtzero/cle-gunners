@@ -61,7 +61,7 @@ const getNextWeek = (day: Date) => {
   return new Date(init.setDate(init.getDate() + 7));
 };
 
-const getInTwoWeeks = (day: Date) => {
+const getInThreeWeeks = (day: Date) => {
   const init = new Date(day);
   return new Date(init.setDate(init.getDate() + 14));
 };
@@ -124,7 +124,7 @@ try {
 
   const today = new Date();
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
-  const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
+  const endDate = startDateArg ? getNextWeek(startDate) : getInThreeWeeks(today);
   const thisMonth = startDate.getMonth();
   const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
   console.log(startDateArg, startDate, endDate, thisMonth);
