@@ -35,7 +35,7 @@
         "id": 2403,
         "startDate": "2025-08-15",
         "endDate": "2026-05-24",
-        "currentMatchday": 2,
+        "currentMatchday": 4,
         "winner": null
       },
       "id": 537817,
@@ -44,7 +44,7 @@
       "matchday": 4,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2025-08-28T00:20:56Z",
+      "lastUpdated": "2025-08-29T05:20:57Z",
       "homeTeam": {
         "id": 57,
         "name": "Arsenal FC",
