@@ -113,6 +113,33 @@ const writeDataToFile = async (filePath: string, data: any) => {
   fs.writeFileSync(filePath, jsonString, "utf-8");
 };
 
+const run = async (
+  api_key: string,
+  today: Date,
+  startDate: Date,
+  endDate: Date,
+  leagueID: string,
+  teamID: string,
+  seasonYear: number,
+) => {
+  console.log("Season:", seasonYear);
+  const startDateStr = format(startDate, "yyyy-MM-dd");
+  const endDateStr = format(endDate, "yyyy-MM-dd");
+
+  const requestURL = buildRequestURL(
+    teamID,
+    leagueID,
+    seasonYear,
+    startDateStr,
+    endDateStr,
+  );
+  console.log("Fetching Fixtures from:", requestURL);
+  const results = await fetchArsenalFixtures(api_key, requestURL);
+  console.log("Fixtures fetched:", results.resultSet.count);
+  const filePath = `${appRoot.path}/src/content/fixtures/${startDateStr}.json`;
+  console.log("Writing data to file...", filePath);
+  writeDataToFile(filePath, results);
+};
 try {
   console.log("Fetching data from API Sports...");
   const api_key = process.env.FOOTBALL_DATA_API_KEY!;
@@ -127,29 +154,30 @@ try {
   const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
   const thisMonth = startDate.getMonth();
   const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
-  console.log(startDateArg, startDate, endDate, thisMonth);
-  console.log("Season:", seasonYear);
   console.log("Fetching League ID...");
   const leagueID = await fetchPremierLeageID(api_key);
   console.log("Fetching team ID...");
   const id = await fetchTeamID(api_key, seasonYear);
   console.log("ID fetched:", id);
-  const startDateStr = format(startDate, "yyyy-MM-dd");
-  const endDateStr = format(endDate, "yyyy-MM-dd");
+  console.log(startDateArg, startDate, endDate, thisMonth);
+  run(api_key, today, startDate, endDate, leagueID, id, seasonYear);
 
-  const requestURL = buildRequestURL(
-    id,
-    leagueID,
-    seasonYear,
-    startDateStr,
-    endDateStr,
+  const secondRoundStartDate = endDate;
+  const secondRoundMonth = secondRoundStartDate.getMonth();
+  const secondRoundSeasonYear = getSeasonYear(
+    secondRoundStartDate.getFullYear(),
+    secondRoundMonth,
   );
-  console.log("Fetching Fixtures from:", requestURL);
-  const results = await fetchArsenalFixtures(api_key, requestURL);
-  console.log("Fixtures fetched:", results.resultSet.count);
-  const filePath = `${appRoot.path}/src/content/fixtures/${startDateStr}.json`;
-  console.log("Writing data to file...", filePath);
-  writeDataToFile(filePath, results);
+  console.log(startDateArg, startDate, endDate, thisMonth);
+  run(
+    api_key,
+    today,
+    secondRoundStartDate,
+    getNextWeek(endDate),
+    leagueID,
+    id,
+    secondRoundSeasonYear,
+  );
 } catch (error) {
   console.error("Error fetching data:", error);
   process.exit(1);
