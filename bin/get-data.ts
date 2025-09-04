@@ -63,7 +63,7 @@ const getNextWeek = (day: Date) => {
 
 const getInThreeWeeks = (day: Date) => {
   const init = new Date(day);
-  return new Date(init.setDate(init.getDate() + 14));
+  return new Date(init.setDate(init.getDate() + 21));
 };
 
 const getTomorrow = (day: Date) => {
