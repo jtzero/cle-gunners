@@ -1,17 +1,25 @@
 import { glob } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
 
-const postSchema = z.object({
+const simplePostSchema = z.object({});
+
+const imagePostSchema = z.object({
   title: z.string().optional(),
-  date: z.date(),
-  image: z.string().optional(),
-  imageDimensions: z.string().optional(),
+  date: z.date().optional(),
+  image: z.string(),
+  imageDimensions: z.string(),
   imagePlacement: z.string().optional(),
   parsedImageWidth: z.number().optional(),
   parsedImageHeight: z.number().optional(),
   imageLink: z.string().optional(),
-  video: z.string().optional(),
-  videoDimensions: z.string().optional(),
+  metaTitle: z.string().optional(),
+});
+
+const videoPostSchema = z.object({
+  title: z.string(),
+  date: z.date().optional(),
+  video: z.string(),
+  videoDimensions: z.string(),
   parsedVideoWidth: z.number().optional(),
   parsedVideoHeight: z.number().optional(),
   videoPlacement: z.string().optional(),
@@ -21,7 +29,7 @@ const postSchema = z.object({
 
 const postsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
-  schema: postSchema,
+  schema: z.union([imagePostSchema, videoPostSchema, simplePostSchema]),
 });
 
 const pinnedPostsCollection = defineCollection({
@@ -47,7 +55,7 @@ const pagesCollection = defineCollection({
     image: z.string().optional(),
     imageDimensions: z.string().optional(),
     layout: z.string().optional(),
-    posts: z.array(z.string()).optional(),
+    posts: z.array(z.string()).default([]),
   }),
 });
 
