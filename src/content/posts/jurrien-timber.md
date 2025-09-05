@@ -1,6 +1,5 @@
 ---
 title: Jurrien Timber
-date: 2020-01-06
 video: /videos/jurrien-timber.mp4
 videoDimensions: 480x854
 videoPlacement: body

@@ -23,7 +23,10 @@ const page = await getEntry("pages", slug);
 if (!page) {
   return Astro.redirect("/404");
 }
-const subPosts = await getEntries(page.data.posts.map((post_id) => { return {collection: 'posts', id: post_id } } ));
+// TODO: test that all entries are returned
+const subPosts = await getEntries(page.data.posts.map((post_id) => {
+  return {collection: 'posts', id: post_id }
+}));
 
 ---
 
