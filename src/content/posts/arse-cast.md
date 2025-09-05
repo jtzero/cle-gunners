@@ -1,6 +1,5 @@
 ---
 title: 'ArseCast'
-date: 2025-11-12T05:00:00Z
 image: '/images/arsecast.jpeg'
 imagePlacement: 'body'
 imageDimensions: '640x640'

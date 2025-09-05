@@ -1,6 +1,5 @@
 ---
 title: I Believe in Jesus
-date: 2020-01-03
 video: https://www.youtube.com/embed/FL2GUe4i-KI?si=7vEPMZD5rJ3WiNs9
 videoDimensions: 560x315
 orientation: landscape
