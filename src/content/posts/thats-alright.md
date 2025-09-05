@@ -1,6 +1,5 @@
 ---
 title: That's Alright
-date: 2020-01-05
 video: https://www.youtube.com/embed/1MqLehx0Uno?si=iGMGljdQbZymIT6D
 videoDimensions: 560x315
 videoPlacement: body
