@@ -26,6 +26,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.DATA_PIPELINE_PR_AUTOMATION_KEY }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -48,7 +50,6 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: automated data update"
-          draft: always-true
           branch: "data-update"
           base: "main"
           title: "Fixture Data Update"
