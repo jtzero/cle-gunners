@@ -6,14 +6,14 @@ export const GET: APIRoute = async ({ params, request }) => {
   const { date } = params;
 
   const entry = (await getEntry(
-    "fixtures",
+    "manualFixtures",
     date,
-  )) as CollectionEntry<"fixtures">;
+  )) as CollectionEntry<"manualFixtures">;
   return new Response(JSON.stringify(entry.data));
 };
 
 export async function getStaticPaths() {
-  const allFixtures = await getCollection("fixtures");
+  const allFixtures = await getCollection("manualFixtures");
   const paths = allFixtures.map((fixture) => {
     return {
       params: {
