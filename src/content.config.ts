@@ -135,6 +135,30 @@ const fixturesCollection = defineCollection({
   }),
 });
 
+const manualFixturesCollection = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "src/content/manual-fixtures" }),
+  schema: z.object({
+    filters: z.object({
+      dateFrom: z.string().date().optional(),
+      dateTo: z.string().date().optional(),
+      permission: z.string(),
+      competitions: z.coerce.number().optional(),
+      limit: z.number(),
+    }),
+    resultSet: z.object({
+      count: z.number(),
+      competitions: z.string().optional(),
+      first: z.string().date().optional(),
+      last: z.string().date().optional(),
+      played: z.number().optional(),
+      wins: z.number().optional(),
+      draws: z.number().optional(),
+      losses: z.number().optional(),
+    }),
+    matches: z.array(matchSchema),
+  }),
+});
+
 export type MatchType = z.infer<typeof matchSchema>;
 export type PostType = z.infer<typeof postSchema>;
 export const collections = {
@@ -142,4 +166,5 @@ export const collections = {
   pinnedPosts: pinnedPostsCollection,
   pages: pagesCollection,
   fixtures: fixturesCollection,
+  manualFixtures: manualFixturesCollection,
 };
