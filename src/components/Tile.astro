@@ -30,7 +30,7 @@ const showTopBorderStyling = Astro.slots.has("header") ? "" : topBorderStyling;
   <div data-testid="tile-header-image-container" class={`${headerStyling} tile-image-container w-auto sm:w-full ${hideIfNoHeaderSlot}`}>
     <slot name="header" />
   </div>
-  <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full" {...{ [dataAttr]: rest[dataAttr] }}>
+  <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full text-center" {...{ [dataAttr]: rest[dataAttr] }}>
     <slot name="title"/>
     <hr data-testid="divider" class="border-inset border-b-1 border-divider w-full" />
     <div data-testid="tile-body" class={`${bodyStyling} tile-body max-w-[100%] align-center pt-2`} {...{ [dataAttr]: rest[dataAttr] }}>
