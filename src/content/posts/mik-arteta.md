@@ -1,7 +1,7 @@
 ---
 title: Super Mik Arteta
 video: https://www.youtube.com/embed/F0rdZ54P7NA?si=U-sVij0rxWZbBeU_
-date: 2020-01-07
+videoDimensions: 430x150
 videoPlacement: body
 orientation: portrait
 ---

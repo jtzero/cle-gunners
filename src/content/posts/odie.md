@@ -1,6 +1,5 @@
 ---
 title: Odie!
-date: 2020-01-04
 image: /images/odie.png
 imageDimensions: 600x338
 imagePlacement: body
