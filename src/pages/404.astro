@@ -4,6 +4,19 @@ import type { CollectionEntry } from "astro:content";
 import { getEntry, render } from "astro:content";
 import Post from "@/components/Post.astro";
 const entry = (await getEntry("pages", "404")) as CollectionEntry<"pages">;
+const json_request_url = new URL(Astro.request.url)
+if (json_request_url.pathname.endsWith(".json")) {
+  return new Response(JSON.stringify({
+    error_code: "not_found",
+    message: `The requested resource could not be found.`,
+    path: new URL(Astro.request.url).pathname,
+  }),{
+    status: 404,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+}
 ---
 
 <Base title={entry.data.title} metaTitle={entry.data.metaTitle}>
