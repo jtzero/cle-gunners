@@ -210,7 +210,7 @@ import Tile from "@/components/Tile.astro";
         const json = await response.json();
         nearestMatches = laterThanNow(json.matches, today);
       }
-    })
+    });
     await fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
       nearestMatches = await filterMatchResponse(nearestMatches, response, today);
     });
@@ -218,7 +218,7 @@ import Tile from "@/components/Tile.astro";
     if (!nearestMatches[0]) {
       const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
       checks.push(nextMidWeek);
-      fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(async (response) => {
+      await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(async (response) => {
         if (response.status === 200) {
           const json = await response.json();
           nearestMatches = laterThanNow(json.matches, today);
@@ -232,7 +232,7 @@ import Tile from "@/components/Tile.astro";
     if (!nearestMatches[0]) {
       const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
       checks.push(thirdMidWeek);
-      fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(async (response) => {
+      await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(async (response) => {
         if (response.status === 200) {
           const json = await response.json();
           nearestMatches = laterThanNow(json.matches, today);
