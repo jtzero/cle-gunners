@@ -77,6 +77,8 @@ import Tile from "@/components/Tile.astro";
   };
   const showData = (element: HTMLElement) => {
     Array.from(element.querySelectorAll('[data-show-after-load]')).map((el) => {
+      // TODO: remove when better visibilty tracking is implemented
+      el.removeAttribute('data-show-after-load');
       el.classList.remove('hidden');
     });
   };
@@ -169,16 +171,33 @@ import Tile from "@/components/Tile.astro";
     }
     return [nearestMatch, doubleHeaderMatch].filter(Boolean);
   };
+  const hideDoubleHeaderItems = (matchTracker: HTMLElement, matchTrackerDoubleHeader: HTMLElement) => {
+    const headerElement = matchTracker.querySelector('[updates="double-header"]')
+    if (headerElement) {
+      // TODO: this conflicts with data-show-after-load
+      headerElement.classList.add('hidden');
+    }
+    matchTrackerDoubleHeader.classList.add('hidden');
+  };
 
   const checkForMatches = async () => {
     const today = new Date();
     const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
+    const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+    const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
     let checks = [midWeek]
-    const cache = localStorage.getItem(`${midWeek}-v${VERSION}`);
-    const matchTracker = document.getElementById('match-tracker')
-    const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header')
-    const audioPlayer = document.getElementById('audio-player')
+    const matchTracker = document.getElementById('match-tracker');
+    const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header');
+    const audioPlayer = document.getElementById('audio-player');
     let doubleHeaderMatch: MatchType | undefined = undefined;
+
+    let cache = localStorage.getItem(`${midWeek}-v${VERSION}`);
+    if (!cache) {
+      cache = localStorage.getItem(`${nextMidWeek}-v${VERSION}`);
+      if (!cache) {
+        cache = localStorage.getItem(`${thirdMidWeek}-v${VERSION}`);
+      }
+    }
 
     if (cache) {
       try {
@@ -195,6 +214,8 @@ import Tile from "@/components/Tile.astro";
               doubleHeaderMatch = matches[1];
               matchTrackerDoubleHeader.classList.remove('hidden');
               updateTracker(matchTrackerDoubleHeader, audioPlayer, doubleHeaderMatch);
+            } else {
+              hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
             }
             return;
           }
@@ -216,7 +237,6 @@ import Tile from "@/components/Tile.astro";
     });
     let foundWeekID = midWeek;
     if (!nearestMatches[0]) {
-      const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
       checks.push(nextMidWeek);
       await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(async (response) => {
         if (response.status === 200) {
@@ -230,7 +250,6 @@ import Tile from "@/components/Tile.astro";
       });
     }
     if (!nearestMatches[0]) {
-      const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
       checks.push(thirdMidWeek);
       await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(async (response) => {
         if (response.status === 200) {
@@ -257,6 +276,8 @@ import Tile from "@/components/Tile.astro";
       if (nearestMatches.length > 1) {
         matchTrackerDoubleHeader.classList.remove('hidden');
         updateTracker(matchTrackerDoubleHeader, nearestMatches[1], audioPlayer);
+      } else {
+        hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
       }
     } else {
       console.log('no match found in', checks);
@@ -265,6 +286,12 @@ import Tile from "@/components/Tile.astro";
 
   document.addEventListener("astro:page-load", () => {
     checkForMatches();
+    //TODO: change to smaller interval, but also prevent unnecessary requests
     setInterval(checkForMatches, 600000);
+  });
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === 'visible') {
+      checkForMatches();
+    }
   });
 </script>
