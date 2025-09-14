@@ -58,11 +58,40 @@ import Tile from "@/components/Tile.astro";
   import { startOfWeek, format, addDays } from "date-fns";
   import { fromZonedTime } from 'date-fns-tz';
   import type { MatchType } from "@/types/match";
+  const easterEggImage = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
   const VERSION = 1;
   const DOUBLE_HEADER_FLAG = 'double-header';
+  const imageLoadListerners = {
+    "match-tracker": {
+      home: false,
+      away: false
+    },
+    "match-tracker-double-header": {
+      home: false,
+      away: false
+    }
+  };
+  const easterEggListerners = {
+    "id": crypto.randomUUID(),
+    "match-tracker": {
+      home: undefined,
+      away: undefined
+    },
+    "match-tracker-double-header": {
+      home: undefined,
+      away: undefined
+    }
+  };
+  const getToday = () => {
+    return window.today || new Date();
+  };
+  const preloadEasterEggImage = async () => {
+    const img = new Image();
+    img.src = easterEggImage;
+  };
   const toggleEasterEgg = (element: HTMLElement, originalSrc: string, count: number, audioElement: HTMLAudioElement) => {
     if (count % 2 == 0) {
-      element.src = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
+      element.src = easterEggImage;
       audioElement.play();
     } else {
       audioElement.pause();
@@ -85,42 +114,63 @@ import Tile from "@/components/Tile.astro";
   const SrcImagesToUpdate = 2;
   let toggleEasterEggCountHome = 0;
   let toggleEasterEggCountAway = 0;
-  const updateTracker = (element: HTMLElement, nearestMatch: MatchType, audioElement: HTMLAudioElement, flags: Array<string> = []) => {
-    let imageLoadCount = 0;
-    Array.from(element.querySelectorAll('[updates]')).map((el) => {
+  const updateTracker = (tracker: HTMLElement, nearestMatch: MatchType, audioElement: HTMLAudioElement, flags: Array<string> = []) => {
+
+    const listenersForThisTracker = easterEggListerners[tracker.id];
+    let imagesToLoadCount = 0;
+    Array.from(tracker.querySelectorAll('[updates]')).map((el) => {
       if (el.getAttribute('updates') == 'away-team-image') {
-        imageLoadCount++;
+        imagesToLoadCount++;
         if (nearestMatch.awayTeam.shortName == 'Man Utd') {
-          el.addEventListener('click', () => {
-            toggleEasterEgg(el, nearestMatch.awayTeam.crest, toggleEasterEggCountAway, audioElement);
-            toggleEasterEggCountAway++;
-          });
-        };
-        el.addEventListener('load', () => {
-          console.log('imageLoaded', imageLoadCount);
-          if (imageLoadCount == SrcImagesToUpdate) {
-            removeSpinner(element);
-            showData(element);
-            imageLoadCount = 0;
+          if (!listenersForThisTracker.away) {
+            listenersForThisTracker.away = () => {
+              toggleEasterEgg(el, nearestMatch.awayTeam.crest, toggleEasterEggCountAway, audioElement);
+              toggleEasterEggCountAway++;
+            };
+            el.addEventListener('click', listenersForThisTracker.away);
           }
-        });
+        } else if (listenersForThisTracker.away) {
+          el.removeEventListener('click', listenersForThisTracker.away);
+          listenersForThisTracker.away = undefined;
+        };
+        if (!imageLoadListerners[tracker.id].away) {
+          el.addEventListener('load', () => {
+            console.log('imageLoaded', imagesToLoadCount);
+
+            if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
+              removeSpinner(tracker);
+              showData(tracker);
+              imagesToLoadCount = 0;
+            }
+          });
+          imageLoadListerners[tracker.id].away = true;
+        }
         el.src = nearestMatch.awayTeam.crest;
       } else if (el.getAttribute('updates') == 'home-team-image') {
-        imageLoadCount++;
+        imagesToLoadCount++;
         if (nearestMatch.homeTeam.shortName == 'Man Utd') {
-          el.addEventListener('click', () => {
-            toggleEasterEgg(el, nearestMatch.homeTeam.crest, toggleEasterEggCountHome, audioElement);
-            toggleEasterEggCountHome++;
-          });
-        };
-        el.addEventListener('load', () => {
-          console.log('imageLoaded', imageLoadCount);
-          if (imageLoadCount == SrcImagesToUpdate) {
-            removeSpinner(element);
-            showData(element);
-            imageLoadCount = 0;
+          if (!listenersForThisTracker.home) {
+            listenersForThisTracker.home = () => {
+              toggleEasterEgg(el, nearestMatch.homeTeam.crest, toggleEasterEggCountHome, audioElement);
+              toggleEasterEggCountHome++;
+            };
+            el.addEventListener('click', listenersForThisTracker.home);
           }
-        });
+        } else if (listenersForThisTracker.home) {
+          el.removeEventListener('click', listenersForThisTracker.home);
+          listenersForThisTracker.home = undefined;
+        };
+        if (!imageLoadListerners[tracker.id].home) {
+          el.addEventListener('load', () => {
+            console.log('imageLoaded', imagesToLoadCount);
+            if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
+              removeSpinner(tracker);
+              showData(tracker);
+              imagesToLoadCount = 0;
+            }
+          });
+          imageLoadListerners[tracker.id].home = true;
+        }
         el.src = nearestMatch.homeTeam.crest;
       } else if (el.getAttribute('updates') == 'away-team-name') {
         el.textContent = nearestMatch.awayTeam.shortName;
@@ -179,18 +229,7 @@ import Tile from "@/components/Tile.astro";
     }
     matchTrackerDoubleHeader.classList.add('hidden');
   };
-
-  const checkForMatches = async () => {
-    const today = new Date();
-    const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
-    const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
-    const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
-    let checks = [midWeek]
-    const matchTracker = document.getElementById('match-tracker');
-    const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header');
-    const audioPlayer = document.getElementById('audio-player');
-    let doubleHeaderMatch: MatchType | undefined = undefined;
-
+  const digCache = (midWeek: string, nextMidWeek: string, thirdMidWeek: string) => {
     let cache = localStorage.getItem(`${midWeek}-v${VERSION}`);
     if (!cache) {
       cache = localStorage.getItem(`${nextMidWeek}-v${VERSION}`);
@@ -198,7 +237,19 @@ import Tile from "@/components/Tile.astro";
         cache = localStorage.getItem(`${thirdMidWeek}-v${VERSION}`);
       }
     }
+    return cache;
+  };
 
+  const checkForMatches = async (today: Date) => {
+    const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
+    const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+    const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+    let checks = [midWeek]
+    const matchTracker = document.getElementById('match-tracker');
+    const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header');
+    const audioPlayer = document.getElementById('audio-player');
+
+    let cache = digCache(midWeek, nextMidWeek, thirdMidWeek);
     if (cache) {
       try {
         const cacheParsed = JSON.parse(cache)
@@ -211,9 +262,8 @@ import Tile from "@/components/Tile.astro";
           if (matches.length > 0) {
             updateTracker(matchTracker, matches[0], audioPlayer, flags);
             if (matches.length > 1) {
-              doubleHeaderMatch = matches[1];
               matchTrackerDoubleHeader.classList.remove('hidden');
-              updateTracker(matchTrackerDoubleHeader, audioPlayer, doubleHeaderMatch);
+              updateTracker(matchTrackerDoubleHeader, audioPlayer, matches[1]);
             } else {
               hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
             }
@@ -284,14 +334,15 @@ import Tile from "@/components/Tile.astro";
     }
   };
 
+  preloadEasterEggImage();
   document.addEventListener("astro:page-load", () => {
-    checkForMatches();
+    checkForMatches(getToday());
     //TODO: change to smaller interval, but also prevent unnecessary requests
-    setInterval(checkForMatches, 600000);
+    setInterval(() => { checkForMatches(getToday()); }, 600000);
   });
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === 'visible') {
-      checkForMatches();
+      checkForMatches(getToday());
     }
   });
 </script>
