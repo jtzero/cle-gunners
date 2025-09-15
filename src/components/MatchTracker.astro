@@ -59,7 +59,7 @@ import Tile from "@/components/Tile.astro";
   import { fromZonedTime } from 'date-fns-tz';
   import type { MatchType } from "@/types/match";
   const easterEggImage = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
-  const VERSION = 1;
+  const CACHE_VERSION = 1;
   const DOUBLE_HEADER_FLAG = 'double-header';
   const imageLoadListerners = {
     "match-tracker": {
@@ -82,6 +82,11 @@ import Tile from "@/components/Tile.astro";
       away: undefined
     }
   };
+  const LOADING_STATUSES = {
+    loading: 'LOADING',
+    loaded: 'LOADED',
+  };
+  let loading_status = LOADING_STATUSES.loading;
   const getToday = () => {
     return window.today || new Date();
   };
@@ -140,6 +145,7 @@ import Tile from "@/components/Tile.astro";
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
               removeSpinner(tracker);
               showData(tracker);
+              loading_status = LOADING_STATUSES.loaded;
               imagesToLoadCount = 0;
             }
           });
@@ -166,6 +172,7 @@ import Tile from "@/components/Tile.astro";
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
               removeSpinner(tracker);
               showData(tracker);
+              loading_status = LOADING_STATUSES.loaded;
               imagesToLoadCount = 0;
             }
           });
@@ -229,27 +236,35 @@ import Tile from "@/components/Tile.astro";
     }
     matchTrackerDoubleHeader.classList.add('hidden');
   };
-  const digCache = (midWeek: string, nextMidWeek: string, thirdMidWeek: string) => {
-    let cache = localStorage.getItem(`${midWeek}-v${VERSION}`);
-    if (!cache) {
-      cache = localStorage.getItem(`${nextMidWeek}-v${VERSION}`);
-      if (!cache) {
-        cache = localStorage.getItem(`${thirdMidWeek}-v${VERSION}`);
+  const digCache = (midWeek: string, nextMidWeek: string, thirdMidWeek: string): [string, string] | [] => {
+    let cache = localStorage.getItem(`${midWeek}-v${CACHE_VERSION}`);
+    if (cache) {
+      return [cache, midWeek];
+    } else {
+      cache = localStorage.getItem(`${nextMidWeek}-v${CACHE_VERSION}`);
+      if (cache) {
+        return [cache, nextMidWeek];
+      } else {
+        cache = localStorage.getItem(`${thirdMidWeek}-v${CACHE_VERSION}`);
+        if (cache) {
+          return [cache, thirdMidWeek];
+        } else {
+          return [];
+        }
       }
     }
-    return cache;
   };
 
   const checkForMatches = async (today: Date) => {
     const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
     const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
     const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
-    let checks = [midWeek]
+    let checks = [midWeek];
     const matchTracker = document.getElementById('match-tracker');
     const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header');
     const audioPlayer = document.getElementById('audio-player');
 
-    let cache = digCache(midWeek, nextMidWeek, thirdMidWeek);
+    let [cache, foundWeekID] = digCache(midWeek, nextMidWeek, thirdMidWeek);
     if (cache) {
       try {
         const cacheParsed = JSON.parse(cache)
@@ -257,22 +272,26 @@ import Tile from "@/components/Tile.astro";
           const matches = laterThanNow(cacheParsed.matches, today);
           let flags = [];
           if (matches.length > 1) {
-            flags.push(DOUBLE_HEADER_FLAG);
+            if (loading_status == LOADING_STATUSES.loaded) {
+              return loading_status = LOADING_STATUSES.loaded;
+            } else {
+              flags.push(DOUBLE_HEADER_FLAG);
+            }
           }
           if (matches.length > 0) {
             updateTracker(matchTracker, matches[0], audioPlayer, flags);
             if (matches.length > 1) {
               matchTrackerDoubleHeader.classList.remove('hidden');
-              updateTracker(matchTrackerDoubleHeader, audioPlayer, matches[1]);
+              updateTracker(matchTrackerDoubleHeader, matches[1], audioPlayer);
             } else {
               hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
             }
-            return;
+            return loading_status = LOADING_STATUSES.loaded;
           }
         }
       } catch (e) {
         console.log('error parsing cache, clearing', e);
-        localStorage.removeItem(`${midWeek}-v${VERSION}`);
+        localStorage.removeItem(`${midWeek}-v${CACHE_VERSION}`);
       }
     }
     let nearestMatches: Array<MatchType> | [] = [];
@@ -284,8 +303,8 @@ import Tile from "@/components/Tile.astro";
     });
     await fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
       nearestMatches = await filterMatchResponse(nearestMatches, response, today);
+      foundWeekID = midWeek;
     });
-    let foundWeekID = midWeek;
     if (!nearestMatches[0]) {
       checks.push(nextMidWeek);
       await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(async (response) => {
@@ -314,7 +333,7 @@ import Tile from "@/components/Tile.astro";
     }
 
     if (nearestMatches[0]) {
-      localStorage.setItem(`${foundWeekID}-v${VERSION}`, JSON.stringify({
+      localStorage.setItem(`${foundWeekID}-v${CACHE_VERSION}`, JSON.stringify({
         matches: nearestMatches,
       }));
       let flags = [];
@@ -329,6 +348,7 @@ import Tile from "@/components/Tile.astro";
       } else {
         hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
       }
+      return loading_status = LOADING_STATUSES.loaded;
     } else {
       console.log('no match found in', checks);
     }
@@ -336,9 +356,7 @@ import Tile from "@/components/Tile.astro";
 
   preloadEasterEggImage();
   document.addEventListener("astro:page-load", () => {
-    checkForMatches(getToday());
-    //TODO: change to smaller interval, but also prevent unnecessary requests
-    setInterval(() => { checkForMatches(getToday()); }, 600000);
+    setInterval(() => { checkForMatches(getToday()); }, 4000);
   });
   document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === 'visible') {
