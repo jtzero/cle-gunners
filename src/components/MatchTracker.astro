@@ -57,6 +57,7 @@ import Tile from "@/components/Tile.astro";
 <script>
   import { startOfWeek, format, addDays } from "date-fns";
   import { fromZonedTime } from 'date-fns-tz';
+  import { v4 as uuid } from 'uuid';
   import type { MatchType } from "@/types/match";
   const easterEggImage = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
   const CACHE_VERSION = 1;
@@ -72,7 +73,7 @@ import Tile from "@/components/Tile.astro";
     }
   };
   const easterEggListerners = {
-    "id": crypto.randomUUID(),
+    "id": uuid(),
     "match-tracker": {
       home: undefined,
       away: undefined
