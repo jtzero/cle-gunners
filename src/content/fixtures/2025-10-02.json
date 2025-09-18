@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2025-09-25",
-    "dateTo": "2025-10-02",
+    "dateFrom": "2025-10-02",
+    "dateTo": "2025-10-09",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2025-09-28",
-    "last": "2025-09-28",
+    "first": "2025-10-04",
+    "last": "2025-10-04",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 5,
         "winner": null
       },
-      "id": 537842,
-      "utcDate": "2025-09-28T15:30:00Z",
+      "id": 537847,
+      "utcDate": "2025-10-04T14:00:00Z",
       "status": "TIMED",
-      "matchday": 6,
+      "matchday": 7,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2025-08-29T05:20:57Z",
       "homeTeam": {
-        "id": 67,
-        "name": "Newcastle United FC",
-        "shortName": "Newcastle",
-        "tla": "NEW",
-        "crest": "https://crests.football-data.org/67.png"
-      },
-      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 563,
+        "name": "West Ham United FC",
+        "shortName": "West Ham",
+        "tla": "WHU",
+        "crest": "https://crests.football-data.org/563.png"
       },
       "score": {
         "winner": null,
