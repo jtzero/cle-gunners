@@ -74,7 +74,7 @@ import Tile from "@/components/Tile.astro";
     }
   };
   let imageLoadListeners = cloneDeep(imageLoadListenersInit);
-  const easterEggListeners = {
+  const easterEggListenersInit = {
     "id": uuid(),
     "match-tracker": {
       home: undefined,
@@ -85,11 +85,13 @@ import Tile from "@/components/Tile.astro";
       away: undefined
     }
   };
+  let easterEggListeners = cloneDeep(easterEggListenersInit);
   const LOADING_STATUSES = {
     loading: 'LOADING',
     loaded: 'LOADED',
   };
   let loading_status = LOADING_STATUSES.loading;
+  let matchesOnScreen = {};
   const getToday = () => {
     return window.today || new Date();
   };
@@ -123,7 +125,7 @@ import Tile from "@/components/Tile.astro";
   let toggleEasterEggCountHome = 0;
   let toggleEasterEggCountAway = 0;
   const updateTracker = (tracker: HTMLElement, nearestMatch: MatchType, audioElement: HTMLAudioElement, flags: Array<string> = []) => {
-
+    matchesOnScreen[nearestMatch.id] = nearestMatch;
     const listenersForThisTracker = easterEggListeners[tracker.id];
     let imagesToLoadCount = 0;
     Array.from(tracker.querySelectorAll('[updates]')).map((el) => {
@@ -143,7 +145,7 @@ import Tile from "@/components/Tile.astro";
         };
         if (!imageLoadListeners[tracker.id].away) {
           el.addEventListener('load', () => {
-            console.log('imageLoaded', imagesToLoadCount);
+            console.log('imageLoaded for ' + tracker.id, imagesToLoadCount);
 
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
               removeSpinner(tracker);
@@ -171,7 +173,7 @@ import Tile from "@/components/Tile.astro";
         };
         if (!imageLoadListeners[tracker.id].home) {
           el.addEventListener('load', () => {
-            console.log('imageLoaded', imagesToLoadCount);
+            console.log('imageLoaded ' + tracker.id, imagesToLoadCount);
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
               removeSpinner(tracker);
               showData(tracker);
@@ -239,23 +241,50 @@ import Tile from "@/components/Tile.astro";
     }
     matchTrackerDoubleHeader.classList.add('hidden');
   };
-  const digCache = (midWeek: string, nextMidWeek: string, thirdMidWeek: string): [string, string] | [] => {
-    let cache = localStorage.getItem(`${midWeek}-v${CACHE_VERSION}`);
-    if (cache) {
-      return [cache, midWeek];
-    } else {
-      cache = localStorage.getItem(`${nextMidWeek}-v${CACHE_VERSION}`);
+  type CacheParsedType = {
+    matches: Array<MatchType>
+  }
+  const getCacheLaterThanNow = (id: string, today: Date): MatchType[] | [] => {
+    try {
+      let cache = localStorage.getItem(`${id}-v${CACHE_VERSION}`);
       if (cache) {
-        return [cache, nextMidWeek];
+        let parsed: CacheParsedType = JSON.parse(cache);
+        return laterThanNow(parsed.matches, today);
       } else {
-        cache = localStorage.getItem(`${thirdMidWeek}-v${CACHE_VERSION}`);
-        if (cache) {
-          return [cache, thirdMidWeek];
+        return [];
+      }
+    } catch (e) {
+      console.log('error parsing cache, clearing', e);
+      localStorage.removeItem(`${id}-v${CACHE_VERSION}`);
+      return [];
+    }
+  };
+
+  const digCache = (today: Date, midWeek: string, nextMidWeek: string, thirdMidWeek: string): [MatchType[] | [], string | undefined] | [] => {
+    let foundWeekID = midWeek;
+    let cache = getCacheLaterThanNow(midWeek, today);
+    if (cache.length > 0) {
+      foundWeekID = midWeek;
+      return [cache, foundWeekID];
+    } else {
+      cache = getCacheLaterThanNow(nextMidWeek, today);
+      if (cache.length > 0) {
+        foundWeekID = nextMidWeek;
+        return [cache, foundWeekID];
+      } else {
+        cache = getCacheLaterThanNow(thirdMidWeek, today);
+        if (cache.length > 0) {
+          foundWeekID = thirdMidWeek;
+          return [cache, foundWeekID];
         } else {
-          return [];
+          return [[], undefined];
         }
       }
     }
+  };
+
+  const isMatchInSlot = (matchSlotName: string, match: MatchType) => {
+    return matchesOnScreen[matchSlotName]?.id === match.id;
   };
 
   const checkForMatches = async (today: Date, callerID: string) => {
@@ -267,35 +296,33 @@ import Tile from "@/components/Tile.astro";
     const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header');
     const audioPlayer = document.getElementById('audio-player');
 
-    let [cache, foundWeekID] = digCache(midWeek, nextMidWeek, thirdMidWeek);
-    if (cache) {
-      try {
-        const cacheParsed = JSON.parse(cache)
-        if (cacheParsed?.matches && cacheParsed.matches.length > 0) {
-          const matches = laterThanNow(cacheParsed.matches, today);
-          let flags = [];
-          if (matches.length > 1) {
-            if (loading_status == LOADING_STATUSES.loaded) {
-              return;
-            } else {
-              flags.push(DOUBLE_HEADER_FLAG);
-            }
-          }
-          if (matches.length > 0) {
-            updateTracker(matchTracker, matches[0], audioPlayer, flags);
-            if (matches.length > 1) {
-              matchTrackerDoubleHeader.classList.remove('hidden');
-              updateTracker(matchTrackerDoubleHeader, matches[1], audioPlayer);
-            } else {
-              hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
-              loading_status = LOADING_STATUSES.loaded;
-            }
-            return;
-          }
+    let [cachedMatches, foundWeekID] = digCache(today, midWeek, nextMidWeek, thirdMidWeek);
+    if (cachedMatches.length > 0) {
+      let flags = [];
+      if (cachedMatches.length > 1) {
+        flags.push(DOUBLE_HEADER_FLAG);
+      }
+      if (cachedMatches.length > 0) {
+        let runningUpdates = false;
+        if (!isMatchInSlot('main', cachedMatches[0])) {
+          runningUpdates = true;
+          updateTracker(matchTracker, cachedMatches[0], audioPlayer, flags);
         }
-      } catch (e) {
-        console.log('error parsing cache, clearing', e);
-        localStorage.removeItem(`${midWeek}-v${CACHE_VERSION}`);
+        if (cachedMatches.length > 1) {
+          if (!isMatchInSlot('double-header', cachedMatches[1])) {
+            matchTrackerDoubleHeader.classList.remove('hidden');
+            updateTracker(matchTrackerDoubleHeader, cachedMatches[1], audioPlayer);
+            runningUpdates = true;
+          }
+        } else {
+          hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
+          loading_status = LOADING_STATUSES.loaded;
+        }
+        if (!runningUpdates) {
+          runningUpdates = false;
+          loading_status = LOADING_STATUSES.loaded;
+        }
+        return;
       }
     }
     let nearestMatches: Array<MatchType> | [] = [];
@@ -344,11 +371,14 @@ import Tile from "@/components/Tile.astro";
       if (nearestMatches.length > 1) {
         flags.push(DOUBLE_HEADER_FLAG);
       }
-      updateTracker(matchTracker, nearestMatches[0], audioPlayer, flags);
-
+      if (!isMatchInSlot('main', nearestMatches[0])) {
+        updateTracker(matchTracker, nearestMatches[0], audioPlayer, flags);
+      }
       if (nearestMatches.length > 1) {
         matchTrackerDoubleHeader.classList.remove('hidden');
-        updateTracker(matchTrackerDoubleHeader, nearestMatches[1], audioPlayer);
+        if (!isMatchInSlot('double-header', nearestMatches[1])) {
+          updateTracker(matchTrackerDoubleHeader, nearestMatches[1], audioPlayer);
+        }
       } else {
         hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
         loading_status = LOADING_STATUSES.loaded;
@@ -358,16 +388,22 @@ import Tile from "@/components/Tile.astro";
     }
   };
 
+  const onPageWithMatchTracker = () => {
+    return document.getElementById('match-tracker') !== undefined;
+  };
+
   preloadEasterEggImage();
   let addedPolling = false;
   document.addEventListener("astro:page-load", () => {
-    if (document.getElementById('match-tracker')) {
+    if (onPageWithMatchTracker()) {
+      matchesOnScreen = {};
+      easterEggListeners = cloneDeep(easterEggListenersInit);
       imageLoadListeners = cloneDeep(imageLoadListenersInit);
       loading_status = LOADING_STATUSES.loading;
       checkForMatches(getToday(), 'page-load').then(() => {
         if (!addedPolling) {
           setInterval(() => {
-            if (loading_status != LOADING_STATUSES.loading) {
+            if (onPageWithMatchTracker() && loading_status != LOADING_STATUSES.loading) {
               loading_status = LOADING_STATUSES.loading;
               checkForMatches(getToday(), 'interval');
             }
@@ -377,8 +413,9 @@ import Tile from "@/components/Tile.astro";
       });
     }
   });
+
   document.addEventListener("visibilitychange", () => {
-    if (document.getElementById('match-tracker') && document.visibilityState === 'visible' && loading_status != LOADING_STATUSES.loading) {
+    if (onPageWithMatchTracker() && document.visibilityState === 'visible' && loading_status != LOADING_STATUSES.loading) {
       loading_status = LOADING_STATUSES.loading;
       checkForMatches(getToday(), 'visibilitychange');
     }
