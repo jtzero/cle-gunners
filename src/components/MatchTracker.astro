@@ -377,7 +377,7 @@ import Tile from "@/components/Tile.astro";
       });
     }
   });
-  document.addEventListener("astro:visibilitychange", () => {
+  document.addEventListener("visibilitychange", () => {
     if (document.visibilityState === 'visible' && loading_status != LOADING_STATUSES.loading) {
       loading_status = LOADING_STATUSES.loading;
       checkForMatches(getToday(), 'visibilitychange');
