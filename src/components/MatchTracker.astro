@@ -63,7 +63,7 @@ import Tile from "@/components/Tile.astro";
   const easterEggImage = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
   const CACHE_VERSION = 1;
   const DOUBLE_HEADER_FLAG = 'double-header';
-  const imageLoadListernersInit = {
+  const imageLoadListenersInit = {
     "match-tracker": {
       home: false,
       away: false
@@ -73,8 +73,8 @@ import Tile from "@/components/Tile.astro";
       away: false
     }
   };
-  let imageLoadListerners = cloneDeep(imageLoadListernersInit);
-  const easterEggListerners = {
+  let imageLoadListeners = cloneDeep(imageLoadListenersInit);
+  const easterEggListeners = {
     "id": uuid(),
     "match-tracker": {
       home: undefined,
@@ -124,7 +124,7 @@ import Tile from "@/components/Tile.astro";
   let toggleEasterEggCountAway = 0;
   const updateTracker = (tracker: HTMLElement, nearestMatch: MatchType, audioElement: HTMLAudioElement, flags: Array<string> = []) => {
 
-    const listenersForThisTracker = easterEggListerners[tracker.id];
+    const listenersForThisTracker = easterEggListeners[tracker.id];
     let imagesToLoadCount = 0;
     Array.from(tracker.querySelectorAll('[updates]')).map((el) => {
       if (el.getAttribute('updates') == 'away-team-image') {
@@ -141,7 +141,7 @@ import Tile from "@/components/Tile.astro";
           el.removeEventListener('click', listenersForThisTracker.away);
           listenersForThisTracker.away = undefined;
         };
-        if (!imageLoadListerners[tracker.id].away) {
+        if (!imageLoadListeners[tracker.id].away) {
           el.addEventListener('load', () => {
             console.log('imageLoaded', imagesToLoadCount);
 
@@ -152,7 +152,7 @@ import Tile from "@/components/Tile.astro";
               imagesToLoadCount = 0;
             }
           });
-          imageLoadListerners[tracker.id].away = true;
+          imageLoadListeners[tracker.id].away = true;
         }
         el.src = nearestMatch.awayTeam.crest;
       } else if (el.getAttribute('updates') == 'home-team-image') {
@@ -169,7 +169,7 @@ import Tile from "@/components/Tile.astro";
           el.removeEventListener('click', listenersForThisTracker.home);
           listenersForThisTracker.home = undefined;
         };
-        if (!imageLoadListerners[tracker.id].home) {
+        if (!imageLoadListeners[tracker.id].home) {
           el.addEventListener('load', () => {
             console.log('imageLoaded', imagesToLoadCount);
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
@@ -179,7 +179,7 @@ import Tile from "@/components/Tile.astro";
               imagesToLoadCount = 0;
             }
           });
-          imageLoadListerners[tracker.id].home = true;
+          imageLoadListeners[tracker.id].home = true;
         }
         el.src = nearestMatch.homeTeam.crest;
       } else if (el.getAttribute('updates') == 'away-team-name') {
@@ -362,7 +362,7 @@ import Tile from "@/components/Tile.astro";
   let addedPolling = false;
   document.addEventListener("astro:page-load", () => {
     if (document.getElementById('match-tracker')) {
-      imageLoadListerners = cloneDeep(imageLoadListernersInit);
+      imageLoadListeners = cloneDeep(imageLoadListenersInit);
       loading_status = LOADING_STATUSES.loading;
       checkForMatches(getToday(), 'page-load').then(() => {
         if (!addedPolling) {
