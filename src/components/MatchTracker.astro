@@ -59,6 +59,7 @@ const { styling } = Astro.props;
 <script>
   import { startOfWeek, format, addDays } from "date-fns";
   import { cloneDeep } from 'lodash';
+  import { Option } from "effect";
   import { fromZonedTime } from 'date-fns-tz';
   import { v4 as uuid } from 'uuid';
   import type { MatchType } from "@/types/match";
@@ -264,20 +265,19 @@ const { styling } = Astro.props;
   type CacheParsedType = {
     matches: Array<MatchType>
   }
+  const parseUndefined = Option.liftPredicate((arg) => arg !== null && arg !== undefined);
   const getCacheLaterThanNow = (id: string, today: Date): MatchType[] | [] => {
     try {
-      let cache = localStorage.getItem(`${id}-v${CACHE_VERSION}`);
-      if (cache) {
-        let parsed: CacheParsedType = JSON.parse(cache);
-        return laterThanNow(parsed.matches, today);
-      } else {
-        return [];
-      }
-    } catch (e) {
-      console.log('error parsing cache, clearing', e);
-      localStorage.removeItem(`${id}-v${CACHE_VERSION}`);
-      return [];
-    }
+      const value = parseUndefined(localStorage.getItem(`${id}-v${CACHE_VERSION}`)).map((cache) => {
+        try {
+          let parsed: CacheParsedType = JSON.parse(cache);
+          return parsed
+        } catch (e) {
+          console.log('error parsing cache, clearing', e);
+          localStorage.removeItem(`${id}-v${CACHE_VERSION}`);
+          return {};
+        }
+      }).map((parsed) => laterThanNow(parsed.matches, today));
   };
 
   const digCache = (today: Date, midWeek: string, nextMidWeek: string, thirdMidWeek: string): [MatchType[] | [], string | undefined] | [] => {
