@@ -125,7 +125,7 @@ import Tile from "@/components/Tile.astro";
   let toggleEasterEggCountHome = 0;
   let toggleEasterEggCountAway = 0;
   const updateTracker = (tracker: HTMLElement, nearestMatch: MatchType, audioElement: HTMLAudioElement, flags: Array<string> = []) => {
-    matchesOnScreen[nearestMatch.id] = nearestMatch;
+    matchesOnScreen[tracker.id] = nearestMatch;
     const listenersForThisTracker = easterEggListeners[tracker.id];
     let imagesToLoadCount = 0;
     Array.from(tracker.querySelectorAll('[updates]')).map((el) => {
@@ -173,7 +173,7 @@ import Tile from "@/components/Tile.astro";
         };
         if (!imageLoadListeners[tracker.id].home) {
           el.addEventListener('load', () => {
-            console.log('imageLoaded ' + tracker.id, imagesToLoadCount);
+            console.log('imageLoaded for' + tracker.id, imagesToLoadCount);
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
               removeSpinner(tracker);
               showData(tracker);
@@ -304,12 +304,12 @@ import Tile from "@/components/Tile.astro";
       }
       if (cachedMatches.length > 0) {
         let runningUpdates = false;
-        if (!isMatchInSlot('main', cachedMatches[0])) {
+        if (!isMatchInSlot('match-tracker', cachedMatches[0])) {
           runningUpdates = true;
           updateTracker(matchTracker, cachedMatches[0], audioPlayer, flags);
         }
         if (cachedMatches.length > 1) {
-          if (!isMatchInSlot('double-header', cachedMatches[1])) {
+          if (!isMatchInSlot('match-tracker-double-header', cachedMatches[1])) {
             matchTrackerDoubleHeader.classList.remove('hidden');
             updateTracker(matchTrackerDoubleHeader, cachedMatches[1], audioPlayer);
             runningUpdates = true;
@@ -371,12 +371,12 @@ import Tile from "@/components/Tile.astro";
       if (nearestMatches.length > 1) {
         flags.push(DOUBLE_HEADER_FLAG);
       }
-      if (!isMatchInSlot('main', nearestMatches[0])) {
+      if (!isMatchInSlot('match-tracker', nearestMatches[0])) {
         updateTracker(matchTracker, nearestMatches[0], audioPlayer, flags);
       }
       if (nearestMatches.length > 1) {
         matchTrackerDoubleHeader.classList.remove('hidden');
-        if (!isMatchInSlot('double-header', nearestMatches[1])) {
+        if (!isMatchInSlot('match-tracker-double-header', nearestMatches[1])) {
           updateTracker(matchTrackerDoubleHeader, nearestMatches[1], audioPlayer);
         }
       } else {
