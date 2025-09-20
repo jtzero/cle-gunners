@@ -99,7 +99,15 @@ import Tile from "@/components/Tile.astro";
     const img = new Image();
     img.src = easterEggImage;
   };
-  const toggleEasterEgg = (element: HTMLElement, originalSrc: string, count: number, audioElement: HTMLAudioElement) => {
+  const preloadArsenalImage = async (): Promise<HTMLImageElement> => {
+    const img = new Image();
+    img.src = "/images/arsenal-crest.png";
+    return img;
+  };
+  let state: { arsenalCrest: HTMLImageElement | undefined; } = {
+    arsenalCrest: undefined,
+  };
+  const toggleEasterEgg = (element: HTMLImageElement, originalSrc: string, count: number, audioElement: HTMLAudioElement) => {
     if (count % 2 == 0) {
       element.src = easterEggImage;
       audioElement.play();
@@ -130,21 +138,22 @@ import Tile from "@/components/Tile.astro";
     let imagesToLoadCount = 0;
     Array.from(tracker.querySelectorAll('[updates]')).map((el) => {
       if (el.getAttribute('updates') == 'away-team-image') {
+        let currentImageTag: HTMLImageElement = el as HTMLImageElement;
         imagesToLoadCount++;
         if (nearestMatch.awayTeam.shortName == 'Man Utd') {
           if (!listenersForThisTracker.away) {
             listenersForThisTracker.away = () => {
-              toggleEasterEgg(el, nearestMatch.awayTeam.crest, toggleEasterEggCountAway, audioElement);
+              toggleEasterEgg(currentImageTag, nearestMatch.awayTeam.crest, toggleEasterEggCountAway, audioElement);
               toggleEasterEggCountAway++;
             };
-            el.addEventListener('click', listenersForThisTracker.away);
+            currentImageTag.addEventListener('click', listenersForThisTracker.away);
           }
         } else if (listenersForThisTracker.away) {
-          el.removeEventListener('click', listenersForThisTracker.away);
+          currentImageTag.removeEventListener('click', listenersForThisTracker.away);
           listenersForThisTracker.away = undefined;
         };
         if (!imageLoadListeners[tracker.id].away) {
-          el.addEventListener('load', () => {
+          currentImageTag.addEventListener('load', () => {
             console.log('imageLoaded for ' + tracker.id, imagesToLoadCount);
 
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
@@ -156,23 +165,28 @@ import Tile from "@/components/Tile.astro";
           });
           imageLoadListeners[tracker.id].away = true;
         }
-        el.src = nearestMatch.awayTeam.crest;
+        if (nearestMatch.awayTeam.shortName == 'Arsenal' && state.arsenalCrest) {
+          currentImageTag.replaceWith(state.arsenalCrest);
+        } else {
+          currentImageTag.src = nearestMatch.awayTeam.crest;
+        }
       } else if (el.getAttribute('updates') == 'home-team-image') {
+        let currentImageTag: HTMLImageElement = el as HTMLImageElement;
         imagesToLoadCount++;
         if (nearestMatch.homeTeam.shortName == 'Man Utd') {
           if (!listenersForThisTracker.home) {
             listenersForThisTracker.home = () => {
-              toggleEasterEgg(el, nearestMatch.homeTeam.crest, toggleEasterEggCountHome, audioElement);
+              toggleEasterEgg(currentImageTag, nearestMatch.homeTeam.crest, toggleEasterEggCountHome, audioElement);
               toggleEasterEggCountHome++;
             };
-            el.addEventListener('click', listenersForThisTracker.home);
+            currentImageTag.addEventListener('click', listenersForThisTracker.home);
           }
         } else if (listenersForThisTracker.home) {
-          el.removeEventListener('click', listenersForThisTracker.home);
+          currentImageTag.removeEventListener('click', listenersForThisTracker.home);
           listenersForThisTracker.home = undefined;
         };
         if (!imageLoadListeners[tracker.id].home) {
-          el.addEventListener('load', () => {
+          currentImageTag.addEventListener('load', () => {
             console.log('imageLoaded for' + tracker.id, imagesToLoadCount);
             if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
               removeSpinner(tracker);
@@ -183,7 +197,11 @@ import Tile from "@/components/Tile.astro";
           });
           imageLoadListeners[tracker.id].home = true;
         }
-        el.src = nearestMatch.homeTeam.crest;
+        if (nearestMatch.homeTeam.shortName == 'Arsenal' && state.arsenalCrest) {
+          currentImageTag.replaceWith(state.arsenalCrest);
+        } else {
+          currentImageTag.src = nearestMatch.homeTeam.crest;
+        }
       } else if (el.getAttribute('updates') == 'away-team-name') {
         el.textContent = nearestMatch.awayTeam.shortName;
       } else if (el.getAttribute('updates') == 'home-team-name') {
@@ -393,6 +411,9 @@ import Tile from "@/components/Tile.astro";
   };
 
   preloadEasterEggImage();
+  preloadArsenalImage().then((img) => {
+    state.arsenalCrest = img;
+  });
   let addedPolling = false;
   document.addEventListener("astro:page-load", () => {
     if (onPageWithMatchTracker()) {
