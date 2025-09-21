@@ -20,7 +20,7 @@ type PostType = CollectionEntry<"posts">;
         return (
           <Post
             post={post}
-            styling="w-3/4 mb-6 shadow bg-blue text-white"
+            styling="w-3/4 mb-6 shadow bg-blue text-white scroll-mt-5"
             headerStyling="text-white !text-[3rem]"
             topBorderStyling="border-t-2 border-blue-300"
             heroTextStyling="inline-flex text-[2rem]"
@@ -28,12 +28,12 @@ type PostType = CollectionEntry<"posts">;
         );
       })
     }
-    <LocationPost styling="w-3/4 mb-6 shadow bg-white"/>
-    <MatchTracker />
+    <LocationPost styling="w-3/4 mb-6 shadow bg-white scroll-mt-5"/>
+    <MatchTracker styling="w-3/4 mb-6 shadow bg-white scroll-mt-5"/>
     {
       sortedPosts.map((post) => {
         return (
-        <Post post={post} styling={`tile w-3/4 mb-6 shadow bg-white ${post.data.additionalStyling}`} />
+        <Post post={post} styling={`tile w-3/4 mb-6 shadow bg-white scroll-mt-5 ${post.data.additionalStyling}`} />
         );
       })
     }

@@ -1,9 +1,11 @@
 ---
 import Tile from "@/components/Tile.astro";
 
+const { styling } = Astro.props;
+
 ---
 <audio id="audio-player" src="https://www.fanchants.com/media/chants/full/download/manchester-is-full-of-shite-fanchants-free.mp3" preload="auto"></audio>
-<Tile id="match-tracker" styling={`w-3/4 mb-6 shadow bg-white`}>
+<Tile id="match-tracker" styling={styling}>
   <Fragment slot="title"><h1 updates="double-header" class="hidden p-2 text-red">DOUBLE HEADER</h1><h4 data-show-after-load updates="match-date" class="hidden p-2"></h4></Fragment>
   <Fragment slot="body">
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
