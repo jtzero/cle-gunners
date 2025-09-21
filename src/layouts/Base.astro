@@ -37,8 +37,10 @@ if (fonts.font_family.secondary) {
     .replace(/:[ital,]*[ital@]*[wght@]*[0-9,;]+/gi, "");
 }
 
-const { title, metaTitle, description, image, noindex, canonical } =
+const { title, metaTitle, description, image, noindex, canonical, keywords } =
   Astro.props;
+
+const keywordsArray = keywords || [];
 ---
 
 <!doctype html>
@@ -110,6 +112,13 @@ const { title, metaTitle, description, image, noindex, canonical } =
       content={plainify(
         description ? description : config.metadata.meta_description
       )}
+    />
+
+    <meta
+      name="keywords"
+      content={(
+        keywordsArray[0] ? keywordsArray : config.metadata.meta_keywords
+      ).join(', ')}
     />
 
     <ClientRouter />
