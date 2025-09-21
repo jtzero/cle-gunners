@@ -34,7 +34,7 @@ const subPosts = await getEntries(page.data.posts.map((post_id) => {
   <div data-testid="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
     {
       subPosts.map((subPost) => (
-        <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white" displayReadMore={false}/>
+        <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white scroll-mt-5" displayReadMore={false}/>
       ))
     }
   </div>
