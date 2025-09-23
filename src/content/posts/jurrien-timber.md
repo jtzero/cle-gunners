@@ -6,7 +6,7 @@ videoPlacement: body
 orientation: portrait
 ---
 
-<span style="color: darkgrey">(To the tune of September)</span>
+<span class="text-neutral-400">(To the tune of September)</span>
 oh-ee-oh
 Its Jurrien Timber
 oh-ee-oh

@@ -6,11 +6,11 @@ imagePlacement: body
 orientation: landscape
 ---
 
-<span style="color: darkgrey">(call)</span>
+<span class="text-neutral-400">(call)</span>
 ODIE
 ODIE
 ODIE
-<span style="color: darkgrey">(response)</span>
+<span class="text-neutral-400">(response)</span>
 GAARD
 GAARD
 GAARD
