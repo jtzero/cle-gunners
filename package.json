@@ -54,7 +54,7 @@
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "sass": "^1.92.1",
+    "sass": "^1.93.1",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.13",
     "typescript": "^5.9.2"
