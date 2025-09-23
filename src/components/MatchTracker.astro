@@ -20,6 +20,7 @@ const { styling } = Astro.props;
       </div>
     </div>
   </Fragment>
+  <Fragment slot="footer"><span class="text-neutral-400">data provided by <a class="text-neutral-400" href="https://www.football-data.org/" target="_blank">football-data.org</a></span></Fragment>
 </Tile>
 <Tile id="match-tracker-double-header" styling={`hidden w-3/4 mb-6 shadow bg-white`}>
   <Fragment slot="title"><h4 data-show-after-load updates="match-date" class="hidden p-2"></h4></Fragment>
