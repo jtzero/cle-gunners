@@ -36,5 +36,11 @@ const showTopBorderStyling = Astro.slots.has("header") ? "" : topBorderStyling;
     <div data-testid="tile-body" class={`${bodyStyling} tile-body max-w-[100%] align-center pt-2`} {...{ [dataAttr]: rest[dataAttr] }}>
       <slot name="body" />
     </div>
+    {Astro.slots.has("footer") ?
+      <hr data-testid="divider" class="border-inset border-b-1 border-divider w-full" />
+      <footer data-testid="tile-footer" class={`${bodyStyling} tile-footer max-w-[100%] align-center`} {...{ [dataAttr]: rest[dataAttr] }}>
+        <slot name="footer" />
+      </footer>
+      : ""}
   </div>
 </div>
