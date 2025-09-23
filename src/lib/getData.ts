@@ -1,4 +1,5 @@
 import * as fs from "fs";
+import * as path from "path";
 import { format } from "date-fns";
 import * as json from "@/lib/json";
 import appRoot from "app-root-path";
@@ -45,6 +46,34 @@ const getInTwoWeeks = (day: Date) => {
 const getTomorrow = (day: Date) => {
   const init = new Date(day);
   return new Date(init.setDate(init.getDate() + 1));
+};
+
+const buildRequestOptions = (api_key: string): RequestInit => {
+  const headers = new Headers();
+  headers.append("X-Auth-Token", api_key);
+  const requestOptions: RequestInit = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  return requestOptions;
+};
+
+const fetchJSON = async (
+  requestOptions: RequestInit,
+  requestURL: string,
+  fetchFunction: Function,
+) => {
+  const response = await fetchFunction(requestURL, requestOptions);
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
+  }
+
+  return data;
 };
 
 const buildRequestURL = (
@@ -118,27 +147,108 @@ const saveFixturesFromRange = async (
   writeDataToFileFunction(filePath, results);
 };
 
+const latestFile = (fixtureDir: string): string => {
+  const files = fs.readdirSync(fixtureDir);
+  const sortedFiles = files.sort((fileNameA, fileNameB) => {
+    const dateA = new Date(fileNameA.split(".")[0]);
+    const dateB = new Date(fileNameB.split(".")[0]);
+    return dateA.getTime() - dateB.getTime();
+  });
+  return sortedFiles[0];
+};
+
+const getSeasonEndDate = (jsonStructure: Object): Date => {
+  return new Date(jsonStructure.matches[0]["season"]["endDate"]);
+};
+
+const isAfterSeasonEnd = (seasonEndDate: Date, date: Date): Boolean => {
+  return seasonEndDate.getTime() < date.getTime();
+};
+
+const parseFixtureFile = (fixtureFilePath: string): Object => {
+  return JSON.parse(fs.readFileSync(fixtureFilePath));
+};
+
+const parseJSONFile = (filePath: string): Object => {
+  return JSON.parse(fs.readFileSync(filePath));
+};
+
+const latestSeasonFromCompetition = (
+  competition: object,
+): object | undefined => {
+  return competition.seasons.sort((seasonA: any, seasonB: any) => {
+    return seasonA.endDate.getTime() - seasonB.endDate.getTime();
+  })[0];
+};
+
+const fileNameWithExtToDate = (fileName: string): Date => {
+  return new Date(fileName.split(".")[0]);
+};
+
+const competitionYearsFile = (
+  competitionDir: string,
+  seasonYears: string,
+): string | undefined => {
+  const files = fs.readdirSync(competitionDir).filter((fileName: string) => {
+    return fileName.split(".")[0] === seasonYears;
+  });
+  return files[0];
+};
+
 export const run = async (
   api_key: string,
-  startDateArg: string | null,
+  startDateArg: string | undefined,
   fetchFunction: Function = fetch,
   writeDataToFileFunction: Function = json.stringifyToFile,
 ) => {
   const today = new Date();
+  // TODO if (!startDateArg) {
+  //
+  // } else {
+  const fixtureDir = `${appRoot.path}/src/content/fixtures/`;
+  const latestFixtureFile = latestFile(fixtureDir);
+  const latestFixtureDate = fileNameWithExtToDate(latestFixtureFile);
+  const latestFixtureFilePath = path.join(fixtureDir, latestFixtureFile);
+  const parsedFixtureFile = parseFixtureFile(latestFixtureFilePath);
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
   const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
-  const thisMonth = startDate.getMonth();
+  const startMonth = startDate.getMonth();
   const seasonYear = premierLeague.getSeasonYear(
     startDate.getFullYear(),
-    thisMonth,
+    startMonth,
   );
-  console.log("Fetching League ID...");
-  const league = await competition.fetchPremierLeage(api_key, fetchFunction);
-  const leagueID = league.id;
+  console.log("Fetching League...");
+  const querySeasonYears = premierLeague.seasonYears(
+    startDate.getFullYear(),
+    startMonth,
+  );
+  const competitionDir = `${appRoot.path}/src/content/competitions/`;
+  const seasonFile = competitionYearsFile(competitionDir, querySeasonYears);
+  const competitionInfo = await (async () => {
+    if (seasonFile) {
+      let info = parseJSONFile(seasonFile);
+      json.stringifyToFile(
+        `${competitionDir}${querySeasonYears}.json`,
+        competitionInfo,
+      );
+      return info;
+    } else {
+      return await competition.fetchPremierLeage(api_key);
+    }
+  })();
+  // if no competitionIfno or no latest season is < query startDate
+  const latestSeason = latestSeasonFromCompetition(competitionInfo);
+  const seasonYearFromLatestSeason = premierLeague.getSeasonYear(
+    latestSeason.startDate.getFullYear(),
+    latestSeason.startDate.getMonth(),
+  );
+  //if (seasonYearFromLatestSeason > seasonYear) {
+  //if (new Date(latestSeason.endDate) > )
+  const leagueID = competitionInfo.id;
   console.log("Fetching team ID...");
   const id = await fetchTeamID(api_key, seasonYear, fetchFunction);
   console.log("ID fetched:", id);
-  console.log(startDateArg, startDate, endDate, thisMonth);
+  console.log(startDateArg, startDate, endDate, startMonth);
   saveFixturesFromRange(
     api_key,
     today,
@@ -157,7 +267,7 @@ export const run = async (
     secondRoundStartDate.getFullYear(),
     secondRoundMonth,
   );
-  console.log(startDateArg, startDate, endDate, thisMonth);
+  console.log(startDateArg, startDate, endDate, startMonth);
   saveFixturesFromRange(
     api_key,
     today,
