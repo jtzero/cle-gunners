@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import { format } from "date-fns";
+import * as json from "./json";
 import appRoot from "app-root-path";
 
 const fetchPremierLeageID = async (
@@ -20,7 +21,7 @@ const fetchPremierLeageID = async (
   const data = await response.json();
   if (!response.ok) {
     throw new Error(
-      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+      `HTTP error! response status:${response.status}: ${data.Message}`,
     );
   }
 
@@ -46,7 +47,7 @@ const fetchTeamID = async (
   const data = await response.json();
   if (!response.ok) {
     throw new Error(
-      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+      `HTTP error! response status:${response.status}: ${data.Message}`,
     );
   }
 
@@ -106,20 +107,11 @@ const fetchArsenalFixtures = async (
   const data = await response.json();
   if (!response.ok) {
     throw new Error(
-      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+      `HTTP error! response status:${response.status}: ${data.Message}`,
     );
   }
 
   return data;
-};
-
-const writeDataToFile = async (filePath: string, data: any) => {
-  // Convert the JavaScript object to a JSON string
-  // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
-  const jsonString = JSON.stringify(data, null, 2);
-
-  // Write the string to the file
-  fs.writeFileSync(filePath, jsonString, "utf-8");
 };
 
 const saveFixturesFromRange = async (
@@ -160,7 +152,7 @@ export const run = async (
   api_key: string,
   startDateArg: string | null,
   fetchFunction: Function = fetch,
-  writeDataToFileFunction: Function = writeDataToFile,
+  writeDataToFileFunction: Function = json.stringifyToFile,
 ) => {
   const today = new Date();
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
