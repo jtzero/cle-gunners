@@ -3,31 +3,7 @@ import { format } from "date-fns";
 import appRoot from "app-root-path";
 import * as json from "@/lib/json";
 import * as premierLeague from "@/lib/premierLeague";
-
-const fetchPremierLeageID = async (
-  api_key: string,
-  fetchFunction: Function,
-) => {
-  const headers = new Headers();
-  headers.append("X-Auth-Token", api_key);
-
-  const requestOptions: RequestInit = {
-    method: "GET",
-    headers: headers,
-    redirect: "follow",
-  };
-  const api_endpoint = `https://api.football-data.org/v4/competitions/PL`;
-  const response = await fetchFunction(api_endpoint, requestOptions);
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(
-      `HTTP error! resonse status:${response.status}: ${data.Message}`,
-    );
-  }
-
-  return data.id;
-};
+import * as competition from "@/lib/football-data/competition";
 
 const fetchTeamID = async (
   api_key: string,
@@ -156,7 +132,8 @@ export const run = async (
     thisMonth,
   );
   console.log("Fetching League ID...");
-  const leagueID = await fetchPremierLeageID(api_key, fetchFunction);
+  const league = await competition.fetchPremierLeage(api_key, fetchFunction);
+  const leagueID = league.id;
   console.log("Fetching team ID...");
   const id = await fetchTeamID(api_key, seasonYear, fetchFunction);
   console.log("ID fetched:", id);
