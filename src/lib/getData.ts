@@ -1,0 +1,206 @@
+import * as fs from "fs";
+import { format } from "date-fns";
+import appRoot from "app-root-path";
+
+const fetchPremierLeageID = async (
+  api_key: string,
+  fetchFunction: Function,
+) => {
+  const headers = new Headers();
+  headers.append("X-Auth-Token", api_key);
+
+  const requestOptions: RequestInit = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  const api_endpoint = `https://api.football-data.org/v4/competitions/PL`;
+  const response = await fetchFunction(api_endpoint, requestOptions);
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
+  }
+
+  return data.id;
+};
+
+const fetchTeamID = async (
+  api_key: string,
+  season: number,
+  fetchFunction: Function,
+) => {
+  const headers = new Headers();
+  headers.append("X-Auth-Token", api_key);
+
+  const requestOptions: RequestInit = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+  const api_endpoint = `https://api.football-data.org/v4/competitions/PL/teams?season=${season}`;
+  const response = await fetchFunction(api_endpoint, requestOptions);
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
+  }
+
+  return data.teams.filter((team: any) => team.shortName === "Arsenal")[0].id;
+};
+
+const getSeasonYear = (thisYear: number, month: number): number => {
+  if (month < 3) {
+    return thisYear - 1;
+  } else {
+    return thisYear;
+  }
+};
+
+const getNextWeek = (day: Date) => {
+  const init = new Date(day);
+  return new Date(init.setDate(init.getDate() + 7));
+};
+
+const getInTwoWeeks = (day: Date) => {
+  const init = new Date(day);
+  return new Date(init.setDate(init.getDate() + 14));
+};
+
+const getTomorrow = (day: Date) => {
+  const init = new Date(day);
+  return new Date(init.setDate(init.getDate() + 1));
+};
+
+const buildRequestURL = (
+  id: string,
+  leagueID: string,
+  season: number,
+  startDate: string,
+  endDate: string,
+) => {
+  return `https://api.football-data.org/v4/teams/${id}/matches?season=${season}&competitions=${leagueID}&dateFrom=${startDate}&dateTo=${endDate}`;
+};
+
+const fetchArsenalFixtures = async (
+  api_key: string,
+  requestURL: string,
+  fetchFunction: Function,
+) => {
+  const headers = new Headers();
+  headers.append("X-Auth-Token", api_key);
+
+  const requestOptions: RequestInit = {
+    method: "GET",
+    headers: headers,
+    redirect: "follow",
+  };
+
+  const api_endpoint = requestURL;
+  const response = await fetchFunction(api_endpoint, requestOptions);
+
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(
+      `HTTP error! resonse status:${response.status}: ${data.Message}`,
+    );
+  }
+
+  return data;
+};
+
+const writeDataToFile = async (filePath: string, data: any) => {
+  // Convert the JavaScript object to a JSON string
+  // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
+  const jsonString = JSON.stringify(data, null, 2);
+
+  // Write the string to the file
+  fs.writeFileSync(filePath, jsonString, "utf-8");
+};
+
+const saveFixturesFromRange = async (
+  api_key: string,
+  today: Date,
+  startDate: Date,
+  endDate: Date,
+  leagueID: string,
+  teamID: string,
+  seasonYear: number,
+  fetchFunction: Function,
+  writeDataToFileFunction: Function,
+) => {
+  console.log("Season:", seasonYear);
+  const startDateStr = format(startDate, "yyyy-MM-dd");
+  const endDateStr = format(endDate, "yyyy-MM-dd");
+
+  const requestURL = buildRequestURL(
+    teamID,
+    leagueID,
+    seasonYear,
+    startDateStr,
+    endDateStr,
+  );
+  console.log("Fetching Fixtures from:", requestURL);
+  const results = await fetchArsenalFixtures(
+    api_key,
+    requestURL,
+    fetchFunction,
+  );
+  console.log("Fixtures fetched:", results.resultSet.count);
+  const filePath = `${appRoot.path}/src/content/fixtures/${startDateStr}.json`;
+  console.log("Writing data to file...", filePath);
+  writeDataToFileFunction(filePath, results);
+};
+
+export const run = async (
+  api_key: string,
+  startDateArg: string | null,
+  fetchFunction: Function = fetch,
+  writeDataToFileFunction: Function = writeDataToFile,
+) => {
+  const today = new Date();
+  const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
+  const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
+  const thisMonth = startDate.getMonth();
+  const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
+  console.log("Fetching League ID...");
+  const leagueID = await fetchPremierLeageID(api_key, fetchFunction);
+  console.log("Fetching team ID...");
+  const id = await fetchTeamID(api_key, seasonYear, fetchFunction);
+  console.log("ID fetched:", id);
+  console.log(startDateArg, startDate, endDate, thisMonth);
+  await saveFixturesFromRange(
+    api_key,
+    today,
+    startDate,
+    endDate,
+    leagueID,
+    id,
+    seasonYear,
+    fetchFunction,
+    writeDataToFileFunction,
+  );
+
+  const secondRoundStartDate = endDate;
+  const secondRoundMonth = secondRoundStartDate.getMonth();
+  const secondRoundSeasonYear = getSeasonYear(
+    secondRoundStartDate.getFullYear(),
+    secondRoundMonth,
+  );
+  console.log(startDateArg, startDate, endDate, thisMonth);
+  await saveFixturesFromRange(
+    api_key,
+    today,
+    secondRoundStartDate,
+    getNextWeek(endDate),
+    leagueID,
+    id,
+    secondRoundSeasonYear,
+    fetchFunction,
+    writeDataToFileFunction,
+  );
+};
