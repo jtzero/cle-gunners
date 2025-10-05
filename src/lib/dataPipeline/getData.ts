@@ -4,32 +4,7 @@ import appRoot from "app-root-path";
 import * as json from "./json";
 import * as premierLeague from "./premierLeague";
 import * as competition from "./football-data/competition";
-
-const fetchTeamID = async (
-  api_key: string,
-  season: number,
-  fetchFunction: Function,
-) => {
-  const headers = new Headers();
-  headers.append("X-Auth-Token", api_key);
-
-  const requestOptions: RequestInit = {
-    method: "GET",
-    headers: headers,
-    redirect: "follow",
-  };
-  const api_endpoint = `https://api.football-data.org/v4/competitions/PL/teams?season=${season}`;
-  const response = await fetchFunction(api_endpoint, requestOptions);
-
-  const data = await response.json();
-  if (!response.ok) {
-    throw new Error(
-      `HTTP error! response status:${response.status}: ${data.Message}`,
-    );
-  }
-
-  return data.teams.filter((team: any) => team.shortName === "Arsenal")[0].id;
-};
+import * as team from "./football-data/team";
 
 const getNextWeek = (day: Date) => {
   const init = new Date(day);
@@ -135,7 +110,7 @@ export const run = async (
   const league = await competition.fetchPremierLeague(api_key, fetchFunction);
   const leagueID = league.id;
   console.log("Fetching team ID...");
-  const id = await fetchTeamID(api_key, seasonYear, fetchFunction);
+  const id = await team.fetchArsenalID(api_key, seasonYear, fetchFunction);
   console.log("ID fetched:", id);
   console.log(startDateArg, startDate, endDate, thisMonth);
   await saveFixturesFromRange(
