@@ -46,7 +46,9 @@ if (post.data?.videoDimensions) {
 const hasVideo = (post.data?.video !== undefined);
 const hasMultimedia = (hasVideo || post.data.image);
 const multimediaPlacement = (post.data.imagePlacement || post.data.videoPlacement);
-const hasHeaderMultimedia = hasMultimedia && !multimediaPlacement
+const hasHeaderMultimedia = hasMultimedia && (!multimediaPlacement || multimediaPlacement == "header");
+const hasHeaderImage = post.data.image && hasHeaderMultimedia;
+
 const topBorderWithHeaderMedia = hasHeaderMultimedia ? '' : topBorderStyling;
 let tileWithHeaderMedia = (() => {
   if (width == height && !multimediaPlacement) {
@@ -75,7 +77,7 @@ const tileBodyClass = (() => {
 <Tile id={slugify(post.data.title)} styling={`${styling} ${tileWithHeaderMedia} ${topBorderWithHeaderMedia}` } headerStyling={headerStyling} bodyStyling={`${heroTextStyling} ${tileBodyClass}`}>
   <Fragment slot="header">
   {
-    post.data.image && !multimediaPlacement && (
+    hasHeaderImage && (
       <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
           <Image
             class="lg"
