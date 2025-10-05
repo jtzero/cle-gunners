@@ -9,7 +9,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "format": "prettier -w .",
+    "format": "xo --fix",
+    "lint": "xo",
     "get-data": "node --loader ts-node/esm bin/get-data.ts"
   },
   "comments": {
@@ -49,7 +50,6 @@
     "@types/github-slugger": "^2.0.0",
     "@types/react": "^19.1.13",
     "postcss": "^8.5.3",
-    "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
     "react": "^19.1.1",
@@ -57,6 +57,7 @@
     "sass": "^1.93.1",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.13",
-    "typescript": "^5.9.2"
+    "typescript": "^5.9.2",
+    "xo": "^1.2.2"
   }
 }
