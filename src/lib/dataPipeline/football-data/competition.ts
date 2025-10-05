@@ -26,3 +26,13 @@ export const fetchPremierLeague = async (
 
   return data;
 };
+
+export const buildRequestURL = (
+  id: string,
+  leagueID: string,
+  season: number,
+  startDate: string,
+  endDate: string,
+) => {
+  return `https://api.football-data.org/v4/teams/${id}/matches?season=${season}&competitions=${leagueID}&dateFrom=${startDate}&dateTo=${endDate}`;
+};
