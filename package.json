@@ -8,7 +8,7 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check",
+    "check": "astro check && prettier --check .",
     "format": "prettier --write .",
     "get-data": "node --loader ts-node/esm bin/get-data.ts",
     "test": "vitest"
