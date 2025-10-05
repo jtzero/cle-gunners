@@ -1,8 +1,7 @@
 import * as fs from "fs";
 import { format } from "date-fns";
-import appRoot from "app-root-path";
 import * as json from "@/lib/json";
-import * as premierLeague from "@/lib/premierLeague";
+import appRoot from "app-root-path";
 
 const fetchPremierLeageID = async (
   api_key: string,
@@ -53,6 +52,14 @@ const fetchTeamID = async (
   }
 
   return data.teams.filter((team: any) => team.shortName === "Arsenal")[0].id;
+};
+
+const getSeasonYear = (thisYear: number, month: number): number => {
+  if (month < 3) {
+    return thisYear - 1;
+  } else {
+    return thisYear;
+  }
 };
 
 const getNextWeek = (day: Date) => {
@@ -151,10 +158,7 @@ export const run = async (
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
   const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
   const thisMonth = startDate.getMonth();
-  const seasonYear = premierLeague.getSeasonYear(
-    startDate.getFullYear(),
-    thisMonth,
-  );
+  const seasonYear = getSeasonYear(startDate.getFullYear(), thisMonth);
   console.log("Fetching League ID...");
   const leagueID = await fetchPremierLeageID(api_key, fetchFunction);
   console.log("Fetching team ID...");
@@ -175,7 +179,7 @@ export const run = async (
 
   const secondRoundStartDate = endDate;
   const secondRoundMonth = secondRoundStartDate.getMonth();
-  const secondRoundSeasonYear = premierLeague.getSeasonYear(
+  const secondRoundSeasonYear = getSeasonYear(
     secondRoundStartDate.getFullYear(),
     secondRoundMonth,
   );
