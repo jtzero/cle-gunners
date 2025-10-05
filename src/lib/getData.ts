@@ -1,6 +1,5 @@
 import * as fs from "fs";
 import { format } from "date-fns";
-import * as json from "@/lib/json";
 import appRoot from "app-root-path";
 
 const fetchPremierLeageID = async (
@@ -114,6 +113,15 @@ const fetchArsenalFixtures = async (
   return data;
 };
 
+const writeDataToFile = async (filePath: string, data: any) => {
+  // Convert the JavaScript object to a JSON string
+  // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
+  const jsonString = JSON.stringify(data, null, 2);
+
+  // Write the string to the file
+  fs.writeFileSync(filePath, jsonString, "utf-8");
+};
+
 const saveFixturesFromRange = async (
   api_key: string,
   today: Date,
@@ -152,7 +160,7 @@ export const run = async (
   api_key: string,
   startDateArg: string | null,
   fetchFunction: Function = fetch,
-  writeDataToFileFunction: Function = json.stringifyToFile,
+  writeDataToFileFunction: Function = writeDataToFile,
 ) => {
   const today = new Date();
   const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
