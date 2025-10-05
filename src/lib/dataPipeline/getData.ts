@@ -21,16 +21,6 @@ const getTomorrow = (day: Date) => {
   return new Date(init.setDate(init.getDate() + 1));
 };
 
-const buildRequestURL = (
-  id: string,
-  leagueID: string,
-  season: number,
-  startDate: string,
-  endDate: string,
-) => {
-  return `https://api.football-data.org/v4/teams/${id}/matches?season=${season}&competitions=${leagueID}&dateFrom=${startDate}&dateTo=${endDate}`;
-};
-
 const fetchArsenalFixtures = async (
   api_key: string,
   requestURL: string,
@@ -73,7 +63,7 @@ const saveFixturesFromRange = async (
   const startDateStr = format(startDate, "yyyy-MM-dd");
   const endDateStr = format(endDate, "yyyy-MM-dd");
 
-  const requestURL = buildRequestURL(
+  const requestURL = competition.buildRequestURL(
     teamID,
     leagueID,
     seasonYear,
