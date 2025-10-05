@@ -21,11 +21,21 @@ const { main }: { main: NavigationLink[] } = menu;
 ---
 
 <header class="header">
-  <nav  id="nav-container" data-testid="nav-container" class="fixed flex flex-col items-center justify-center">
-    <div  id="nav-toggler" data-testid="nav-toggler" class="self-start">
-      <input  id="nav-toggle" data-testid="nav-toggle" type="checkbox" class="hidden" />
+  <nav
+    id="nav-container"
+    data-testid="nav-container"
+    class="fixed flex flex-col items-center justify-center"
+  >
+    <div id="nav-toggler" data-testid="nav-toggler" class="self-start">
+      <input
+        id="nav-toggle"
+        data-testid="nav-toggle"
+        type="checkbox"
+        class="hidden"
+      />
       <label
-         id="show-button" data-testid="show-button"
+        id="show-button"
+        data-testid="show-button"
         for="nav-toggle"
         class="show-button"
       >
@@ -35,7 +45,8 @@ const { main }: { main: NavigationLink[] } = menu;
         </svg>
       </label>
       <label
-        id="hide-button" data-testid="hide-button"
+        id="hide-button"
+        data-testid="hide-button"
         for="nav-toggle"
         class="hide-button"
       >
@@ -47,128 +58,138 @@ const { main }: { main: NavigationLink[] } = menu;
         </svg>
       </label>
     </div>
-    <ul
-       id="nav-menu" data-testid="nav-menu" class="nav-menu"
-    >
+    <ul id="nav-menu" data-testid="nav-menu" class="nav-menu">
       {
         main.map((menu) => (
-          <li class="py-4 border-white flex justify-center">
-            <a data-js-close={menu.jsCloseMenu} id={menu.name} href={fromBase(menu.url)} class="text-4xl text-center">{menu.name}</a>
+          <li class="flex justify-center border-white py-4">
+            <a
+              data-js-close={menu.jsCloseMenu}
+              id={menu.name}
+              href={fromBase(menu.url)}
+              class="text-center text-4xl"
+            >
+              {menu.name}
+            </a>
           </li>
         ))
       }
     </ul>
   </nav>
 
-  <div  id="banner" data-testid="banner">
-    <div  id="banner-split" data-testid="banner-split">
-      <p class="self-end text-center w-[96px] sm:w-[15vw]">
-        CLEVELAND
-      </p>
+  <div id="banner" data-testid="banner">
+    <div id="banner-split" data-testid="banner-split">
+      <p class="w-[96px] self-end text-center sm:w-[15vw]">CLEVELAND</p>
       <div class="logo-container">
-        <div  id="logo-base" data-testid="logo-base" class="size-99/100 circle bg-white flex items-center justify-center">
-        {
-            <Image
-              src={fromBase("/images/banner/arsenal-guardian.png")}
-              width={2007}
-              height={2008}
-              alt="CLE-GUNNERS"
-              class="size-99.5/100"
-            />
-        }
+        <div
+          id="logo-base"
+          data-testid="logo-base"
+          class="circle flex size-99/100 items-center justify-center bg-white"
+        >
+          {
+            (
+              <Image
+                src={fromBase("/images/banner/arsenal-guardian.png")}
+                width={2007}
+                height={2008}
+                alt="CLE-GUNNERS"
+                class="size-99.5/100"
+              />
+            )
+          }
         </div>
       </div>
-      <p class="self-end text-center w-[96px] sm:w-[15vw]">
-        ARSENAL
-      </p>
+      <p class="w-[96px] self-end text-center sm:w-[15vw]">ARSENAL</p>
     </div>
   </div>
-
 </header>
 <style>
-@import "@/styles/tailwind.css";
+  @import "@/styles/tailwind.css";
 
-:root {
-  --toggler-size: size-[calc(1.5rem+1.5vw)];
-}
-@theme {
-  --color-menu: var(--color-blue);
-}
+  :root {
+    --toggler-size: size-[calc(1.5rem+1.5vw)];
+  }
+  @theme {
+    --color-menu: var(--color-blue);
+  }
 
-.header {
-  @apply top-0 left-0 z-40 w-full pb-[calc(3.5vw+1.5rem)] transition-all duration-300;
-  @apply bg-body;
-}
+  .header {
+    @apply top-0 left-0 z-40 w-full pb-[calc(3.5vw+1.5rem)] transition-all duration-300;
+    @apply bg-body;
+  }
 
-#banner {
-  @apply bg-dark-red font-bold w-full text-white text-[calc(0.5rem+2vw)] h-30 sm:h-40 md:h-50 lg:h-60 xl:h-64;
-}
+  #banner {
+    @apply bg-dark-red h-30 w-full text-[calc(0.5rem+2vw)] font-bold text-white sm:h-40 md:h-50 lg:h-60 xl:h-64;
+  }
 
-#banner-split {
-  @apply h-[70%] flex border-b-1 border-white justify-evenly xl:h-37;
-}
+  #banner-split {
+    @apply flex h-[70%] justify-evenly border-b-1 border-white xl:h-37;
+  }
 
-.logo-container {
-  @apply self-baseline flex h-[9rem] w-[9rem];
-  @apply sm:h-[12rem] sm:w-[12rem];
-  @apply md:h-[15rem] md:w-[15rem];
-  @apply lg:h-[18rem] lg:w-[18rem];
-  @apply xl:h-[19rem] xl:w-[19rem];
-}
+  .logo-container {
+    @apply flex h-[9rem] w-[9rem] self-baseline;
+    @apply sm:h-[12rem] sm:w-[12rem];
+    @apply md:h-[15rem] md:w-[15rem];
+    @apply lg:h-[18rem] lg:w-[18rem];
+    @apply xl:h-[19rem] xl:w-[19rem];
+  }
 
-.circle {
-  border-radius: 50%;
-}
+  .circle {
+    border-radius: 50%;
+  }
 
-#nav-toggler {
-  @apply ml-[2vw] mt-[0.5vw] mb-[2vw] size-[calc(2rem+3vw)] flex justify-center items-center bg-gold shadow-xl/30;
-  border-radius: 50%;
-}
+  #nav-toggler {
+    @apply bg-gold mt-[0.5vw] mb-[2vw] ml-[2vw] flex size-[calc(2rem+3vw)] items-center justify-center shadow-xl/30;
+    border-radius: 50%;
+  }
 
-input#nav-toggle:checked ~ label#show-button {
-  @apply hidden;
-}
+  #nav-container:has(> input#nav-toggle:checked) {
+    @apply border-1 border-blue-300;
+  }
 
-input#nav-toggle:checked ~ label#hide-button {
-  @apply flex;
-}
+  input#nav-toggle:checked ~ label#show-button {
+    @apply hidden;
+  }
 
-.show-button {
-  @apply order-2 cursor-pointer flex justify-center items-center md:order-1 size-[100%];
-}
+  input#nav-toggle:checked ~ label#hide-button {
+    @apply flex;
+  }
 
-.hide-button {
-  @apply order-2 hidden cursor-pointer flex justify-center items-center md:order-1 size-[100%];
-}
+  .show-button {
+    @apply order-2 flex size-[100%] cursor-pointer items-center justify-center md:order-1;
+  }
 
-#nav-container {
-  @apply sm:max-w-[25rem];
-}
+  .hide-button {
+    @apply order-2 flex hidden size-[100%] cursor-pointer items-center justify-center md:order-1;
+  }
 
-#nav-container:has(input#nav-toggle:checked) > #nav-menu {
-  @apply block w-full;
-}
+  #nav-container {
+    @apply sm:max-w-[25rem];
+  }
 
-#nav-container:has(input#nav-toggle:checked) {
-  @apply bg-menu w-full shadow-2xl/90 shadow-menu;
-}
+  #nav-container:has(input#nav-toggle:checked) > #nav-menu {
+    @apply block w-full;
+  }
 
-#nav-container:has(> a:active ) > #nav-menu {
-  @apply hidden;
-}
+  #nav-container:has(input#nav-toggle:checked) {
+    @apply bg-menu shadow-menu w-full shadow-2xl/90;
+    @apply border-1 border-blue-300;
+  }
 
-.nav-menu {
-  background-color: transparent;
-  padding-bottom: var(--text-4xl);
-  @apply text-white hidden w-full max-w-[20rem];
-}
+  #nav-container:has(> a:active) > #nav-menu {
+    @apply hidden;
+  }
 
+  .nav-menu {
+    background-color: transparent;
+    padding-bottom: var(--text-4xl);
+    @apply hidden w-full max-w-[20rem] text-white;
+  }
 </style>
 <script>
   document.addEventListener("astro:page-load", () => {
-    [...document.querySelectorAll('[data-js-close=true]')].map((navItem) => {
+    [...document.querySelectorAll("[data-js-close=true]")].map((navItem) => {
       const navToggle = document.getElementById("nav-toggle");
-      navItem.addEventListener('click', () => {
+      navItem.addEventListener("click", () => {
         navToggle.checked = false;
       });
     });
