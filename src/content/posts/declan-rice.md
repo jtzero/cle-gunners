@@ -10,6 +10,6 @@ orientation: "landscape"
 Declan Rice
 It's now or never
 He'll be Arsenal forever
-I just wanna live while I'm alive
+I just wanna win while I'm alive
 <span class="text-neutral-400">(Pause)</span>
 DEC-LAN-RICE
