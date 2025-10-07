@@ -5,21 +5,7 @@ import * as json from "./json";
 import * as premierLeague from "./premierLeague";
 import * as competition from "./football-data/competition";
 import * as team from "./football-data/team";
-
-const getNextWeek = (day: Date) => {
-  const init = new Date(day);
-  return new Date(init.setDate(init.getDate() + 7));
-};
-
-const getInTwoWeeks = (day: Date) => {
-  const init = new Date(day);
-  return new Date(init.setDate(init.getDate() + 14));
-};
-
-const getTomorrow = (day: Date) => {
-  const init = new Date(day);
-  return new Date(init.setDate(init.getDate() + 1));
-};
+import * as date from "./date";
 
 const fetchArsenalFixtures = async (
   api_key: string,
@@ -89,8 +75,12 @@ export const run = async (
   writeDataToFileFunction: Function = json.stringifyToFile,
 ) => {
   const today = new Date();
-  const startDate = startDateArg ? new Date(startDateArg) : getNextWeek(today);
-  const endDate = startDateArg ? getNextWeek(startDate) : getInTwoWeeks(today);
+  const startDate = startDateArg
+    ? new Date(startDateArg)
+    : date.getNextWeek(today);
+  const endDate = startDateArg
+    ? date.getNextWeek(startDate)
+    : date.getInTwoWeeks(today);
   const thisMonth = startDate.getMonth();
   const seasonYear = premierLeague.getSeasonYear(
     startDate.getFullYear(),
@@ -126,7 +116,7 @@ export const run = async (
     api_key,
     today,
     secondRoundStartDate,
-    getNextWeek(endDate),
+    date.getNextWeek(endDate),
     leagueID,
     id,
     secondRoundSeasonYear,
