@@ -5,6 +5,6 @@ export const stringifyToFile = async (filePath: string, data: any) => {
   // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
   const jsonString = JSON.stringify(data, null, 2);
 
-  // Write the string to the file
+  // TODO: await fs.writeFile
   fs.writeFileSync(filePath, jsonString, "utf-8");
 };
