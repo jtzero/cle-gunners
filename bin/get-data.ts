@@ -1,4 +1,4 @@
-import { run } from "@/lib/getData";
+import { run } from "@/lib/dataPipeline/getData";
 
 const startDateArg = process.argv[2];
 console.log("Fetching data from API Sports...");
