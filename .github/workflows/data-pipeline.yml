@@ -8,9 +8,9 @@ on:
         description: 'The date to run on'
         default: ''
       branch:
-        description: 'The branch to deploy'
+        description: 'The branch to run on'
         required: true
-        default: 'data-pipeline'
+        default: 'main'
         type: string
   schedule:
     # Run every Thursday morning at midnight
@@ -28,6 +28,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ssh-key: ${{ secrets.DATA_PIPELINE_PR_AUTOMATION_KEY }}
+          ref: ${{ inputs.branch }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
