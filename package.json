@@ -58,7 +58,7 @@
     "react-dom": "^19.1.1",
     "sass": "^1.93.2",
     "sharp": "^0.34.4",
-    "tailwindcss": "^4.1.13",
+    "tailwindcss": "^4.1.14",
     "typescript": "^5.9.2",
     "vitest": "^3.2.4"
   }
