@@ -24,7 +24,7 @@
     "@fontsource/quantico": "^5.2.7",
     "@tailwindcss/vite": "^4.1.13",
     "app-root-path": "^3.1.0",
-    "astro": "^5.13.10",
+    "astro": "^5.15.3",
     "astro-auto-import": "^0.4.4",
     "astro-font": "^1.0.0",
     "astro-imagetools": "^0.9.0",
