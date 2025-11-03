@@ -1,9 +1,10 @@
 import * as fs from "fs";
+import { readFile } from "node:fs/promises";
 import { formatInTimeZone } from "date-fns-tz";
 import appRoot from "app-root-path";
 import * as json from "./json";
 import * as date from "./date";
-import { team, competition } from "./football-data";
+import { team, competition, type Competition } from "./football-data";
 
 const fetchArsenalFixtures = async (
   api_key: string,
@@ -66,6 +67,34 @@ const saveFixturesFromRange = async (
   writeDataToFileFunction(filePath, results);
 };
 
+const getPremierLeague = async (
+  apiKey: string,
+  latestDate: Date,
+  fetchFunction: Function,
+  writeDataToFileFunction: Function,
+): Promise<Competition> => {
+  const filePath = `${appRoot.path}/src/content/competitions/premier-league.json`;
+  let comp = null;
+  if (fs.existsSync(filePath)) {
+    comp = JSON.parse(fs.readFileSync(filePath, "utf8"));
+  }
+  const latestSeason = comp ? competition.latestSeason(comp) : null;
+  if (
+    comp &&
+    latestSeason &&
+    new Date(latestSeason.endDate).getTime() >= latestDate.getTime()
+  ) {
+    return comp;
+  } else {
+    return competition
+      .fetchPremierLeague(apiKey, fetchFunction)
+      .then((data: Competition) => {
+        writeDataToFileFunction(filePath, data);
+        return data;
+      });
+  }
+};
+
 export const run = async (
   api_key: string,
   startDateArg: string | null,
@@ -80,10 +109,13 @@ export const run = async (
     ? date.getNextWeek(startDate)
     : date.getInTwoWeeks(today);
   const thisMonth = startDate.getMonth();
+  const secondRoundStartDate = endDate;
   console.log("Fetching League Info...");
-  const premierLeagueCompetition = await competition.fetchPremierLeague(
+  const premierLeagueCompetition = await getPremierLeague(
     api_key,
+    secondRoundStartDate,
     fetchFunction,
+    writeDataToFileFunction,
   );
   const seasonYear = competition.getSeasonYear(
     premierLeagueCompetition,
@@ -111,7 +143,6 @@ export const run = async (
     writeDataToFileFunction,
   );
 
-  const secondRoundStartDate = endDate;
   const secondRoundSeasonYear = competition.getSeasonYear(
     premierLeagueCompetition,
     secondRoundStartDate,

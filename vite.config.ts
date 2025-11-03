@@ -1,7 +1,5 @@
-// vite.config.ts
-import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
+// without this file vite will fail to reference astro and vitest will fail
+// I.E. "Cannot find package 'astro:content'"
+import { getViteConfig } from "astro/config";
 
-export default defineConfig({
-  plugins: [tsconfigPaths()],
-});
+export default getViteConfig({});
