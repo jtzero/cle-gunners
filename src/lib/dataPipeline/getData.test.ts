@@ -1,5 +1,6 @@
 import { expect, test, describe } from "vitest";
 import * as getData from "./getData";
+import { type Competition } from "./football-data/competition";
 
 const competitionTeamsFactory = (): { [key: string]: any } => {
   return {
@@ -26,7 +27,7 @@ const competitionTeamsFactory = (): { [key: string]: any } => {
     season: {
       id: 1382,
       startDate: "2022-11-21",
-      endDate: "2022-12-18",
+      endDate: "2023-12-18",
       currentMatchday: 1,
       winner: null,
       stages: [],
@@ -71,26 +72,37 @@ const competitionTeamsFactory = (): { [key: string]: any } => {
   };
 };
 
-const competitionsFactory = (): { [key: string]: any } => {
+const competitionsFactory = (): Competition => {
   return {
-    filters: {
-      season: "2025",
-    },
-    resultSet: {
-      count: 1,
-      competitions: "PL",
-      first: "2025-08-23",
-      last: "2025-08-23",
-      played: 0,
-      wins: 0,
-      draws: 1,
-      losses: 0,
+    area: {
+      id: 2072,
+      name: "England",
+      code: "ENG",
+      flag: "https://crests.football-data.org/770.svg",
     },
     id: 2021,
     name: "Premier League",
     code: "PL",
     type: "LEAGUE",
     emblem: "https://crests.football-data.org/PL.png",
+    currentSeason: {
+      id: 1382,
+      startDate: "2022-11-21",
+      endDate: "2023-12-18",
+      currentMatchday: 1,
+      winner: null,
+      stages: [],
+    },
+    seasons: [
+      {
+        id: 1382,
+        startDate: "2022-11-21",
+        endDate: "2023-12-18",
+        currentMatchday: 1,
+        winner: null,
+        stages: [],
+      },
+    ],
   };
 };
 
@@ -231,7 +243,7 @@ describe("run", () => {
     };
     const data = await getData.run(
       "fake_api_key",
-      null,
+      "2023-10-18",
       fetchFunction,
       () => {},
     );

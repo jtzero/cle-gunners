@@ -1,11 +1,9 @@
 import * as fs from "fs";
-import { format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 import appRoot from "app-root-path";
 import * as json from "./json";
-import * as premierLeague from "./premierLeague";
-import * as competition from "./football-data/competition";
-import * as team from "./football-data/team";
 import * as date from "./date";
+import { team, competition } from "./football-data";
 
 const fetchArsenalFixtures = async (
   api_key: string,
@@ -36,7 +34,7 @@ const fetchArsenalFixtures = async (
 
 const saveFixturesFromRange = async (
   api_key: string,
-  today: Date,
+  _today: Date,
   startDate: Date,
   endDate: Date,
   leagueID: string,
@@ -46,8 +44,8 @@ const saveFixturesFromRange = async (
   writeDataToFileFunction: Function,
 ) => {
   console.log("Season:", seasonYear);
-  const startDateStr = format(startDate, "yyyy-MM-dd");
-  const endDateStr = format(endDate, "yyyy-MM-dd");
+  const startDateStr = formatInTimeZone(startDate, "UTC", "yyyy-MM-dd");
+  const endDateStr = formatInTimeZone(endDate, "UTC", "yyyy-MM-dd");
 
   const requestURL = competition.buildRequestURL(
     teamID,
@@ -82,10 +80,19 @@ export const run = async (
     ? date.getNextWeek(startDate)
     : date.getInTwoWeeks(today);
   const thisMonth = startDate.getMonth();
-  const seasonYear = premierLeague.getSeasonYear(
-    startDate.getFullYear(),
-    thisMonth,
+  const premierLeagueCompetition = await competition.fetchPremierLeague(
+    api_key,
+    fetchFunction,
   );
+  const seasonYear = competition.getSeasonYear(
+    premierLeagueCompetition,
+    startDate,
+  );
+  if (seasonYear instanceof competition.NoSeasonFoundError) {
+    console.log(`No season yet for ${startDate}`);
+    return;
+  }
+
   console.log("Fetching League ID...");
   const league = await competition.fetchPremierLeague(api_key, fetchFunction);
   const leagueID = league.id;
@@ -98,7 +105,7 @@ export const run = async (
     today,
     startDate,
     endDate,
-    leagueID,
+    leagueID.toString(),
     id,
     seasonYear,
     fetchFunction,
@@ -106,18 +113,21 @@ export const run = async (
   );
 
   const secondRoundStartDate = endDate;
-  const secondRoundMonth = secondRoundStartDate.getMonth();
-  const secondRoundSeasonYear = premierLeague.getSeasonYear(
-    secondRoundStartDate.getFullYear(),
-    secondRoundMonth,
+  const secondRoundSeasonYear = competition.getSeasonYear(
+    premierLeagueCompetition,
+    secondRoundStartDate,
   );
+  if (secondRoundSeasonYear instanceof competition.NoSeasonFoundError) {
+    console.log(`No season yet for ${secondRoundSeasonYear}`);
+    return;
+  }
   console.log(startDateArg, startDate, endDate, thisMonth);
   await saveFixturesFromRange(
     api_key,
     today,
     secondRoundStartDate,
     date.getNextWeek(endDate),
-    leagueID,
+    leagueID.toString(),
     id,
     secondRoundSeasonYear,
     fetchFunction,
