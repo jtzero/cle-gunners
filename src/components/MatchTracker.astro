@@ -347,41 +347,69 @@ const { styling } = Astro.props;
       }
     }
     let nearestMatches: Array<MatchType> | [] = [];
-    await fetch(`/api/manual-fixtures/${midWeek}.json`).then(async (response) => {
-      if (response.status === 200) {
-        const json = await response.json();
-        nearestMatches = laterThanNow(json.matches, today);
-      }
-    });
+    await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
+      async (response) => {
+        if (response.status === 200) {
+          const json = await response.json();
+          nearestMatches = laterThanNow(json.matches, today);
+        }
+      },
+    );
     await fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
-      nearestMatches = await filterMatchResponse(nearestMatches, response, today);
-      foundWeekID = midWeek;
+      if (response.status === 200) {
+        nearestMatches = await filterMatchResponse(
+          nearestMatches,
+          response,
+          today,
+        );
+        foundWeekID = midWeek;
+      }
     });
     if (!nearestMatches[0]) {
       checks.push(nextMidWeek);
-      await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(async (response) => {
-        if (response.status === 200) {
-          const json = await response.json();
-          nearestMatches = laterThanNow(json.matches, today);
-        }
-      });
-      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(async (nextWeekResponse) => {
-        nearestMatches = await filterMatchResponse(nearestMatches, nextWeekResponse, today);
-        foundWeekID = nextMidWeek;
-      });
+      await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
+        async (response) => {
+          if (response.status === 200) {
+            const json = await response.json();
+            nearestMatches = laterThanNow(json.matches, today);
+          }
+        },
+      );
+      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(
+        async (nextWeekResponse) => {
+          if (nextWeekResponse.status === 200) {
+            nearestMatches = await filterMatchResponse(
+              nearestMatches,
+              nextWeekResponse,
+              today,
+            );
+            foundWeekID = nextMidWeek;
+          }
+        },
+      );
     }
     if (!nearestMatches[0]) {
       checks.push(thirdMidWeek);
-      await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(async (response) => {
-        if (response.status === 200) {
-          const json = await response.json();
-          nearestMatches = laterThanNow(json.matches, today);
-        }
-      });
-      await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(async (thirdWeekResponse) => {
-        nearestMatches = await filterMatchResponse(nearestMatches, thirdWeekResponse, today);
-        foundWeekID = thirdMidWeek;
-      });
+      await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(
+        async (response) => {
+          if (response.status === 200) {
+            const json = await response.json();
+            nearestMatches = laterThanNow(json.matches, today);
+          }
+        },
+      );
+      await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(
+        async (thirdWeekResponse) => {
+          if (thirdWeekResponse.status === 200) {
+            nearestMatches = await filterMatchResponse(
+              nearestMatches,
+              thirdWeekResponse,
+              today,
+            );
+            foundWeekID = thirdMidWeek;
+          }
+        },
+      );
     }
 
     if (nearestMatches[0]) {
@@ -405,7 +433,16 @@ const { styling } = Astro.props;
         loading_status = LOADING_STATUSES.loaded;
       }
     } else {
-      console.log('no match found in', checks);
+      console.log("no match found in", checks);
+      const todayStr = format(today, "yyyy-MM-dd");
+      const competitionResponse: Response = await fetch(
+        `/api/competitions.json?date=${todayStr}`,
+      );
+      const competitionResponseJSON: competitionResponse =
+        await competitionResponse.json();
+      if (competitionResponseJSON.competitions.length === 0) {
+        console.log("offseason");
+      }
     }
   };
 

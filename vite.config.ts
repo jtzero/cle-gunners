@@ -1,7 +1,7 @@
-// vite.config.ts
-import { defineConfig } from "vite";
+import { getViteConfig } from "astro/config";
 import tsconfigPaths from "vite-tsconfig-paths";
+import tailwindcss from "@tailwindcss/vite";
 
-export default defineConfig({
-  plugins: [tsconfigPaths()],
+export default getViteConfig({
+  plugins: [tailwindcss(), tsconfigPaths()],
 });

@@ -1,7 +1,6 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import tailwindcss from "@tailwindcss/vite";
 import AutoImport from "astro-auto-import";
 import { defineConfig } from "astro/config";
 import remarkCollapse from "remark-collapse";
@@ -20,9 +19,8 @@ async function getHighlighter() {
 // https://astro.build/config
 export default defineConfig({
   site: "https://clevelandgooners.com",
-  base: (process.env.BASE || ""),
+  base: process.env.BASE || "",
   trailingSlash: false ? "always" : "never",
-  vite: { plugins: [tailwindcss()] },
   integrations: [react(), sitemap(), mdx()],
   markdown: {
     remarkPlugins: [

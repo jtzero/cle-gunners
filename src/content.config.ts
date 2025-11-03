@@ -27,9 +27,15 @@ const videoPostSchema = z.object({
   metaTitle: z.string().optional(),
 });
 
+const postSchema = z.union([
+  imagePostSchema,
+  videoPostSchema,
+  simplePostSchema,
+]);
+
 const postsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
-  schema: z.union([imagePostSchema, videoPostSchema, simplePostSchema]),
+  schema: postSchema,
 });
 
 const pinnedPostsCollection = defineCollection({
@@ -58,6 +64,19 @@ const pagesCollection = defineCollection({
     posts: z.array(z.string()).default([]),
   }),
 });
+const seasonWinnerSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  shortName: z.string(),
+  tla: z.string(),
+  crest: z.string().url(),
+  address: z.string(),
+  website: z.string().url(),
+  founded: z.number(),
+  clubColors: z.string(),
+  venue: z.string(),
+  lastUpdated: z.string().datetime(),
+});
 
 const matchSchema = z.object({
   area: z.object({
@@ -78,7 +97,7 @@ const matchSchema = z.object({
     startDate: z.string().date(),
     endDate: z.string().date(),
     currentMatchday: z.number(),
-    winner: z.number().nullable(),
+    winner: seasonWinnerSchema.optional().nullable(),
   }),
   id: z.number(),
   utcDate: z.string().datetime(),
@@ -102,7 +121,7 @@ const matchSchema = z.object({
     crest: z.string(),
   }),
   score: z.object({
-    winner: z.number().nullable(),
+    winner: z.string().nullable(), // HOME_TEAM, AWAY_TEAM ....
     duration: z.string(),
     fullTime: z.object({
       home: z.number().nullable(),
@@ -167,6 +186,34 @@ const manualFixturesCollection = defineCollection({
   }),
 });
 
+const seasonSchema = z.object({
+  id: z.number(),
+  startDate: z.string().date(),
+  endDate: z.string().date(),
+  currentMatchday: z.number(),
+  winner: seasonWinnerSchema.optional().nullable(),
+  stages: z.array(z.string()),
+});
+
+const competitionsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/competitions" }),
+  schema: z.object({
+    area: z.object({
+      id: z.number(),
+      name: z.string(),
+      code: z.string(),
+      flag: z.string(),
+    }),
+    id: z.number(),
+    name: z.string(),
+    code: z.string(),
+    type: z.string(),
+    emblem: z.string(),
+    currentSeason: seasonSchema,
+    seasons: z.array(seasonSchema),
+  }),
+});
+
 export type MatchType = z.infer<typeof matchSchema>;
 export type PostType = z.infer<typeof postSchema>;
 export const collections = {
@@ -175,4 +222,5 @@ export const collections = {
   pages: pagesCollection,
   fixtures: fixturesCollection,
   manualFixtures: manualFixturesCollection,
+  competitions: competitionsCollection,
 };
