@@ -13,9 +13,21 @@ const { styling } = Astro.props;
         <img updates="home-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
         <div updates="home-team-name" class="text-center"></div>
       </div>
-      <h1 data-spinner class="spinner text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"></h1>
-      <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
-        <img updates="away-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]"/>
+      <div
+        data-spinner
+        class="spinner self-center text-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"
+      >
+        <h1 data-show-after-load class="hidden">VS</h1>
+      </div>
+      <div
+        data-show-after-load
+        class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
+      >
+        <img
+          updates="away-team-image"
+          src=""
+          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+        />
         <div updates="away-team-name" class="text-center"></div>
       </div>
     </div>
