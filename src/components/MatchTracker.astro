@@ -94,7 +94,7 @@ const { styling } = Astro.props;
     loaded: 'LOADED',
   };
   let loading_status = LOADING_STATUSES.loading;
-  let matchesOnScreen = {};
+  let matchesOnScreen: { [key: string]: MatchType } = {};
   const getToday = () => {
     return window.today || new Date();
   };
