@@ -281,7 +281,12 @@ const { styling } = Astro.props;
     }
   };
 
-  const digCache = (today: Date, midWeek: string, nextMidWeek: string, thirdMidWeek: string): [MatchType[] | [], string | undefined] | [] => {
+  const digCache = (
+    today: Date,
+    midWeek: string,
+    nextMidWeek: string,
+    thirdMidWeek: string,
+  ): [MatchType[] | [], string | undefined] => {
     let foundWeekID = midWeek;
     let cache = getCacheLaterThanNow(midWeek, today);
     if (cache.length > 0) {
