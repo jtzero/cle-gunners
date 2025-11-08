@@ -1,6 +1,6 @@
 ---
 title: Saliba!
-video: https://www.youtube.com/embed/od2XWKslHJ4?si=gGmXCjDyuku8JnD2
+video: https://www.youtube.com/embed/Q9KXKmpDgjc?si=kZITNn3b0QgzDzLr
 videoDimensions: 560x315
 videoPlacement: body
 orientation: landscape
