@@ -2,15 +2,39 @@
 import Tile from "@/components/Tile.astro";
 
 const { styling } = Astro.props;
-
 ---
-<audio id="audio-player" src="https://www.fanchants.com/media/chants/full/download/manchester-is-full-of-shite-fanchants-free.mp3" preload="auto"></audio>
+
+<audio
+  id="audio-player"
+  src="https://www.fanchants.com/media/chants/full/download/manchester-is-full-of-shite-fanchants-free.mp3"
+  preload="auto"></audio>
 <Tile id="match-tracker" styling={styling}>
-  <Fragment slot="title"><h1 updates="double-header" class="hidden p-2 text-red">DOUBLE HEADER</h1><h4 data-show-after-load updates="match-date" class="hidden p-2"></h4></Fragment>
+  <Fragment slot="title">
+    <h1 updates="double-header" class="text-red hidden p-2">DOUBLE HEADER</h1>
+    <h4
+      data-show-after-load
+      data-show-offseason="header"
+      updates="match-date"
+      class="hidden p-2"
+    >
+    </h4>
+  </Fragment>
   <Fragment slot="body">
+    <p
+      data-show-offseason="body"
+      class="display-none text-xl whitespace-pre-wrap text-[var(--color-burgundy)]"
+    >
+    </p>
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
-      <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
-        <img updates="home-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
+      <div
+        data-show-after-load
+        class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
+      >
+        <img
+          updates="home-team-image"
+          src=""
+          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+        />
         <div updates="home-team-name" class="text-center"></div>
       </div>
       <div
@@ -32,78 +56,126 @@ const { styling } = Astro.props;
       </div>
     </div>
   </Fragment>
-  <Fragment slot="footer"><span class="text-neutral-400">data provided by <a class="text-neutral-400" href="https://www.football-data.org/" target="_blank">football-data.org</a></span></Fragment>
+  <Fragment slot="footer">
+    <span class="text-neutral-400"
+      >data provided by <a
+        class="text-neutral-400"
+        href="https://www.football-data.org/"
+        target="_blank">football-data.org</a
+      ></span
+    >
+  </Fragment>
 </Tile>
-<Tile id="match-tracker-double-header" styling={`hidden w-3/4 mb-6 shadow bg-white`}>
-  <Fragment slot="title"><h4 data-show-after-load updates="match-date" class="hidden p-2"></h4></Fragment>
+<Tile
+  id="match-tracker-double-header"
+  styling={`hidden w-3/4 mb-6 shadow bg-white`}
+>
+  <Fragment slot="title">
+    <h4
+      data-show-after-load
+      data-show-offseason="header"
+      updates="match-date"
+      class="hidden p-2"
+    >
+    </h4>
+  </Fragment>
   <Fragment slot="body">
+    <p
+      data-show-offseason="body"
+      class="display-none text-xl whitespace-pre-wrap text-[var(--dark-red-600)]"
+    >
+    </p>
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
-      <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
-        <img updates="home-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
+      <div
+        data-show-after-load
+        class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
+      >
+        <img
+          updates="home-team-image"
+          src=""
+          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+        />
         <div updates="home-team-name" class="text-center"></div>
       </div>
-      <h1 data-spinner class="spinner text-center self-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"></h1>
-      <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
-        <img updates="away-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
+      <h1
+        data-spinner
+        class="spinner self-center text-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"
+      >
+      </h1>
+      <div
+        data-show-after-load
+        class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
+      >
+        <img
+          updates="away-team-image"
+          src=""
+          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+        />
         <div updates="away-team-name" class="text-center"></div>
       </div>
     </div>
   </Fragment>
 </Tile>
 <style>
-.spinner {
-  width: 24px;
-  height: 24px;
-  border: 3px solid rgba(0, 0, 0, 0.3);
-  border-top-color: #3498db;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
+  .spinner {
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-top-color: #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg); /* Start at 0 degrees */
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg); /* Start at 0 degrees */
+    }
+    100% {
+      transform: rotate(
+        360deg
+      ); /* End at 360 degrees, completing a full rotation */
+    }
   }
-  100% {
-    transform: rotate(360deg); /* End at 360 degrees, completing a full rotation */
-  }
-}
 </style>
 <script>
+  import social from "@/config/social.json";
   import { startOfWeek, format, addDays } from "date-fns";
-  import { cloneDeep } from 'lodash';
-  import { fromZonedTime } from 'date-fns-tz';
-  import { v4 as uuid } from 'uuid';
-  import type { MatchType } from "@/types/match";
-  const easterEggImage = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
+  import { cloneDeep } from "lodash";
+  import { fromZonedTime } from "date-fns-tz";
+  import { v4 as uuid } from "uuid";
+  import { type MatchType } from "@/content.config";
+  import { type Season } from "@/lib/dataPipeline/football-data";
+
+  const easterEggImage =
+    "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
   const CACHE_VERSION = 1;
-  const DOUBLE_HEADER_FLAG = 'double-header';
+  const DOUBLE_HEADER_FLAG = "double-header";
   const imageLoadListenersInit = {
     "match-tracker": {
       home: false,
-      away: false
+      away: false,
     },
     "match-tracker-double-header": {
       home: false,
-      away: false
-    }
+      away: false,
+    },
   };
   let imageLoadListeners = cloneDeep(imageLoadListenersInit);
   const easterEggListenersInit = {
-    "id": uuid(),
+    id: uuid(),
     "match-tracker": {
       home: undefined,
-      away: undefined
+      away: undefined,
     },
     "match-tracker-double-header": {
       home: undefined,
-      away: undefined
-    }
+      away: undefined,
+    },
   };
   let easterEggListeners = cloneDeep(easterEggListenersInit);
   const LOADING_STATUSES = {
-    loading: 'LOADING',
-    loaded: 'LOADED',
+    loading: "LOADING",
+    loaded: "LOADED",
   };
   let loading_status = LOADING_STATUSES.loading;
   let matchesOnScreen: { [key: string]: MatchType } = {};
@@ -119,10 +191,15 @@ const { styling } = Astro.props;
     img.src = "/images/arsenal-crest.png";
     return img;
   };
-  let state: { arsenalCrest: HTMLImageElement | undefined; } = {
+  let state: { arsenalCrest: HTMLImageElement | undefined } = {
     arsenalCrest: undefined,
   };
-  const toggleEasterEgg = (element: HTMLImageElement, originalSrc: string, count: number, audioElement: HTMLAudioElement) => {
+  const toggleEasterEgg = (
+    element: HTMLImageElement,
+    originalSrc: string,
+    count: number,
+    audioElement: HTMLAudioElement,
+  ) => {
     if (count % 2 == 0) {
       element.src = easterEggImage;
       audioElement.play();
@@ -132,46 +209,80 @@ const { styling } = Astro.props;
     }
   };
   const removeSpinner = (element: HTMLElement) => {
-    Array.from(element.querySelectorAll('[data-spinner]')).map((el) => {
-      el.classList.remove('spinner');
-      el.textContent = 'VS';
+    Array.from(element.querySelectorAll("[data-spinner]")).map((el) => {
+      el.classList.remove("spinner");
+    });
+  };
+  const showDataOffSeasonMessage = (
+    id: string,
+    header: string,
+    message: string,
+  ) => {
+    const element = document.getElementById(id);
+    Array.from(element!.querySelectorAll("[data-show-offseason]")).map((el) => {
+      if (el.getAttribute("data-show-offseason") == "header") {
+        el.textContent = header;
+        el.classList.remove("hidden");
+      } else if (el.getAttribute("data-show-offseason") == "body") {
+        el.innerHTML = message;
+        el.classList.remove("display-none");
+      }
     });
   };
   const showData = (element: HTMLElement) => {
-    Array.from(element.querySelectorAll('[data-show-after-load]')).map((el) => {
+    Array.from(element.querySelectorAll("[data-show-after-load]")).map((el) => {
       // TODO: remove when better visibilty tracking is implemented
-      el.removeAttribute('data-show-after-load');
-      el.classList.remove('hidden');
+      el.removeAttribute("data-show-after-load");
+      el.classList.remove("hidden");
     });
   };
   const SrcImagesToUpdate = 2;
   let toggleEasterEggCountHome = 0;
   let toggleEasterEggCountAway = 0;
-  const updateTracker = (tracker: HTMLElement, nearestMatch: MatchType, audioElement: HTMLAudioElement, flags: Array<string> = []) => {
+  const updateTracker = (
+    tracker: HTMLElement,
+    nearestMatch: MatchType,
+    audioElement: HTMLAudioElement,
+    flags: Array<string> = [],
+  ) => {
     matchesOnScreen[tracker.id] = nearestMatch;
     const listenersForThisTracker = easterEggListeners[tracker.id];
     let imagesToLoadCount = 0;
-    Array.from(tracker.querySelectorAll('[updates]')).map((el) => {
-      if (el.getAttribute('updates') == 'away-team-image') {
+    Array.from(tracker.querySelectorAll("[updates]")).map((el) => {
+      if (el.getAttribute("updates") == "away-team-image") {
         let currentImageTag: HTMLImageElement = el as HTMLImageElement;
         imagesToLoadCount++;
-        if (nearestMatch.awayTeam.shortName == 'Man Utd') {
+        if (nearestMatch.awayTeam.shortName == "Man Utd") {
           if (!listenersForThisTracker.away) {
             listenersForThisTracker.away = () => {
-              toggleEasterEgg(currentImageTag, nearestMatch.awayTeam.crest, toggleEasterEggCountAway, audioElement);
+              toggleEasterEgg(
+                currentImageTag,
+                nearestMatch.awayTeam.crest,
+                toggleEasterEggCountAway,
+                audioElement,
+              );
               toggleEasterEggCountAway++;
             };
-            currentImageTag.addEventListener('click', listenersForThisTracker.away);
+            currentImageTag.addEventListener(
+              "click",
+              listenersForThisTracker.away,
+            );
           }
         } else if (listenersForThisTracker.away) {
-          currentImageTag.removeEventListener('click', listenersForThisTracker.away);
+          currentImageTag.removeEventListener(
+            "click",
+            listenersForThisTracker.away,
+          );
           listenersForThisTracker.away = undefined;
-        };
+        }
         if (!imageLoadListeners[tracker.id].away) {
-          currentImageTag.addEventListener('load', () => {
-            console.log('imageLoaded for ' + tracker.id, imagesToLoadCount);
+          currentImageTag.addEventListener("load", () => {
+            console.log("imageLoaded for " + tracker.id, imagesToLoadCount);
 
-            if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
+            if (
+              imagesToLoadCount == SrcImagesToUpdate ||
+              imagesToLoadCount == 0
+            ) {
               removeSpinner(tracker);
               showData(tracker);
               loading_status = LOADING_STATUSES.loaded;
@@ -180,30 +291,47 @@ const { styling } = Astro.props;
           });
           imageLoadListeners[tracker.id].away = true;
         }
-        if (nearestMatch.awayTeam.shortName == 'Arsenal' && state.arsenalCrest) {
+        if (
+          nearestMatch.awayTeam.shortName == "Arsenal" &&
+          state.arsenalCrest
+        ) {
           currentImageTag.replaceWith(state.arsenalCrest);
         } else {
           currentImageTag.src = nearestMatch.awayTeam.crest;
         }
-      } else if (el.getAttribute('updates') == 'home-team-image') {
+      } else if (el.getAttribute("updates") == "home-team-image") {
         let currentImageTag: HTMLImageElement = el as HTMLImageElement;
         imagesToLoadCount++;
-        if (nearestMatch.homeTeam.shortName == 'Man Utd') {
+        if (nearestMatch.homeTeam.shortName == "Man Utd") {
           if (!listenersForThisTracker.home) {
             listenersForThisTracker.home = () => {
-              toggleEasterEgg(currentImageTag, nearestMatch.homeTeam.crest, toggleEasterEggCountHome, audioElement);
+              toggleEasterEgg(
+                currentImageTag,
+                nearestMatch.homeTeam.crest,
+                toggleEasterEggCountHome,
+                audioElement,
+              );
               toggleEasterEggCountHome++;
             };
-            currentImageTag.addEventListener('click', listenersForThisTracker.home);
+            currentImageTag.addEventListener(
+              "click",
+              listenersForThisTracker.home,
+            );
           }
         } else if (listenersForThisTracker.home) {
-          currentImageTag.removeEventListener('click', listenersForThisTracker.home);
+          currentImageTag.removeEventListener(
+            "click",
+            listenersForThisTracker.home,
+          );
           listenersForThisTracker.home = undefined;
-        };
+        }
         if (!imageLoadListeners[tracker.id].home) {
-          currentImageTag.addEventListener('load', () => {
-            console.log('imageLoaded for' + tracker.id, imagesToLoadCount);
-            if (imagesToLoadCount == SrcImagesToUpdate || imagesToLoadCount == 0) {
+          currentImageTag.addEventListener("load", () => {
+            console.log("imageLoaded for" + tracker.id, imagesToLoadCount);
+            if (
+              imagesToLoadCount == SrcImagesToUpdate ||
+              imagesToLoadCount == 0
+            ) {
               removeSpinner(tracker);
               showData(tracker);
               loading_status = LOADING_STATUSES.loaded;
@@ -212,51 +340,75 @@ const { styling } = Astro.props;
           });
           imageLoadListeners[tracker.id].home = true;
         }
-        if (nearestMatch.homeTeam.shortName == 'Arsenal' && state.arsenalCrest) {
+        if (
+          nearestMatch.homeTeam.shortName == "Arsenal" &&
+          state.arsenalCrest
+        ) {
           currentImageTag.replaceWith(state.arsenalCrest);
         } else {
           currentImageTag.src = nearestMatch.homeTeam.crest;
         }
-      } else if (el.getAttribute('updates') == 'away-team-name') {
+      } else if (el.getAttribute("updates") == "away-team-name") {
         el.textContent = nearestMatch.awayTeam.shortName;
-      } else if (el.getAttribute('updates') == 'home-team-name') {
+      } else if (el.getAttribute("updates") == "home-team-name") {
         el.textContent = nearestMatch.homeTeam.shortName;
-      } else if (el.getAttribute('updates') == 'match-date') {
+      } else if (el.getAttribute("updates") == "match-date") {
         const converted = new Intl.DateTimeFormat(undefined, {
-          weekday: 'long',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
+          weekday: "long",
+          month: "long",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
         }).format(new Date(nearestMatch.utcDate));
 
         el.textContent = converted;
-      } else if (el.getAttribute('updates') == 'double-header' && flags.includes(DOUBLE_HEADER_FLAG)) {
-        el.setAttribute('data-show-after-load', '');
-      };
+      } else if (
+        el.getAttribute("updates") == "double-header" &&
+        flags.includes(DOUBLE_HEADER_FLAG)
+      ) {
+        el.setAttribute("data-show-after-load", "");
+      }
     });
   };
 
   const laterThanNow = (matches: Array<MatchType>, today: Date) => {
-    const sortedMatches = matches.sort((a, b) => a.utcDate.localeCompare(b.utcDate));
+    const sortedMatches = matches.sort((a, b) =>
+      a.utcDate.localeCompare(b.utcDate),
+    );
     return sortedMatches.filter((match) => {
       return new Date(match.utcDate).getTime() > today.getTime();
     });
   };
 
-  const otherMatchesOnSameDay = (matchToCompare: MatchType, matches: Array<MatchType>) => {
-    const tzone = Intl.DateTimeFormat().resolvedOptions().timeZone
-    const matchToCompareLocalizedDate = fromZonedTime(matchToCompare.utcDate, tzone);
+  const otherMatchesOnSameDay = (
+    matchToCompare: MatchType,
+    matches: Array<MatchType>,
+  ) => {
+    const tzone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const matchToCompareLocalizedDate = fromZonedTime(
+      matchToCompare.utcDate,
+      tzone,
+    );
     return matches.filter((match) => {
       const localizedDate = fromZonedTime(match.utcDate, tzone);
-      return matchToCompare !== match && localizedDate.getDay() === matchToCompareLocalizedDate.getDay();
+      return (
+        matchToCompare !== match &&
+        localizedDate.getDay() === matchToCompareLocalizedDate.getDay()
+      );
     });
-  }
-  const filterMatchResponse = async (existingMatches: Array<MatchType>, response: Response, today: Date) => {
+  };
+  const filterMatchResponse = async (
+    existingMatches: Array<MatchType>,
+    response: Response,
+    today: Date,
+  ) => {
     const json = await response.json();
 
     let doubleHeaderMatch: MatchType | undefined = undefined;
-    const nearestMatches = laterThanNow([...existingMatches, ...json.matches], today);
+    const nearestMatches = laterThanNow(
+      [...existingMatches, ...json.matches],
+      today,
+    );
     const nearestMatch = nearestMatches[0];
     if (nearestMatches.length > 1) {
       const otherMatches = otherMatchesOnSameDay(nearestMatch, nearestMatches);
@@ -266,17 +418,22 @@ const { styling } = Astro.props;
     }
     return [nearestMatch, doubleHeaderMatch].filter(Boolean);
   };
-  const hideDoubleHeaderItems = (matchTracker: HTMLElement, matchTrackerDoubleHeader: HTMLElement) => {
-    const headerElement = matchTracker.querySelector('[updates="double-header"]')
+  const hideDoubleHeaderItems = (
+    matchTracker: HTMLElement,
+    matchTrackerDoubleHeader: HTMLElement,
+  ) => {
+    const headerElement = matchTracker.querySelector(
+      '[updates="double-header"]',
+    );
     if (headerElement) {
       // TODO: this conflicts with data-show-after-load
-      headerElement.classList.add('hidden');
+      headerElement.classList.add("hidden");
     }
-    matchTrackerDoubleHeader.classList.add('hidden');
+    matchTrackerDoubleHeader.classList.add("hidden");
   };
   type CacheParsedType = {
-    matches: Array<MatchType>
-  }
+    matches: Array<MatchType>;
+  };
   const getCacheLaterThanNow = (id: string, today: Date): MatchType[] | [] => {
     try {
       let cache = localStorage.getItem(`${id}-v${CACHE_VERSION}`);
@@ -287,13 +444,18 @@ const { styling } = Astro.props;
         return [];
       }
     } catch (e) {
-      console.log('error parsing cache, clearing', e);
+      console.log("error parsing cache, clearing", e);
       localStorage.removeItem(`${id}-v${CACHE_VERSION}`);
       return [];
     }
   };
 
-  const digCache = (today: Date, midWeek: string, nextMidWeek: string, thirdMidWeek: string): [MatchType[] | [], string | undefined] | [] => {
+  const digCache = (
+    today: Date,
+    midWeek: string,
+    nextMidWeek: string,
+    thirdMidWeek: string,
+  ): [MatchType[] | [], string | undefined] => {
     let foundWeekID = midWeek;
     let cache = getCacheLaterThanNow(midWeek, today);
     if (cache.length > 0) {
@@ -315,21 +477,54 @@ const { styling } = Astro.props;
       }
     }
   };
+  const randomOffSeasonMessage = () => {
+    const offSeasonMessages = [
+      `It happens, \n` +
+        `you could always read a book, \n I hear Fever Pitch is nice ¯\\_(ツ)_/¯ \n` +
+        `There's always our discord: <a href="${social["discord"]}">discord</a>\n` +
+        `And also transfer news: <a href="https://arseblog.news/category/transfers/">Arseblog Transfers</a>\n` +
+        `This will update when new data shows up. See you then!`,
+      `It was good season, \n` +
+        `join us in the <a href="${social["discord"]}">discord</a> to chat transfers and more!\n` +
+        `This will update when new data shows up. See you then!`,
+      `That's a wrap! \n We can chat about it in <a href="${social["discord"]}">discord</a>\n` +
+        `This will update when new data shows up. See you then!`,
+    ];
+    const randomMessage =
+      offSeasonMessages[Math.floor(Math.random() * offSeasonMessages.length)];
+    return randomMessage;
+  };
 
   const isMatchInSlot = (matchSlotName: string, match: MatchType) => {
     return matchesOnScreen[matchSlotName]?.id === match.id;
   };
 
   const checkForMatches = async (today: Date, callerID: string) => {
-    const midWeek = format(startOfWeek(today, { weekStartsOn: 4 }), 'yyyy-MM-dd');
-    const nextMidWeek = format(startOfWeek(addDays(today, 7), { weekStartsOn: 4 }), 'yyyy-MM-dd');
-    const thirdMidWeek = format(startOfWeek(addDays(today, 14), { weekStartsOn: 4 }), 'yyyy-MM-dd');
+    const midWeek = format(
+      startOfWeek(today, { weekStartsOn: 4 }),
+      "yyyy-MM-dd",
+    );
+    const nextMidWeek = format(
+      startOfWeek(addDays(today, 7), { weekStartsOn: 4 }),
+      "yyyy-MM-dd",
+    );
+    const thirdMidWeek = format(
+      startOfWeek(addDays(today, 14), { weekStartsOn: 4 }),
+      "yyyy-MM-dd",
+    );
     let checks = [midWeek];
-    const matchTracker = document.getElementById('match-tracker');
-    const matchTrackerDoubleHeader = document.getElementById('match-tracker-double-header');
-    const audioPlayer = document.getElementById('audio-player');
+    const matchTracker = document.getElementById("match-tracker");
+    const matchTrackerDoubleHeader = document.getElementById(
+      "match-tracker-double-header",
+    );
+    const audioPlayer = document.getElementById("audio-player");
 
-    let [cachedMatches, foundWeekID] = digCache(today, midWeek, nextMidWeek, thirdMidWeek);
+    let [cachedMatches, foundWeekID] = digCache(
+      today,
+      midWeek,
+      nextMidWeek,
+      thirdMidWeek,
+    );
     if (cachedMatches.length > 0) {
       let flags = [];
       if (cachedMatches.length > 1) {
@@ -337,14 +532,18 @@ const { styling } = Astro.props;
       }
       if (cachedMatches.length > 0) {
         let runningUpdates = false;
-        if (!isMatchInSlot('match-tracker', cachedMatches[0])) {
+        if (!isMatchInSlot("match-tracker", cachedMatches[0])) {
           runningUpdates = true;
           updateTracker(matchTracker, cachedMatches[0], audioPlayer, flags);
         }
         if (cachedMatches.length > 1) {
-          if (!isMatchInSlot('match-tracker-double-header', cachedMatches[1])) {
-            matchTrackerDoubleHeader.classList.remove('hidden');
-            updateTracker(matchTrackerDoubleHeader, cachedMatches[1], audioPlayer);
+          if (!isMatchInSlot("match-tracker-double-header", cachedMatches[1])) {
+            matchTrackerDoubleHeader.classList.remove("hidden");
+            updateTracker(
+              matchTrackerDoubleHeader,
+              cachedMatches[1],
+              audioPlayer,
+            );
             runningUpdates = true;
           }
         } else {
@@ -359,70 +558,125 @@ const { styling } = Astro.props;
       }
     }
     let nearestMatches: Array<MatchType> | [] = [];
-    await fetch(`/api/manual-fixtures/${midWeek}.json`).then(async (response) => {
-      if (response.status === 200) {
-        const json = await response.json();
-        nearestMatches = laterThanNow(json.matches, today);
-      }
-    });
+    await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
+      async (response) => {
+        if (response.status === 200) {
+          const json = await response.json();
+          nearestMatches = laterThanNow(json.matches, today);
+        }
+      },
+    );
     await fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
-      nearestMatches = await filterMatchResponse(nearestMatches, response, today);
-      foundWeekID = midWeek;
+      if (response.status === 200) {
+        nearestMatches = await filterMatchResponse(
+          nearestMatches,
+          response,
+          today,
+        );
+        foundWeekID = midWeek;
+      }
     });
     if (!nearestMatches[0]) {
       checks.push(nextMidWeek);
-      await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(async (response) => {
-        if (response.status === 200) {
-          const json = await response.json();
-          nearestMatches = laterThanNow(json.matches, today);
-        }
-      });
-      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(async (nextWeekResponse) => {
-        nearestMatches = await filterMatchResponse(nearestMatches, nextWeekResponse, today);
-        foundWeekID = nextMidWeek;
-      });
+      await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
+        async (response) => {
+          if (response.status === 200) {
+            const json = await response.json();
+            nearestMatches = laterThanNow(json.matches, today);
+          }
+        },
+      );
+      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(
+        async (nextWeekResponse) => {
+          if (nextWeekResponse.status === 200) {
+            nearestMatches = await filterMatchResponse(
+              nearestMatches,
+              nextWeekResponse,
+              today,
+            );
+            foundWeekID = nextMidWeek;
+          }
+        },
+      );
     }
     if (!nearestMatches[0]) {
       checks.push(thirdMidWeek);
-      await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(async (response) => {
-        if (response.status === 200) {
-          const json = await response.json();
-          nearestMatches = laterThanNow(json.matches, today);
-        }
-      });
-      await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(async (thirdWeekResponse) => {
-        nearestMatches = await filterMatchResponse(nearestMatches, thirdWeekResponse, today);
-        foundWeekID = thirdMidWeek;
-      });
+      await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(
+        async (response) => {
+          if (response.status === 200) {
+            const json = await response.json();
+            nearestMatches = laterThanNow(json.matches, today);
+          }
+        },
+      );
+      await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(
+        async (thirdWeekResponse) => {
+          if (thirdWeekResponse.status === 200) {
+            nearestMatches = await filterMatchResponse(
+              nearestMatches,
+              thirdWeekResponse,
+              today,
+            );
+            foundWeekID = thirdMidWeek;
+          }
+        },
+      );
     }
 
     if (nearestMatches[0]) {
-      localStorage.setItem(`${foundWeekID}-v${CACHE_VERSION}`, JSON.stringify({
-        matches: nearestMatches,
-      }));
+      localStorage.setItem(
+        `${foundWeekID}-v${CACHE_VERSION}`,
+        JSON.stringify({
+          matches: nearestMatches,
+        }),
+      );
       let flags = [];
       if (nearestMatches.length > 1) {
         flags.push(DOUBLE_HEADER_FLAG);
       }
-      if (!isMatchInSlot('match-tracker', nearestMatches[0])) {
+      if (!isMatchInSlot("match-tracker", nearestMatches[0])) {
         updateTracker(matchTracker, nearestMatches[0], audioPlayer, flags);
       }
       if (nearestMatches.length > 1) {
-        matchTrackerDoubleHeader.classList.remove('hidden');
-        if (!isMatchInSlot('match-tracker-double-header', nearestMatches[1])) {
-          updateTracker(matchTrackerDoubleHeader, nearestMatches[1], audioPlayer);
+        matchTrackerDoubleHeader.classList.remove("hidden");
+        if (!isMatchInSlot("match-tracker-double-header", nearestMatches[1])) {
+          updateTracker(
+            matchTrackerDoubleHeader,
+            nearestMatches[1],
+            audioPlayer,
+          );
         }
       } else {
         hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
         loading_status = LOADING_STATUSES.loaded;
       }
     } else {
-      console.log('no match found in', checks);
+      console.log("no match found in", checks);
+      const cachedSeasons = await fetch(`/api/seasons.json`);
+      const seasonsJSON = await cachedSeasons.json();
+      const anySeason = seasonsJSON.seasons.find((season: Season) => {
+        return new Date(season.endDate).getTime() >= today.getTime();
+      });
+      if (!anySeason) {
+        removeSpinner(matchTracker);
+        showDataOffSeasonMessage(
+          "match-tracker",
+          "OFFSEASON",
+          randomOffSeasonMessage(),
+        );
+      } else {
+        showDataOffSeasonMessage(
+          "match-tracker",
+          "OOPS",
+          "01101111 01101111 01110000 011100112... \n" +
+            "Data is malformed, seems we found a 2 🤖",
+        );
+      }
     }
   };
 
   const onPageWithMatchTracker = () => {
-    return document.getElementById('match-tracker') !== undefined;
+    return document.getElementById("match-tracker") !== undefined;
   };
 
   preloadEasterEggImage();
@@ -436,12 +690,15 @@ const { styling } = Astro.props;
       easterEggListeners = cloneDeep(easterEggListenersInit);
       imageLoadListeners = cloneDeep(imageLoadListenersInit);
       loading_status = LOADING_STATUSES.loading;
-      checkForMatches(getToday(), 'page-load').then(() => {
+      checkForMatches(getToday(), "page-load").then(() => {
         if (!addedPolling) {
           setInterval(() => {
-            if (onPageWithMatchTracker() && loading_status != LOADING_STATUSES.loading) {
+            if (
+              onPageWithMatchTracker() &&
+              loading_status != LOADING_STATUSES.loading
+            ) {
               loading_status = LOADING_STATUSES.loading;
-              checkForMatches(getToday(), 'interval');
+              checkForMatches(getToday(), "interval");
             }
           }, 4000);
           addedPolling = true;
@@ -451,9 +708,13 @@ const { styling } = Astro.props;
   });
 
   document.addEventListener("visibilitychange", () => {
-    if (onPageWithMatchTracker() && document.visibilityState === 'visible' && loading_status != LOADING_STATUSES.loading) {
+    if (
+      onPageWithMatchTracker() &&
+      document.visibilityState === "visible" &&
+      loading_status != LOADING_STATUSES.loading
+    ) {
       loading_status = LOADING_STATUSES.loading;
-      checkForMatches(getToday(), 'visibilitychange');
+      checkForMatches(getToday(), "visibilitychange");
     }
   });
 </script>
