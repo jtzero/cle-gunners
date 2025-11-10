@@ -11,7 +11,7 @@
     "check": "astro check && prettier --check .",
     "format": "prettier --write .",
     "get-data": "tsx bin/get-data.ts",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "comments": {
     "phin": "added only to force astrojs to use a non vuln version",
