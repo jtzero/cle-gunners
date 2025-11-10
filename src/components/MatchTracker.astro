@@ -6,8 +6,22 @@ const { styling } = Astro.props;
 ---
 <audio id="audio-player" src="https://www.fanchants.com/media/chants/full/download/manchester-is-full-of-shite-fanchants-free.mp3" preload="auto"></audio>
 <Tile id="match-tracker" styling={styling}>
-  <Fragment slot="title"><h1 updates="double-header" class="hidden p-2 text-red">DOUBLE HEADER</h1><h4 data-show-after-load updates="match-date" class="hidden p-2"></h4></Fragment>
+  <Fragment slot="title">
+    <h1 updates="double-header" class="text-red hidden p-2">DOUBLE HEADER</h1>
+    <h4
+      data-show-after-load
+      data-show-offseason="header"
+      updates="match-date"
+      class="hidden p-2"
+    >
+    </h4>
+  </Fragment>
   <Fragment slot="body">
+    <p
+      data-show-offseason="body"
+      class="display-none text-xl whitespace-pre-wrap text-[var(--dark-red-600)]"
+    >
+    </p>
     <div class="grid grid-cols-[1fr_auto_1fr] p-4">
       <div data-show-after-load class="hidden text-xl font-bold grid-cols-1 grid-rows-2 align-center">
         <img updates="home-team-image" src="" class="w-[100%] min-w-[100px] min-h-[100px] lg:min-w-[100px] lg:min-h-[200px]" />
@@ -70,12 +84,18 @@ const { styling } = Astro.props;
 }
 </style>
 <script>
+  import social from "@/config/social.json";
   import { startOfWeek, format, addDays } from "date-fns";
   import { cloneDeep } from 'lodash';
   import { fromZonedTime } from 'date-fns-tz';
   import { v4 as uuid } from 'uuid';
   import type { MatchType } from "@/types/match";
-  const easterEggImage = "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
+  import type { Competition } from "@/lib/dataPipeline/football-data";
+  interface CompetitionsResponse {
+    competitions: Array<Competition>;
+  }
+  const easterEggImage =
+    "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
   const CACHE_VERSION = 1;
   const DOUBLE_HEADER_FLAG = 'double-header';
   const imageLoadListenersInit = {
@@ -132,9 +152,24 @@ const { styling } = Astro.props;
     }
   };
   const removeSpinner = (element: HTMLElement) => {
-    Array.from(element.querySelectorAll('[data-spinner]')).map((el) => {
-      el.classList.remove('spinner');
-      el.textContent = 'VS';
+    Array.from(element.querySelectorAll("[data-spinner]")).map((el) => {
+      el.classList.remove("spinner");
+    });
+  };
+  const showDataOffSeasonMessage = (
+    id: string,
+    header: string,
+    message: string,
+  ) => {
+    const element = document.getElementById(id);
+    Array.from(element!.querySelectorAll("[data-show-offseason]")).map((el) => {
+      if (el.getAttribute("data-show-offseason") == "header") {
+        el.textContent = header;
+        el.classList.remove("hidden");
+      } else if (el.getAttribute("data-show-offseason") == "body") {
+        el.innerHTML = message;
+        el.classList.remove("display-none");
+      }
     });
   };
   const showData = (element: HTMLElement) => {
@@ -320,6 +355,23 @@ const { styling } = Astro.props;
       }
     }
   };
+  const randomOffSeasonMessage = () => {
+    const offSeasonMessages = [
+      `It happens, \n` +
+        `you could always read a book, \n I hear Fever Pitch is nice ¯\\_(ツ)_/¯ \n` +
+        `There's always our discord: <a href="${social["discord"]}">discord</a>\n` +
+        `And also transfer news: <a href="https://arseblog.news/category/transfers/">Arseblog Transfers</a>\n` +
+        `This will update when new data shows up. See you then!`,
+      `It was good season, \n` +
+        `join us in the <a href="${social["discord"]}">discord</a> to chat transfers and more!\n` +
+        `This will update when new data shows up. See you then!`,
+      `That's a wrap! \n We can chat about it in <a href="${social["discord"]}">discord</a>\n` +
+        `This will update when new data shows up. See you then!`,
+    ];
+    const randomMessage =
+      offSeasonMessages[Math.floor(Math.random() * offSeasonMessages.length)];
+    return randomMessage;
+  };
 
   const isMatchInSlot = (matchSlotName: string, match: MatchType) => {
     return matchesOnScreen[matchSlotName]?.id === match.id;
@@ -455,10 +507,15 @@ const { styling } = Astro.props;
       const competitionResponse: Response = await fetch(
         `/api/competitions.json?date=${todayStr}`,
       );
-      const competitionResponseJSON: competitionResponse =
+      const competitionResponseJSON: CompetitionsResponse =
         await competitionResponse.json();
       if (competitionResponseJSON.competitions.length === 0) {
-        console.log("offseason");
+        removeSpinner(matchTracker);
+        showDataOffSeasonMessage(
+          "match-tracker",
+          "OFFSEASON",
+          randomOffSeasonMessage(),
+        );
       }
     }
   };
