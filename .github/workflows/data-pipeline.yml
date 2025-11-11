@@ -57,3 +57,17 @@ jobs:
           body: |
             This is an automated pull request created by GitHub Actions.
             Should only collect `src/content/fixtures/*`
+          labels: |
+            data-pipeline-update
+          # The GitHub API does not allow creating a PR and
+          # adding labels in a single request.
+          # The peter-evans/create-pull-request
+          # action handles this by creating the PR first,
+          # and then immediately making a separate API call
+          # to add the labels.This is relevant if you have another
+          # workflow that is immediately triggered by the PR creation
+          # and checks for those labels. Occasionally, the label-checking
+          # workflow might start before the labels are fully applied,
+          # causing a race condition. If this happens, you might need to
+          # add a small delay or change the trigger for the downstream
+          # workflow to on: pull_request: types: [labeled].
