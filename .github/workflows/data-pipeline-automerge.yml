@@ -1,0 +1,60 @@
+name: Auto Merge PR on Label
+
+on:
+  # Triggers the workflow when a label is added to a Pull Request
+  pull_request_target:
+    types: [labeled]
+
+jobs:
+  auto-merge:
+    if: github.event.action == 'labeled' && github.event.label.name == 'data-pipeline-update' && github.actor != 'dependabot[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # Needed for merging
+      pull-requests: write # Needed for merging and commenting
+
+    steps:
+      - name: 💬 Add Merging Comment
+        uses: peter-evans/create-or-update-comment@v4
+        with:
+          issue-number: ${{ github.event.pull_request.number }}
+          body: |
+            :robot: This Pull Request has been automatically marked for merging due to the `auto-merge` label.
+
+      - name: 🤖 Auto-Merge PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const pull_number = context.issue.number;
+
+            console.log(`Attempting to merge PR #${pull_number} in ${owner}/${repo}`);
+
+            try {
+              // Merge the pull request using the GitHub API
+              await github.rest.pulls.merge({
+                owner,
+                repo,
+                pull_number,
+                commit_title: 'Auto-merge by GitHub Action',
+                merge_method: 'rebase'
+              });
+
+              console.log('PR successfully merged.');
+
+            } catch (error) {
+              console.error('Failed to merge PR:', error);
+              // Optionally add a comment if the merge fails (e.g., due to conflicts)
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: pull_number,
+                body: ':exclamation: **Auto-Merge Failed!** The PR could not be merged, likely due to conflicts or missing required checks.'
+              });
+
+              // Fail the job so the failure is clearly visible
+              core.setFailed(`Auto-merge failed: ${error.message}`);
+            }
+          # This needs to be a token with permissions to merge the PR.
+          # The default GITHUB_TOKEN has these permissions within pull_request_target.
+          github-token: ${{ secrets.GITHUB_TOKEN }}
