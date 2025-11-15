@@ -227,7 +227,7 @@ describe("run", () => {
           "https://api.football-data.org/v4/teams/",
         )[1];
         if (id_and_path.match(/^\d+\/matches/)) {
-          const url = URL.parse(apiEndpoint)!;
+          const url = new URL(apiEndpoint)!;
           const dateFrom = url.searchParams.get("dateFrom");
           const dateTo = url.searchParams.get("dateTo");
           return {
@@ -245,7 +245,7 @@ describe("run", () => {
       "fake_api_key",
       "2023-10-18",
       fetchFunction,
-      () => {},
+      () => { },
     );
   });
 });
