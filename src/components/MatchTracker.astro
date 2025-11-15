@@ -143,6 +143,7 @@ const { styling } = Astro.props;
   import { cloneDeep } from "lodash";
   import { fromZonedTime } from "date-fns-tz";
   import { v4 as uuid } from "uuid";
+  import DOMPurify from "dompurify";
   import { type MatchType } from "@/content.types";
   import { type Season } from "@/lib/dataPipeline/football-data";
 
@@ -218,13 +219,14 @@ const { styling } = Astro.props;
     header: string,
     message: string,
   ) => {
+    const cleanedMessage = DOMPurify.sanitize(message);
     const element = document.getElementById(id);
     Array.from(element!.querySelectorAll("[data-show-offseason]")).map((el) => {
       if (el.getAttribute("data-show-offseason") == "header") {
         el.textContent = header;
         el.classList.remove("hidden");
       } else if (el.getAttribute("data-show-offseason") == "body") {
-        el.innerHTML = message;
+        el.innerHTML = cleanedMessage;
         el.classList.remove("display-none");
       }
     });
