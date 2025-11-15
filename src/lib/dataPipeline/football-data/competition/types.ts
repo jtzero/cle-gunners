@@ -1,4 +1,4 @@
-import { type Team } from '../types';
+import { type Team } from '../team.types';
 
 export type Competition = {
   area: {
