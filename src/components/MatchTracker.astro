@@ -678,7 +678,7 @@ const { styling } = Astro.props;
   };
 
   const onPageWithMatchTracker = () => {
-    return document.getElementById("match-tracker") !== undefined;
+    return document.getElementById("match-tracker") !== null;
   };
 
   preloadEasterEggImage();
