@@ -1,0 +1,9 @@
+#!/usr/bin/env node
+
+const fullUrl = process.argv[2];
+
+const encodedUrl = encodeURI(fullUrl);
+
+const response = await fetch(`https://noembed.com/embed?url=${encodedUrl}&callback=my_embed_function`)
+
+console.log(await response.text());
