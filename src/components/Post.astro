@@ -46,8 +46,6 @@ if (post.data?.videoDimensions) {
   post.data.parsedVideoWidth = parseInt(videoWidth);
   post.data.parsedVideoHeight = parseInt(videoHeight);
 }
-const hasVideo = post.data?.video !== undefined;
-const hasMultimedia = hasVideo || post.data.image;
 const multimediaPlacement =
   post.data.imagePlacement || post.data.videoPlacement;
 const hasHeaderMultimedia =
@@ -112,7 +110,7 @@ const tileBodyClass = (() => {
           width={post.data.parsedVideoWidth}
           height={post.data.parsedVideoHeight}
           title={post.data.title}
-          oreientation={post.data.videoOrientation}
+          orientation={post.data.orientation}
         />
       )
     }
@@ -168,7 +166,7 @@ const tileBodyClass = (() => {
           <div
             class={`${heroTextStyling} tile-body-hero-text a-tag-underline p-2 text-center text-lg wrap-break-word`}
           >
-            <Fragment set:html={markdownify(post.body)} />
+            <Fragment set:html={markdownify(post.body || "")} />
           </div>
         )
       }
