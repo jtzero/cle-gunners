@@ -1,7 +1,7 @@
 ---
 title: That's Alright
 video: https://www.youtube.com/embed/1MqLehx0Uno?si=iGMGljdQbZymIT6D
-videoDimensions: 560x315
+videoDimensions: 625x530
 videoPlacement: body
 orientation: portrait
 ---

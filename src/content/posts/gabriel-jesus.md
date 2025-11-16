@@ -1,7 +1,7 @@
 ---
 title: I Believe in Jesus
 video: https://www.youtube.com/embed/FL2GUe4i-KI?si=7vEPMZD5rJ3WiNs9
-videoDimensions: 560x315
+videoDimensions: 1246x300
 orientation: landscape
 ---
 

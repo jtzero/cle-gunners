@@ -4,12 +4,12 @@ import { fromBase } from "@/lib/fromBase";
 import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
 import ConditionalATag from "@/components/ConditionalATag.astro";
-import type { PostType } from "@/content.config";
+import type { PostType } from "@/content.types";
 import Tile from "@/components/Tile.astro";
 import Video from "@/components/Video.astro";
 
 type Props = {
-  post: CollectionEntry<"posts">;
+  post: CollectionEntry<"posts"> | CollectionEntry<"pinnedPosts">;
   displayReadMore?: boolean;
   styling: string;
   headerStyling?: string;
@@ -23,7 +23,7 @@ const {
   styling,
   topBorderStyling = "border-t-2 border-red",
   headerStyling = "",
-  heroTextStyling = ""
+  heroTextStyling = "",
 } = Astro.props;
 
 const showReadMore = (() => {
@@ -33,6 +33,9 @@ const showReadMore = (() => {
     return (post.data?.posts || []).length > 0;
   }
 })();
+
+const hasVideo = post.data?.video !== undefined;
+const hasMultimedia = hasVideo || post.data.image;
 const [width, height] = (post.data?.imageDimensions || "").split("x");
 if (post.data?.imageDimensions) {
   post.data.parsedImageWidth = parseInt(width);
@@ -43,65 +46,82 @@ if (post.data?.videoDimensions) {
   post.data.parsedVideoWidth = parseInt(videoWidth);
   post.data.parsedVideoHeight = parseInt(videoHeight);
 }
-const hasVideo = (post.data?.video !== undefined);
-const hasMultimedia = (hasVideo || post.data.image);
-const multimediaPlacement = (post.data.imagePlacement || post.data.videoPlacement);
-const hasHeaderMultimedia = hasMultimedia && (!multimediaPlacement || multimediaPlacement == "header");
+const hasVideo = post.data?.video !== undefined;
+const hasMultimedia = hasVideo || post.data.image;
+const multimediaPlacement =
+  post.data.imagePlacement || post.data.videoPlacement;
+const hasHeaderMultimedia =
+  hasMultimedia && (!multimediaPlacement || multimediaPlacement == "header");
 const hasHeaderImage = post.data.image && hasHeaderMultimedia;
 
-const topBorderWithHeaderMedia = hasHeaderMultimedia ? '' : topBorderStyling;
+const topBorderWithHeaderMedia = hasHeaderMultimedia ? "" : topBorderStyling;
 let tileWithHeaderMedia = (() => {
   if (width == height && !multimediaPlacement) {
-    return 'tile-with-square-header-media';
+    return "tile-with-square-header-media";
   } else if (hasHeaderMultimedia) {
-    return 'tile-with-header-media';
+    return "tile-with-header-media";
   } else {
-    return 'tile-with-body-media';
+    return "tile-with-body-media";
   }
 })();
 const hasTextBody = (post.body || "") != "";
 const tileBodyClass = (() => {
   if (hasHeaderMultimedia) {
-    return 'tile-body-without-body-media'
-  } else if (hasMultimedia && multimediaPlacement == 'body') {
+    return "tile-body-without-body-media";
+  } else if (hasMultimedia && multimediaPlacement == "body") {
     if (!hasTextBody) {
-      return 'tile-body-with-only-body-media';
+      return "tile-body-with-only-body-media";
     } else {
-      return 'tile-body-with-body-media';
+      return "tile-body-with-body-media";
     }
   } else {
-    return '';
+    return "";
   }
 })();
 ---
-<Tile id={slugify(post.data.title)} styling={`${styling} ${tileWithHeaderMedia} ${topBorderWithHeaderMedia}` } headerStyling={headerStyling} bodyStyling={`${heroTextStyling} ${tileBodyClass}`}>
+
+<Tile
+  id={slugify(post.data.title)}
+  styling={`${styling} ${tileWithHeaderMedia} ${topBorderWithHeaderMedia}`}
+  headerStyling={headerStyling}
+  bodyStyling={`${heroTextStyling} ${tileBodyClass}`}
+>
   <Fragment slot="header">
-  {
-    hasHeaderImage && (
-      <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
+    {
+      hasHeaderImage && (
+        <ConditionalATag
+          conditional={post.data.imageLink}
+          href={post.data.imageLink}
+        >
           <Image
             class="lg"
             src={fromBase(post.data.image)}
             alt={post.data.title}
             width={post.data.parsedImageWidth}
             height={post.data.parsedImageHeight}
-            class="w-auto tile-image"
+            class="tile-image w-auto"
             format="webp"
           />
-      </ConditionalATag>
-    )
-  }
-  {
-    hasVideo && !multimediaPlacement && (
-      <Video url={post.data.video} width={post.data.parsedVideoWidth} height={post.data.parsedVideoHeight} title={post.data.title}  oreientation={post.data.videoOrientation} />
-    )
-  }
+        </ConditionalATag>
+      )
+    }
+    {
+      hasVideo && !multimediaPlacement && (
+        <Video
+          url={post.data.video}
+          width={post.data.parsedVideoWidth}
+          height={post.data.parsedVideoHeight}
+          title={post.data.title}
+          oreientation={post.data.videoOrientation}
+        />
+      )
+    }
   </Fragment>
 
   <Fragment slot="title">
     {
       post.data.title && (
-        <h3 class={`${headerStyling} text-gold w-full text-center pt-2`}>
+        <h3 class={`${headerStyling} text-gold w-full pt-2 text-center`}>
           {post.data.title}
         </h3>
       )
@@ -110,82 +130,104 @@ const tileBodyClass = (() => {
 
   <Fragment slot="body">
     {
-      hasVideo && multimediaPlacement == 'body' && (
-        <Video url={post.data.video} width={post.data.parsedVideoWidth} height={post.data.parsedVideoHeight} title={post.data.title}  oreientation={post.data.videoOrientation} />
+      hasVideo && multimediaPlacement == "body" && (
+        <Video
+          url={post.data.video}
+          width={post.data.parsedVideoWidth}
+          height={post.data.parsedVideoHeight}
+          title={post.data.title}
+          orientation={post.data.orientation}
+          classNames={["self-end"]}
+        />
       )
     }
     {
-      post.data.image && multimediaPlacement == 'body' && (
-        <ConditionalATag conditional={post.data.imageLink} href={post.data.imageLink}>
+      post.data.image && multimediaPlacement == "body" && (
+        <ConditionalATag
+          conditional={post.data.imageLink}
+          href={post.data.imageLink}
+        >
           <Image
             class="lg"
             src={fromBase(post.data.image)}
             alt={post.data.title}
             width={post.data.parsedImageWidth}
             height={post.data.parsedImageHeight}
-            class="w-auto tile-image"
+            class="tile-image w-auto"
             format="webp"
           />
         </ConditionalATag>
       )
     }
-    <span data-testid="tile-body-text" class={`flex flex-col items-center p-4 max-w-[100%] ${hasTextBody ? "" : "hidden"}`}>
-    {
-      hasTextBody && (
-      <div class={`${heroTextStyling} tile-body-hero-text text-lg p-2 a-tag-underline text-center wrap-break-word`}><Fragment set:html={markdownify(post.body)} /></div>
-      )
-    }
-    {
-      (showReadMore && (
-      <a class="bg-primary text-white rounded-full px-5 my-2 max-w-[8rem] max-h-[2rem] align-center justify-self-center" href={fromBase(`/${post.id}`)}>Read More</a>
-      ))
-    }
+    <span
+      data-testid="tile-body-text"
+      class={`flex flex-col items-center p-4 max-w-[100%] ${hasTextBody ? "" : "hidden"}`}
+    >
+      {
+        hasTextBody && (
+          <div
+            class={`${heroTextStyling} tile-body-hero-text a-tag-underline p-2 text-center text-lg wrap-break-word`}
+          >
+            <Fragment set:html={markdownify(post.body)} />
+          </div>
+        )
+      }
+      {
+        showReadMore && (
+          <a
+            class="bg-primary align-center my-2 max-h-[2rem] max-w-[8rem] justify-self-center rounded-full px-5 text-white"
+            href={fromBase(`/${post.id}`)}
+          >
+            Read More
+          </a>
+        )
+      }
     </span>
   </Fragment>
 </Tile>
 <style>
-@import "@/styles/tailwind.css";
-.tile-with-square-header-media {
-  @apply grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  height: auto;
-  @variant sm {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
-    height: auto;
-  }
-}
-.tile-with-header-media {
-  @apply grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  height: auto;
-}
-.tile-with-header-media > .tile-image-container {
-  align-self: stretch;
-}
-.tile-body-hero-text {
-  max-width: 100%;
-  white-space-collapse: preserve-breaks;
-}
-.tile-body-hero-text > p{
-  white-space-collapse: preserve-breaks;
-  white-space: pre-line;
-}
-.tile-body-with-body-media {
-  @apply grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr auto;
-  align-items: stretch;
-  width: 100%;
-  @variant sm {
+  @import "@/styles/tailwind.css";
+  .tile-with-square-header-media {
+    @apply grid;
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: auto;
+    @variant sm {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: auto;
+    }
+  }
+  .tile-with-header-media {
+    @apply grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
     height: auto;
   }
-  @variant lg {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
+  .tile-with-header-media > .tile-image-container {
+    align-self: stretch;
   }
-}
+  .tile-body-hero-text {
+    max-width: 100%;
+    white-space-collapse: preserve-breaks;
+  }
+  .tile-body-hero-text > p {
+    white-space-collapse: preserve-breaks;
+    white-space: pre-line;
+  }
+  .tile-body-with-body-media {
+    @apply grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    align-items: stretch;
+    width: 100%;
+    @variant sm {
+      grid-template-columns: 1fr;
+      height: auto;
+    }
+    @variant lg {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+  }
 </style>

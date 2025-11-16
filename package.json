@@ -33,6 +33,7 @@
     "dompurify": "^3.3.0",
     "file-type": "^21.0.0",
     "fuse.js": "^7.1.0",
+    "lite-youtube-embed": "^0.3.4",
     "lodash": "^4.17.21",
     "marked": "^16.3.0",
     "phin": "^3.7.1",

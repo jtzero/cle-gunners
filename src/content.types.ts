@@ -116,7 +116,7 @@ const videoPostSchema = z.object({
   parsedVideoWidth: z.number().optional(),
   parsedVideoHeight: z.number().optional(),
   videoPlacement: z.string().optional(),
-  videoOrientation: z.string().optional(),
+  orientation: z.string().optional(),
   metaTitle: z.string().optional(),
 });
 
@@ -127,3 +127,6 @@ export const postSchema = z.union([
 ]);
 
 export type PostType = z.infer<typeof postSchema>;
+export type VideoPostType = z.infer<typeof videoPostSchema>;
+export type ImagePostType = z.infer<typeof imagePostSchema>;
+export type SimplePostType = z.infer<typeof simplePostSchema>;

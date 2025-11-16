@@ -1,4 +1,6 @@
 ---
+// playbutton class isn;t showing up ?
+//import "lite-youtube-embed/src/lite-yt-embed.css";
 
 type Props = {
   url: string;
@@ -6,27 +8,43 @@ type Props = {
   width: number;
   height: number;
   orientation?: string;
+  classNames?: string[];
 };
 
-const { url, title, width, height, orientation } = Astro.props;
+const { url, title, width, height, classNames = [] } = Astro.props;
 
 const isRemoteVideo = url.startsWith("http");
+const id = url.split("/").at(-1)!.split("?")[0];
+const cssHeight = `${height}px`;
+const cssWidth = `${width}px`;
 ---
+
+<script>
+  import "lite-youtube-embed/src/lite-yt-embed.js";
+</script>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/lite-youtube-embed/0.3.2/lite-yt-embed.css"
+  integrity="sha512-utq8YFW0J2abvPCECXM0zfICnIVpbEpW4lI5gl01cdJu+Ct3W6GQMszVITXMtBLJunnaTp6bbzk5pheKX2XuXQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+<style define:vars={{ cssHeight, cssWidth }} data-testid="video-style">
+  lite-youtube {
+    max-width: unset;
+    max-height: var(--cssHeight) !important;
+  }
+</style>
 {
-  isRemoteVideo && (
-  <iframe
-    class="h-auto w-full sm:min-h-[300px]"
-    src={url}
-    title={title}
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
-  )
-  ||
-  (
+  (isRemoteVideo && (
+    <lite-youtube videoid={id}>
+      <a href={url} class="lty-playbtn" title={title}>
+        <span class="lyt-visually-hidden">{title}</span>
+      </a>
+    </lite-youtube>
+  )) || (
     <video
-      class={`h-auto w-full sm:min-h-[300px] max-h-[500px]`}
+      class={`h-auto max-h-[500px] w-full sm:min-h-[300px] ${classNames.join(" ")}`}
       src={url}
       title={title}
       width={width}
@@ -38,7 +56,6 @@ const isRemoteVideo = url.startsWith("http");
       poster={url}
       preload="metadata"
       style={`--aspect-ratio: ${width}/${height};`}
-    >
-    </video>
+    />
   )
 }
