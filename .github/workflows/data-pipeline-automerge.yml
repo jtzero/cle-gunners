@@ -19,7 +19,7 @@ jobs:
         with:
           issue-number: ${{ github.event.pull_request.number }}
           body: |
-            :robot: This Pull Request has been automatically marked for merging due to the `auto-merge` label.
+            :robot: This Pull Request has been automatically marked for merging due to the `data-pipeline-update` label.
 
       - name: 🤖 Auto-Merge PR
         uses: actions/github-script@v7
