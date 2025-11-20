@@ -1,0 +1,1308 @@
+{
+  "area": {
+    "id": 2072,
+    "name": "England",
+    "code": "ENG",
+    "flag": "https://crests.football-data.org/770.svg"
+  },
+  "id": 2021,
+  "name": "Premier League",
+  "code": "PL",
+  "type": "LEAGUE",
+  "emblem": "https://crests.football-data.org/PL.png",
+  "currentSeason": {
+    "id": 2403,
+    "startDate": "2025-08-15",
+    "endDate": "2026-05-24",
+    "currentMatchday": 12,
+    "winner": null
+  },
+  "seasons": [
+    {
+      "id": 2403,
+      "startDate": "2025-08-15",
+      "endDate": "2026-05-24",
+      "currentMatchday": 12,
+      "winner": null
+    },
+    {
+      "id": 2287,
+      "startDate": "2024-08-16",
+      "endDate": "2025-05-25",
+      "currentMatchday": 38,
+      "winner": null
+    },
+    {
+      "id": 1564,
+      "startDate": "2023-08-11",
+      "endDate": "2024-05-19",
+      "currentMatchday": 38,
+      "winner": null
+    },
+    {
+      "id": 1490,
+      "startDate": "2022-08-05",
+      "endDate": "2023-05-28",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 733,
+      "startDate": "2021-08-13",
+      "endDate": "2022-05-22",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 619,
+      "startDate": "2020-09-12",
+      "endDate": "2021-05-23",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 468,
+      "startDate": "2019-08-09",
+      "endDate": "2020-07-26",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 64,
+        "name": "Liverpool FC",
+        "shortName": "Liverpool",
+        "tla": "LIV",
+        "crest": "https://crests.football-data.org/64.png",
+        "address": "Anfield Road Liverpool L4 0TH",
+        "website": "http://www.liverpoolfc.tv",
+        "founded": 1892,
+        "clubColors": "Red / White",
+        "venue": "Anfield",
+        "lastUpdated": "2022-02-10T19:30:22Z"
+      }
+    },
+    {
+      "id": 151,
+      "startDate": "2018-08-10",
+      "endDate": "2019-05-12",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 23,
+      "startDate": "2017-08-11",
+      "endDate": "2018-05-13",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 256,
+      "startDate": "2016-08-13",
+      "endDate": "2017-05-21",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crest": "https://crests.football-data.org/61.png",
+        "address": "Fulham Road London SW6 1HS",
+        "website": "http://www.chelseafc.com",
+        "founded": 1905,
+        "clubColors": "Royal Blue / White",
+        "venue": "Stamford Bridge",
+        "lastUpdated": "2022-02-10T19:24:40Z"
+      }
+    },
+    {
+      "id": 257,
+      "startDate": "2015-08-08",
+      "endDate": "2016-05-17",
+      "currentMatchday": null,
+      "winner": {
+        "id": 338,
+        "name": "Leicester City FC",
+        "shortName": "Leicester City",
+        "tla": "LEI",
+        "crest": "https://crests.football-data.org/338.png",
+        "address": "The Walkers Stadium, Filbert Way Leicester LE2 7FL",
+        "website": "http://www.lcfc.com",
+        "founded": 1884,
+        "clubColors": "Royal Blue / White",
+        "venue": "King Power Stadium",
+        "lastUpdated": "2022-02-10T19:48:23Z"
+      }
+    },
+    {
+      "id": 258,
+      "startDate": "2014-08-16",
+      "endDate": "2015-05-24",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crest": "https://crests.football-data.org/61.png",
+        "address": "Fulham Road London SW6 1HS",
+        "website": "http://www.chelseafc.com",
+        "founded": 1905,
+        "clubColors": "Royal Blue / White",
+        "venue": "Stamford Bridge",
+        "lastUpdated": "2022-02-10T19:24:40Z"
+      }
+    },
+    {
+      "id": 259,
+      "startDate": "2013-08-17",
+      "endDate": "2014-05-11",
+      "currentMatchday": null,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 260,
+      "startDate": "2012-08-18",
+      "endDate": "2013-05-19",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 261,
+      "startDate": "2011-08-13",
+      "endDate": "2012-05-13",
+      "currentMatchday": null,
+      "winner": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png",
+        "address": "SportCity Manchester M11 3FF",
+        "website": "https://www.mancity.com",
+        "founded": 1880,
+        "clubColors": "Sky Blue / White",
+        "venue": "Etihad Stadium",
+        "lastUpdated": "2022-02-10T19:48:37Z"
+      }
+    },
+    {
+      "id": 262,
+      "startDate": "2010-08-14",
+      "endDate": "2011-05-22",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 263,
+      "startDate": "2009-08-15",
+      "endDate": "2010-05-09",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crest": "https://crests.football-data.org/61.png",
+        "address": "Fulham Road London SW6 1HS",
+        "website": "http://www.chelseafc.com",
+        "founded": 1905,
+        "clubColors": "Royal Blue / White",
+        "venue": "Stamford Bridge",
+        "lastUpdated": "2022-02-10T19:24:40Z"
+      }
+    },
+    {
+      "id": 264,
+      "startDate": "2008-08-16",
+      "endDate": "2009-05-24",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 265,
+      "startDate": "2007-08-11",
+      "endDate": "2008-05-11",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 266,
+      "startDate": "2006-08-19",
+      "endDate": "2007-05-13",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 267,
+      "startDate": "2005-08-13",
+      "endDate": "2006-05-07",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crest": "https://crests.football-data.org/61.png",
+        "address": "Fulham Road London SW6 1HS",
+        "website": "http://www.chelseafc.com",
+        "founded": 1905,
+        "clubColors": "Royal Blue / White",
+        "venue": "Stamford Bridge",
+        "lastUpdated": "2022-02-10T19:24:40Z"
+      }
+    },
+    {
+      "id": 268,
+      "startDate": "2004-08-14",
+      "endDate": "2005-05-15",
+      "currentMatchday": null,
+      "winner": {
+        "id": 61,
+        "name": "Chelsea FC",
+        "shortName": "Chelsea",
+        "tla": "CHE",
+        "crest": "https://crests.football-data.org/61.png",
+        "address": "Fulham Road London SW6 1HS",
+        "website": "http://www.chelseafc.com",
+        "founded": 1905,
+        "clubColors": "Royal Blue / White",
+        "venue": "Stamford Bridge",
+        "lastUpdated": "2022-02-10T19:24:40Z"
+      }
+    },
+    {
+      "id": 269,
+      "startDate": "2003-08-16",
+      "endDate": "2004-05-15",
+      "currentMatchday": null,
+      "winner": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png",
+        "address": "75 Drayton Park London N5 1BU",
+        "website": "http://www.arsenal.com",
+        "founded": 1886,
+        "clubColors": "Red / White",
+        "venue": "Emirates Stadium",
+        "lastUpdated": "2022-02-10T19:48:56Z"
+      }
+    },
+    {
+      "id": 270,
+      "startDate": "2002-08-17",
+      "endDate": "2003-05-11",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 271,
+      "startDate": "2001-08-18",
+      "endDate": "2002-05-11",
+      "currentMatchday": null,
+      "winner": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png",
+        "address": "75 Drayton Park London N5 1BU",
+        "website": "http://www.arsenal.com",
+        "founded": 1886,
+        "clubColors": "Red / White",
+        "venue": "Emirates Stadium",
+        "lastUpdated": "2022-02-10T19:48:56Z"
+      }
+    },
+    {
+      "id": 272,
+      "startDate": "2000-08-19",
+      "endDate": "2001-05-19",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 273,
+      "startDate": "1999-08-07",
+      "endDate": "2000-05-14",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 274,
+      "startDate": "1998-08-15",
+      "endDate": "1999-05-16",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 275,
+      "startDate": "1997-08-09",
+      "endDate": "1998-05-10",
+      "currentMatchday": null,
+      "winner": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png",
+        "address": "75 Drayton Park London N5 1BU",
+        "website": "http://www.arsenal.com",
+        "founded": 1886,
+        "clubColors": "Red / White",
+        "venue": "Emirates Stadium",
+        "lastUpdated": "2022-02-10T19:48:56Z"
+      }
+    },
+    {
+      "id": 276,
+      "startDate": "1996-08-17",
+      "endDate": "1997-05-11",
+      "currentMatchday": null,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 277,
+      "startDate": "1995-08-19",
+      "endDate": "1996-05-04",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 254,
+      "startDate": "1994-08-20",
+      "endDate": "1995-05-14",
+      "currentMatchday": 42,
+      "winner": {
+        "id": 59,
+        "name": "Blackburn Rovers FC",
+        "shortName": "Blackburn",
+        "tla": "BLA",
+        "crest": "https://crests.football-data.org/59.png",
+        "address": "Ewood Park Blackburn BB2 4JF",
+        "website": "http://www.rovers.co.uk",
+        "founded": 1874,
+        "clubColors": "Blue / White",
+        "venue": "Ewood Park",
+        "lastUpdated": "2022-02-19T08:50:27Z"
+      }
+    },
+    {
+      "id": 255,
+      "startDate": "1993-08-14",
+      "endDate": "1994-05-08",
+      "currentMatchday": 42,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 818,
+      "startDate": "1992-08-13",
+      "endDate": "1993-05-09",
+      "currentMatchday": 42,
+      "winner": {
+        "id": 66,
+        "name": "Manchester United FC",
+        "shortName": "Man United",
+        "tla": "MUN",
+        "crest": "https://crests.football-data.org/66.png",
+        "address": "Sir Matt Busby Way Manchester M16 0RA",
+        "website": "http://www.manutd.com",
+        "founded": 1878,
+        "clubColors": "Red / White",
+        "venue": "Old Trafford",
+        "lastUpdated": "2022-02-10T19:27:46Z"
+      }
+    },
+    {
+      "id": 819,
+      "startDate": "1991-08-15",
+      "endDate": "1992-04-30",
+      "currentMatchday": 42,
+      "winner": {
+        "id": 341,
+        "name": "Leeds United FC",
+        "shortName": "Leeds United",
+        "tla": "LEE",
+        "crest": "https://crests.football-data.org/341.png",
+        "address": "Elland Road Leeds LS11 0ES",
+        "website": "http://www.leedsunited.com",
+        "founded": 1904,
+        "clubColors": "White / Blue",
+        "venue": "Elland Road",
+        "lastUpdated": "2022-02-10T19:27:14Z"
+      }
+    },
+    {
+      "id": 820,
+      "startDate": "1990-08-23",
+      "endDate": "1991-05-18",
+      "currentMatchday": 38,
+      "winner": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png",
+        "address": "75 Drayton Park London N5 1BU",
+        "website": "http://www.arsenal.com",
+        "founded": 1886,
+        "clubColors": "Red / White",
+        "venue": "Emirates Stadium",
+        "lastUpdated": "2022-02-10T19:48:56Z"
+      }
+    },
+    {
+      "id": 821,
+      "startDate": "1989-08-17",
+      "endDate": "1990-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 822,
+      "startDate": "1988-08-25",
+      "endDate": "1989-05-24",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 913,
+      "startDate": "1987-08-13",
+      "endDate": "1988-05-13",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 823,
+      "startDate": "1986-08-21",
+      "endDate": "1987-05-09",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 824,
+      "startDate": "1985-08-15",
+      "endDate": "1986-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 825,
+      "startDate": "1984-08-23",
+      "endDate": "1985-05-26",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 826,
+      "startDate": "1983-08-25",
+      "endDate": "1984-05-15",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 827,
+      "startDate": "1982-08-26",
+      "endDate": "1983-05-12",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 828,
+      "startDate": "1981-08-27",
+      "endDate": "1982-05-19",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 829,
+      "startDate": "1980-08-14",
+      "endDate": "1981-05-17",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 830,
+      "startDate": "1979-08-16",
+      "endDate": "1980-05-17",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 831,
+      "startDate": "1978-08-17",
+      "endDate": "1979-05-16",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 832,
+      "startDate": "1977-08-18",
+      "endDate": "1978-05-07",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 833,
+      "startDate": "1976-08-19",
+      "endDate": "1977-05-22",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 834,
+      "startDate": "1975-08-14",
+      "endDate": "1976-05-02",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 835,
+      "startDate": "1974-08-15",
+      "endDate": "1975-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 836,
+      "startDate": "1973-08-23",
+      "endDate": "1974-05-09",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 837,
+      "startDate": "1972-08-10",
+      "endDate": "1973-05-07",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 838,
+      "startDate": "1971-08-12",
+      "endDate": "1972-05-09",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 912,
+      "startDate": "1970-08-13",
+      "endDate": "1971-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 839,
+      "startDate": "1969-08-07",
+      "endDate": "1970-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 914,
+      "startDate": "1968-08-08",
+      "endDate": "1969-05-15",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 915,
+      "startDate": "1967-08-17",
+      "endDate": "1968-05-19",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 916,
+      "startDate": "1966-08-18",
+      "endDate": "1967-05-14",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 925,
+      "startDate": "1965-08-19",
+      "endDate": "1966-05-17",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 924,
+      "startDate": "1964-08-20",
+      "endDate": "1965-04-26",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 923,
+      "startDate": "1963-08-22",
+      "endDate": "1964-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 922,
+      "startDate": "1962-08-16",
+      "endDate": "1963-05-19",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 921,
+      "startDate": "1961-08-17",
+      "endDate": "1962-04-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 920,
+      "startDate": "1960-08-18",
+      "endDate": "1961-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 919,
+      "startDate": "1959-08-20",
+      "endDate": "1960-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 918,
+      "startDate": "1958-08-21",
+      "endDate": "1959-05-02",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 917,
+      "startDate": "1957-08-22",
+      "endDate": "1958-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 926,
+      "startDate": "1956-08-16",
+      "endDate": "1957-04-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 935,
+      "startDate": "1955-08-18",
+      "endDate": "1956-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 936,
+      "startDate": "1954-08-19",
+      "endDate": "1955-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 937,
+      "startDate": "1953-08-17",
+      "endDate": "1954-04-24",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 938,
+      "startDate": "1952-08-21",
+      "endDate": "1953-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 939,
+      "startDate": "1951-08-16",
+      "endDate": "1952-05-01",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 940,
+      "startDate": "1950-08-17",
+      "endDate": "1951-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 934,
+      "startDate": "1949-08-18",
+      "endDate": "1950-05-04",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 933,
+      "startDate": "1948-08-19",
+      "endDate": "1949-05-07",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 932,
+      "startDate": "1947-08-21",
+      "endDate": "1948-04-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 931,
+      "startDate": "1946-08-29",
+      "endDate": "1947-06-12",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 930,
+      "startDate": "1938-08-25",
+      "endDate": "1939-05-04",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 928,
+      "startDate": "1937-08-26",
+      "endDate": "1938-05-05",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 927,
+      "startDate": "1936-08-27",
+      "endDate": "1937-04-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 929,
+      "startDate": "1935-08-29",
+      "endDate": "1936-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 963,
+      "startDate": "1934-08-23",
+      "endDate": "1935-05-02",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 950,
+      "startDate": "1933-08-24",
+      "endDate": "1934-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 949,
+      "startDate": "1932-08-25",
+      "endDate": "1933-05-04",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 948,
+      "startDate": "1931-08-27",
+      "endDate": "1932-05-05",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 947,
+      "startDate": "1930-08-28",
+      "endDate": "1931-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 946,
+      "startDate": "1929-08-29",
+      "endDate": "1930-05-01",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 945,
+      "startDate": "1928-08-23",
+      "endDate": "1929-05-02",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 944,
+      "startDate": "1927-08-25",
+      "endDate": "1928-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 943,
+      "startDate": "1926-08-26",
+      "endDate": "1927-05-05",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 942,
+      "startDate": "1925-08-27",
+      "endDate": "1926-04-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 941,
+      "startDate": "1924-08-28",
+      "endDate": "1925-04-30",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 951,
+      "startDate": "1923-08-23",
+      "endDate": "1924-05-01",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 952,
+      "startDate": "1922-08-24",
+      "endDate": "1923-05-03",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 962,
+      "startDate": "1921-08-25",
+      "endDate": "1922-05-04",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 961,
+      "startDate": "1920-08-26",
+      "endDate": "1921-05-05",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 960,
+      "startDate": "1919-08-28",
+      "endDate": "1920-04-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 957,
+      "startDate": "1914-08-30",
+      "endDate": "1915-04-26",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 958,
+      "startDate": "1913-08-30",
+      "endDate": "1914-04-25",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 955,
+      "startDate": "1912-08-31",
+      "endDate": "1913-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 959,
+      "startDate": "1911-08-31",
+      "endDate": "1912-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 956,
+      "startDate": "1910-08-30",
+      "endDate": "1911-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 953,
+      "startDate": "1909-08-30",
+      "endDate": "1910-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 954,
+      "startDate": "1908-08-30",
+      "endDate": "1909-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 964,
+      "startDate": "1907-08-31",
+      "endDate": "1908-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 965,
+      "startDate": "1906-08-30",
+      "endDate": "1907-04-25",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 966,
+      "startDate": "1905-08-31",
+      "endDate": "1906-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 967,
+      "startDate": "1904-08-30",
+      "endDate": "1905-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 968,
+      "startDate": "1903-08-30",
+      "endDate": "1904-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 969,
+      "startDate": "1902-08-30",
+      "endDate": "1903-04-25",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 970,
+      "startDate": "1901-08-31",
+      "endDate": "1902-04-26",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 971,
+      "startDate": "1900-08-30",
+      "endDate": "1901-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 972,
+      "startDate": "1899-08-31",
+      "endDate": "1900-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 973,
+      "startDate": "1898-08-30",
+      "endDate": "1899-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 983,
+      "startDate": "1897-08-30",
+      "endDate": "1898-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 984,
+      "startDate": "1896-08-30",
+      "endDate": "1897-04-24",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 975,
+      "startDate": "1895-08-31",
+      "endDate": "1896-04-27",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 976,
+      "startDate": "1894-08-30",
+      "endDate": "1895-04-22",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 981,
+      "startDate": "1893-08-31",
+      "endDate": "1894-04-21",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 979,
+      "startDate": "1892-09-01",
+      "endDate": "1893-04-15",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 985,
+      "startDate": "1891-09-03",
+      "endDate": "1892-04-28",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 977,
+      "startDate": "1890-09-04",
+      "endDate": "1891-04-16",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 978,
+      "startDate": "1889-09-05",
+      "endDate": "1890-03-29",
+      "currentMatchday": null,
+      "winner": null
+    },
+    {
+      "id": 1040,
+      "startDate": "1888-09-06",
+      "endDate": "1889-04-18",
+      "currentMatchday": null,
+      "winner": null
+    }
+  ],
+  "lastUpdated": "2024-09-13T16:51:24Z"
+}
