@@ -1,7 +1,7 @@
 {
-  "Food Bank Darby!": {
-    "body": "We are going up against the Liverpool Supporters and are raising money for the [Greater Cleveland Food Bank](https://support.greaterclevelandfoodbank.org/site/TR?px=2811679&pg=personal&fr_id=1220). Dontate to help our side!",
-    "enabled": false
+  "Food Bank": {
+    "body": "It wasn't that long ago that our great city became the face of the loss of SNAP benefits. While many other places across the country also had this issue, it's a good reminder that you can make a difference. Join us and donate. https://support.greaterclevelandfoodbank.org/site/TR?pg=personal&px=2782648&fr_id=1280",
+    "enabled": true
   },
   "New Merch!": {
     "body": "Scarves! $20 a piece available from Jason on Match Day! Until supplies last",
