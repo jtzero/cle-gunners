@@ -169,7 +169,9 @@ const tileBodyClass = (() => {
   max-width: 100%;
   white-space-collapse: preserve-breaks;
 }
-.tile-body-hero-text > p{
+.tile-body-hero-text > :global(p) {
+  @apply flex flex-col;
+  max-width: 100%;
   white-space-collapse: preserve-breaks;
   white-space: pre-line;
 }
