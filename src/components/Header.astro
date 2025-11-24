@@ -29,6 +29,7 @@ const { main }: { main: NavigationLink[] } = menu;
     <div id="nav-toggler" data-testid="nav-toggler" class="self-start">
       <input
         id="nav-toggle"
+        data-name="nav-toggle"
         data-testid="nav-toggle"
         type="checkbox"
         class="hidden"
@@ -188,9 +189,16 @@ const { main }: { main: NavigationLink[] } = menu;
 <script>
   document.addEventListener("astro:page-load", () => {
     [...document.querySelectorAll("[data-js-close=true]")].map((navItem) => {
-      const navToggle = document.getElementById("nav-toggle");
+      const navToggle = document.querySelector('[data-name="nav-toggle"]');
       navItem.addEventListener("click", () => {
         navToggle.checked = false;
+      });
+      navToggle.addEventListener("change", function () {
+        if (this.checked) {
+          document.body.classList.add("overflow-hidden");
+        } else {
+          document.body.classList.remove("overflow-hidden");
+        }
       });
     });
   });
