@@ -187,18 +187,22 @@ const { main }: { main: NavigationLink[] } = menu;
   }
 </style>
 <script>
+  import scope from "astro:scope";
   document.addEventListener("astro:page-load", () => {
-    [...document.querySelectorAll("[data-js-close=true]")].map((navItem) => {
-      const navToggle = document.querySelector('[data-name="nav-toggle"]');
+    const self = document.querySelector(`[data-astro-cid-${scope}]`);
+    const navToggle = self!.querySelector(
+      '[data-name="nav-toggle"]',
+    ) as HTMLInputElement;
+    navToggle.addEventListener("change", function () {
+      if (this.checked) {
+        document.body.classList.add("overflow-hidden");
+      } else {
+        document.body.classList.remove("overflow-hidden");
+      }
+    });
+    [...self!.querySelectorAll("[data-js-close=true]")].map((navItem) => {
       navItem.addEventListener("click", () => {
-        navToggle.checked = false;
-      });
-      navToggle.addEventListener("change", function () {
-        if (this.checked) {
-          document.body.classList.add("overflow-hidden");
-        } else {
-          document.body.classList.remove("overflow-hidden");
-        }
+        navToggle!.checked = false;
       });
     });
   });

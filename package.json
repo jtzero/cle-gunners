@@ -52,6 +52,7 @@
     "@types/github-slugger": "^2.0.0",
     "@types/lodash": "^4.17.20",
     "@types/react": "^19.1.13",
+    "astro-scope": "^3.0.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
