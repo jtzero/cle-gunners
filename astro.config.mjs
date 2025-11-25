@@ -3,6 +3,7 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import AutoImport from "astro-auto-import";
 import { defineConfig } from "astro/config";
+import scope from "astro-scope";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.json";
@@ -24,7 +25,7 @@ export default defineConfig({
   base: process.env.BASE || "",
   trailingSlash: false ? "always" : "never",
   vite: { plugins: [tailwindcss(), tsconfigPaths()] },
-  integrations: [react(), sitemap(), mdx()],
+  integrations: [react(), sitemap(), mdx(), scope()],
   markdown: {
     remarkPlugins: [
       remarkToc,
