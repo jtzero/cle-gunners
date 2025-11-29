@@ -151,6 +151,7 @@ const { styling } = Astro.props;
     "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
   const CACHE_VERSION = 1;
   const DOUBLE_HEADER_FLAG = "double-header";
+  const INCLUDE_CL = true;
   const imageLoadListenersInit = {
     "match-tracker": {
       home: false,
@@ -181,7 +182,7 @@ const { styling } = Astro.props;
   let loading_status = LOADING_STATUSES.loading;
   let matchesOnScreen: { [key: string]: MatchType } = {};
   const getToday = () => {
-    return window.today || new Date();
+    return window.today || new Date("2025-12-07");
   };
   const preloadEasterEggImage = async () => {
     const img = new Image();
@@ -403,6 +404,7 @@ const { styling } = Astro.props;
     existingMatches: Array<MatchType>,
     response: Response,
     today: Date,
+    competitionCodes: string[],
   ) => {
     const json = await response.json();
 
@@ -411,7 +413,10 @@ const { styling } = Astro.props;
       [...existingMatches, ...json.matches],
       today,
     );
-    const nearestMatch = nearestMatches[0];
+    const nearestMatch = filterMatchesByCompetitionCodes(
+      nearestMatches,
+      competitionCodes,
+    )[0];
     if (nearestMatches.length > 1) {
       const otherMatches = otherMatchesOnSameDay(nearestMatch, nearestMatches);
       if (otherMatches.length > 0) {
@@ -452,24 +457,42 @@ const { styling } = Astro.props;
     }
   };
 
+  const filterMatchesByCompetitionCodes = (
+    matches: MatchType[],
+    competitionCodes: string[],
+  ): MatchType[] => {
+    return matches.filter((match) => {
+      return competitionCodes.includes(match.competition.code);
+    });
+  };
   const digCache = (
     today: Date,
     midWeek: string,
     nextMidWeek: string,
     thirdMidWeek: string,
+    competitionCodes: string[],
   ): [MatchType[] | [], string | undefined] => {
     let foundWeekID = midWeek;
-    let cache = getCacheLaterThanNow(midWeek, today);
+    let cache = filterMatchesByCompetitionCodes(
+      getCacheLaterThanNow(midWeek, today),
+      competitionCodes,
+    );
     if (cache.length > 0) {
       foundWeekID = midWeek;
       return [cache, foundWeekID];
     } else {
-      cache = getCacheLaterThanNow(nextMidWeek, today);
+      cache = filterMatchesByCompetitionCodes(
+        getCacheLaterThanNow(nextMidWeek, today),
+        competitionCodes,
+      );
       if (cache.length > 0) {
         foundWeekID = nextMidWeek;
         return [cache, foundWeekID];
       } else {
-        cache = getCacheLaterThanNow(thirdMidWeek, today);
+        cache = filterMatchesByCompetitionCodes(
+          getCacheLaterThanNow(thirdMidWeek, today),
+          competitionCodes,
+        );
         if (cache.length > 0) {
           foundWeekID = thirdMidWeek;
           return [cache, foundWeekID];
@@ -501,7 +524,11 @@ const { styling } = Astro.props;
     return matchesOnScreen[matchSlotName]?.id === match.id;
   };
 
-  const checkForMatches = async (today: Date, callerID: string) => {
+  const checkForMatches = async (
+    today: Date,
+    competitionCodes: string[],
+    callerID: string,
+  ) => {
     const midWeek = format(
       startOfWeek(today, { weekStartsOn: 4 }),
       "yyyy-MM-dd",
@@ -526,6 +553,7 @@ const { styling } = Astro.props;
       midWeek,
       nextMidWeek,
       thirdMidWeek,
+      competitionCodes,
     );
     if (cachedMatches.length > 0) {
       let flags = [];
@@ -560,6 +588,7 @@ const { styling } = Astro.props;
       }
     }
     let nearestMatches: Array<MatchType> | [] = [];
+    const fetchFixturesBase = "/api/fixtures";
     await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
       async (response) => {
         if (response.status === 200) {
@@ -568,16 +597,19 @@ const { styling } = Astro.props;
         }
       },
     );
-    await fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
-      if (response.status === 200) {
-        nearestMatches = await filterMatchResponse(
-          nearestMatches,
-          response,
-          today,
-        );
-        foundWeekID = midWeek;
-      }
-    });
+    await fetch(`${fetchFixturesBase}/${midWeek}.json`).then(
+      async (response) => {
+        if (response.status === 200) {
+          nearestMatches = await filterMatchResponse(
+            nearestMatches,
+            response,
+            today,
+            competitionCodes,
+          );
+          foundWeekID = midWeek;
+        }
+      },
+    );
     if (!nearestMatches[0]) {
       checks.push(nextMidWeek);
       await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
@@ -588,13 +620,14 @@ const { styling } = Astro.props;
           }
         },
       );
-      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(
+      await fetch(`${fetchFixturesBase}/${nextMidWeek}.json`).then(
         async (nextWeekResponse) => {
           if (nextWeekResponse.status === 200) {
             nearestMatches = await filterMatchResponse(
               nearestMatches,
               nextWeekResponse,
               today,
+              competitionCodes,
             );
             foundWeekID = nextMidWeek;
           }
@@ -611,13 +644,14 @@ const { styling } = Astro.props;
           }
         },
       );
-      await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(
+      await fetch(`${fetchFixturesBase}/${thirdMidWeek}.json`).then(
         async (thirdWeekResponse) => {
           if (thirdWeekResponse.status === 200) {
             nearestMatches = await filterMatchResponse(
               nearestMatches,
               thirdWeekResponse,
               today,
+              competitionCodes,
             );
             foundWeekID = thirdMidWeek;
           }
@@ -686,13 +720,20 @@ const { styling } = Astro.props;
     state.arsenalCrest = img;
   });
   let addedPolling = false;
+  const competitionCodes = (() => {
+    if (INCLUDE_CL) {
+      return ["CL", "PL"];
+    } else {
+      return ["PL"];
+    }
+  })();
   document.addEventListener("astro:page-load", () => {
     if (onPageWithMatchTracker()) {
       matchesOnScreen = {};
       easterEggListeners = cloneDeep(easterEggListenersInit);
       imageLoadListeners = cloneDeep(imageLoadListenersInit);
       loading_status = LOADING_STATUSES.loading;
-      checkForMatches(getToday(), "page-load").then(() => {
+      checkForMatches(getToday(), competitionCodes, "page-load").then(() => {
         if (!addedPolling) {
           setInterval(() => {
             if (
@@ -700,7 +741,7 @@ const { styling } = Astro.props;
               loading_status != LOADING_STATUSES.loading
             ) {
               loading_status = LOADING_STATUSES.loading;
-              checkForMatches(getToday(), "interval");
+              checkForMatches(getToday(), competitionCodes, "interval");
             }
           }, 4000);
           addedPolling = true;
@@ -716,7 +757,7 @@ const { styling } = Astro.props;
       loading_status != LOADING_STATUSES.loading
     ) {
       loading_status = LOADING_STATUSES.loading;
-      checkForMatches(getToday(), "visibilitychange");
+      checkForMatches(getToday(), competitionCodes, "visibilitychange");
     }
   });
 </script>
