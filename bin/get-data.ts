@@ -1,6 +1,8 @@
 import { run } from "@/lib/dataPipeline/getData";
+import { LEAGUE_CODES } from "@/lib/dataPipeline/football-data/competition";
 
-const startDateArg = process.argv[2];
+const leagueCodeArg = process.argv[2];
+const startDateArg = process.argv[3];
 console.log("Fetching data from API Sports...");
 const apiKey = process.env.FOOTBALL_DATA_API_KEY;
 if (!apiKey) {
@@ -10,7 +12,17 @@ if (!apiKey) {
 }
 
 try {
-  await run(apiKey, startDateArg);
+  if (!leagueCodeArg) {
+    throw new Error("No league code provided.");
+  }
+  if (!LEAGUE_CODES.includes(leagueCodeArg.toUpperCase())) {
+    throw new Error(
+      `Invalid league code provided. Valid league codes are: ${LEAGUE_CODES.join(
+        ", ",
+      )}`,
+    );
+  }
+  await run(apiKey, leagueCodeArg.toLowerCase(), startDateArg);
 } catch (error) {
   console.error("Error fetching data:", error);
   process.exit(1);

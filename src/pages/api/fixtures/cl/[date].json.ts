@@ -1,23 +1,26 @@
-import { format, startOfWeek } from "date-fns";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import type { APIRoute } from "astro";
+
+const IDPrefix = "cl";
 
 export const GET: APIRoute = async ({ params, request }) => {
   const { date } = params;
 
   const entry = (await getEntry(
     "fixtures",
-    date,
+    `${IDPrefix}/${date}`,
   )) as CollectionEntry<"fixtures">;
   return new Response(JSON.stringify(entry.data));
 };
 
 export async function getStaticPaths() {
-  const allFixtures = await getCollection("fixtures");
+  const allFixtures = await getCollection("fixtures", ({ id }) => {
+    return id.startsWith(`${IDPrefix}/`);
+  });
   const paths = allFixtures.map((fixture) => {
     return {
       params: {
-        date: fixture.id,
+        date: fixture.id.split("/")[1],
       },
     };
   });
