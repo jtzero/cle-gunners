@@ -560,6 +560,7 @@ const { styling } = Astro.props;
       }
     }
     let nearestMatches: Array<MatchType> | [] = [];
+    const fetchFixturesBase = "/api/fixtures";
     await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
       async (response) => {
         if (response.status === 200) {
@@ -568,16 +569,18 @@ const { styling } = Astro.props;
         }
       },
     );
-    await fetch(`/api/fixtures/${midWeek}.json`).then(async (response) => {
-      if (response.status === 200) {
-        nearestMatches = await filterMatchResponse(
-          nearestMatches,
-          response,
-          today,
-        );
-        foundWeekID = midWeek;
-      }
-    });
+    await fetch(`${fetchFixturesBase}/pl/${midWeek}.json`).then(
+      async (response) => {
+        if (response.status === 200) {
+          nearestMatches = await filterMatchResponse(
+            nearestMatches,
+            response,
+            today,
+          );
+          foundWeekID = midWeek;
+        }
+      },
+    );
     if (!nearestMatches[0]) {
       checks.push(nextMidWeek);
       await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
@@ -588,7 +591,7 @@ const { styling } = Astro.props;
           }
         },
       );
-      await fetch(`/api/fixtures/${nextMidWeek}.json`).then(
+      await fetch(`${fetchFixturesBase}/pl/${nextMidWeek}.json`).then(
         async (nextWeekResponse) => {
           if (nextWeekResponse.status === 200) {
             nearestMatches = await filterMatchResponse(
@@ -611,7 +614,7 @@ const { styling } = Astro.props;
           }
         },
       );
-      await fetch(`/api/fixtures/${thirdMidWeek}.json`).then(
+      await fetch(`${fetchFixturesBase}/pl/${thirdMidWeek}.json`).then(
         async (thirdWeekResponse) => {
           if (thirdWeekResponse.status === 200) {
             nearestMatches = await filterMatchResponse(

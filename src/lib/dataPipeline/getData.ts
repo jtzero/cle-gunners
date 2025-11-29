@@ -41,6 +41,7 @@ const saveFixturesFromRange = async (
   leagueID: string,
   teamID: string,
   seasonYear: number,
+  competitionCode: string,
   fetchFunction: Function,
   writeDataToFileFunction: Function,
 ) => {
@@ -62,18 +63,19 @@ const saveFixturesFromRange = async (
     fetchFunction,
   );
   console.log("Fixtures fetched:", results.resultSet.count);
-  const filePath = `${appRoot.path}/src/content/fixtures/${startDateStr}.json`;
+  const filePath = `${appRoot.path}/src/content/fixtures/${competitionCode}/${startDateStr}.json`;
   console.log("Writing data to file...", filePath);
   writeDataToFileFunction(filePath, results);
 };
 
-const getPremierLeague = async (
+const getCompetition = async (
   apiKey: string,
   latestDate: Date,
+  competitionCode: string,
   fetchFunction: Function,
   writeDataToFileFunction: Function,
 ): Promise<Competition> => {
-  const filePath = `${appRoot.path}/src/content/competitions/premier-league.json`;
+  const filePath = `${appRoot.path}/src/content/competitions/${competitionCode}.json`;
   let comp = null;
   if (fs.existsSync(filePath)) {
     comp = JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -86,17 +88,22 @@ const getPremierLeague = async (
   ) {
     return comp;
   } else {
-    return competition
-      .fetchPremierLeague(apiKey, fetchFunction)
-      .then((data: Competition) => {
-        writeDataToFileFunction(filePath, data);
-        return data;
-      });
+    let leagueFunction;
+    if (competitionCode === "cl") {
+      leagueFunction = competition.fetchChampionsLeague;
+    } else {
+      leagueFunction = competition.fetchPremierLeague;
+    }
+    return leagueFunction(apiKey, fetchFunction).then((data: Competition) => {
+      writeDataToFileFunction(filePath, data);
+      return data;
+    });
   }
 };
 
 export const run = async (
   api_key: string,
+  competitionCode: string,
   startDateArg: string | null,
   fetchFunction: Function = fetch,
   writeDataToFileFunction: Function = json.stringifyToFile,
@@ -111,22 +118,21 @@ export const run = async (
   const thisMonth = startDate.getMonth();
   const secondRoundStartDate = endDate;
   console.log("Fetching League Info...");
-  const premierLeagueCompetition = await getPremierLeague(
+  const competitionDatum = await getCompetition(
     api_key,
     secondRoundStartDate,
+    competitionCode,
     fetchFunction,
     writeDataToFileFunction,
   );
-  const seasonYear = competition.getSeasonYear(
-    premierLeagueCompetition,
-    startDate,
-  );
+
+  const seasonYear = competition.getSeasonYear(competitionDatum, startDate);
   if (seasonYear instanceof competition.NoSeasonFoundError) {
     console.log(`No season yet for ${startDate}`);
     return;
   }
 
-  const leagueID = premierLeagueCompetition.id;
+  const leagueID = competitionDatum.id;
   console.log("Fetching team ID...");
   const id = await team.fetchArsenalID(api_key, seasonYear, fetchFunction);
   console.log("ID fetched:", id);
@@ -139,12 +145,13 @@ export const run = async (
     leagueID.toString(),
     id,
     seasonYear,
+    competitionCode,
     fetchFunction,
     writeDataToFileFunction,
   );
 
   const secondRoundSeasonYear = competition.getSeasonYear(
-    premierLeagueCompetition,
+    competitionDatum,
     secondRoundStartDate,
   );
   if (secondRoundSeasonYear instanceof competition.NoSeasonFoundError) {
@@ -160,6 +167,7 @@ export const run = async (
     leagueID.toString(),
     id,
     secondRoundSeasonYear,
+    competitionCode,
     fetchFunction,
     writeDataToFileFunction,
   );
