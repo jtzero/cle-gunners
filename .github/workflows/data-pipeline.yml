@@ -42,7 +42,13 @@ jobs:
       - name: Run data-fetching script
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
-        run: npm run get-data -- ${{ inputs.date }}
+        run: npm run get-data -- PL ${{ inputs.date }}
+
+      - name: Run data-fetching script
+        env:
+          FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
+        run: npm run get-data -- CL ${{ inputs.date }}
+
 
       - name: Log changes
         run: git status
