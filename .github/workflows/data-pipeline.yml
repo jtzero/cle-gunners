@@ -39,7 +39,7 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run data-fetching script PR
+      - name: Run data-fetching script PL
         env:
           FOOTBALL_DATA_API_KEY: ${{ secrets.FOOTBALL_DATA_API_KEY }}
         run: npm run get-data -- PL ${{ inputs.date }}
