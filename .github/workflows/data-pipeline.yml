@@ -77,3 +77,7 @@ jobs:
           # causing a race condition. If this happens, you might need to
           # add a small delay or change the trigger for the downstream
           # workflow to on: pull_request: types: [labeled].
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto "1"
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
