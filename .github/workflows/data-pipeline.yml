@@ -78,6 +78,6 @@ jobs:
           # add a small delay or change the trigger for the downstream
           # workflow to on: pull_request: types: [labeled].
       - name: Enable Pull Request Automerge
-        run: gh pr merge --merge --auto "1"
+        run: gh pr merge --rebase --auto "${{ github.event.pull_request.number }}"
         env:
           GH_TOKEN: ${{ secrets.PAT }}
