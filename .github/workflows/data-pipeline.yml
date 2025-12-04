@@ -82,6 +82,7 @@ jobs:
           # add a small delay or change the trigger for the downstream
           # workflow to on: pull_request: types: [labeled].
       - name: Enable Pull Request Automerge
+        if: steps.cpr.outputs.pull-request-number != ''
         run: |
           gh pr merge --rebase --auto "${{ steps.cpr.outputs.pull-request-number }}"
         env:
