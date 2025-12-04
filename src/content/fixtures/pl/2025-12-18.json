@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2025-12-11",
-    "dateTo": "2025-12-18",
+    "dateFrom": "2025-12-18",
+    "dateTo": "2025-12-25",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2025-12-13",
-    "last": "2025-12-13",
+    "first": "2025-12-20",
+    "last": "2025-12-20",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 14,
         "winner": null
       },
-      "id": 537937,
-      "utcDate": "2025-12-13T20:00:00Z",
+      "id": 537948,
+      "utcDate": "2025-12-20T20:00:00Z",
       "status": "TIMED",
-      "matchday": 16,
+      "matchday": 17,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2025-12-04T00:20:44Z",
+      "lastUpdated": "2025-11-14T15:21:14Z",
       "homeTeam": {
+        "id": 62,
+        "name": "Everton FC",
+        "shortName": "Everton",
+        "tla": "EVE",
+        "crest": "https://crests.football-data.org/62.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 76,
-        "name": "Wolverhampton Wanderers FC",
-        "shortName": "Wolverhampton",
-        "tla": "WOL",
-        "crest": "https://crests.football-data.org/76.png"
       },
       "score": {
         "winner": null,
