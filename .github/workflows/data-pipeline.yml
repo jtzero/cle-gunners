@@ -54,6 +54,7 @@ jobs:
         run: git status
 
       - name: Create Pull Request
+        id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "chore: automated data update"
@@ -63,6 +64,7 @@ jobs:
           body: |
             This is an automated pull request created by GitHub Actions.
             Should only collect `src/content/fixtures/*`
+            - Generated: $(date +%Y-%m-%d)
           labels: |
             data-pipeline-update
           # The GitHub API does not allow creating a PR and
@@ -78,6 +80,7 @@ jobs:
           # add a small delay or change the trigger for the downstream
           # workflow to on: pull_request: types: [labeled].
       - name: Enable Pull Request Automerge
-        run: gh pr merge --rebase --auto "${{ github.event.pull_request.number }}"
+        run: |
+          gh pr merge --rebase --auto "${{ steps.cpr.outputs.pull-request-number }}"
         env:
-          GH_TOKEN: ${{ secrets.PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
