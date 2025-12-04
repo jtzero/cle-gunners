@@ -60,11 +60,13 @@ jobs:
           commit-message: "chore: automated data update"
           branch: "data-update"
           base: "main"
+          add-paths: |
+            src/content/competitions/*
+            src/content/fixtures/**/*
           title: "Fixture Data Update"
           body: |
             This is an automated pull request created by GitHub Actions.
-            Should only collect `src/content/fixtures/*`
-            - Generated: $(date +%Y-%m-%d)
+            Should only collect `src/content/fixtures/**/*` and/or `src/content/competitions/*`
           labels: |
             data-pipeline-update
           # The GitHub API does not allow creating a PR and
