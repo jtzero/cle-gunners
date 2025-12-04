@@ -5,7 +5,7 @@ on:
     inputs:
       date:
         type: string
-        description: 'The date to run on'
+        description: 'Date window start point'
         default: ''
       branch:
         description: 'The branch to run on'
