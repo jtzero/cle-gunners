@@ -54,7 +54,7 @@
     },
     {
       "name": "We recommend",
-      "url": "/we-recommend" 
+      "url": "/we-recommend"
     },
     {
       "name": "Arsenal America",
@@ -63,6 +63,10 @@
     {
       "name": "email us",
       "url": "mailto:clevelandarsenal@gmail.com"
+    },
+    {
+      "name": "Other Clubs",
+      "url": "/clubs"
     }
   ]
 }

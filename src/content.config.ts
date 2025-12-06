@@ -6,12 +6,18 @@ import {
   postSchema,
   notificationAttributesSchema,
   manualFixturesSchema,
+  clubSchema,
 } from "./content.types";
 import * as MediaPost from "@/lib/mediaPost";
 
 const postsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
   schema: postSchema,
+});
+
+const clubsCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/clubs" }),
+  schema: clubSchema,
 });
 
 const pinnedPostsCollection = defineCollection({
@@ -43,26 +49,34 @@ const pinnedPostsCollection = defineCollection({
     }),
 });
 
-const pagesCollection = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
-  schema: z.object({
-    id: z.string().optional(),
-    title: z.string().optional(),
-    metaTitle: z.string().optional(),
-    image: z.string().optional(),
-    imageDimensions: z.string().optional(),
-    imagePlacement: z.string().optional(),
-    layout: z.string().optional(),
-    posts: z.array(z.string()).default([]),
-    sections: z
-      .array(
+const pageSchema = z.object({
+  id: z.string().optional(),
+  title: z.string().optional(),
+  metaTitle: z.string().optional(),
+  image: z.string().optional(),
+  imageDimensions: z.string().optional(),
+  imagePlacement: z.string().optional(),
+  layout: z.string().optional(),
+  posts: z.array(z.string()).default([]),
+  sections: z
+    .array(
+      z.xor([
         z.object({
           title: z.string(),
-          posts: z.array(z.string()).default([]),
+          posts: z.array(z.string()),
         }),
-      )
-      .default([]),
-  }),
+        z.object({
+          title: z.string(),
+          clubs: z.array(reference("clubs")),
+        }),
+      ]),
+    )
+    .default([]),
+});
+
+const pagesCollection = defineCollection({
+  loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pages" }),
+  schema: pageSchema,
 });
 
 const fixturesCollection = defineCollection({
@@ -126,4 +140,5 @@ export const collections = {
   manualFixtures: manualFixturesCollection,
   competitions: competitionsCollection,
   notifications: notificationsCollection,
+  clubs: clubsCollection,
 };

@@ -1,0 +1,20 @@
+---
+import { type ClubLocationType } from "../content.types";
+
+type Props = {
+  location: ClubLocationType;
+};
+const { location } = Astro.props;
+---
+
+<Fragment>
+  <Fragment>{location.address ? "address: " : ""}</Fragment>
+  <Fragment>
+    {
+      location.address && location.addressLink && (
+        <a href={location.addressLink}>{location.address}</a>
+      )
+    }
+  </Fragment>
+  <Fragment>{!location.addressLink ? location.address : ""}</Fragment>
+</Fragment>
