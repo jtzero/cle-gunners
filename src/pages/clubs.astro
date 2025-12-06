@@ -1,0 +1,36 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Base from "@/layouts/Base.astro";
+import { getEntry, getEntries } from "astro:content";
+import ClubPost from "@/components/ClubPost.astro";
+import "@/styles/grid.css";
+
+const page = await getEntry("pages", "clubs")!;
+const sections = await Promise.all(
+  page.data.sections.map(async (section) => {
+    if (!("clubs" in section)) return section;
+    return { ...section, clubs: await getEntries(section.clubs) };
+  }),
+);
+---
+
+<Base title={page.data.title} metaTitle={page.data.metaTitle}>
+  {
+    sections.map((section) => (
+      <div class="grid-setup">
+        <h2
+          data-testid="page-section-title"
+          class="text-gold col-span-full w-full pt-10 pb-2 text-center"
+        >
+          {section.title}
+        </h2>
+        {section.clubs.map((subPost: CollectionEntry<"clubs">) => (
+          <ClubPost
+            post={subPost}
+            styling={`tile w-[100%] mb-6 shadow bg-white scroll-mt-5 ${subPost.data?.additionalStyling}`}
+          />
+        ))}
+      </div>
+    ))
+  }
+</Base>

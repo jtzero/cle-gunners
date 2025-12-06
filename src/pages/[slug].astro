@@ -35,6 +35,7 @@ const subPosts = await getEntries(
     return { collection: "posts", id: post_id };
   }),
 );
+const topSection = page.data?.topSection;
 const sections = await Promise.all(
   page.data.sections.map(async (section) => {
     const sectionPosts = await getEntries(
@@ -49,6 +50,16 @@ const sections = await Promise.all(
 
 <Base title={page.data.title} metaTitle={page.data.metaTitle}>
   <div data-testid="pinned-items" class="bg-light grid-setup pt-10">
+    {
+      topSection && (
+        <h2
+          data-testid="page-top-section-title"
+          class="text-gold col-span-full w-full pt-10 pb-2 text-center"
+        >
+          {topSection.title}
+        </h2>
+      )
+    }
     {
       subPosts.map((subPost) => (
         <Post

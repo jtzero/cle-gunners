@@ -273,6 +273,35 @@ export const postSchema = z.xor([
 
 export type PostType = z.infer<typeof postSchema>;
 
+const clubLocationSchema = z.object({
+  name: z.string(),
+  address: z.string().optional(),
+  addressLink: z.string().optional(),
+});
+
+export type ClubLocationType = z.infer<typeof clubLocationSchema>;
+
+export const clubSchema = z.object({
+  name: z.string(),
+  type: z.literal("club").optional(),
+  locations: z.record(z.string(), clubLocationSchema).default({}),
+  logo: z.string().optional(),
+  logoBackgroundColor: z.string().optional(),
+  league: z.string().optional(),
+  links: z.object({
+    facebook: z.url().optional(),
+    instagram: z.url().optional(),
+    twitter: z.url().optional(),
+    bluesky: z.url().optional(),
+    website: z.url().optional(),
+    youtube: z.url().optional(),
+    affiliates: z.url().optional(),
+    US_SoccerDirectory: z.url().optional(),
+  }),
+});
+
+export type ClubType = z.infer<typeof clubSchema>;
+
 export const notificationAttributesSchema = z.object({
   body: z.string(),
   styling: z.string().optional(),
