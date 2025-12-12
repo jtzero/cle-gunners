@@ -4,6 +4,7 @@ type Props = {
   id: string;
   styling: string;
   topBorderStyling?: string;
+  defaultTopBoardeBehaviour?: boolean;
   headerStyling?: string;
   contentStyling?: string;
   bodyStyling?: string;
@@ -13,6 +14,7 @@ const {
   id,
   styling = "",
   topBorderStyling = "border-t-2 border-red",
+  defaultTopBoardeBehaviour = true,
   headerStyling = "",
   bodyStyling = "",
   ...rest
@@ -22,8 +24,13 @@ const dataAttr = Object.keys(rest).filter(key => key.startsWith("data-astro"))[0
 
 const hideIfNoHeaderSlot = Astro.slots.has("header") ? "" : "hidden"
 
-const showTopBorderStyling = Astro.slots.has("header") ? "" : topBorderStyling;
-
+const showTopBorderStyling = (() => {
+  if (defaultTopBoardeBehaviour) {
+    return Astro.slots.has("header") ? "" : topBorderStyling;
+  } else {
+    return topBorderStyling;
+  }
+})();
 ---
 
 <div class={`${styling} ${showTopBorderStyling} tile items-center lg:flex-row justify-evenly`} id={id} {...{ [dataAttr]: rest[dataAttr] }}>

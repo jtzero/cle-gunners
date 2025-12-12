@@ -10,6 +10,7 @@ posts:
     "odie",
     "jurrien-timber",
     "declan-rice",
+    "martinelli",
     "mik-arteta",
     "more",
   ]

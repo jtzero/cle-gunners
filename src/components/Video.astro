@@ -1,5 +1,4 @@
 ---
-
 type Props = {
   url: string;
   title: string;
@@ -12,21 +11,21 @@ const { url, title, width, height, orientation } = Astro.props;
 
 const isRemoteVideo = url.startsWith("http");
 ---
+
 {
-  isRemoteVideo && (
-  <iframe
-    class="h-auto w-full sm:min-h-[300px]"
-    src={url}
-    title={title}
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-  ></iframe>
-  )
-  ||
-  (
+  (isRemoteVideo && (
+    <iframe
+      class="h-full w-full sm:min-h-[300px]"
+      src={url}
+      title={title}
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    />
+  )) || (
+    <!-- TODO: the max-h here is a temp fix -->
     <video
-      class={`h-auto w-full sm:min-h-[300px] max-h-[500px]`}
+      class={`h-full max-h-[600px] w-full sm:min-h-[300px]`}
       src={url}
       title={title}
       width={width}
@@ -38,7 +37,6 @@ const isRemoteVideo = url.startsWith("http");
       poster={url}
       preload="metadata"
       style={`--aspect-ratio: ${width}/${height};`}
-    >
-    </video>
+    />
   )
 }
