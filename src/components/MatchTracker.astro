@@ -25,34 +25,44 @@ const { styling } = Astro.props;
       class="display-none text-xl whitespace-pre-wrap text-[var(--color-burgundy)]"
     >
     </p>
-    <div class="grid grid-cols-[1fr_auto_1fr] p-4">
+    <div class="team-vs-bracket grid grid-cols-[1fr_auto_1fr] p-4">
       <div
         data-show-after-load
-        class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
+        class="align-center invisible grid-cols-1 grid-rows-2 text-xl font-bold"
       >
         <img
           updates="home-team-image"
           src=""
           class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          data-test-id="home-team-image"
         />
-        <div updates="home-team-name" class="text-center"></div>
       </div>
       <div
         data-spinner
         class="spinner self-center text-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"
       >
-        <h1 data-show-after-load class="hidden">VS</h1>
+        <h1
+          data-show-after-load
+          data-testid="VS"
+          class="hidden max-[350px]:text-[25px]"
+        >
+          VS
+        </h1>
       </div>
       <div
         data-show-after-load
-        class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
+        class="align-center invisible grid-cols-1 grid-rows-2 text-xl font-bold"
       >
         <img
           updates="away-team-image"
           src=""
           class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          data-test-id="away-team-image"
         />
-        <div updates="away-team-name" class="text-center"></div>
+      </div>
+      <div class="team-names grid" data-show-after-load>
+        <span updates="home-team-name" class="text-xl font-bold"></span>
+        <span updates="away-team-name" class="text-xl font-bold"></span>
       </div>
     </div>
     <div
@@ -100,13 +110,15 @@ const { styling } = Astro.props;
           updates="home-team-image"
           src=""
           class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          data-test-id="double-header-home-team-image"
         />
-        <div updates="home-team-name" class="text-center"></div>
       </div>
       <h1
-        data-spinner
-        class="spinner self-center text-center text-[1.5rem] sm:text-[2rem] md:text-[3rem]"
+        data-show-after-load
+        data-testid="VS"
+        class="hidden max-[350px]:text-[25px]"
       >
+        VS
       </h1>
       <div
         data-show-after-load
@@ -116,9 +128,13 @@ const { styling } = Astro.props;
           updates="away-team-image"
           src=""
           class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          data-test-id="double-header-away-team-image"
         />
-        <div updates="away-team-name" class="text-center"></div>
       </div>
+    </div>
+    <div class="team-names grid" data-show-after-load>
+      <span updates="home-team-name" class="text-xl font-bold"></span>
+      <span updates="away-team-name" class="text-xl font-bold"></span>
     </div>
   </Fragment>
 </Tile>
@@ -141,6 +157,17 @@ const { styling } = Astro.props;
         360deg
       ); /* End at 360 degrees, completing a full rotation */
     }
+  }
+  .team-vs-bracket {
+    grid-template-areas: ".     .     .    " "names names names";
+  }
+  .team-names {
+    display: grid;
+    width: 100%;
+    grid-area: names;
+    display: grid;
+    grid-column-gap: 1em;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   }
 </style>
 <script>
@@ -197,6 +224,10 @@ const { styling } = Astro.props;
   const preloadArsenalImage = async (): Promise<HTMLImageElement> => {
     const img = new Image();
     img.src = "/images/arsenal-crest.png";
+    img.setAttribute(
+      "class",
+      "min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]",
+    );
     return img;
   };
   let state: { arsenalCrest: HTMLImageElement | undefined } = {
@@ -232,6 +263,7 @@ const { styling } = Astro.props;
       if (el.getAttribute("data-show-offseason") == "header") {
         el.textContent = header;
         el.classList.remove("hidden");
+        el.classList.remove("invisible");
       } else if (el.getAttribute("data-show-offseason") == "body") {
         el.innerHTML = cleanedMessage;
         el.classList.remove("display-none");
@@ -243,6 +275,7 @@ const { styling } = Astro.props;
       // TODO: remove when better visibilty tracking is implemented
       el.removeAttribute("data-show-after-load");
       el.classList.remove("hidden");
+      el.classList.remove("invisible");
     });
   };
   const SrcImagesToUpdate = 2;
