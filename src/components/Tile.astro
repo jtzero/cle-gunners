@@ -4,6 +4,7 @@ type Props = {
   id: string;
   styling: string;
   topBorderStyling?: string;
+  defaultTopBoardeBehaviour?: boolean;
   headerStyling?: string;
   contentStyling?: string;
   bodyStyling?: string;
@@ -18,27 +19,26 @@ const {
   ...rest
 } = Astro.props;
 
-const dataAttr = Object.keys(rest).filter(key => key.startsWith("data-astro"))[0];
+// this will include the scoping TODO: replace with scoping library ?
+const dataAstro = Object.keys(rest).filter(key => key.startsWith("data-astro"))[0];
 
 const hideIfNoHeaderSlot = Astro.slots.has("header") ? "" : "hidden"
 
-const showTopBorderStyling = Astro.slots.has("header") ? "" : topBorderStyling;
-
 ---
 
-<div class={`${styling} ${showTopBorderStyling} tile items-center lg:flex-row justify-evenly`} id={id} {...{ [dataAttr]: rest[dataAttr] }}>
+<div class={`${styling} ${topBorderStyling} tile items-center lg:flex-row justify-evenly`} id={id} data-testid={id} {...{ [dataAstro]: rest[dataAstro] }}>
   <div data-testid="tile-header-image-container" class={`${headerStyling} tile-image-container w-auto sm:w-full ${hideIfNoHeaderSlot}`}>
     <slot name="header" />
   </div>
-  <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full text-center" {...{ [dataAttr]: rest[dataAttr] }}>
+  <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full text-center" {...{ [dataAstro]: rest[dataAstro] }}>
     <slot name="title"/>
     <hr data-testid="divider" class="border-inset border-b-1 border-divider w-full" />
-    <div data-testid="tile-body" class={`${bodyStyling} tile-body max-w-[100%] align-center pt-2`} {...{ [dataAttr]: rest[dataAttr] }}>
+    <div data-testid="tile-body" class={`${bodyStyling} tile-body max-w-[100%] align-center pt-2`} {...{ [dataAstro]: rest[dataAstro] }}>
       <slot name="body" />
     </div>
     {Astro.slots.has("footer") ?
       <hr data-testid="divider" class="border-inset border-b-1 border-divider w-full" />
-      <footer data-testid="tile-footer" class={`${bodyStyling} tile-footer max-w-[100%] align-center`} {...{ [dataAttr]: rest[dataAttr] }}>
+      <footer data-testid="tile-footer" class={`${bodyStyling} tile-footer max-w-[100%] align-center`} {...{ [dataAstro]: rest[dataAstro] }}>
         <slot name="footer" />
       </footer>
       : ""}

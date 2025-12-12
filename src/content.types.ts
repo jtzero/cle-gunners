@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 
 const seasonWinnerSchema = z.object({
   id: z.number(),
@@ -101,7 +101,16 @@ const imagePostSchema = z.object({
   date: z.date().optional(),
   image: z.string(),
   imageDimensions: z.string(),
-  imagePlacement: z.string().optional(),
+  imagePlacement: z.union([
+    z.string(),
+    z.object({
+      all: z.string(),
+      sm: z.string().optional(),
+      md: z.string().optional(),
+      lg: z.string().optional(),
+      xl: z.string().optional(),
+    }),
+  ]),
   parsedImageWidth: z.number().optional(),
   parsedImageHeight: z.number().optional(),
   imageLink: z.string().optional(),
@@ -121,8 +130,8 @@ const videoPostSchema = z.object({
 });
 
 export const postSchema = z.union([
-  imagePostSchema,
   videoPostSchema,
+  imagePostSchema,
   simplePostSchema,
 ]);
 
