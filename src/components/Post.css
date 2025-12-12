@@ -1,0 +1,204 @@
+@reference "@/styles/tailwind.css";
+
+@utility tile-with-header-media {
+  @apply grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  height: auto;
+}
+
+@utility tile-body-with-body-media {
+  @apply grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr auto;
+  align-items: stretch;
+  width: 100%;
+
+  @variant sm {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+
+  @variant lg {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+@utility flex {
+  display: flex;
+}
+
+.sm\:flex {
+  @variant sm {
+    @apply flex;
+  }
+}
+
+.md\:flex {
+  @variant md {
+    @apply flex;
+  }
+}
+
+.lg\:flex {
+  @variant lg {
+    @apply flex;
+  }
+}
+
+.xl\:flex {
+  @variant xl {
+    @apply flex;
+  }
+}
+
+.\32 xl\:flex {
+  @variant 2xl {
+    @apply flex;
+  }
+}
+
+@utility no-top-border {
+  border-top-style: none;
+}
+
+.no-top-border {
+  @apply no-top-border;
+}
+
+.sm\:no-top-border {
+  @variant sm {
+    @apply no-top-border;
+  }
+}
+
+.md\:no-top-border {
+  @variant md {
+    @apply no-top-border;
+  }
+}
+
+.lg\:no-top-border {
+  @variant lg {
+    @apply no-top-border;
+  }
+}
+
+.xl\:no-top-border {
+  @variant xl {
+    @apply no-top-border;
+  }
+}
+
+.\32 xl\:no-top-border {
+  @variant 2xl {
+    @apply no-top-border;
+  }
+}
+
+.tile-body-with-body-media {
+  @apply tile-body-with-body-media;
+}
+
+.sm\:tile-body-with-body-media {
+  @variant sm {
+    @apply tile-body-with-body-media;
+  }
+}
+
+.md\:tile-body-with-body-media {
+  @variant md {
+    @apply tile-body-with-body-media;
+  }
+}
+
+.lg\:tile-body-with-body-media {
+  @variant lg {
+    @apply tile-body-with-body-media;
+  }
+}
+
+.xl\:tile-body-with-body-media {
+  @variant xl {
+    @apply tile-body-with-body-media;
+  }
+}
+
+.\32 xl\:tile-body-with-body-media {
+  @variant 2xl {
+    @apply tile-body-with-body-media;
+  }
+}
+
+.tile-with-header-media {
+  @apply tile-with-header-media;
+}
+
+.sm\:tile-with-header-media {
+  @variant sm {
+    @apply tile-with-header-media;
+  }
+}
+
+.md\:tile-with-header-media {
+  @variant md {
+    @apply tile-with-header-media;
+  }
+}
+
+.lg\:tile-with-header-media {
+  @variant lg {
+    @apply tile-with-header-media;
+  }
+}
+
+.xl\:tile-with-header-media {
+  @variant xl {
+    @apply tile-with-header-media;
+  }
+}
+
+.\32 xl\:tile-with-header-media {
+  @variant 2xl {
+    @apply tile-with-header-media;
+  }
+}
+
+@utility tile-default-top-border-style {
+  @apply border-red border-t-2;
+}
+
+.tile-default-top-border-style {
+  @apply tile-default-top-border-style;
+}
+
+.sm\:tile-default-top-border-style {
+  @variant sm {
+    @apply tile-default-top-border-style;
+  }
+}
+
+.md\:tile-default-top-border-style {
+  @variant md {
+    @apply tile-default-top-border-style;
+  }
+}
+
+.lg\:tile-default-top-border-style {
+  @variant lg {
+    @apply tile-default-top-border-style;
+  }
+}
+
+.xl\:tile-default-top-border-style {
+  @variant xl {
+    @apply tile-default-top-border-style;
+  }
+}
+
+.\32 xl\:tile-default-top-border-style {
+  @variant 2xl {
+    @apply tile-default-top-border-style;
+  }
+}
