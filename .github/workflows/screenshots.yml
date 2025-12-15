@@ -20,14 +20,31 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        
+      - name: Get installed Playwright version
+        id: playwright-version
+        run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package-lock.json').packages['node_modules/@playwright/test'].version)")" >> $GITHUB_ENV
 
-      - name: Install Playwright dependencies
-        run: npx playwright install --with-deps
+      - name: Cache playwright binaries
+        uses: actions/cache@v4
+        id: playwright-cache
+        with:
+          path: |
+            ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}
+    
+      - run: npx playwright install --with-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
+      - run: npx playwright install-deps
+        if: steps.playwright-cache.outputs.cache-hit != 'true'
 
       - name: Take screenshots
         env:
           CI: true
         run:  npm run test:e2e -- --grep "@screenshot"
+
+      - name: log artifacts
+        run: ls test-results/screenshots/
 
       - name: Upload screenshots
         uses: actions/upload-artifact@v4
