@@ -26,3 +26,6 @@ yarn.lock
 
 
 tmp/
+
+# testing
+test-results/
