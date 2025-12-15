@@ -1,5 +1,7 @@
 import { test, expect } from "@playwright/test";
 
+import { rootPath } from "get-root-path";
+
 test("has title", async ({ page }) => {
   await page.goto("/");
 
@@ -12,7 +14,7 @@ test(
   async ({ page }) => {
     await page.goto("/");
     await page.screenshot({
-      path: "test-results/screenshots/homepage.png",
+      path: `${rootPath}/test-results/screenshots/homepage.png`,
       fullPage: true,
     });
   },
@@ -24,7 +26,7 @@ test(
   async ({ page }) => {
     await page.goto("/songbook");
     await page.screenshot({
-      path: "test-results/screenshots/songbook.png",
+      path: `${rootPath}/test-results/screenshots/songbook.png`,
       fullPage: true,
     });
   },
