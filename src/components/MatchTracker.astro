@@ -60,7 +60,7 @@ const { styling } = Astro.props;
           data-test-id="away-team-image"
         />
       </div>
-      <div class="team-names grid" data-show-after-load>
+      <div class="team-names" data-show-after-load>
         <span updates="home-team-name" class="text-xl font-bold"></span>
         <span updates="away-team-name" class="text-xl font-bold"></span>
       </div>
@@ -132,7 +132,7 @@ const { styling } = Astro.props;
         />
       </div>
     </div>
-    <div class="team-names grid" data-show-after-load>
+    <div class="team-names" data-show-after-load>
       <span updates="home-team-name" class="text-xl font-bold"></span>
       <span updates="away-team-name" class="text-xl font-bold"></span>
     </div>
@@ -162,12 +162,10 @@ const { styling } = Astro.props;
     grid-template-areas: ".     .     .    " "names names names";
   }
   .team-names {
-    display: grid;
-    width: 100%;
     grid-area: names;
-    display: grid;
-    grid-column-gap: 1em;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
   }
 </style>
 <script>
