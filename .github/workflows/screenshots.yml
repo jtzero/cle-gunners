@@ -4,6 +4,12 @@ permissions:
 
 on:
   workflow_dispatch:
+    inputs:
+      branch:
+        description: 'The branch to checkout (excluding workflow files)'
+        required: true
+        default: 'main'
+        type: string
 
 jobs:
   screenshot:
