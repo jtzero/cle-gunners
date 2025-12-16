@@ -2,6 +2,7 @@
 title: "Who We Are"
 image: "/images/cle-group-wide-2025011023.jpg"
 imageDimensions: "4981x2451"
+imagePlacement: header
 date: 2025-11-12T05:00:00Z
 description: ""
 weight: 1
