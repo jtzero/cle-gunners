@@ -6,7 +6,7 @@ import { defineConfig } from "astro/config";
 import scope from "astro-scope";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
-import config from "./src/config/config.json";
+import config from "./src/config/config.js";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 

@@ -2,7 +2,7 @@
 import { AstroFont } from "astro-font";
 import { fromBase } from "@/lib/fromBase";
 import TwSizeIndicator from "@/components/TwSizeIndicator.astro";
-import config from "@/config/config.json";
+import config from "@/config/config.js";
 import { plainify } from "@/lib/utils/textConverter";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
@@ -85,7 +85,7 @@ const keywordsArray = keywords || [];
 
     <ClientRouter />
 
-    <!-- author from config.json -->
+    <!-- author from config.js -->
     <meta name="author" content={config.metadata.meta_author} />
 
     <!-- og-title -->
