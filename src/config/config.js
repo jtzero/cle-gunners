@@ -1,5 +1,5 @@
 const useGoogleAnalytics = (() => {
-  console.log("env:", process.env.environment);
+  console.log("env:", process.env);
   if (process.env.environment === "production") {
     console.log("Google Analytics is enabled");
     return true;
