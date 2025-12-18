@@ -1,5 +1,5 @@
 const useGoogleAnalytics = (() => {
-  if (process.env.environment?.name === "github-pages") {
+  if (process.env.environment === "production") {
     console.log("Google Analytics is enabled");
     return true;
   } else {
