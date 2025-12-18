@@ -1,8 +1,10 @@
 const useGoogleAnalytics = (() => {
   if (process.env.NODE_ENV === "github-pages") {
-    return false;
-  } else {
+    console.log("Google Analytics is enbled");
     return true;
+  } else {
+    console.log("Google Analytics is disabled");
+    return false;
   }
 })();
 export default {

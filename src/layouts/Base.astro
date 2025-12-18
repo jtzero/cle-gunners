@@ -7,7 +7,7 @@ import { plainify } from "@/lib/utils/textConverter";
 import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 import "@/styles/main.css";
-import '@fontsource/quantico';
+import "@fontsource/quantico";
 import { ClientRouter } from "astro:transitions";
 
 const { title, metaTitle, description, image, noindex, canonical, keywords } =
@@ -72,15 +72,16 @@ const keywordsArray = keywords || [];
     <meta
       name="description"
       content={plainify(
-        description ? description : config.metadata.meta_description
+        description ? description : config.metadata.meta_description,
       )}
     />
 
     <meta
       name="keywords"
-      content={(
-        keywordsArray[0] ? keywordsArray : config.metadata.meta_keywords
-      ).join(', ')}
+      content={(keywordsArray[0]
+        ? keywordsArray
+        : config.metadata.meta_keywords
+      ).join(", ")}
     />
 
     <ClientRouter />
@@ -92,7 +93,7 @@ const keywordsArray = keywords || [];
     <meta
       property="og:title"
       content={plainify(
-        metaTitle ? metaTitle : title ? title : config.site.title
+        metaTitle ? metaTitle : title ? title : config.site.title,
       )}
     />
 
@@ -100,7 +101,7 @@ const keywordsArray = keywords || [];
     <meta
       property="og:description"
       content={plainify(
-        description ? description : config.metadata.meta_description
+        description ? description : config.metadata.meta_description,
       )}
     />
     <meta property="og:type" content="website" />
@@ -113,7 +114,7 @@ const keywordsArray = keywords || [];
     <meta
       name="twitter:title"
       content={plainify(
-        metaTitle ? metaTitle : title ? title : config.site.title
+        metaTitle ? metaTitle : title ? title : config.site.title,
       )}
     />
 
@@ -121,42 +122,52 @@ const keywordsArray = keywords || [];
     <meta
       name="twitter:description"
       content={plainify(
-        description ? description : config.metadata.meta_description
+        description ? description : config.metadata.meta_description,
       )}
     />
 
     <!-- og-image -->
     <meta
       property="og:image"
-      content={`${fromBase(
-        image ? image : config.metadata.meta_image
-      )}`}
+      content={`${fromBase(image ? image : config.metadata.meta_image)}`}
     />
 
     <!-- twitter-image -->
     <meta
       name="twitter:image"
-      content={`${fromBase(
-        image ? image : config.metadata.meta_image
-      )}`}
+      content={`${fromBase(image ? image : config.metadata.meta_image)}`}
     />
     <meta name="twitter:card" content="summary_large_image" />
 
     <!-- Google analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XCWV76HQNY"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+    {
+      config.useGoogleAnalytics && (
+        <>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-XCWV76HQNY"
+          />
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
 
-      gtag('config', 'G-XCWV76HQNY');
-    </script>
-
+            gtag("config", "G-XCWV76HQNY");
+          </script>
+        </>
+      )
+    }
   </head>
-  <body class="flex flex-col min-h-screen">
+  <body class="flex min-h-screen flex-col">
     <TwSizeIndicator />
-    <Header/>
-    <main id="main-content" data-testid="main-content" class="flex-grow bg-light">
+    <Header />
+    <main
+      id="main-content"
+      data-testid="main-content"
+      class="bg-light flex-grow"
+    >
       <slot />
     </main>
     <Footer />
