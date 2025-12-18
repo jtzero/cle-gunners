@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2025-12-25",
-    "dateTo": "2026-01-01",
+    "dateFrom": "2026-01-01",
+    "dateTo": "2026-01-08",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 2,
     "competitions": "PL",
-    "first": "2025-12-27",
-    "last": "2025-12-30",
+    "first": "2026-01-03",
+    "last": "2026-01-08",
     "played": 0,
     "wins": 0,
     "draws": 2,
@@ -38,26 +38,26 @@
         "currentMatchday": 16,
         "winner": null
       },
-      "id": 537957,
-      "utcDate": "2025-12-27T15:00:00Z",
+      "id": 537975,
+      "utcDate": "2026-01-03T17:30:00Z",
       "status": "TIMED",
-      "matchday": 18,
+      "matchday": 20,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2025-11-02T00:20:59Z",
       "homeTeam": {
+        "id": 1044,
+        "name": "AFC Bournemouth",
+        "shortName": "Bournemouth",
+        "tla": "BOU",
+        "crest": "https://crests.football-data.org/bournemouth.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 397,
-        "name": "Brighton & Hove Albion FC",
-        "shortName": "Brighton Hove",
-        "tla": "BHA",
-        "crest": "https://crests.football-data.org/397.png"
       },
       "score": {
         "winner": null,
@@ -97,10 +97,10 @@
         "currentMatchday": 16,
         "winner": null
       },
-      "id": 537967,
-      "utcDate": "2025-12-30T20:15:00Z",
+      "id": 537987,
+      "utcDate": "2026-01-08T20:00:00Z",
       "status": "TIMED",
-      "matchday": 19,
+      "matchday": 21,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2025-11-02T00:20:59Z",
@@ -112,11 +112,11 @@
         "crest": "https://crests.football-data.org/57.png"
       },
       "awayTeam": {
-        "id": 58,
-        "name": "Aston Villa FC",
-        "shortName": "Aston Villa",
-        "tla": "AVL",
-        "crest": "https://crests.football-data.org/58.png"
+        "id": 64,
+        "name": "Liverpool FC",
+        "shortName": "Liverpool",
+        "tla": "LIV",
+        "crest": "https://crests.football-data.org/64.png"
       },
       "score": {
         "winner": null,
