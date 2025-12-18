@@ -25,7 +25,9 @@ const { styling } = Astro.props;
       class="display-none text-xl whitespace-pre-wrap text-[var(--color-burgundy)]"
     >
     </p>
-    <div class="team-vs-bracket grid grid-cols-[1fr_auto_1fr] p-4">
+    <div
+      class="team-vs-bracket grid grid-cols-[1fr_auto_1fr] p-4 max-[376px]:p-2"
+    >
       <div
         data-show-after-load
         class="align-center invisible grid-cols-1 grid-rows-2 text-xl font-bold"
@@ -44,7 +46,7 @@ const { styling } = Astro.props;
         <h1
           data-show-after-load
           data-testid="VS"
-          class="hidden max-[350px]:text-[25px]"
+          class="hidden max-[376px]:text-[30px]"
         >
           VS
         </h1>
@@ -62,6 +64,7 @@ const { styling } = Astro.props;
       </div>
       <div class="team-names" data-show-after-load>
         <span updates="home-team-name" class="text-xl font-bold"></span>
+        <span></span>
         <span updates="away-team-name" class="text-xl font-bold"></span>
       </div>
     </div>
@@ -101,7 +104,9 @@ const { styling } = Astro.props;
       class="display-none text-xl whitespace-pre-wrap text-[var(--dark-red-600)]"
     >
     </p>
-    <div class="grid grid-cols-[1fr_auto_1fr] p-4">
+    <div
+      class="team-vs-bracket grid grid-cols-[1fr_auto_1fr] p-4 max-[376px]:p-2"
+    >
       <div
         data-show-after-load
         class="align-center hidden grid-cols-1 grid-rows-2 text-xl font-bold"
@@ -116,7 +121,7 @@ const { styling } = Astro.props;
       <h1
         data-show-after-load
         data-testid="VS"
-        class="hidden max-[350px]:text-[25px]"
+        class="hidden max-[376px]:text-[30px]"
       >
         VS
       </h1>
@@ -134,6 +139,7 @@ const { styling } = Astro.props;
     </div>
     <div class="team-names" data-show-after-load>
       <span updates="home-team-name" class="text-xl font-bold"></span>
+      <span></span>
       <span updates="away-team-name" class="text-xl font-bold"></span>
     </div>
   </Fragment>
