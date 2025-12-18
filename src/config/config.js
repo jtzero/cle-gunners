@@ -1,6 +1,6 @@
 const useGoogleAnalytics = (() => {
-  if (process.env.NODE_ENV === "github-pages") {
-    console.log("Google Analytics is enbled");
+  if (process.env.environment?.name === "github-pages") {
+    console.log("Google Analytics is enabled");
     return true;
   } else {
     console.log("Google Analytics is disabled");
