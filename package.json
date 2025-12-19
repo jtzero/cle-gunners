@@ -19,7 +19,7 @@
     "file-type": "added only to force astro-imagetools to use a non vuln version"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.4",
+    "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "4.3.12",
     "@astrojs/rss": "4.0.12",
     "@fontsource/quantico": "^5.2.7",
