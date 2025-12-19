@@ -6,7 +6,7 @@ imagePlacement:
   all: header
 ---
 
-<span style="color: darkgrey">(Sweet Caroline")</span>
+<span style="color: darkgrey">(To the tune of Sweet Caroline)</span>
 
 Leo Trossard
 BUM BUM BUM
