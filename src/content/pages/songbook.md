@@ -12,6 +12,7 @@ posts:
     "declan-rice",
     "martinelli",
     "bukayo-saka",
+    "leo-trossard",
     "mik-arteta",
     "more",
   ]
