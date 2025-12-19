@@ -1,7 +1,7 @@
 ---
 title: Bukayo Saka
 image: /images/saka.jpg
-imageDimensions: 740x1628
+imageDimensions: 735x990
 imagePlacement:
   all: header
   md: body
