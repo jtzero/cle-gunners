@@ -1,81 +1,22 @@
 {
   "filters": {
-    "dateFrom": "2026-01-01",
-    "dateTo": "2026-01-08",
+    "dateFrom": "2026-01-08",
+    "dateTo": "2026-01-15",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
   },
   "resultSet": {
-    "count": 2,
+    "count": 1,
     "competitions": "PL",
-    "first": "2026-01-03",
+    "first": "2026-01-08",
     "last": "2026-01-08",
     "played": 0,
     "wins": 0,
-    "draws": 2,
+    "draws": 1,
     "losses": 0
   },
   "matches": [
-    {
-      "area": {
-        "id": 2072,
-        "name": "England",
-        "code": "ENG",
-        "flag": "https://crests.football-data.org/770.svg"
-      },
-      "competition": {
-        "id": 2021,
-        "name": "Premier League",
-        "code": "PL",
-        "type": "LEAGUE",
-        "emblem": "https://crests.football-data.org/PL.png"
-      },
-      "season": {
-        "id": 2403,
-        "startDate": "2025-08-15",
-        "endDate": "2026-05-24",
-        "currentMatchday": 17,
-        "winner": null
-      },
-      "id": 537975,
-      "utcDate": "2026-01-03T17:30:00Z",
-      "status": "TIMED",
-      "matchday": 20,
-      "stage": "REGULAR_SEASON",
-      "group": null,
-      "lastUpdated": "2025-11-02T00:20:59Z",
-      "homeTeam": {
-        "id": 1044,
-        "name": "AFC Bournemouth",
-        "shortName": "Bournemouth",
-        "tla": "BOU",
-        "crest": "https://crests.football-data.org/bournemouth.png"
-      },
-      "awayTeam": {
-        "id": 57,
-        "name": "Arsenal FC",
-        "shortName": "Arsenal",
-        "tla": "ARS",
-        "crest": "https://crests.football-data.org/57.png"
-      },
-      "score": {
-        "winner": null,
-        "duration": "REGULAR",
-        "fullTime": {
-          "home": null,
-          "away": null
-        },
-        "halfTime": {
-          "home": null,
-          "away": null
-        }
-      },
-      "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
-      },
-      "referees": []
-    },
     {
       "area": {
         "id": 2072,
