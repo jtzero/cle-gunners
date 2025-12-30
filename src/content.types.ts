@@ -96,26 +96,32 @@ export type MatchType = z.infer<typeof matchSchema>;
 
 const simplePostSchema = z.object({});
 
-const imagePostSchema = z.object({
-  title: z.string().optional(),
-  date: z.date().optional(),
-  image: z.string(),
-  imageDimensions: z.string(),
-  imagePlacement: z.union([
-    z.string(),
-    z.object({
-      all: z.string(),
-      sm: z.string().optional(),
-      md: z.string().optional(),
-      lg: z.string().optional(),
-      xl: z.string().optional(),
-    }),
-  ]),
-  parsedImageWidth: z.number().optional(),
-  parsedImageHeight: z.number().optional(),
-  imageLink: z.string().optional(),
-  metaTitle: z.string().optional(),
-});
+const imagePostSchema = z
+  .object({
+    title: z.string().optional(),
+    date: z.date().optional(),
+    image: z.string(),
+    imageAlt: z.string().optional(),
+    imageDimensions: z.string(),
+    imagePlacement: z.union([
+      z.string(),
+      z.object({
+        all: z.string(),
+        sm: z.string().optional(),
+        md: z.string().optional(),
+        lg: z.string().optional(),
+        xl: z.string().optional(),
+      }),
+    ]),
+    parsedImageWidth: z.number().optional(),
+    parsedImageHeight: z.number().optional(),
+    imageLink: z.string().optional(),
+    metaTitle: z.string().optional(),
+  })
+  .refine(
+    (data) => !!data.title || !!data.imageAlt,
+    "If there is no title, there must be an image alt",
+  );
 
 const videoPostSchema = z.object({
   title: z.string(),

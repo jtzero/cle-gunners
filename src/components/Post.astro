@@ -66,7 +66,11 @@ const tileWithHeaderMedia = (() => {
 const hasTextBody = (post.body || "") != "";
 const tileBodyClass = (() => {
   if (hasHeaderMultimedia) {
-    return "tile-body-without-body-media";
+    if (hasTextBody) {
+      return "tile-body-without-body-media";
+    } else {
+      return "tile-body-without-body-media hidden";
+    }
   } else if (hasMultimedia && multimediaPlacement == "body") {
     if (!hasTextBody) {
       return "tile-body-with-only-body-media";
@@ -152,7 +156,7 @@ const mediaClasses = (() => {
           >
             <Image
               src={fromBase(post.data.image)}
-              alt={post.data.title}
+              alt={post.data.imageAlt || post.data.title}
               width={post.data.parsedImageWidth}
               height={post.data.parsedImageHeight}
               class="tile-image h-auto w-full"
@@ -211,7 +215,7 @@ const mediaClasses = (() => {
             >
               <Image
                 src={fromBase(post.data.image)}
-                alt={post.data.title}
+                alt={post.data.imageAlt || post.data.title}
                 width={post.data.parsedImageWidth}
                 height={post.data.parsedImageHeight}
                 class="tile-image h-auto w-full"
