@@ -53,34 +53,7 @@ const multimediaPlacement =
 const hasHeaderMultimedia =
   hasMultimedia && (!multimediaPlacement || multimediaPlacement == "header");
 const hasHeaderImage = post.data.image && hasHeaderMultimedia;
-
-const tileWithHeaderMedia = (() => {
-  if (width == height && !multimediaPlacement) {
-    return "tile-with-square-header-media";
-  } else if (hasHeaderMultimedia) {
-    return "tile-with-header-media";
-  } else {
-    return "tile-with-body-media";
-  }
-})();
 const hasTextBody = (post.body || "") != "";
-const tileBodyClass = (() => {
-  if (hasHeaderMultimedia) {
-    if (hasTextBody) {
-      return "tile-body-without-body-media";
-    } else {
-      return "tile-body-without-body-media hidden";
-    }
-  } else if (hasMultimedia && multimediaPlacement == "body") {
-    if (!hasTextBody) {
-      return "tile-body-with-only-body-media";
-    } else {
-      return "tile-body-with-body-media";
-    }
-  } else {
-    return "";
-  }
-})();
 
 const mediaClasses = (() => {
   if (hasDynamicMedia) {
@@ -123,13 +96,40 @@ const mediaClasses = (() => {
       },
     );
   } else {
+    const tileBodyClass = (() => {
+      if (hasHeaderMultimedia) {
+        if (hasTextBody) {
+          return "tile-body-without-body-media";
+        } else {
+          return "tile-body-without-body-media hidden";
+        }
+      } else if (hasMultimedia && multimediaPlacement == "body") {
+        if (!hasTextBody) {
+          return "tile-body-with-only-body-media";
+        } else {
+          return "tile-body-with-body-media";
+        }
+      } else {
+        return "";
+      }
+    })();
+    const tileWithHeaderMedia = (() => {
+      if (width == height && !multimediaPlacement) {
+        return "tile-with-square-header-media";
+      } else if (hasHeaderMultimedia) {
+        return "tile-with-header-media";
+      } else {
+        return "tile-with-body-media";
+      }
+    })();
+
     return {
       tile: tileWithHeaderMedia,
-      body: tileBodyClass,
-      bodyMedia: "",
-      headerMedia: "",
       topBorderStyling: hasHeaderMultimedia ? "" : topBorderStyling,
       defaultTopBoardeBehaviour: true,
+      headerMedia: "",
+      body: tileBodyClass,
+      bodyMedia: "",
     };
   }
 })();
