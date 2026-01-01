@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-01-08",
-    "dateTo": "2026-01-15",
+    "dateFrom": "2026-01-15",
+    "dateTo": "2026-01-22",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-01-08",
-    "last": "2026-01-08",
+    "first": "2026-01-17",
+    "last": "2026-01-17",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 19,
         "winner": null
       },
-      "id": 537987,
-      "utcDate": "2026-01-08T20:00:00Z",
+      "id": 538002,
+      "utcDate": "2026-01-17T17:30:00Z",
       "status": "TIMED",
-      "matchday": 21,
+      "matchday": 22,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2025-11-02T00:20:59Z",
+      "lastUpdated": "2025-11-25T15:21:19Z",
       "homeTeam": {
+        "id": 351,
+        "name": "Nottingham Forest FC",
+        "shortName": "Nottingham",
+        "tla": "NOT",
+        "crest": "https://crests.football-data.org/351.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 64,
-        "name": "Liverpool FC",
-        "shortName": "Liverpool",
-        "tla": "LIV",
-        "crest": "https://crests.football-data.org/64.png"
       },
       "score": {
         "winner": null,

@@ -1,0 +1,80 @@
+{
+  "filters": {
+    "dateFrom": "2026-01-15",
+    "dateTo": "2026-01-22",
+    "permission": "TIER_ONE",
+    "competitions": "2001",
+    "limit": 100
+  },
+  "resultSet": {
+    "count": 1,
+    "competitions": "CL",
+    "first": "2026-01-20",
+    "last": "2026-01-20",
+    "played": 0,
+    "wins": 0,
+    "draws": 1,
+    "losses": 0
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
+      },
+      "competition": {
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
+      },
+      "season": {
+        "id": 2454,
+        "startDate": "2025-09-16",
+        "endDate": "2026-05-30",
+        "currentMatchday": 7,
+        "winner": null
+      },
+      "id": 551933,
+      "utcDate": "2026-01-20T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 7,
+      "stage": "LEAGUE_STAGE",
+      "group": null,
+      "lastUpdated": "2025-09-01T20:21:04Z",
+      "homeTeam": {
+        "id": 108,
+        "name": "FC Internazionale Milano",
+        "shortName": "Inter",
+        "tla": "INT",
+        "crest": "https://crests.football-data.org/108.png"
+      },
+      "awayTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": []
+    }
+  ]
+}
