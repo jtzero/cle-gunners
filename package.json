@@ -23,7 +23,7 @@
     "@astrojs/mdx": "4.3.12",
     "@astrojs/rss": "4.0.12",
     "@fontsource/quantico": "^5.2.7",
-    "@tailwindcss/vite": "^4.1.13",
+    "@tailwindcss/vite": "^4.1.18",
     "app-root-path": "^3.1.0",
     "astro": "^5.16.8",
     "astro-auto-import": "^0.4.5",
