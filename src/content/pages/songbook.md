@@ -9,6 +9,7 @@ posts:
     "thats-alright",
     "odie",
     "jurrien-timber",
+    "big-gabby",
     "declan-rice",
     "martinelli",
     "bukayo-saka",
