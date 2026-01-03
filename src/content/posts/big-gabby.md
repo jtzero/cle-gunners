@@ -1,6 +1,6 @@
 ---
 title: Big Gabby
-video:
+video: https://www.youtube.com/embed/3mITMKY30Xs?si=-CEcQao9kr7nONTT
 videoDimensions: 560x315
 orientation: landscape 
 ---
