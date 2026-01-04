@@ -10,7 +10,7 @@ const useGoogleAnalytics = (() => {
 export default {
   useGoogleAnalytics: useGoogleAnalytics,
   site: {
-    title: "Cleveland Arsenal",
+    title: "Cleveland Arsenal|Cleveland Gooners",
     favicon: "/images/favicon.png",
     logo: "",
     logo_width: "",
