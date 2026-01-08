@@ -126,6 +126,59 @@ const getPremierLeague = async (
   }
 };
 
+export const singleDay = async (
+  api_key: string,
+  competitionCode: string,
+  startDateArg: string,
+  fetchFunction: Function = fetch,
+  writeDataToFileFunction: Function = json.stringifyToFile,
+) => {
+  const startDate = new Date(startDateArg);
+  console.log("Fetching League Info...");
+  let competitionDatum = null;
+  if (competitionCode.toLowerCase() === "fa") {
+    competitionDatum = await getFACup(
+      api_key,
+      startDate,
+      fetchFunction,
+      writeDataToFileFunction,
+    );
+  } else if (competitionCode.toLowerCase() === "cl") {
+    competitionDatum = await getChampionsLeague(
+      api_key,
+      startDate,
+      fetchFunction,
+      writeDataToFileFunction,
+    );
+  } else {
+    competitionDatum = await getPremierLeague(
+      api_key,
+      startDate,
+      fetchFunction,
+      writeDataToFileFunction,
+    );
+  }
+
+  const leagueID = competitionDatum.id;
+  console.log("Fetching team ID...");
+  const id = await team.fetchArsenalID(api_key, seasonYear, fetchFunction);
+  console.log("ID fetched:", id);
+  console.log(startDateArg, startDate);
+
+  await saveFixturesFromRange(
+    api_key,
+    today,
+    startDate,
+    startDate,
+    leagueID.toString(),
+    id,
+    secondRoundSeasonYear,
+    competitionCode,
+    fetchFunction,
+    writeDataToFileFunction,
+  );
+};
+
 export const run = async (
   api_key: string,
   competitionCode: string,
@@ -173,7 +226,7 @@ export const run = async (
   console.log(startDateArg, startDate, endDate, thisMonth);
   await saveFixturesFromRange(
     api_key,
-    today,
+    new Date(),
     startDate,
     endDate,
     leagueID.toString(),
