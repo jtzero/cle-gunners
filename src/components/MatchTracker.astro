@@ -226,6 +226,10 @@ const { styling } = Astro.props;
   };
   const preloadEasterEggImage = async () => {
     const img = new Image();
+    img.setAttribute(
+      "class",
+      "min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]",
+    );
     img.src = easterEggImage;
   };
   const preloadArsenalImage = async (): Promise<HTMLImageElement> => {
@@ -326,8 +330,28 @@ const { styling } = Astro.props;
             );
             listenersForThisTracker.away = undefined;
           }
+          let imgTag = null;
+          if (
+            nearestMatch.awayTeam.shortName == "Arsenal" &&
+            state.arsenalCrest
+          ) {
+            imgTag = state.arsenalCrest;
+          } else {
+            imgTag = new Image();
+            imgTag.src = nearestMatch.awayTeam.crest;
+          }
+          if (currentImageTag.getAttribute("class")) {
+            imgTag.setAttribute("class", currentImageTag.getAttribute("class"));
+          }
+          if (currentImageTag.getAttribute("updates")) {
+            imgTag.setAttribute(
+              "updates",
+              currentImageTag.getAttribute("updates"),
+            );
+          }
+          currentImageTag.replaceWith(imgTag);
           if (!imageLoadListeners[tracker.id].away) {
-            currentImageTag.addEventListener("load", () => {
+            imgTag.addEventListener("load", () => {
               console.log("imageLoaded for " + tracker.id, imagesToLoadCount);
 
               if (
@@ -341,14 +365,6 @@ const { styling } = Astro.props;
               }
             });
             imageLoadListeners[tracker.id].away = true;
-          }
-          if (
-            nearestMatch.awayTeam.shortName == "Arsenal" &&
-            state.arsenalCrest
-          ) {
-            currentImageTag.replaceWith(state.arsenalCrest);
-          } else {
-            currentImageTag.src = nearestMatch.awayTeam.crest;
           }
         } else if (el.getAttribute("updates") == "home-team-image") {
           let currentImageTag: HTMLImageElement = el as HTMLImageElement;
@@ -376,8 +392,27 @@ const { styling } = Astro.props;
             );
             listenersForThisTracker.home = undefined;
           }
+          let imgTag = null;
+          if (
+            nearestMatch.homeTeam.shortName == "Arsenal" &&
+            state.arsenalCrest
+          ) {
+            imgTag = state.arsenalCrest;
+          } else {
+            imgTag = new Image();
+            imgTag.src = nearestMatch.homeTeam.crest;
+          }
+          if (currentImageTag.getAttribute("class")) {
+            imgTag.setAttribute("class", currentImageTag.getAttribute("class"));
+          }
+          if (currentImageTag.getAttribute("updates")) {
+            imgTag.setAttribute(
+              "updates",
+              currentImageTag.getAttribute("updates"),
+            );
+          }
           if (!imageLoadListeners[tracker.id].home) {
-            currentImageTag.addEventListener("load", () => {
+            imgTag.addEventListener("load", () => {
               console.log("imageLoaded for" + tracker.id, imagesToLoadCount);
               if (
                 imagesToLoadCount == SrcImagesToUpdate ||
@@ -391,14 +426,7 @@ const { styling } = Astro.props;
             });
             imageLoadListeners[tracker.id].home = true;
           }
-          if (
-            nearestMatch.homeTeam.shortName == "Arsenal" &&
-            state.arsenalCrest
-          ) {
-            currentImageTag.replaceWith(state.arsenalCrest);
-          } else {
-            currentImageTag.src = nearestMatch.homeTeam.crest;
-          }
+          currentImageTag.replaceWith(imgTag);
         } else if (el.getAttribute("updates") == "away-team-name") {
           el.textContent = nearestMatch.awayTeam.shortName;
         } else if (el.getAttribute("updates") == "home-team-name") {
