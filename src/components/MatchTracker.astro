@@ -624,6 +624,7 @@ const { styling } = Astro.props;
     );
     const audioPlayer = document.getElementById("audio-player");
 
+    let nearestMatches: Array<MatchType> | [] = [];
     let [cachedMatches, foundWeekID] = digCache(
       today,
       midWeek,
@@ -631,64 +632,11 @@ const { styling } = Astro.props;
       thirdMidWeek,
       competitionCodes,
     );
-    if (cachedMatches.length > 0) {
-      let flags = [];
-      if (isDoubleHeader(cachedMatches)) {
-        flags.push(DOUBLE_HEADER_FLAG);
-      }
-      if (cachedMatches.length > 0) {
-        let runningUpdates = false;
-        if (!isMatchInSlot("match-tracker", cachedMatches[0])) {
-          runningUpdates = true;
-          updateTracker(matchTracker, cachedMatches[0], audioPlayer, flags);
-        }
-        if (flags.includes(DOUBLE_HEADER_FLAG)) {
-          if (!isMatchInSlot("match-tracker-double-header", cachedMatches[1])) {
-            matchTrackerDoubleHeader.classList.remove("hidden");
-            updateTracker(
-              matchTrackerDoubleHeader,
-              cachedMatches[1],
-              audioPlayer,
-            );
-            runningUpdates = true;
-          }
-        } else {
-          hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
-          loading_status = LOADING_STATUSES.loaded;
-        }
-        if (!runningUpdates) {
-          runningUpdates = false;
-          loading_status = LOADING_STATUSES.loaded;
-        }
-        return;
-      }
-    }
-    let nearestMatches: Array<MatchType> | [] = [];
-    const fetchFixturesBase = "/api/fixtures";
-    await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
-      async (response) => {
-        if (response.status === 200) {
-          const json = await response.json();
-          nearestMatches = laterThanNow(json.matches, today);
-        }
-      },
-    );
-    await fetch(`${fetchFixturesBase}/${midWeek}.json`).then(
-      async (response) => {
-        if (response.status === 200) {
-          nearestMatches = await filterMatchResponse(
-            nearestMatches,
-            response,
-            today,
-            competitionCodes,
-          );
-          foundWeekID = midWeek;
-        }
-      },
-    );
-    if (!nearestMatches[0]) {
-      checks.push(nextMidWeek);
-      await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
+    if (cachedMatches.length > 0 && foundWeekID) {
+      nearestMatches = cachedMatches;
+    } else {
+      const fetchFixturesBase = "/api/fixtures";
+      await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
         async (response) => {
           if (response.status === 200) {
             const json = await response.json();
@@ -696,62 +644,88 @@ const { styling } = Astro.props;
           }
         },
       );
-      await fetch(`${fetchFixturesBase}/${nextMidWeek}.json`).then(
-        async (nextWeekResponse) => {
-          if (nextWeekResponse.status === 200) {
-            nearestMatches = await filterMatchResponse(
-              nearestMatches,
-              nextWeekResponse,
-              today,
-              competitionCodes,
-            );
-            foundWeekID = nextMidWeek;
-          }
-        },
-      );
-    }
-    if (!nearestMatches[0]) {
-      checks.push(thirdMidWeek);
-      await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(
+      await fetch(`${fetchFixturesBase}/${midWeek}.json`).then(
         async (response) => {
           if (response.status === 200) {
-            const json = await response.json();
-            nearestMatches = laterThanNow(json.matches, today);
-          }
-        },
-      );
-      await fetch(`${fetchFixturesBase}/${thirdMidWeek}.json`).then(
-        async (thirdWeekResponse) => {
-          if (thirdWeekResponse.status === 200) {
             nearestMatches = await filterMatchResponse(
               nearestMatches,
-              thirdWeekResponse,
+              response,
               today,
               competitionCodes,
             );
-            foundWeekID = thirdMidWeek;
+            foundWeekID = midWeek;
           }
         },
       );
-    }
-
-    if (nearestMatches[0]) {
+      if (!nearestMatches[0]) {
+        checks.push(nextMidWeek);
+        await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
+          async (response) => {
+            if (response.status === 200) {
+              const json = await response.json();
+              nearestMatches = laterThanNow(json.matches, today);
+            }
+          },
+        );
+        await fetch(`${fetchFixturesBase}/${nextMidWeek}.json`).then(
+          async (nextWeekResponse) => {
+            if (nextWeekResponse.status === 200) {
+              nearestMatches = await filterMatchResponse(
+                nearestMatches,
+                nextWeekResponse,
+                today,
+                competitionCodes,
+              );
+              foundWeekID = nextMidWeek;
+            }
+          },
+        );
+      }
+      if (!nearestMatches[0]) {
+        checks.push(thirdMidWeek);
+        await fetch(`/api/manual-fixtures/${thirdMidWeek}.json`).then(
+          async (response) => {
+            if (response.status === 200) {
+              const json = await response.json();
+              nearestMatches = laterThanNow(json.matches, today);
+            }
+          },
+        );
+        await fetch(`${fetchFixturesBase}/${thirdMidWeek}.json`).then(
+          async (thirdWeekResponse) => {
+            if (thirdWeekResponse.status === 200) {
+              nearestMatches = await filterMatchResponse(
+                nearestMatches,
+                thirdWeekResponse,
+                today,
+                competitionCodes,
+              );
+              foundWeekID = thirdMidWeek;
+            }
+          },
+        );
+      }
       localStorage.setItem(
         `${foundWeekID}-v${CACHE_VERSION}`,
         JSON.stringify({
           matches: nearestMatches,
         }),
       );
+    }
+    if (nearestMatches[0]) {
+      let runningUpdates = false;
       let flags = [];
       if (isDoubleHeader(nearestMatches)) {
         flags.push(DOUBLE_HEADER_FLAG);
       }
       if (!isMatchInSlot("match-tracker", nearestMatches[0])) {
+        runningUpdates = true;
         updateTracker(matchTracker, nearestMatches[0], audioPlayer, flags);
       }
       if (flags.includes(DOUBLE_HEADER_FLAG)) {
         matchTrackerDoubleHeader.classList.remove("hidden");
         if (!isMatchInSlot("match-tracker-double-header", nearestMatches[1])) {
+          runningUpdates = true;
           updateTracker(
             matchTrackerDoubleHeader,
             nearestMatches[1],
@@ -760,6 +734,10 @@ const { styling } = Astro.props;
         }
       } else {
         hideDoubleHeaderItems(matchTracker, matchTrackerDoubleHeader);
+        loading_status = LOADING_STATUSES.loaded;
+      }
+      if (!runningUpdates) {
+        runningUpdates = false;
         loading_status = LOADING_STATUSES.loaded;
       }
     } else {
