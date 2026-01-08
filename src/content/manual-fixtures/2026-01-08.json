@@ -1,0 +1,73 @@
+{
+  "filters": {},
+  "resultSet": {
+    "count": 1
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+      },
+      "competition": {
+        "id": 2055,
+        "name": "FA CUP",
+        "code": "FAC",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/FAC.png"
+      },
+      "season": {
+        "id": 0,
+        "startDate": "2025-08-15",
+        "endDate": "2026-05-24",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 538007,
+      "utcDate": "2026-01-11T14:00:00Z",
+      "status": "TIMED",
+      "matchday": 23,
+      "stage": "CUP",
+      "group": null,
+      "lastUpdated": "2026-01-08T00:20:53Z",
+      "homeTeam": {
+        "id": 325,
+        "name": "Portsmouth FC",
+        "shortName": "Portsmouth",
+        "tla": "POR",
+        "crest": "https://crests.football-data.org/325.png",
+        "address": "Frogmore Road Portsmouth PO4 8RA",
+        "website": "http://www.portsmouthfc.co.uk",
+        "founded": 1898,
+        "clubColors": "Blue / White",
+        "venue": "Fratton Park",
+        "lastUpdated": "2024-08-27T19:14:22Z"
+      },
+      "awayTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": []
+    }
+  ]
+}

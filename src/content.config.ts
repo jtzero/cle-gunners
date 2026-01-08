@@ -64,9 +64,9 @@ const manualFixturesCollection = defineCollection({
     filters: z.object({
       dateFrom: z.string().date().optional(),
       dateTo: z.string().date().optional(),
-      permission: z.string(),
+      permission: z.string().optional(),
       competitions: z.coerce.number().optional(),
-      limit: z.number(),
+      limit: z.number().optional(),
     }),
     resultSet: z.object({
       count: z.number(),
