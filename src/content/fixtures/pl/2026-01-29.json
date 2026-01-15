@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-01-22",
-    "dateTo": "2026-01-29",
+    "dateFrom": "2026-01-29",
+    "dateTo": "2026-02-05",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-01-25",
-    "last": "2026-01-25",
+    "first": "2026-01-31",
+    "last": "2026-01-31",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 22,
         "winner": null
       },
-      "id": 538007,
-      "utcDate": "2026-01-25T16:30:00Z",
+      "id": 538020,
+      "utcDate": "2026-01-31T15:00:00Z",
       "status": "TIMED",
-      "matchday": 23,
+      "matchday": 24,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2026-01-15T00:20:53Z",
       "homeTeam": {
+        "id": 341,
+        "name": "Leeds United FC",
+        "shortName": "Leeds United",
+        "tla": "LEE",
+        "crest": "https://crests.football-data.org/341.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 66,
-        "name": "Manchester United FC",
-        "shortName": "Man United",
-        "tla": "MUN",
-        "crest": "https://crests.football-data.org/66.png"
       },
       "score": {
         "winner": null,
