@@ -36,6 +36,7 @@ export default {
       "The Land",
       "Gooners",
       "Cleveland Arsenal",
+      "Cleveland Premier League",
     ],
   },
 };
