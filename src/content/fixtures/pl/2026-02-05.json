@@ -1,0 +1,139 @@
+{
+  "filters": {
+    "dateFrom": "2026-02-05",
+    "dateTo": "2026-02-12",
+    "permission": "TIER_ONE",
+    "competitions": "2021",
+    "limit": 100
+  },
+  "resultSet": {
+    "count": 2,
+    "competitions": "PL",
+    "first": "2026-02-07",
+    "last": "2026-02-12",
+    "played": 0,
+    "wins": 0,
+    "draws": 2,
+    "losses": 0
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+      },
+      "competition": {
+        "id": 2021,
+        "name": "Premier League",
+        "code": "PL",
+        "type": "LEAGUE",
+        "emblem": "https://crests.football-data.org/PL.png"
+      },
+      "season": {
+        "id": 2403,
+        "startDate": "2025-08-15",
+        "endDate": "2026-05-24",
+        "currentMatchday": 22,
+        "winner": null
+      },
+      "id": 538027,
+      "utcDate": "2026-02-07T15:00:00Z",
+      "status": "TIMED",
+      "matchday": 25,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2025-12-19T10:21:02Z",
+      "homeTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 71,
+        "name": "Sunderland AFC",
+        "shortName": "Sunderland",
+        "tla": "SUN",
+        "crest": "https://crests.football-data.org/71.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": []
+    },
+    {
+      "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+      },
+      "competition": {
+        "id": 2021,
+        "name": "Premier League",
+        "code": "PL",
+        "type": "LEAGUE",
+        "emblem": "https://crests.football-data.org/PL.png"
+      },
+      "season": {
+        "id": 2403,
+        "startDate": "2025-08-15",
+        "endDate": "2026-05-24",
+        "currentMatchday": 22,
+        "winner": null
+      },
+      "id": 538038,
+      "utcDate": "2026-02-12T20:00:00Z",
+      "status": "TIMED",
+      "matchday": 26,
+      "stage": "REGULAR_SEASON",
+      "group": null,
+      "lastUpdated": "2025-12-19T10:21:02Z",
+      "homeTeam": {
+        "id": 402,
+        "name": "Brentford FC",
+        "shortName": "Brentford",
+        "tla": "BRE",
+        "crest": "https://crests.football-data.org/402.png"
+      },
+      "awayTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": []
+    }
+  ]
+}
