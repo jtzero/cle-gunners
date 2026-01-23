@@ -244,6 +244,7 @@ const { styling } = Astro.props;
   let state: { arsenalCrest: HTMLImageElement | undefined } = {
     arsenalCrest: undefined,
   };
+  const ManUShortName = "Man United";
   const toggleEasterEgg = (
     element: HTMLImageElement,
     originalSrc: string,
@@ -307,29 +308,6 @@ const { styling } = Astro.props;
         if (el.getAttribute("updates") == "away-team-image") {
           let currentImageTag: HTMLImageElement = el as HTMLImageElement;
           imagesToLoadCount++;
-          if (nearestMatch.awayTeam.shortName == "Man Utd") {
-            if (!listenersForThisTracker.away) {
-              listenersForThisTracker.away = () => {
-                toggleEasterEgg(
-                  currentImageTag,
-                  nearestMatch.awayTeam.crest,
-                  toggleEasterEggCountAway,
-                  audioElement,
-                );
-                toggleEasterEggCountAway++;
-              };
-              currentImageTag.addEventListener(
-                "click",
-                listenersForThisTracker.away,
-              );
-            }
-          } else if (listenersForThisTracker.away) {
-            currentImageTag.removeEventListener(
-              "click",
-              listenersForThisTracker.away,
-            );
-            listenersForThisTracker.away = undefined;
-          }
           let imgTag = null;
           if (
             nearestMatch.awayTeam.shortName == "Arsenal" &&
@@ -339,6 +317,23 @@ const { styling } = Astro.props;
           } else {
             imgTag = new Image();
             imgTag.src = nearestMatch.awayTeam.crest;
+          }
+          if (nearestMatch.awayTeam.shortName == ManUShortName) {
+            if (!listenersForThisTracker.away) {
+              listenersForThisTracker.away = () => {
+                toggleEasterEgg(
+                  imgTag,
+                  nearestMatch.awayTeam.crest,
+                  toggleEasterEggCountAway,
+                  audioElement,
+                );
+                toggleEasterEggCountAway++;
+              };
+              imgTag.addEventListener("click", listenersForThisTracker.away);
+            }
+          } else if (listenersForThisTracker.away) {
+            imgTag.removeEventListener("click", listenersForThisTracker.away);
+            listenersForThisTracker.away = undefined;
           }
           if (currentImageTag.getAttribute("class")) {
             imgTag.setAttribute("class", currentImageTag.getAttribute("class"));
@@ -369,29 +364,6 @@ const { styling } = Astro.props;
         } else if (el.getAttribute("updates") == "home-team-image") {
           let currentImageTag: HTMLImageElement = el as HTMLImageElement;
           imagesToLoadCount++;
-          if (nearestMatch.homeTeam.shortName == "Man Utd") {
-            if (!listenersForThisTracker.home) {
-              listenersForThisTracker.home = () => {
-                toggleEasterEgg(
-                  currentImageTag,
-                  nearestMatch.homeTeam.crest,
-                  toggleEasterEggCountHome,
-                  audioElement,
-                );
-                toggleEasterEggCountHome++;
-              };
-              currentImageTag.addEventListener(
-                "click",
-                listenersForThisTracker.home,
-              );
-            }
-          } else if (listenersForThisTracker.home) {
-            currentImageTag.removeEventListener(
-              "click",
-              listenersForThisTracker.home,
-            );
-            listenersForThisTracker.home = undefined;
-          }
           let imgTag = null;
           if (
             nearestMatch.homeTeam.shortName == "Arsenal" &&
@@ -401,6 +373,23 @@ const { styling } = Astro.props;
           } else {
             imgTag = new Image();
             imgTag.src = nearestMatch.homeTeam.crest;
+          }
+          if (nearestMatch.homeTeam.shortName == ManUShortName) {
+            if (!listenersForThisTracker.home) {
+              listenersForThisTracker.home = () => {
+                toggleEasterEgg(
+                  imgTag,
+                  nearestMatch.homeTeam.crest,
+                  toggleEasterEggCountHome,
+                  audioElement,
+                );
+                toggleEasterEggCountHome++;
+              };
+              imgTag.addEventListener("click", listenersForThisTracker.home);
+            }
+          } else if (listenersForThisTracker.home) {
+            imgTag.removeEventListener("click", listenersForThisTracker.home);
+            listenersForThisTracker.home = undefined;
           }
           if (currentImageTag.getAttribute("class")) {
             imgTag.setAttribute("class", currentImageTag.getAttribute("class"));
