@@ -14,6 +14,7 @@ posts:
     "martinelli",
     "bukayo-saka",
     "leo-trossard",
+    "calafiori",
     "mik-arteta",
     "more",
   ]
