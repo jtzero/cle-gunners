@@ -55,6 +55,30 @@ const hasHeaderMultimedia =
 const hasHeaderImage = post.data.image && hasHeaderMultimedia;
 const hasTextBody = (post.body || "") != "";
 
+const images = (() => {
+  if ((post.data?.images || []).length > 1) {
+    return post.data?.images.map((image) => {
+      const [width, height] = image.dimensions.split("x");
+      return {
+        width: parseInt(width),
+        height: parseInt(height),
+        src: fromBase(image.path),
+      };
+    });
+  } else if (post.data?.image) {
+    return [
+      {
+        src: fromBase(post.data.image),
+        alt: post.data.imageAlt || post.data.title,
+        width: post.data.parsedImageWidth,
+        height: post.data.parsedImageHeight,
+      },
+    ];
+  } else {
+    return [];
+  }
+})();
+
 const mediaClasses = (() => {
   if (hasDynamicMedia) {
     const bodyClass = (() => {
@@ -154,14 +178,17 @@ const mediaClasses = (() => {
             conditional={post.data.imageLink}
             href={post.data.imageLink}
           >
-            <Image
-              src={fromBase(post.data.image)}
-              alt={post.data.imageAlt || post.data.title}
-              width={post.data.parsedImageWidth}
-              height={post.data.parsedImageHeight}
-              class="tile-image h-auto w-full"
-              format="webp"
-            />
+            <picture class="tile-image h-auto w-full">
+              {images.map((image) => {
+                return <source media={image?.media || ""} srcset={image.src} />;
+              })}
+              <img
+                src={images[0].src}
+                alt={post.data.imageAlt || post.data.title}
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
           </ConditionalATag>
         )
       }
@@ -213,14 +240,19 @@ const mediaClasses = (() => {
               conditional={post.data.imageLink}
               href={post.data.imageLink}
             >
-              <Image
-                src={fromBase(post.data.image)}
-                alt={post.data.imageAlt || post.data.title}
-                width={post.data.parsedImageWidth}
-                height={post.data.parsedImageHeight}
-                class="tile-image h-auto w-full"
-                format="webp"
-              />
+              <picture class="tile-image h-auto w-full">
+                {images.map((image) => {
+                  return (
+                    <source media={image?.media || ""} srcset={image.src} />
+                  );
+                })}
+                <img
+                  src={images[0].src}
+                  alt={post.data.imageAlt || post.data.title}
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
             </ConditionalATag>
           )
       }

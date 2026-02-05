@@ -101,6 +101,16 @@ const imagePostSchema = z
     title: z.string().optional(),
     date: z.date().optional(),
     image: z.string(),
+    images: z
+      .array(
+        z.object({
+          path: z.string(),
+          dimensions: z.string(),
+          media: z.string().optional(),
+          alt: z.string().optional(),
+        }),
+      )
+      .optional(),
     imageAlt: z.string().optional(),
     imageDimensions: z.string(),
     imagePlacement: z.union([
