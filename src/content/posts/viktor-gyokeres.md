@@ -1,7 +1,7 @@
 ---
 title: Viktor Gyokeres
-video: 
-videoDimensions: 560x315
+image: /images/
+imageDimensions: 735x990
 orientation: landscape 
 ---
 
