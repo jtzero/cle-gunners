@@ -4,7 +4,7 @@ import { fromBase } from "@/lib/fromBase";
 import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
 import ConditionalATag from "@/components/ConditionalATag.astro";
-import type { PostType } from "@/content.types";
+import type { PostType, MultipleImageSizesSetting } from "@/content.types";
 import Tile from "@/components/Tile.astro";
 import Video from "@/components/Video.astro";
 
@@ -55,14 +55,15 @@ const hasHeaderMultimedia =
 const hasHeaderImage = post.data.image && hasHeaderMultimedia;
 const hasTextBody = (post.body || "") != "";
 
-const images = (() => {
+const images = ((): MultipleImageSizesSetting[] => {
   if ((post.data?.images || []).length > 1) {
-    return post.data?.images.map((image) => {
+    return post.data?.images.map((image: MultipleImageSizesSetting) => {
       const [width, height] = image.dimensions.split("x");
       return {
         width: parseInt(width),
         height: parseInt(height),
-        src: fromBase(image.path),
+        src: fromBase(image.src),
+        media: image.media,
       };
     });
   } else if (post.data?.image) {
@@ -251,6 +252,7 @@ const mediaClasses = (() => {
                   alt={post.data.imageAlt || post.data.title}
                   loading="eager"
                   decoding="async"
+                  class="w-full"
                 />
               </picture>
             </ConditionalATag>

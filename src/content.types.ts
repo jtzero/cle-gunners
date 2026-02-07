@@ -96,21 +96,23 @@ export type MatchType = z.infer<typeof matchSchema>;
 
 const simplePostSchema = z.object({});
 
+const multipleImageSizesSetting = z.object({
+  src: z.string(),
+  dimensions: z.string(),
+  media: z.string().optional(),
+  alt: z.string().optional(),
+});
+
+export type MultipleImageSizesSetting = z.infer<
+  typeof multipleImageSizesSetting
+>;
+
 const imagePostSchema = z
   .object({
     title: z.string().optional(),
     date: z.date().optional(),
     image: z.string(),
-    images: z
-      .array(
-        z.object({
-          path: z.string(),
-          dimensions: z.string(),
-          media: z.string().optional(),
-          alt: z.string().optional(),
-        }),
-      )
-      .optional(),
+    images: z.array(multipleImageSizesSetting).optional(),
     imageAlt: z.string().optional(),
     imageDimensions: z.string(),
     imagePlacement: z.union([
