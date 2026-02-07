@@ -1,7 +1,7 @@
 ---
 title: Viktor Gyokeres
 image: /images/viktor.png
-imageDimensions: 735x990
+imageDimensions: 720x405
 orientation: landscape 
 ---
 
