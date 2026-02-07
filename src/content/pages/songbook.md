@@ -6,6 +6,7 @@ posts:
     "kai-havertz",
     "saliba",
     "gabriel-jesus",
+    "viktor-gyokeres",
     "thats-alright",
     "odie",
     "jurrien-timber",
