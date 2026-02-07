@@ -62,7 +62,7 @@ const { main }: { main: NavigationLink[] } = menu;
     <ul id="nav-menu" data-testid="nav-menu" class="nav-menu">
       {
         main.map((menu) => (
-          <li class="flex justify-center border-white py-4">
+          <li class="flex justify-center border-white py-2">
             <a
               data-js-close={menu.jsCloseMenu}
               id={menu.name}
@@ -139,7 +139,7 @@ const { main }: { main: NavigationLink[] } = menu;
   }
 
   #nav-toggler {
-    @apply bg-gold mt-[0.5vw] mb-[2vw] ml-[2vw] flex size-[calc(2rem+3vw)] items-center justify-center shadow-xl/30;
+    @apply bg-gold mt-[0.5vw] ml-[2vw] flex size-[calc(2rem+3vw)] items-center justify-center shadow-xl/30;
     border-radius: 50%;
   }
 
