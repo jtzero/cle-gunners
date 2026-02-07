@@ -2,6 +2,7 @@
 title: Viktor Gyokeres
 image: /images/viktor.png
 imageDimensions: 720x405
+imagePlacement: body
 orientation: landscape 
 ---
 <span style="color: darkgrey">(To tune of "Push It" by Salt-N-Pep)</span>
