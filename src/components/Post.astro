@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { fromBase } from "@/lib/fromBase";
 import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
@@ -188,6 +187,7 @@ const mediaClasses = (() => {
                 alt={post.data.imageAlt || post.data.title}
                 loading="eager"
                 decoding="async"
+                class="w-full"
               />
             </picture>
           </ConditionalATag>
