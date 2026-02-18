@@ -120,6 +120,7 @@ const mediaClasses = (() => {
       },
     );
   } else {
+    const squareMedia = width == height;
     const tileBodyClass = (() => {
       if (hasHeaderMultimedia) {
         if (hasTextBody) {
@@ -131,7 +132,7 @@ const mediaClasses = (() => {
         if (!hasTextBody) {
           return "tile-body-with-only-body-media";
         } else {
-          if (width == height) {
+          if (squareMedia) {
             return "tile-with-square-body-media";
           } else {
             return "tile-body-with-body-media";
@@ -139,6 +140,13 @@ const mediaClasses = (() => {
         }
       } else {
         return "";
+      }
+    })();
+    const tileBodyMediaClass = (() => {
+      if (squareMedia) {
+        return "items-start";
+      } else {
+        return "items-end";
       }
     })();
     const tileClass = (() => {
@@ -160,7 +168,7 @@ const mediaClasses = (() => {
       defaultTopBoardeBehaviour: true,
       headerMedia: "",
       body: tileBodyClass,
-      bodyMedia: "",
+      bodyMedia: tileBodyMediaClass,
     };
   }
 })();
@@ -231,7 +239,7 @@ const hasHeaderSlot =
   <Fragment slot="body">
     <span
       data-testid="post-body-media-container"
-      class={`flex items-end ${mediaClasses.bodyMedia}`}
+      class={`flex ${mediaClasses.bodyMedia} post-body-media-container`}
     >
       {
         hasVideo && (multimediaPlacement == "body" || hasDynamicMedia) && (
@@ -272,7 +280,7 @@ const hasHeaderSlot =
     </span>
     <span
       data-testid="tile-body-text"
-      class={`flex flex-col items-center p-4 max-w-[100%] ${hasTextBody ? "" : "hidden"}`}
+      class={`flex flex-col items-center px-4 pb-1 max-w-[100%] ${hasTextBody ? "" : "hidden"} tile-body-text`}
     >
       {
         /* TODO: there is waaay too much spacing from tile-body-text, hero text & p tag, the flex ? */
@@ -304,7 +312,6 @@ const hasHeaderSlot =
   @reference "@/styles/tailwind.css";
   .tile-body-hero-text {
     max-width: 100%;
-    white-space-collapse: preserve-breaks;
   }
   .tile-body-hero-text > :global(p) {
     max-width: 100%;
@@ -316,7 +323,8 @@ const hasHeaderSlot =
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     height: auto;
-    @variant sm {
+    direction: rtl;
+    @variant md {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       height: auto;
