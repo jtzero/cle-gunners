@@ -23,7 +23,8 @@ const {
 const dataAstro = Object.keys(rest).filter(key => key.startsWith("data-astro"))[0];
 
 const hideIfNoHeaderSlot = Astro.slots.has("header") ? "" : "hidden"
-
+const dividerWithTitleOrHeader = Astro.slots.has("header") || Astro.slots.has("title")
+const dividerPadding = Astro.slots.has("header") || Astro.slots.has("title") ? "pt-2" : ""
 ---
 
 <div class={`${styling} ${topBorderStyling} tile items-center lg:flex-row justify-evenly`} id={id} data-testid={id} {...{ [dataAstro]: rest[dataAstro] }}>
@@ -32,8 +33,8 @@ const hideIfNoHeaderSlot = Astro.slots.has("header") ? "" : "hidden"
   </div>
   <div data-testid="tile-content" class="tile-content flex flex-col items-center w-full text-center" {...{ [dataAstro]: rest[dataAstro] }}>
     <slot name="title"/>
-    <hr data-testid="divider" class="border-inset border-b-1 border-divider w-full" />
-    <div data-testid="tile-body" class={`${bodyStyling} tile-body max-w-[100%] align-center pt-2`} {...{ [dataAstro]: rest[dataAstro] }}>
+    { dividerWithTitleOrHeader && <hr data-testid="divider" class="border-inset border-b-1 border-divider w-full" /> }
+    <div data-testid="tile-body" class={`${bodyStyling} tile-body max-w-[100%] align-center ${dividerPadding}`} {...{ [dataAstro]: rest[dataAstro] }}>
       <slot name="body" />
     </div>
     {Astro.slots.has("footer") ?
