@@ -104,7 +104,7 @@ const mediaClasses = (() => {
           acc["tile"] += ` ${mediaLabel}tile-with-body-media`;
           acc["headerMedia"] += ` ${mediaLabel}hidden`;
           acc["body"] += ` ${mediaLabel}${bodyClass}`;
-          acc["bodyMedia"] += ` ${mediaLabel}flex`;
+          acc["bodyMedia"] += ` ${mediaLabel}flex ${mediaLabel}items-end`;
           acc["topBorderStyling"] +=
             ` ${mediaLabel}tile-default-top-border-style`;
         }
@@ -220,7 +220,7 @@ const mediaClasses = (() => {
   <Fragment slot="body">
     <span
       data-testid="post-body-media-container"
-      class={`flex ${mediaClasses.bodyMedia}`}
+      class={`flex items-end ${mediaClasses.bodyMedia}`}
     >
       {
         hasVideo && (multimediaPlacement == "body" || hasDynamicMedia) && (

@@ -1,11 +1,10 @@
 ---
-
 const { href, conditional } = Astro.props;
 ---
 
 {
   conditional ? (
-    <a href={href}>
+    <a href={href} class="w-full">
       <slot />
     </a>
   ) : (
