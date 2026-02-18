@@ -131,14 +131,21 @@ const mediaClasses = (() => {
         if (!hasTextBody) {
           return "tile-body-with-only-body-media";
         } else {
-          return "tile-body-with-body-media";
+          if (width == height) {
+            return "tile-with-square-body-media";
+          } else {
+            return "tile-body-with-body-media";
+          }
         }
       } else {
         return "";
       }
     })();
-    const tileWithHeaderMedia = (() => {
-      if (width == height && !multimediaPlacement) {
+    const tileClass = (() => {
+      if (
+        width == height &&
+        (!multimediaPlacement || multimediaPlacement == "header")
+      ) {
         return "tile-with-square-header-media";
       } else if (hasHeaderMultimedia) {
         return "tile-with-header-media";
@@ -148,7 +155,7 @@ const mediaClasses = (() => {
     })();
 
     return {
-      tile: tileWithHeaderMedia,
+      tile: tileClass,
       topBorderStyling: hasHeaderMultimedia ? "" : topBorderStyling,
       defaultTopBoardeBehaviour: true,
       headerMedia: "",
@@ -157,6 +164,9 @@ const mediaClasses = (() => {
     };
   }
 })();
+
+const hasHeaderSlot =
+  (hasVideo && !multimediaPlacement) || hasHeaderImage || hasDynamicMedia;
 ---
 
 <Tile
@@ -167,55 +177,56 @@ const mediaClasses = (() => {
   bodyStyling={`${heroTextStyling} ${mediaClasses.body}`}
   styling={`${styling} ${mediaClasses.tile}`}
 >
-  <Fragment slot="header">
-    <span
-      data-testid="post-header-media-container"
-      class={mediaClasses.headerMedia}
-    >
-      {
-        (hasHeaderImage || hasDynamicMedia) && (
-          <ConditionalATag
-            conditional={post.data.imageLink}
-            href={post.data.imageLink}
-          >
-            <picture class="tile-image h-auto w-full">
-              {images.map((image) => {
-                return <source media={image?.media || ""} srcset={image.src} />;
-              })}
-              <img
-                src={images[0].src}
-                alt={post.data.imageAlt || post.data.title}
-                loading="eager"
-                decoding="async"
-                class="w-full"
-              />
-            </picture>
-          </ConditionalATag>
-        )
-      }
-      {
-        hasVideo && !multimediaPlacement && (
-          <Video
-            url={post.data.video}
-            width={post.data.parsedVideoWidth}
-            height={post.data.parsedVideoHeight}
-            title={post.data.title}
-            orientation={post.data.videoOrientation}
-          />
-        )
-      }
-    </span>
-  </Fragment>
-
-  <Fragment slot="title">
-    {
-      post.data.title && (
+  {
+    hasHeaderSlot && (
+      <Fragment slot={hasHeaderSlot && "header"}>
+        <span
+          data-testid="post-header-media-container"
+          class={mediaClasses.headerMedia}
+        >
+          {(hasHeaderImage || hasDynamicMedia) && (
+            <ConditionalATag
+              conditional={post.data.imageLink}
+              href={post.data.imageLink}
+            >
+              <picture class="tile-image h-auto w-full">
+                {images.map((image) => {
+                  return (
+                    <source media={image?.media || ""} srcset={image.src} />
+                  );
+                })}
+                <img
+                  src={images[0].src}
+                  alt={post.data.imageAlt || post.data.title}
+                  loading="eager"
+                  decoding="async"
+                  class="w-full"
+                />
+              </picture>
+            </ConditionalATag>
+          )}
+          {hasVideo && !multimediaPlacement && (
+            <Video
+              url={post.data.video}
+              width={post.data.parsedVideoWidth}
+              height={post.data.parsedVideoHeight}
+              title={post.data.title}
+              orientation={post.data.videoOrientation}
+            />
+          )}
+        </span>
+      </Fragment>
+    )
+  }
+  {
+    post.data.title && (
+      <Fragment slot={post.data.title && "title"}>
         <h3 class={`${headerStyling} text-gold w-full pt-2 text-center`}>
           {post.data.title}
         </h3>
-      )
-    }
-  </Fragment>
+      </Fragment>
+    )
+  }
 
   <Fragment slot="body">
     <span
@@ -300,12 +311,23 @@ const mediaClasses = (() => {
     white-space-collapse: preserve-breaks;
     white-space: pre-line;
   }
-  .tile-with-square-header-media {
+  .tile-with-square-body-media {
     @apply grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     height: auto;
     @variant sm {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: auto;
+    }
+  }
+  .tile-with-square-header-media {
+    @apply grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: auto;
+    @variant md {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       height: auto;
