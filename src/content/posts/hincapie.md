@@ -1,6 +1,8 @@
 ---
 title: Piero Hincapie
 image: /images/piero-hincapie.jpg
+imageDimensions: 1140x760
+imageLocation: body
 ---
 
 Piero Hincapie,
