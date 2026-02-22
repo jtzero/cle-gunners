@@ -11,6 +11,7 @@ posts:
     "odie",
     "jurrien-timber",
     "big-gabby",
+    "shite-heart-lane",
     "declan-rice",
     "martinelli",
     "bukayo-saka",
