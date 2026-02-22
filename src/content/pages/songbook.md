@@ -8,6 +8,7 @@ posts:
     "gabriel-jesus",
     "viktor-gyokeres",
     "thats-alright",
+    "eze",
     "odie",
     "jurrien-timber",
     "big-gabby",
