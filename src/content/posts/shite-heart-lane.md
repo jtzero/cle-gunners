@@ -2,11 +2,12 @@
 title: Shite Heart Lane
 image: /images/shite-heart-lane.jpg
 imageDimensions: 168x300
+imageLink: https://www.fanchants.com/football-songs/arsenal-chants/190105_05_h_f/
 orientation: portrait
 imagePlacement: body
 ---
 
-<span class="text-neutral-400">(To the tune of "When Saints Go marching in")</span>
+<a href="https://www.fanchants.com/football-songs/arsenal-chants/190105_05_h_f/"><span class="text-neutral-400">(To the tune of "When Saints Go marching in")</span></a>
 <span class="text-neutral-400">(Call)</span>
 We won the league
 <span class="text-neutral-400">(Response)</span>
