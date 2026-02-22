@@ -18,7 +18,7 @@ posts:
     "leo-trossard",
     "calafiori",
     "mik-arteta",
-    "hancapie",
+    "hincapie",
     "more",
   ]
 ---
