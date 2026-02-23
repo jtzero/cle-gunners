@@ -19,8 +19,13 @@
       "jsCloseMenu": true
     },
     {
-      "name": "Past Merch",
-      "url": "https://www.customink.com/g/kda0-00cv-22bv"
+      "name": "Merch",
+      "children": [
+        {
+          "name": "Past Merch",
+          "url": "https://www.customink.com/g/kda0-00cv-22bv"
+        }
+      ]
     },
     {
       "name": "Join our Discord",
