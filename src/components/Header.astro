@@ -11,7 +11,7 @@ export interface ChildNavigationLink {
 
 export interface NavigationLink {
   name: string;
-  url: string;
+  url?: string;
   hasChildren?: boolean;
   jsCloseMenu?: boolean;
   children?: ChildNavigationLink[];
@@ -21,6 +21,12 @@ const { main }: { main: NavigationLink[] } = menu;
 ---
 
 <header class="header">
+  <script>
+    import "@fortawesome/fontawesome-free/css/all.min.css";
+    import Alpine from "alpinejs";
+    window.Alpine = Alpine;
+    Alpine.start();
+  </script>
   <nav
     id="nav-container"
     data-testid="nav-container"
@@ -63,14 +69,44 @@ const { main }: { main: NavigationLink[] } = menu;
       {
         main.map((menu) => (
           <li class="flex justify-center border-white py-2">
-            <a
-              data-js-close={menu.jsCloseMenu}
-              id={menu.name}
-              href={fromBase(menu.url)}
-              class="text-center text-4xl"
-            >
-              {menu.name}
-            </a>
+            {menu.children ? (
+              <div x-data="{ open: false }" class="relative flex flex-col items-center">
+                <button
+                  @click="open = !open"
+                  class="text-center text-4xl cursor-pointer flex items-center gap-1"
+                >
+                  {menu.name}
+                  <i :class="{'rotate-180': open}" class="fa-solid fa-angle-down text-xl transition-transform duration-300"></i>
+                </button>
+                <ul
+                  x-show="open"
+                  x-transition
+                  @click.away="open = false"
+                  class="mt-2 bg-menu py-2 px-4 rounded"
+                >
+                  {menu.children.map((child) => (
+                    <li class="py-1">
+                      <a
+                        data-js-close="true"
+                        href={fromBase(child.url)}
+                        class="text-center text-2xl"
+                      >
+                        {child.name}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : (
+              <a
+                data-js-close={menu.jsCloseMenu}
+                id={menu.name}
+                href={fromBase(menu.url)}
+                class="text-center text-4xl"
+              >
+                {menu.name}
+              </a>
+            )}
           </li>
         ))
       }
