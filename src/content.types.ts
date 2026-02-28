@@ -228,7 +228,7 @@ const videoPostSchema = z
   });
 export type VideoPostType = z.infer<typeof videoPostSchema>;
 
-export const postSchema = z.union([
+export const postSchema = z.xor([
   videoPostSchema,
   imagePostSchema,
   multiImagePostSchema,
