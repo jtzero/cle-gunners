@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+import * as MediaPost from "@/lib/mediaPost";
+
 const seasonWinnerSchema = z.object({
   id: z.number(),
   name: z.string(),
@@ -94,25 +96,48 @@ export const seasonSchema = z.object({
 
 export type MatchType = z.infer<typeof matchSchema>;
 
-const simplePostSchema = z.object({});
+const simplePostSchema = z
+  .object({
+    type: z.literal("simple").optional(),
+  })
+  .strict()
+  .transform((val) => ({
+    ...val,
+    type: "simple",
+  }));
+export type SimplePostType = z.infer<typeof simplePostSchema>;
 
-const multipleImageSizesSetting = z.object({
+const imageSetting = z.object({
   src: z.string(),
   dimensions: z.string(),
   media: z.string().optional(),
   alt: z.string().optional(),
+  imageAlt: z.string().optional(),
+  imageDimensions: z.string().optional(),
+  imagePlacement: z
+    .union([
+      z.string(),
+      z.object({
+        all: z.string(),
+        sm: z.string().optional(),
+        md: z.string().optional(),
+        lg: z.string().optional(),
+        xl: z.string().optional(),
+      }),
+    ])
+    .optional(),
+  parsedImageWidth: z.number().optional(),
+  parsedImageHeight: z.number().optional(),
+  imageLink: z.string().optional(),
 });
-
-export type MultipleImageSizesSetting = z.infer<
-  typeof multipleImageSizesSetting
->;
+export type ImageSetting = z.infer<typeof imageSetting>;
 
 const imagePostSchema = z
   .object({
     title: z.string().optional(),
     date: z.date().optional(),
+    type: z.literal("image").optional(),
     image: z.string(),
-    images: z.array(multipleImageSizesSetting).optional(),
     imageAlt: z.string().optional(),
     imageDimensions: z.string(),
     imagePlacement: z.union([
@@ -128,28 +153,82 @@ const imagePostSchema = z
     parsedImageWidth: z.number().optional(),
     parsedImageHeight: z.number().optional(),
     imageLink: z.string().optional(),
+    orientation: z.string().optional(),
     metaTitle: z.string().optional(),
   })
+  .strict()
   .refine(
     (data) => !!data.title || !!data.imageAlt,
     "If there is no title, there must be an image alt",
-  );
+  )
+  .transform((val) => {
+    const [width, height] = MediaPost.parseDimensions(val.imageDimensions);
+    return {
+      ...val,
+      type: "image",
+      parsedImageWidth: width,
+      parsedImageHeight: height,
+    };
+  });
+export type ImagePostType = z.infer<typeof imagePostSchema>;
 
-const videoPostSchema = z.object({
-  title: z.string(),
-  date: z.date().optional(),
-  video: z.string(),
-  videoDimensions: z.string(),
-  parsedVideoWidth: z.number().optional(),
-  parsedVideoHeight: z.number().optional(),
-  videoPlacement: z.string().optional(),
-  videoOrientation: z.string().optional(),
-  metaTitle: z.string().optional(),
-});
+const multiImagePostSchema = z
+  .object({
+    title: z.string().optional(),
+    date: z.date().optional(),
+    type: z.literal("multiImage").optional(),
+    // I think this should be in "images" in the future
+    imagePlacement: z.union([
+      z.string(),
+      z.object({
+        all: z.string(),
+        sm: z.string().optional(),
+        md: z.string().optional(),
+        lg: z.string().optional(),
+        xl: z.string().optional(),
+      }),
+    ]),
+    // I think this should be in "images" in the future
+    imageLink: z.string().optional(),
+    images: z.array(imageSetting),
+    metaTitle: z.string().optional(),
+  })
+  .strict()
+  .transform((val) => ({
+    ...val,
+    type: "multiImage",
+  }));
+export type MultiImagePostType = z.infer<typeof multiImagePostSchema>;
+
+const videoPostSchema = z
+  .object({
+    title: z.string(),
+    date: z.date().optional(),
+    type: z.literal("video").optional(),
+    video: z.string(),
+    videoDimensions: z.string(),
+    parsedVideoWidth: z.number().optional(),
+    parsedVideoHeight: z.number().optional(),
+    videoPlacement: z.string().optional(),
+    orientation: z.string().optional(),
+    metaTitle: z.string().optional(),
+  })
+  .strict()
+  .transform((val) => {
+    const [width, height] = MediaPost.parseDimensions(val.videoDimensions);
+    return {
+      ...val,
+      type: "video",
+      parsedVideoWidth: width,
+      parsedVideoHeight: height,
+    };
+  });
+export type VideoPostType = z.infer<typeof videoPostSchema>;
 
 export const postSchema = z.union([
   videoPostSchema,
   imagePostSchema,
+  multiImagePostSchema,
   simplePostSchema,
 ]);
 

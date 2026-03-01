@@ -16,6 +16,7 @@ posts:
     "declan-rice",
     "martinelli",
     "bukayo-saka",
+    "zubimendi",
     "leo-trossard",
     "calafiori",
     "mik-arteta",
