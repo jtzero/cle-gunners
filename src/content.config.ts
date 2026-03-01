@@ -1,6 +1,7 @@
 import { glob } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
 import { matchSchema, seasonSchema, postSchema } from "./content.types";
+import * as MediaPost from "@/lib/mediaPost";
 
 const postsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/posts" }),
@@ -9,16 +10,31 @@ const postsCollection = defineCollection({
 
 const pinnedPostsCollection = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "src/content/pinned-posts" }),
-  schema: z.object({
-    title: z.string(),
-    metaTitle: z.string().optional(),
-    date: z.date(),
-    image: z.string().optional(),
-    imageDimensions: z.string().optional(),
-    posts: z.array(reference("posts")).optional(),
-    additionalStyling: z.string().optional(),
-    weight: z.number().optional(),
-  }),
+  schema: z
+    .object({
+      title: z.string(),
+      metaTitle: z.string().optional(),
+      date: z.date(),
+      type: z.literal("image").optional(),
+      image: z.string().optional(),
+      imageDimensions: z.string().optional(),
+      posts: z.array(reference("posts")).optional(),
+      additionalStyling: z.string().optional(),
+      weight: z.number().optional(),
+    })
+    .transform((val) => {
+      if (val.imageDimensions) {
+        const [width, height] = MediaPost.parseDimensions(val.imageDimensions);
+        return {
+          ...val,
+          type: "image",
+          parsedVideoWidth: width,
+          parsedVideoHeight: height,
+        };
+      } else {
+        return val;
+      }
+    }),
 });
 
 const pagesCollection = defineCollection({

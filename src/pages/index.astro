@@ -18,6 +18,7 @@ const buildPostFromNotification = (id: string, notification: any): PostType => {
         imagePlacement: "body",
         imageLink: notification.imageLink,
         imageDimensions: notification.imageDimensions,
+        type: "image",
       }
     : {};
 
