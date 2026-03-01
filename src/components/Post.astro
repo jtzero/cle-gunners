@@ -1,9 +1,17 @@
 ---
 import { fromBase } from "@/lib/fromBase";
+import * as ImagePost from "@/lib/imagePost";
+import * as MediaPost from "@/lib/mediaPost";
+import * as Post from "@/lib/post";
 import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
 import ConditionalATag from "@/components/ConditionalATag.astro";
-import type { PostType, MultipleImageSizesSetting } from "@/content.types";
+import {
+  type ImageSetting,
+  type MultiImagePostType,
+  type ImagePostType,
+  type VideoPostType,
+} from "@/content.types";
 import Tile from "@/components/Tile.astro";
 import Video from "@/components/Video.astro";
 
@@ -25,6 +33,28 @@ const {
   heroTextStyling = "",
 } = Astro.props;
 
+const multiImagePostData: MultiImagePostType = (() => {
+  if (post.data.type == "multiImage") {
+    return post.data as MultiImagePostType;
+  }
+})();
+const imagePostData: ImagePostType = (() => {
+  if (post.data.type == "image") {
+    return post.data as ImagePostType;
+  }
+})();
+const videoPostData: VideoPostType = (() => {
+  if (post.data.type == "video") {
+    return post.data as VideoPostType;
+  }
+})();
+
+const title = (() => {
+  if (Object.hasOwn(post.data, "title")) {
+    return post.data.title;
+  }
+})();
+
 const showReadMore = (() => {
   if (displayReadMore !== undefined) {
     return displayReadMore;
@@ -32,46 +62,43 @@ const showReadMore = (() => {
     return (post.data?.posts || []).length > 0;
   }
 })();
-const hasDynamicMedia =
-  typeof post.data.imagePlacement !== "string" && post.data.imagePlacement;
+const hasDynamicMedia = ImagePost.hasDynamicMedia(post);
 
-const [width, height] = (post.data?.imageDimensions || "").split("x");
-if (post.data?.imageDimensions) {
-  post.data.parsedImageWidth = parseInt(width);
-  post.data.parsedImageHeight = parseInt(height);
-}
-const [videoWidth, videoHeight] = (post.data?.videoDimensions || "").split("x");
-if (post.data?.videoDimensions) {
-  post.data.parsedVideoWidth = parseInt(videoWidth);
-  post.data.parsedVideoHeight = parseInt(videoHeight);
-}
-const hasVideo = post.data?.video !== undefined;
-const hasMultimedia = hasVideo || post.data.image;
+const hasVideo = videoPostData && videoPostData.video !== undefined;
+const hasImage = imagePostData && imagePostData.image !== undefined;
+const hasImages = multiImagePostData && multiImagePostData.images !== undefined;
+const hasMultimedia = hasVideo || hasImage || hasImages;
 const multimediaPlacement =
-  post.data.imagePlacement || post.data.videoPlacement;
+  (imagePostData && imagePostData.imagePlacement) ||
+  (videoPostData && videoPostData.videoPlacement);
 const hasHeaderMultimedia =
-  hasMultimedia && (!multimediaPlacement || multimediaPlacement == "header");
-const hasHeaderImage = post.data.image && hasHeaderMultimedia;
+  hasMultimedia && Post.isInHeader(multimediaPlacement);
+const hasHeaderImage =
+  ((multiImagePostData && multiImagePostData.images) ||
+    (imagePostData && imagePostData.image)) &&
+  hasHeaderMultimedia;
 const hasTextBody = (post.body || "") != "";
 
-const images = ((): MultipleImageSizesSetting[] => {
-  if ((post.data?.images || []).length > 1) {
-    return post.data?.images.map((image: MultipleImageSizesSetting) => {
-      const [width, height] = image.dimensions.split("x");
+const images = ((): ImageSetting[] => {
+  if (multiImagePostData && multiImagePostData.images.length > 0) {
+    return multiImagePostData.images.map((image: ImageSetting) => {
+      const [width, height] = MediaPost.parseDimensions(image.dimensions);
       return {
-        width: parseInt(width),
-        height: parseInt(height),
         src: fromBase(image.src),
+        width: width,
+        height: height,
         media: image.media,
+        dimensions: image.dimensions,
       };
     });
-  } else if (post.data?.image) {
+  } else if (imagePostData && imagePostData.image) {
     return [
       {
-        src: fromBase(post.data.image),
-        alt: post.data.imageAlt || post.data.title,
-        width: post.data.parsedImageWidth,
-        height: post.data.parsedImageHeight,
+        src: fromBase(imagePostData.image),
+        alt: imagePostData.imageAlt || imagePostData.title,
+        width: imagePostData.parsedImageWidth,
+        height: imagePostData.parsedImageHeight,
+        dimensions: imagePostData.imageDimensions,
       },
     ];
   } else {
@@ -88,7 +115,7 @@ const mediaClasses = (() => {
         return "tile-body-with-body-media";
       }
     })();
-    return Object.entries(post.data.imagePlacement).reduce(
+    return Object.entries(imagePostData.imagePlacement).reduce(
       (acc, [key, value]) => {
         let mediaLabel = `${key}:`;
         if (key == "all") {
@@ -120,7 +147,9 @@ const mediaClasses = (() => {
       },
     );
   } else {
-    const squareMedia = width == height;
+    const squareMedia =
+      imagePostData &&
+      imagePostData.parsedImageWidth == imagePostData.parsedImageHeight;
     const tileBodyClass = (() => {
       if (hasHeaderMultimedia) {
         if (hasTextBody) {
@@ -151,7 +180,8 @@ const mediaClasses = (() => {
     })();
     const tileClass = (() => {
       if (
-        width == height &&
+        imagePostData &&
+        imagePostData.parsedImageWidth == imagePostData.parsedImageHeight &&
         (!multimediaPlacement || multimediaPlacement == "header")
       ) {
         return "tile-with-square-header-media";
@@ -173,12 +203,11 @@ const mediaClasses = (() => {
   }
 })();
 
-const hasHeaderSlot =
-  (hasVideo && !multimediaPlacement) || hasHeaderImage || hasDynamicMedia;
+const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
 ---
 
 <Tile
-  id={slugify(post.data.title) || post.id}
+  id={slugify(title) || post.id}
   topBorderStyling={mediaClasses.topBorderStyling}
   defaultTopBoardeBehaviour={mediaClasses.defaultTopBoardeBehaviour}
   headerStyling={headerStyling}
@@ -194,8 +223,8 @@ const hasHeaderSlot =
         >
           {(hasHeaderImage || hasDynamicMedia) && (
             <ConditionalATag
-              conditional={post.data.imageLink}
-              href={post.data.imageLink}
+              conditional={imagePostData?.imageLink}
+              href={imagePostData?.imageLink}
             >
               <picture class="tile-image h-auto w-full">
                 {images.map((image) => {
@@ -205,7 +234,11 @@ const hasHeaderSlot =
                 })}
                 <img
                   src={images[0].src}
-                  alt={post.data.imageAlt || post.data.title}
+                  alt={
+                    images[0].imageAlt ||
+                    imagePostData?.title ||
+                    multiImagePostData?.title
+                  }
                   loading="eager"
                   decoding="async"
                   class="w-full"
@@ -215,11 +248,11 @@ const hasHeaderSlot =
           )}
           {hasVideo && !multimediaPlacement && (
             <Video
-              url={post.data.video}
-              width={post.data.parsedVideoWidth}
-              height={post.data.parsedVideoHeight}
-              title={post.data.title}
-              orientation={post.data.videoOrientation}
+              url={videoPostData.video}
+              width={videoPostData.parsedVideoWidth}
+              height={videoPostData.parsedVideoHeight}
+              title={videoPostData.title}
+              orientation={videoPostData.orientation}
             />
           )}
         </span>
@@ -227,10 +260,10 @@ const hasHeaderSlot =
     )
   }
   {
-    post.data.title && (
-      <Fragment slot={post.data.title && "title"}>
+    title && (
+      <Fragment slot={title && "title"}>
         <h3 class={`${headerStyling} text-gold w-full pt-2 text-center`}>
-          {post.data.title}
+          {title}
         </h3>
       </Fragment>
     )
@@ -244,38 +277,35 @@ const hasHeaderSlot =
       {
         hasVideo && (multimediaPlacement == "body" || hasDynamicMedia) && (
           <Video
-            url={post.data.video}
-            width={post.data.parsedVideoWidth}
-            height={post.data.parsedVideoHeight}
-            title={post.data.title}
-            orientation={post.data.videoOrientation}
+            url={videoPostData.video}
+            width={videoPostData.parsedVideoWidth}
+            height={videoPostData.parsedVideoHeight}
+            title={videoPostData.title}
+            orientation={videoPostData.orientation}
           />
         )
       }
       {/* TODO: the img is stretched ? */}
       {
-        post.data.image &&
-          (multimediaPlacement == "body" || hasDynamicMedia) && (
-            <ConditionalATag
-              conditional={post.data.imageLink}
-              href={post.data.imageLink}
-            >
-              <picture class="tile-image h-auto w-full">
-                {images.map((image) => {
-                  return (
-                    <source media={image?.media || ""} srcset={image.src} />
-                  );
-                })}
-                <img
-                  src={images[0].src}
-                  alt={post.data.imageAlt || post.data.title}
-                  loading="eager"
-                  decoding="async"
-                  class="w-full"
-                />
-              </picture>
-            </ConditionalATag>
-          )
+        imagePostData && (multimediaPlacement == "body" || hasDynamicMedia) && (
+          <ConditionalATag
+            conditional={imagePostData.imageLink}
+            href={imagePostData.imageLink}
+          >
+            <picture class="tile-image h-auto w-full">
+              {images.map((image) => {
+                return <source media={image?.media || ""} srcset={image.src} />;
+              })}
+              <img
+                src={images[0].src}
+                alt={imagePostData.imageAlt || title}
+                loading="eager"
+                decoding="async"
+                class="w-full"
+              />
+            </picture>
+          </ConditionalATag>
+        )
       }
     </span>
     <span

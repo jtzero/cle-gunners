@@ -1,6 +1,5 @@
 ---
 title: Calafiori!
-image: /images/riccardo-calafiori.png
 images:
   - src: /images/riccardo-calafiori.png
     dimensions: 1200x629
@@ -8,7 +7,6 @@ images:
   - src: /images/riccardo-calafiori-xl.png
     dimensions: 1800x583
     media: "(min-width: 1024px)"
-imageDimensions: 1800x583
 imagePlacement: header
 ---
 
