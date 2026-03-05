@@ -239,6 +239,7 @@ const { main }: { main: NavigationLink[] } = menu;
     [...self!.querySelectorAll("[data-js-close=true]")].map((navItem) => {
       navItem.addEventListener("click", () => {
         navToggle!.checked = false;
+        document.body.classList.remove("overflow-hidden");
       });
     });
   });
