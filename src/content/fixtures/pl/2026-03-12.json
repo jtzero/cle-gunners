@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-03-15",
-    "last": "2026-03-15",
+    "first": "2026-03-14",
+    "last": "2026-03-14",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -39,12 +39,12 @@
         "winner": null
       },
       "id": 538077,
-      "utcDate": "2026-03-15T14:00:00Z",
+      "utcDate": "2026-03-14T17:30:00Z",
       "status": "TIMED",
       "matchday": 30,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-01-22T15:08:19Z",
+      "lastUpdated": "2026-02-28T00:20:53Z",
       "homeTeam": {
         "id": 57,
         "name": "Arsenal FC",
