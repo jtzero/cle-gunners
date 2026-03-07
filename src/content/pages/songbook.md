@@ -18,6 +18,7 @@ posts:
     "bukayo-saka",
     "zubimendi",
     "leo-trossard",
+    "noni-madueke",
     "calafiori",
     "mik-arteta",
     "hincapie",
