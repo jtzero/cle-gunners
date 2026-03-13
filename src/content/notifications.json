@@ -1,4 +1,12 @@
 {
+  "New Kits!": {
+    "image": "/images/hell-of-a-season-kits.png",
+    "imageLink": "https://rycosportslw.com/clubs/cleveland-gunners/",
+    "imageDimensions": "1200x1200",
+    "css": "max-width: '500px'",
+    "body": "New Kits! The kits commemorating this 'Hell of a Season' are available to order online from RYCO (just a couple blocks over on Madison in fact) so order yours [here](https://rycosportslw.com/clubs/cleveland-gunners/) and you can have it delivered or pick it up before the match!",
+    "enabled": false
+  },
   "cheers": {
     "image": "/images/america-scores-cleveland.jpg",
     "imageLink": "https://americascorescleveland.org/",
