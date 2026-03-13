@@ -354,6 +354,9 @@ const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
     grid-template-rows: 1fr auto;
     height: auto;
     direction: rtl;
+    * {
+      direction: ltr;
+    }
     @variant md {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
