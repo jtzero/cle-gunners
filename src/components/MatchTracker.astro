@@ -220,7 +220,7 @@ const { styling } = Astro.props;
   let loading_status = LOADING_STATUSES.loading;
   let matchesOnScreen: { [key: string]: MatchType } = {};
   const getToday = () => {
-    return window.today || new Date(2026, 3, 1);
+    return window.today || new Date();
   };
   const preloadEasterEggImage = async () => {
     const img = new Image();
