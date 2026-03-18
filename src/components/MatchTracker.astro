@@ -68,11 +68,10 @@ const { styling } = Astro.props;
         <span updates="away-team-name" class="text-xl font-bold"></span>
       </div>
     </div>
-    <div
-      data-show-after-load
-      data-updates="hashtag"
-      class="align-center text-red my-2 hidden text-xl font-bold"
-    >
+    <div data-show-after-load class="align-center my-2 hidden">
+      <span data-updates="league-name" class="text-xl font-bold"></span>
+      <span>&nbsp;&nbsp;</span>
+      <span data-updates="hashtag" class="text-red text-xl font-bold"></span>
     </div>
   </Fragment>
   <Fragment slot="footer">
@@ -437,6 +436,8 @@ const { styling } = Astro.props;
           el.setAttribute("data-show-after-load", "");
         } else if (el.getAttribute("data-updates") == "hashtag") {
           el.textContent = `#${nearestMatch.homeTeam.tla}${nearestMatch.awayTeam.tla}`;
+        } else if (el.getAttribute("data-updates") == "league-name") {
+          el.textContent = nearestMatch.competition.name;
         }
       });
   };
@@ -636,12 +637,13 @@ const { styling } = Astro.props;
       await fetch(`${fetchFixturesBase}/${midWeek}.json`).then(
         async (response) => {
           if (response.status === 200) {
-            nearestMatches = await filterMatchResponse(
+            let fetchedMatches = await filterMatchResponse(
               nearestMatches,
               response,
               today,
               competitionCodes,
             );
+            nearestMatches = [...nearestMatches, ...fetchedMatches];
             foundWeekID = midWeek;
           }
         },
@@ -659,12 +661,13 @@ const { styling } = Astro.props;
         await fetch(`${fetchFixturesBase}/${nextMidWeek}.json`).then(
           async (nextWeekResponse) => {
             if (nextWeekResponse.status === 200) {
-              nearestMatches = await filterMatchResponse(
+              let fetchedMatches = await filterMatchResponse(
                 nearestMatches,
                 nextWeekResponse,
                 today,
                 competitionCodes,
               );
+              nearestMatches = [...nearestMatches, ...fetchedMatches];
               foundWeekID = nextMidWeek;
             }
           },
@@ -683,12 +686,13 @@ const { styling } = Astro.props;
         await fetch(`${fetchFixturesBase}/${thirdMidWeek}.json`).then(
           async (thirdWeekResponse) => {
             if (thirdWeekResponse.status === 200) {
-              nearestMatches = await filterMatchResponse(
+              let fetchedMatches = await filterMatchResponse(
                 nearestMatches,
                 thirdWeekResponse,
                 today,
                 competitionCodes,
               );
+              nearestMatches = [...nearestMatches, ...fetchedMatches];
               foundWeekID = thirdMidWeek;
             }
           },
