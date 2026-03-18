@@ -1,0 +1,67 @@
+{
+  "filters": {},
+  "resultSet": {
+    "count": 1
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+      },
+      "competition": {
+        "id": 2055,
+        "name": "FA CUP",
+        "code": "FAC",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/FAC.png"
+      },
+      "season": {
+        "id": 0,
+        "startDate": "2025-08-15",
+        "endDate": "2026-05-24",
+        "currentMatchday": 3,
+        "winner": null
+      },
+      "id": 538008,
+      "utcDate": "2026-04-04T14:00:00Z",
+      "status": "TIMED",
+      "matchday": 3,
+      "stage": "CUP",
+      "group": null,
+      "lastUpdated": "2026-04-02T00:20:53Z",
+      "homeTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 61,
+        "name": "Southampton FC",
+        "shortName": "Southampton",
+        "tla": "SOU",
+        "crest": "https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/FC_Southampton.svg/500px-FC_Southampton.svg.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": []
+    }
+  ]
+}
