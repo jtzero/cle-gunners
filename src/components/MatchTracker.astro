@@ -35,7 +35,7 @@ const { styling } = Astro.props;
         <img
           updates="home-team-image"
           src=""
-          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          class="min-h-[100px] w-[100%] max-w-[300px] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
           data-test-id="home-team-image"
         />
       </div>
@@ -58,7 +58,7 @@ const { styling } = Astro.props;
         <img
           updates="away-team-image"
           src=""
-          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          class="min-h-[100px] w-[100%] max-w-[300px] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
           data-test-id="away-team-image"
         />
       </div>
@@ -113,7 +113,7 @@ const { styling } = Astro.props;
         <img
           updates="home-team-image"
           src=""
-          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          class="min-h-[100px] w-[100%] max-w-[300px] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
           data-test-id="double-header-home-team-image"
         />
       </div>
@@ -131,7 +131,7 @@ const { styling } = Astro.props;
         <img
           updates="away-team-image"
           src=""
-          class="min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
+          class="min-h-[100px] w-[100%] max-w-[300px] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]"
           data-test-id="double-header-away-team-image"
         />
       </div>
@@ -220,13 +220,13 @@ const { styling } = Astro.props;
   let loading_status = LOADING_STATUSES.loading;
   let matchesOnScreen: { [key: string]: MatchType } = {};
   const getToday = () => {
-    return window.today || new Date();
+    return window.today || new Date(2026, 3, 1);
   };
   const preloadEasterEggImage = async () => {
     const img = new Image();
     img.setAttribute(
       "class",
-      "min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]",
+      "min-h-[100px] w-[100%] min-w-[100px] max-w-[300px] lg:min-h-[200px] lg:min-w-[100px]",
     );
     img.src = easterEggImage;
   };
@@ -235,7 +235,7 @@ const { styling } = Astro.props;
     img.src = "/images/arsenal-crest.png";
     img.setAttribute(
       "class",
-      "min-h-[100px] w-[100%] min-w-[100px] lg:min-h-[200px] lg:min-w-[100px]",
+      "min-h-[100px] w-[100%] min-w-[100px] max-w-[300px] lg:min-h-[200px] lg:min-w-[100px]",
     );
     return img;
   };
