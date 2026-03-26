@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-04-02",
-    "dateTo": "2026-04-09",
+    "dateFrom": "2026-04-09",
+    "dateTo": "2026-04-16",
     "permission": "TIER_ONE",
     "competitions": "2001",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "CL",
-    "first": "2026-04-07",
-    "last": "2026-04-07",
+    "first": "2026-04-15",
+    "last": "2026-04-15",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 8,
         "winner": null
       },
-      "id": 556721,
-      "utcDate": "2026-04-07T19:00:00Z",
+      "id": 556725,
+      "utcDate": "2026-04-15T19:00:00Z",
       "status": "TIMED",
-      "matchday": 1,
+      "matchday": 2,
       "stage": "QUARTER_FINALS",
       "group": null,
-      "lastUpdated": "2026-03-19T05:21:05Z",
+      "lastUpdated": "2026-03-19T10:21:09Z",
       "homeTeam": {
-        "id": 498,
-        "name": "Sporting Clube de Portugal",
-        "shortName": "Sporting CP",
-        "tla": "SPO",
-        "crest": "https://crests.football-data.org/498.png"
-      },
-      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 498,
+        "name": "Sporting Clube de Portugal",
+        "shortName": "Sporting CP",
+        "tla": "SPO",
+        "crest": "https://crests.football-data.org/498.png"
       },
       "score": {
         "winner": null,
