@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-04-16",
-    "dateTo": "2026-04-23",
+    "dateFrom": "2026-04-23",
+    "dateTo": "2026-04-30",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-04-19",
-    "last": "2026-04-19",
+    "first": "2026-04-25",
+    "last": "2026-04-25",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 32,
         "winner": null
       },
-      "id": 538111,
-      "utcDate": "2026-04-19T15:30:00Z",
+      "id": 538118,
+      "utcDate": "2026-04-25T16:30:00Z",
       "status": "TIMED",
-      "matchday": 33,
+      "matchday": 34,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-04-09T00:21:04Z",
+      "lastUpdated": "2026-03-05T15:21:06Z",
       "homeTeam": {
-        "id": 65,
-        "name": "Manchester City FC",
-        "shortName": "Man City",
-        "tla": "MCI",
-        "crest": "https://crests.football-data.org/65.png"
-      },
-      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 67,
+        "name": "Newcastle United FC",
+        "shortName": "Newcastle",
+        "tla": "NEW",
+        "crest": "https://crests.football-data.org/67.png"
       },
       "score": {
         "winner": null,
