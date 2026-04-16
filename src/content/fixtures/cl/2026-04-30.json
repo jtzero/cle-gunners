@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-04-23",
-    "dateTo": "2026-04-30",
+    "dateFrom": "2026-04-30",
+    "dateTo": "2026-05-07",
     "permission": "TIER_ONE",
     "competitions": "2001",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "CL",
-    "first": "2026-04-29",
-    "last": "2026-04-29",
+    "first": "2026-05-06",
+    "last": "2026-05-06",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 8,
         "winner": null
       },
-      "id": 552093,
-      "utcDate": "2026-04-29T19:00:00Z",
-      "status": "TIMED",
-      "matchday": 1,
+      "id": 552095,
+      "utcDate": "2026-05-06T00:00:00Z",
+      "status": "SCHEDULED",
+      "matchday": 2,
       "stage": "SEMI_FINALS",
       "group": null,
-      "lastUpdated": "2026-04-16T05:21:12Z",
+      "lastUpdated": "2026-04-16T00:21:09Z",
       "homeTeam": {
-        "id": 78,
-        "name": "Club Atlético de Madrid",
-        "shortName": "Atleti",
-        "tla": "ATL",
-        "crest": "https://crests.football-data.org/78.png"
-      },
-      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 78,
+        "name": "Club Atlético de Madrid",
+        "shortName": "Atleti",
+        "tla": "ATL",
+        "crest": "https://crests.football-data.org/78.png"
       },
       "score": {
         "winner": null,
