@@ -7,6 +7,10 @@
     "body": "New Kits! The kits commemorating this 'Hell of a Season' are available to order online from RYCO (just a couple blocks over on Madison in fact) so order yours [here](https://rycosportslw.com/clubs/cleveland-gunners/) and you can have it delivered or pick it up before the match!",
     "enabled": true
   },
+  "Arsenal America Membership": {
+    "body": "Arsenal America's 2026/27 membership sign ups are Available! You get access to tickets, discounts, perks, and a nationwide fan community [Sign Up Here](https://arsenalamerica.com/become-a-member/)",
+    "enabled": true
+  },
   "cheers": {
     "image": "/images/america-scores-cleveland.jpg",
     "imageLink": "https://americascorescleveland.org/",
@@ -18,7 +22,7 @@
     "body": "It wasn't that long ago that our great city became the face of the loss of SNAP benefits. While many other places across the country also had this issue, it's a good reminder that you can make a difference. Join us and donate. [Cleveland Food Bank](https://support.greaterclevelandfoodbank.org/site/TR?pg=personal&px=2782648&fr_id=1280)",
     "enabled": false
   },
-  "New Merch!": {
+  "Scarves": {
     "body": "Scarves! $20 a piece available from Jason on Match Day! Until supplies last",
     "enabled": true
   }

@@ -32,20 +32,29 @@
       ]
     },
     {
-      "name": "Join our Discord",
-      "url": "https://discord.gg/rXgBar6QhH"
+      "name": "Join the conversation!",
+      "children": [
+        {
+          "name": "Discord",
+          "url": "https://discord.gg/rXgBar6QhH"
+        },
+        {
+          "name": "Facebook",
+          "url": "https://www.facebook.com/ArsenalFansCleveland"
+        },
+        {
+          "name": "Instagram",
+          "url": "https://www.instagram.com/cle_gooners"
+        },
+        {
+          "name": "Bluesky",
+          "url": "https://bsky.app/profile/cleveland-arsenal.bsky.social"
+        }
+      ]
     },
     {
-      "name": "Follow us on Facebook",
-      "url": "https://www.facebook.com/ArsenalFansCleveland"
-    },
-    {
-      "name": "Follow our Instagram",
-      "url": "https://www.instagram.com/cle_gooners"
-    },
-    {
-      "name": "Join us on Bluesky",
-      "url": "https://bsky.app/profile/cleveland-arsenal.bsky.social"
+      "name": "Arsenal America",
+      "url": "https://arsenalamerica.com/become-a-member/"
     }
   ]
 }
