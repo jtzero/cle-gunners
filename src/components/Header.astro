@@ -4,6 +4,13 @@ import menu from "@/config/menu.json";
 
 import { fromBase } from "@/lib/fromBase";
 
+import {
+  IoLogoDiscord,
+  IoLogoFacebook,
+  IoLogoInstagram,
+} from "react-icons/io5";
+import { FaBluesky } from "react-icons/fa6";
+
 export interface ChildNavigationLink {
   name: string;
   url: string;
@@ -85,12 +92,16 @@ const { main }: { main: NavigationLink[] } = menu;
                   class="mt-2 bg-menu py-2 px-4 rounded"
                 >
                   {menu.children.map((child) => (
-                    <li class="py-1">
+                    <li class="py-1 flex items-center gap-2">
                       <a
                         data-js-close="true"
                         href={fromBase(child.url)}
-                        class="text-center text-2xl"
+                        class="text-center text-2xl flex items-center gap-2"
                       >
+                        {child.name === "Discord" && <IoLogoDiscord />}
+                        {child.name === "Facebook" && <IoLogoFacebook />}
+                        {child.name === "Instagram" && <IoLogoInstagram />}
+                        {child.name === "Bluesky" && (<FaBluesky />)}
                         {child.name}
                       </a>
                     </li>
