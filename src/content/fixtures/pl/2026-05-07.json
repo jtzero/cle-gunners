@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-04-30",
-    "dateTo": "2026-05-07",
+    "dateFrom": "2026-05-07",
+    "dateTo": "2026-05-14",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-05-02",
-    "last": "2026-05-02",
+    "first": "2026-05-10",
+    "last": "2026-05-10",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 34,
         "winner": null
       },
-      "id": 538127,
-      "utcDate": "2026-05-02T16:30:00Z",
+      "id": 538144,
+      "utcDate": "2026-05-10T15:30:00Z",
       "status": "TIMED",
-      "matchday": 35,
+      "matchday": 36,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-03-28T15:20:56Z",
+      "lastUpdated": "2026-04-02T15:21:07Z",
       "homeTeam": {
+        "id": 563,
+        "name": "West Ham United FC",
+        "shortName": "West Ham",
+        "tla": "WHU",
+        "crest": "https://crests.football-data.org/563.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 63,
-        "name": "Fulham FC",
-        "shortName": "Fulham",
-        "tla": "FUL",
-        "crest": "https://crests.football-data.org/63.png"
       },
       "score": {
         "winner": null,
