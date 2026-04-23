@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "CL",
-    "first": "2026-05-06",
-    "last": "2026-05-06",
+    "first": "2026-05-05",
+    "last": "2026-05-05",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -39,12 +39,12 @@
         "winner": null
       },
       "id": 552095,
-      "utcDate": "2026-05-06T00:00:00Z",
-      "status": "SCHEDULED",
+      "utcDate": "2026-05-05T19:00:00Z",
+      "status": "TIMED",
       "matchday": 2,
       "stage": "SEMI_FINALS",
       "group": null,
-      "lastUpdated": "2026-04-16T00:21:09Z",
+      "lastUpdated": "2026-04-16T10:21:13Z",
       "homeTeam": {
         "id": 57,
         "name": "Arsenal FC",
