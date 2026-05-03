@@ -1,0 +1,16 @@
+---
+title: Viktor Gyokeres
+image: /images/viktor.png
+imageDimensions: 720x405
+imagePlacement: body
+orientation: landscape 
+---
+<span style="color: darkgrey">(To tune of "Push It" by Salt-N-Pep)</span>
+
+He comes from Sweden, the girls are very nice
+He dumped his girlfriend, to play in red and white
+He's scoring goals with a cannon on his chest
+His name is Viktor, Viktor Gyokeres!
+Dududududududu...
+
+

@@ -1,0 +1,13 @@
+{
+  "filters": {
+    "dateFrom": "2026-03-19",
+    "dateTo": "2026-03-26",
+    "permission": "TIER_ONE",
+    "competitions": "2021",
+    "limit": 100
+  },
+  "resultSet": {
+    "count": 0
+  },
+  "matches": []
+}

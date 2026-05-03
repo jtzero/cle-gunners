@@ -9,6 +9,10 @@ import remarkToc from "remark-toc";
 import config from "./src/config/config.js";
 import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
+import path from "path";
+import { fileURLToPath } from "url";
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 let highlighter;
 async function getHighlighter() {
@@ -24,7 +28,14 @@ export default defineConfig({
   site: "https://clevelandgooners.com",
   base: process.env.BASE || "",
   trailingSlash: false ? "always" : "never",
-  vite: { plugins: [tailwindcss(), tsconfigPaths()] },
+  vite: {
+    plugins: [tailwindcss(), tsconfigPaths()],
+    resolve: {
+      alias: {
+        "@": path.resolve(__dirname, "./src"),
+      },
+    },
+  },
   integrations: [react(), sitemap(), mdx(), scope()],
   markdown: {
     remarkPlugins: [

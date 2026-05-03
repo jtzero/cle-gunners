@@ -1,10 +1,17 @@
 ---
-import { Image } from "astro:assets";
 import { fromBase } from "@/lib/fromBase";
+import * as ImagePost from "@/lib/imagePost";
+import * as MediaPost from "@/lib/mediaPost";
+import * as Post from "@/lib/post";
 import { markdownify, slugify } from "@/lib/utils/textConverter";
 import type { CollectionEntry } from "astro:content";
 import ConditionalATag from "@/components/ConditionalATag.astro";
-import type { PostType } from "@/content.types";
+import {
+  type ImageSetting,
+  type MultiImagePostType,
+  type ImagePostType,
+  type VideoPostType,
+} from "@/content.types";
 import Tile from "@/components/Tile.astro";
 import Video from "@/components/Video.astro";
 
@@ -26,6 +33,28 @@ const {
   heroTextStyling = "",
 } = Astro.props;
 
+const multiImagePostData: MultiImagePostType = (() => {
+  if (post.data.type == "multiImage") {
+    return post.data as MultiImagePostType;
+  }
+})();
+const imagePostData: ImagePostType = (() => {
+  if (post.data.type == "image") {
+    return post.data as ImagePostType;
+  }
+})();
+const videoPostData: VideoPostType = (() => {
+  if (post.data.type == "video") {
+    return post.data as VideoPostType;
+  }
+})();
+
+const title = (() => {
+  if (Object.hasOwn(post.data, "title")) {
+    return post.data.title;
+  }
+})();
+
 const showReadMore = (() => {
   if (displayReadMore !== undefined) {
     return displayReadMore;
@@ -33,52 +62,47 @@ const showReadMore = (() => {
     return (post.data?.posts || []).length > 0;
   }
 })();
-const hasDynamicMedia =
-  typeof post.data.imagePlacement !== "string" && post.data.imagePlacement;
+const hasDynamicMedia = ImagePost.hasDynamicMedia(post);
 
-const [width, height] = (post.data?.imageDimensions || "").split("x");
-if (post.data?.imageDimensions) {
-  post.data.parsedImageWidth = parseInt(width);
-  post.data.parsedImageHeight = parseInt(height);
-}
-const [videoWidth, videoHeight] = (post.data?.videoDimensions || "").split("x");
-if (post.data?.videoDimensions) {
-  post.data.parsedVideoWidth = parseInt(videoWidth);
-  post.data.parsedVideoHeight = parseInt(videoHeight);
-}
-const hasVideo = post.data?.video !== undefined;
-const hasMultimedia = hasVideo || post.data.image;
+const hasVideo = videoPostData && videoPostData.video !== undefined;
+const hasImage = imagePostData && imagePostData.image !== undefined;
+const hasImages = multiImagePostData && multiImagePostData.images !== undefined;
+const hasMultimedia = hasVideo || hasImage || hasImages;
 const multimediaPlacement =
-  post.data.imagePlacement || post.data.videoPlacement;
+  (imagePostData && imagePostData.imagePlacement) ||
+  (videoPostData && videoPostData.videoPlacement);
 const hasHeaderMultimedia =
-  hasMultimedia && (!multimediaPlacement || multimediaPlacement == "header");
-const hasHeaderImage = post.data.image && hasHeaderMultimedia;
-
-const tileWithHeaderMedia = (() => {
-  if (width == height && !multimediaPlacement) {
-    return "tile-with-square-header-media";
-  } else if (hasHeaderMultimedia) {
-    return "tile-with-header-media";
-  } else {
-    return "tile-with-body-media";
-  }
-})();
+  hasMultimedia && Post.isInHeader(multimediaPlacement);
+const hasHeaderImage =
+  ((multiImagePostData && multiImagePostData.images) ||
+    (imagePostData && imagePostData.image)) &&
+  hasHeaderMultimedia;
 const hasTextBody = (post.body || "") != "";
-const tileBodyClass = (() => {
-  if (hasHeaderMultimedia) {
-    if (hasTextBody) {
-      return "tile-body-without-body-media";
-    } else {
-      return "tile-body-without-body-media hidden";
-    }
-  } else if (hasMultimedia && multimediaPlacement == "body") {
-    if (!hasTextBody) {
-      return "tile-body-with-only-body-media";
-    } else {
-      return "tile-body-with-body-media";
-    }
+
+const images = ((): ImageSetting[] => {
+  if (multiImagePostData && multiImagePostData.images.length > 0) {
+    return multiImagePostData.images.map((image: ImageSetting) => {
+      const [width, height] = MediaPost.parseDimensions(image.dimensions);
+      return {
+        src: fromBase(image.src),
+        width: width,
+        height: height,
+        media: image.media,
+        dimensions: image.dimensions,
+      };
+    });
+  } else if (imagePostData && imagePostData.image) {
+    return [
+      {
+        src: fromBase(imagePostData.image),
+        alt: imagePostData.imageAlt || imagePostData.title,
+        width: imagePostData.parsedImageWidth,
+        height: imagePostData.parsedImageHeight,
+        dimensions: imagePostData.imageDimensions,
+      },
+    ];
   } else {
-    return "";
+    return [];
   }
 })();
 
@@ -91,7 +115,7 @@ const mediaClasses = (() => {
         return "tile-body-with-body-media";
       }
     })();
-    return Object.entries(post.data.imagePlacement).reduce(
+    return Object.entries(imagePostData.imagePlacement).reduce(
       (acc, [key, value]) => {
         let mediaLabel = `${key}:`;
         if (key == "all") {
@@ -107,7 +131,7 @@ const mediaClasses = (() => {
           acc["tile"] += ` ${mediaLabel}tile-with-body-media`;
           acc["headerMedia"] += ` ${mediaLabel}hidden`;
           acc["body"] += ` ${mediaLabel}${bodyClass}`;
-          acc["bodyMedia"] += ` ${mediaLabel}flex`;
+          acc["bodyMedia"] += ` ${mediaLabel}flex ${mediaLabel}items-end`;
           acc["topBorderStyling"] +=
             ` ${mediaLabel}tile-default-top-border-style`;
         }
@@ -123,111 +147,170 @@ const mediaClasses = (() => {
       },
     );
   } else {
+    const squareMedia =
+      imagePostData &&
+      imagePostData.parsedImageWidth == imagePostData.parsedImageHeight;
+    const tileBodyClass = (() => {
+      if (hasHeaderMultimedia) {
+        if (hasTextBody) {
+          return "tile-body-without-body-media";
+        } else {
+          return "tile-body-without-body-media hidden";
+        }
+      } else if (hasMultimedia && multimediaPlacement == "body") {
+        if (!hasTextBody) {
+          return "tile-body-with-only-body-media";
+        } else {
+          if (squareMedia) {
+            return "tile-with-square-body-media";
+          } else {
+            return "tile-body-with-body-media";
+          }
+        }
+      } else {
+        return "";
+      }
+    })();
+    const tileBodyMediaClass = (() => {
+      if (squareMedia) {
+        return "items-start";
+      } else {
+        return "items-end";
+      }
+    })();
+    const tileClass = (() => {
+      if (
+        imagePostData &&
+        imagePostData.parsedImageWidth == imagePostData.parsedImageHeight &&
+        (!multimediaPlacement || multimediaPlacement == "header")
+      ) {
+        return "tile-with-square-header-media";
+      } else if (hasHeaderMultimedia) {
+        return "tile-with-header-media";
+      } else {
+        return "tile-with-body-media";
+      }
+    })();
+
     return {
-      tile: tileWithHeaderMedia,
-      body: tileBodyClass,
-      bodyMedia: "",
-      headerMedia: "",
+      tile: tileClass,
       topBorderStyling: hasHeaderMultimedia ? "" : topBorderStyling,
       defaultTopBoardeBehaviour: true,
+      headerMedia: "",
+      body: tileBodyClass,
+      bodyMedia: tileBodyMediaClass,
     };
   }
 })();
+
+const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
 ---
 
 <Tile
-  id={slugify(post.data.title) || post.id}
+  id={slugify(title) || post.id}
   topBorderStyling={mediaClasses.topBorderStyling}
   defaultTopBoardeBehaviour={mediaClasses.defaultTopBoardeBehaviour}
   headerStyling={headerStyling}
   bodyStyling={`${heroTextStyling} ${mediaClasses.body}`}
   styling={`${styling} ${mediaClasses.tile}`}
 >
-  <Fragment slot="header">
-    <span
-      data-testid="post-header-media-container"
-      class={mediaClasses.headerMedia}
-    >
-      {
-        (hasHeaderImage || hasDynamicMedia) && (
-          <ConditionalATag
-            conditional={post.data.imageLink}
-            href={post.data.imageLink}
-          >
-            <Image
-              src={fromBase(post.data.image)}
-              alt={post.data.imageAlt || post.data.title}
-              width={post.data.parsedImageWidth}
-              height={post.data.parsedImageHeight}
-              class="tile-image h-auto w-full"
-              format="webp"
+  {
+    hasHeaderSlot && (
+      <Fragment slot={hasHeaderSlot && "header"}>
+        <span
+          data-testid="post-header-media-container"
+          class={mediaClasses.headerMedia}
+        >
+          {(hasHeaderImage || hasDynamicMedia) && (
+            <ConditionalATag
+              conditional={imagePostData?.imageLink}
+              href={imagePostData?.imageLink}
+            >
+              <picture class="tile-image h-auto w-full">
+                {images.map((image) => {
+                  return (
+                    <source media={image?.media || ""} srcset={image.src} />
+                  );
+                })}
+                <img
+                  src={images[0].src}
+                  alt={
+                    images[0].imageAlt ||
+                    imagePostData?.title ||
+                    multiImagePostData?.title
+                  }
+                  loading="eager"
+                  decoding="async"
+                  class="w-full"
+                />
+              </picture>
+            </ConditionalATag>
+          )}
+          {hasVideo && !multimediaPlacement && (
+            <Video
+              url={videoPostData.video}
+              width={videoPostData.parsedVideoWidth}
+              height={videoPostData.parsedVideoHeight}
+              title={videoPostData.title}
+              orientation={videoPostData.orientation}
             />
-          </ConditionalATag>
-        )
-      }
-      {
-        hasVideo && !multimediaPlacement && (
-          <Video
-            url={post.data.video}
-            width={post.data.parsedVideoWidth}
-            height={post.data.parsedVideoHeight}
-            title={post.data.title}
-            orientation={post.data.videoOrientation}
-          />
-        )
-      }
-    </span>
-  </Fragment>
-
-  <Fragment slot="title">
-    {
-      post.data.title && (
+          )}
+        </span>
+      </Fragment>
+    )
+  }
+  {
+    title && (
+      <Fragment slot={title && "title"}>
         <h3 class={`${headerStyling} text-gold w-full pt-2 text-center`}>
-          {post.data.title}
+          {title}
         </h3>
-      )
-    }
-  </Fragment>
+      </Fragment>
+    )
+  }
 
   <Fragment slot="body">
     <span
       data-testid="post-body-media-container"
-      class={`flex ${mediaClasses.bodyMedia}`}
+      class={`flex ${mediaClasses.bodyMedia} post-body-media-container`}
     >
       {
         hasVideo && (multimediaPlacement == "body" || hasDynamicMedia) && (
           <Video
-            url={post.data.video}
-            width={post.data.parsedVideoWidth}
-            height={post.data.parsedVideoHeight}
-            title={post.data.title}
-            orientation={post.data.videoOrientation}
+            url={videoPostData.video}
+            width={videoPostData.parsedVideoWidth}
+            height={videoPostData.parsedVideoHeight}
+            title={videoPostData.title}
+            orientation={videoPostData.orientation}
           />
         )
       }
       {/* TODO: the img is stretched ? */}
       {
-        post.data.image &&
-          (multimediaPlacement == "body" || hasDynamicMedia) && (
-            <ConditionalATag
-              conditional={post.data.imageLink}
-              href={post.data.imageLink}
-            >
-              <Image
-                src={fromBase(post.data.image)}
-                alt={post.data.imageAlt || post.data.title}
-                width={post.data.parsedImageWidth}
-                height={post.data.parsedImageHeight}
-                class="tile-image h-auto w-full"
-                format="webp"
+        imagePostData && (multimediaPlacement == "body" || hasDynamicMedia) && (
+          <ConditionalATag
+            conditional={imagePostData.imageLink}
+            href={imagePostData.imageLink}
+          >
+            <picture class="tile-image h-auto w-full">
+              {images.map((image) => {
+                return <source media={image?.media || ""} srcset={image.src} />;
+              })}
+              <img
+                src={images[0].src}
+                alt={imagePostData.imageAlt || title}
+                loading="eager"
+                decoding="async"
+                class="w-full"
               />
-            </ConditionalATag>
-          )
+            </picture>
+          </ConditionalATag>
+        )
       }
     </span>
     <span
       data-testid="tile-body-text"
-      class={`flex flex-col items-center p-4 max-w-[100%] ${hasTextBody ? "" : "hidden"}`}
+      class={`flex flex-col items-center px-4 pb-1 max-w-[100%] ${hasTextBody ? "" : "hidden"} tile-body-text`}
     >
       {
         /* TODO: there is waaay too much spacing from tile-body-text, hero text & p tag, the flex ? */
@@ -259,19 +342,33 @@ const mediaClasses = (() => {
   @reference "@/styles/tailwind.css";
   .tile-body-hero-text {
     max-width: 100%;
-    white-space-collapse: preserve-breaks;
   }
   .tile-body-hero-text > :global(p) {
     max-width: 100%;
     white-space-collapse: preserve-breaks;
     white-space: pre-line;
   }
+  .tile-with-square-body-media {
+    @apply grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr auto;
+    height: auto;
+    direction: rtl;
+    * {
+      direction: ltr;
+    }
+    @variant md {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: auto;
+    }
+  }
   .tile-with-square-header-media {
     @apply grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
     height: auto;
-    @variant sm {
+    @variant md {
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr;
       height: auto;
