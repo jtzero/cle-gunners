@@ -1,7 +1,7 @@
 ---
-title: 'ArseCast'
 image: '/images/arsecast.jpeg'
-imagePlacement: 'body'
+imageAlt: 'ArseCast'
+imagePlacement: 'header'
 imageDimensions: '640x640'
 imageLink: 'https://arseblog.com/arsecast/'
 ---
