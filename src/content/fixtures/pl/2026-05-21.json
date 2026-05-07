@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-05-14",
-    "dateTo": "2026-05-21",
+    "dateFrom": "2026-05-21",
+    "dateTo": "2026-05-28",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-05-18",
-    "last": "2026-05-18",
+    "first": "2026-05-24",
+    "last": "2026-05-24",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 35,
         "winner": null
       },
-      "id": 538147,
-      "utcDate": "2026-05-18T19:00:00Z",
+      "id": 538157,
+      "utcDate": "2026-05-24T15:00:00Z",
       "status": "TIMED",
-      "matchday": 37,
+      "matchday": 38,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-04-29T15:21:22Z",
+      "lastUpdated": "2025-12-29T15:20:57Z",
       "homeTeam": {
+        "id": 354,
+        "name": "Crystal Palace FC",
+        "shortName": "Crystal Palace",
+        "tla": "CRY",
+        "crest": "https://crests.football-data.org/354.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 328,
-        "name": "Burnley FC",
-        "shortName": "Burnley",
-        "tla": "BUR",
-        "crest": "https://crests.football-data.org/328.png"
       },
       "score": {
         "winner": null,
