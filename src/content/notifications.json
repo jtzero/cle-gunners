@@ -30,6 +30,6 @@
   },
   "Scarves": {
     "body": "Scarves! $20 a piece available from Jason on Match Day! Until supplies last",
-    "enabled": true
+    "enabled": false
   }
 }
