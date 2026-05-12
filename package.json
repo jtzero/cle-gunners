@@ -46,7 +46,7 @@
     "remark-toc": "^9.0.0",
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
-    "uuid": "^13.0.0"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@astrojs/react": "^4.4.2",
