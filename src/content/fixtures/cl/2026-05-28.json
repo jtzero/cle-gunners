@@ -1,16 +1,16 @@
 {
   "filters": {
-    "dateFrom": "2026-05-21",
-    "dateTo": "2026-05-28",
+    "dateFrom": "2026-05-28",
+    "dateTo": "2026-06-04",
     "permission": "TIER_ONE",
-    "competitions": "2021",
+    "competitions": "2001",
     "limit": 100
   },
   "resultSet": {
     "count": 1,
-    "competitions": "PL",
-    "first": "2026-05-24",
-    "last": "2026-05-24",
+    "competitions": "CL",
+    "first": "2026-05-30",
+    "last": "2026-05-30",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -19,38 +19,38 @@
   "matches": [
     {
       "area": {
-        "id": 2072,
-        "name": "England",
-        "code": "ENG",
-        "flag": "https://crests.football-data.org/770.svg"
+        "id": 2077,
+        "name": "Europe",
+        "code": "EUR",
+        "flag": "https://crests.football-data.org/EUR.svg"
       },
       "competition": {
-        "id": 2021,
-        "name": "Premier League",
-        "code": "PL",
-        "type": "LEAGUE",
-        "emblem": "https://crests.football-data.org/PL.png"
+        "id": 2001,
+        "name": "UEFA Champions League",
+        "code": "CL",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/CL.png"
       },
       "season": {
-        "id": 2403,
-        "startDate": "2025-08-15",
-        "endDate": "2026-05-24",
-        "currentMatchday": 36,
+        "id": 2454,
+        "startDate": "2025-09-16",
+        "endDate": "2026-05-30",
+        "currentMatchday": 8,
         "winner": null
       },
-      "id": 538157,
-      "utcDate": "2026-05-24T15:00:00Z",
+      "id": 552096,
+      "utcDate": "2026-05-30T16:00:00Z",
       "status": "TIMED",
-      "matchday": 38,
-      "stage": "REGULAR_SEASON",
+      "matchday": null,
+      "stage": "FINAL",
       "group": null,
-      "lastUpdated": "2025-12-29T15:20:57Z",
+      "lastUpdated": "2026-05-14T05:20:58Z",
       "homeTeam": {
-        "id": 354,
-        "name": "Crystal Palace FC",
-        "shortName": "Crystal Palace",
-        "tla": "CRY",
-        "crest": "https://crests.football-data.org/354.png"
+        "id": 524,
+        "name": "Paris Saint-Germain FC",
+        "shortName": "PSG",
+        "tla": "PSG",
+        "crest": "https://crests.football-data.org/524.png"
       },
       "awayTeam": {
         "id": 57,
