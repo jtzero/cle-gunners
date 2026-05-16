@@ -40,7 +40,7 @@ export const matchSchema = z.object({
   id: z.number(),
   utcDate: z.string().datetime(),
   status: z.string(),
-  matchday: z.number(),
+  matchday: z.number().nullable(),
   stage: z.string(),
   group: z.string().nullable(),
   lastUpdated: z.string().datetime(),
