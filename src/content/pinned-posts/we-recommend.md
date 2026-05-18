@@ -1,5 +1,5 @@
 ---
-title: "We Recomend"
+title: "We Recommend"
 image: "/images/arsecast.jpeg"
 date: 2025-11-12T05:00:00Z
 imageDimensions: "640x640"
