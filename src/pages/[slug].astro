@@ -1,20 +1,20 @@
 ---
-import * as fs from 'fs';
-import * as server from "astro:config/server"
+import * as fs from "fs";
+import * as server from "astro:config/server";
 import Base from "@/layouts/Base.astro";
 import { getCollection, getEntry, getEntries } from "astro:content";
 import Post from "@/components/Post.astro";
 
 export async function getStaticPaths() {
-  const pages = await getCollection("pages", (page)=> {
+  const pages = await getCollection("pages", (page) => {
     return !fs.existsSync(`${server.srcDir}/${page.filePath}`);
   });
   return pages.map((page) => {
     return {
-        params: {
-          slug: page.id,
-        },
-      };
+      params: {
+        slug: page.id,
+      },
+    };
   });
 }
 const { slug } = Astro.params;
@@ -24,17 +24,25 @@ if (!page) {
   return Astro.redirect("/404");
 }
 // TODO: test that all entries are returned
-const subPosts = await getEntries(page.data.posts.map((post_id) => {
-  return {collection: 'posts', id: post_id }
-}));
-
+const subPosts = await getEntries(
+  page.data.posts.map((post_id) => {
+    return { collection: "posts", id: post_id };
+  }),
+);
 ---
 
 <Base title={page.data.title} metaTitle={page.data.metaTitle}>
-  <div data-testid="pinned-items" class="pt-10 bg-light flex items-center justify-center flex-col">
+  <div
+    data-testid="pinned-items"
+    class="bg-light flex flex-col items-center justify-center pt-10"
+  >
     {
       subPosts.map((subPost) => (
-        <Post post={subPost} styling="tile w-3/4 mb-6 shadow bg-white scroll-mt-5" displayReadMore={false}/>
+        <Post
+          post={subPost}
+          styling="tile max-w-3/4 mb-6 shadow bg-white scroll-mt-5"
+          displayReadMore={false}
+        />
       ))
     }
   </div>
