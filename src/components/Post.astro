@@ -184,6 +184,15 @@ const mediaClasses = (() => {
         imagePostData.parsedImageWidth == imagePostData.parsedImageHeight &&
         (!multimediaPlacement || multimediaPlacement == "header")
       ) {
+        const hasBodySlot = Boolean(
+          hasTextBody ||
+            hasDynamicMedia ||
+            multimediaPlacement == "body" ||
+            showReadMore,
+        );
+        if (!hasBodySlot) {
+          return "tile-with-square-header-media-no-body";
+        }
         return "tile-with-square-header-media";
       } else if (hasHeaderMultimedia) {
         return "tile-with-header-media";
@@ -370,6 +379,17 @@ const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
     height: auto;
     @variant md {
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      height: auto;
+    }
+  }
+  .tile-with-square-header-media-no-body {
+    @apply grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+    height: auto;
+    @variant md {
+      grid-template-columns: 1fr;
       grid-template-rows: 1fr;
       height: auto;
     }
