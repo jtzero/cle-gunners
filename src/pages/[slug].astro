@@ -29,6 +29,14 @@ const subPosts = await getEntries(
     return { collection: "posts", id: post_id };
   }),
 );
+// TODO temp
+const width = (() => {
+  if (page.id === "we-recommend") {
+    return "";
+  } else {
+    return "w-3/4";
+  }
+})();
 ---
 
 <Base title={page.data.title} metaTitle={page.data.metaTitle}>
@@ -40,7 +48,7 @@ const subPosts = await getEntries(
       subPosts.map((subPost) => (
         <Post
           post={subPost}
-          styling="tile max-w-3/4 mb-6 shadow bg-white scroll-mt-5"
+          styling={`tile ${width} max-w-3/4 mb-6 shadow bg-white scroll-mt-5`}
           displayReadMore={false}
         />
       ))
