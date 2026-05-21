@@ -255,7 +255,7 @@ const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
               </picture>
             </ConditionalATag>
           )}
-          {hasVideo && !multimediaPlacement && (
+          {hasVideo && hasHeaderMultimedia && (
             <Video
               url={videoPostData.video}
               width={videoPostData.parsedVideoWidth}
@@ -357,6 +357,13 @@ const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
     white-space-collapse: preserve-breaks;
     white-space: pre-line;
   }
+  .rectangle-cell {
+    .tile-with-square-body-media {
+      @variant sm {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
   .tile-with-square-body-media {
     @apply grid;
     grid-template-columns: 1fr;
@@ -366,22 +373,13 @@ const hasHeaderSlot = Boolean(hasHeaderMultimedia || hasDynamicMedia);
     * {
       direction: ltr;
     }
-    @variant md {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      height: auto;
-    }
   }
   .tile-with-square-header-media {
     @apply grid;
     grid-template-columns: 1fr;
     grid-template-rows: 1fr auto;
+    align-items: start;
     height: auto;
-    @variant md {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 1fr;
-      height: auto;
-    }
   }
   .tile-with-square-header-media-no-body {
     @apply grid;

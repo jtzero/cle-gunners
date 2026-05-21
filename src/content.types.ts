@@ -102,6 +102,7 @@ export type MatchType = z.infer<typeof matchSchema>;
 const simplePostSchema = z
   .object({
     type: z.literal("simple").optional(),
+    additionalStyling: z.string().optional(),
   })
   .strict()
   .transform((val) => ({
@@ -158,6 +159,7 @@ const imagePostSchema = z
     imageLink: z.string().optional(),
     orientation: z.string().optional(),
     metaTitle: z.string().optional(),
+    additionalStyling: z.string().optional(),
   })
   .strict()
   .refine(
@@ -195,6 +197,7 @@ const multiImagePostSchema = z
     imageLink: z.string().optional(),
     images: z.array(imageSetting),
     metaTitle: z.string().optional(),
+    additionalStyling: z.string().optional(),
   })
   .strict()
   .transform((val) => ({
@@ -215,6 +218,7 @@ const videoPostSchema = z
     videoPlacement: z.string().optional(),
     orientation: z.string().optional(),
     metaTitle: z.string().optional(),
+    additionalStyling: z.string().optional(),
   })
   .strict()
   .transform((val) => {
@@ -239,6 +243,7 @@ export type PostType = z.infer<typeof postSchema>;
 
 export const notificationAttributesSchema = z.object({
   body: z.string(),
+  styling: z.string().optional(),
   url: z.string().optional(),
   image: z.string().optional(),
   imageLink: z.string().optional(),
