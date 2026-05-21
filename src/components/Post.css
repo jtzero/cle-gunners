@@ -5,6 +5,9 @@
   grid-template-columns: 1fr;
   grid-template-rows: 1fr auto;
   height: auto;
+  /* TODO */
+  align-content: start;
+  align-items: stretch;
 }
 
 @utility tile-body-with-body-media {
@@ -17,11 +20,6 @@
   @variant sm {
     grid-template-columns: 1fr;
     height: auto;
-  }
-
-  @variant lg {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
   }
 }
 
@@ -95,6 +93,10 @@
   @variant 2xl {
     @apply no-top-border;
   }
+}
+
+.tile {
+  align-self: start;
 }
 
 .tile-body-with-body-media {

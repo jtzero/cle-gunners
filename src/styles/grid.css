@@ -1,0 +1,25 @@
+
+@reference "@/styles/tailwind.css";
+.grid-setup {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+  gap: 1rem;
+  grid-auto-flow: dense;
+  justify-content: center;
+  justify-items: center;
+  width: 95%;
+}
+.expanding-rectangle-cell {
+  grid-column: span 1;
+  @variant sm {
+    grid-column: span 2;
+  }
+}
+.rectangle-cell {
+  grid-column: span 1;
+  grid-row: span 2;
+  @variant sm {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}

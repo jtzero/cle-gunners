@@ -2,7 +2,7 @@
 title: Kai Havertz
 video: https://www.youtube.com/embed/GuKmd9j2h_g
 videoDimensions: 560x315
-videoPlacement: body
+videoPlacement: header
 orientation: landscape
 ---
 

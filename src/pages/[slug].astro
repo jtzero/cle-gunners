@@ -6,6 +6,7 @@ import * as server from "astro:config/server";
 import Base from "@/layouts/Base.astro";
 import { getCollection, getEntry, getEntries } from "astro:content";
 import Post from "@/components/Post.astro";
+import "@/styles/grid.css";
 
 export async function getStaticPaths() {
   const srcDir = fileURLToPath(server.srcDir);
@@ -34,26 +35,15 @@ const subPosts = await getEntries(
     return { collection: "posts", id: post_id };
   }),
 );
-// TODO temp
-const width = (() => {
-  if (page.id === "we-recommend") {
-    return "";
-  } else {
-    return "w-3/4";
-  }
-})();
 ---
 
 <Base title={page.data.title} metaTitle={page.data.metaTitle}>
-  <div
-    data-testid="pinned-items"
-    class="bg-light flex flex-col items-center justify-center pt-10"
-  >
+  <div data-testid="pinned-items" class="bg-light grid-setup pt-10">
     {
       subPosts.map((subPost) => (
         <Post
           post={subPost}
-          styling={`tile ${width} max-w-3/4 mb-6 shadow bg-white scroll-mt-5`}
+          styling={`tile w-[100%] mb-6 shadow bg-white scroll-mt-5 ${subPost.data?.additionalStyling}`}
           displayReadMore={false}
         />
       ))

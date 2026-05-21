@@ -1,5 +1,5 @@
 export const isInHeader = (
   multimediaPlacement: string | undefined,
 ): boolean => {
-  return !multimediaPlacement || multimediaPlacement == "header";
+  return multimediaPlacement === undefined || multimediaPlacement == "header";
 };

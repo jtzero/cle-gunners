@@ -1,5 +1,6 @@
 ---
 import Tile from "@/components/Tile.astro";
+import "@/components/Post.css";
 
 const { styling } = Astro.props;
 ---
@@ -84,10 +85,7 @@ const { styling } = Astro.props;
     >
   </Fragment>
 </Tile>
-<Tile
-  id="match-tracker-double-header"
-  styling={`hidden w-3/4 mb-6 shadow bg-white`}
->
+<Tile id="match-tracker-double-header" styling={`hidden ${styling}`}>
   <Fragment slot="title">
     <h4
       data-show-after-load

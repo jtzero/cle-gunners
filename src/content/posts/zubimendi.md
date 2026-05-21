@@ -8,6 +8,7 @@ images:
   - src: /images/zubimendi-wide.jpg
     dimensions: 2880x1368
     media: "(min-width: 600px)"
+additionalStyling: expanding-rectangle-cell
 ---
 
 <span style="color: darkgrey">(To the tune of "Mama mia" by Abba)</span>

@@ -7,6 +7,8 @@ import LocationPost from "src/components/LocationPost.astro";
 import { getSinglePage } from "@/lib/contentParser.astro";
 import { sortByWeight } from "@/lib/utils/sortFunctions";
 import notifications from "@/content/notifications.json";
+import "@/styles/grid.css";
+
 const pinnedPosts = await getSinglePage("pinnedPosts");
 const sortedPosts = sortByWeight(pinnedPosts);
 type PostType = CollectionEntry<"posts">;
@@ -27,6 +29,7 @@ const buildPostFromNotification = (id: string, notification: any): PostType => {
     body: notification.body,
     data: {
       title: notification.id,
+      additionalStyling: notification.styling,
       ...imageConfig,
     },
   };
@@ -34,10 +37,7 @@ const buildPostFromNotification = (id: string, notification: any): PostType => {
 ---
 
 <Base>
-  <div
-    data-testid="pinned-items"
-    class="bg-light flex flex-col items-center justify-center"
-  >
+  <div data-testid="pinned-items" class="bg-light grid-setup">
     {
       Object.entries(notifications)
         .filter(([_id, data]) => data.enabled)
@@ -46,7 +46,7 @@ const buildPostFromNotification = (id: string, notification: any): PostType => {
           return (
             <Post
               post={post}
-              styling="w-3/4 mb-6 shadow bg-blue text-white scroll-mt-5"
+              styling={`w-full mb-6 shadow bg-blue text-white scroll-mt-5 ${post.data?.additionalStyling}`}
               headerStyling="text-white !text-[3rem]"
               topBorderStyling="border-t-2 border-t-blue-300"
               heroTextStyling="inline-flex text-[2rem]"
@@ -54,14 +54,16 @@ const buildPostFromNotification = (id: string, notification: any): PostType => {
           );
         })
     }
-    <LocationPost styling="w-3/4 mb-6 shadow bg-white scroll-mt-5" />
-    <MatchTracker styling="w-3/4 mb-6 shadow bg-white scroll-mt-5" />
+    <LocationPost styling="w-full mb-6 shadow bg-white scroll-mt-5" />
+    <MatchTracker
+      styling="w-full mb-6 shadow bg-white scroll-mt-5 expanding-rectangle-cell"
+    />
     {
       sortedPosts.map((post) => {
         return (
           <Post
             post={post}
-            styling={`tile w-3/4 mb-6 shadow bg-white scroll-mt-5 ${post.data.additionalStyling}`}
+            styling={`tile w-full mb-6 shadow bg-white scroll-mt-5 ${post.data.additionalStyling}`}
           />
         );
       })

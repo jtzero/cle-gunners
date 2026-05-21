@@ -3,6 +3,8 @@ import config from "@/config/config.js";
 import { fromBase } from "@/lib/fromBase";
 import { Image } from "astro:assets";
 
+import "@/components/Post.css";
+
 type Props = {
   styling: string;
 };
@@ -11,30 +13,46 @@ const { styling } = Astro.props;
 const { summary_length } = config.settings;
 ---
 
-<div data-testid="location-post" class={`${styling} tile border-t-2 border-t-dark-red flex flex-col lg:border-none lg:flex-row-reverse`}>
-  <div class="flex flex-col justify-around text-center lg:w-1/2">
+<div
+  data-testid="location-post"
+  class={`${styling} tile border-t-2 border-t-dark-red flex flex-col lg:border-none lg:flex-row-reverse`}
+>
+  <div class="flex w-[100%] flex-col justify-around text-center">
     <div class="title">
-      <h3 class="h4 mt-2 text-center pt-2 px-[0.10rem] text-gold border-b-1 border-divider text-balance">
+      <h3
+        class="h4 text-gold border-divider mt-2 border-b-1 px-[0.10rem] pt-2 text-center text-balance"
+      >
         Join us for every Premier League match at Merry Arts Pub & Grille
       </h3>
-      <p class="subhead text-gold">(and yes, even the 7 am ones)<p>
+      <p class="subhead text-gold">
+        (and yes, even the 7 am ones)<p></p>
+        <div data-testid="links" class="mx-[1.5rem] pb-2">
+          <a
+            class="border-divider block border-b-1 p-1"
+            href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9"
+            >15607 1/2 Detroit Ave, Lakewood, OH 44107</a
+          >
+          <a class="block p-1" href="https://merryartspubandgrille.com"
+            >https://merryartspubandgrille.com</a
+          >
+        </div>
+      </p>
+      <div class="w-[100%] flex-grow items-center">
+        <a
+          href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9"
+          class="flex items-center"
+        >
+          <Image
+            class="lg"
+            src={fromBase("/images/merry-arts-map.png")}
+            alt="map"
+            width={1044}
+            height={600}
+            class="w-full"
+            format="webp"
+          />
+        </a>
+      </div>
     </div>
-    <div data-testid="links" class="pb-2 mx-[1.5rem]">
-      <a class="block border-b-1 border-divider p-1" href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9">15607 1/2 Detroit Ave, Lakewood, OH 44107</a>
-      <a class="block p-1" href="https://merryartspubandgrille.com">https://merryartspubandgrille.com</a>
-    </div>
-  </div>
-  <div class="items-center md:w-[100%] flex-grow lg:w-3/8">
-    <a href="https://maps.app.goo.gl/XHD6rF3iRXUfG5Wt9" class="items-center flex">
-      <Image
-        class="lg"
-        src={fromBase("/images/merry-arts-map.png")}
-        alt="map"
-        width={1044}
-        height={600}
-        class="w-full"
-        format="webp"
-      />
-    </a>
   </div>
 </div>
