@@ -8,7 +8,7 @@ const usePageAnalytics = (() => {
   }
 })();
 export default {
-  use)ageAnalytics: usePageAnalytics,
+  usePageAnalytics: usePageAnalytics,
   site: {
     title: "Cleveland Arsenal|Cleveland Gooners",
     favicon: "/images/favicon.png",
