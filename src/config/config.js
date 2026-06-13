@@ -1,14 +1,14 @@
-const useGoogleAnalytics = (() => {
+const usePageAnalytics = (() => {
   if (process.env.NODE_ENV === "production") {
-    console.log("Google Analytics is enabled");
+    console.log("Page Analytics is enabled");
     return true;
   } else {
-    console.log("Google Analytics is disabled");
+    console.log("Page Analytics is disabled");
     return false;
   }
 })();
 export default {
-  useGoogleAnalytics: useGoogleAnalytics,
+  use)ageAnalytics: usePageAnalytics,
   site: {
     title: "Cleveland Arsenal|Cleveland Gooners",
     favicon: "/images/favicon.png",
