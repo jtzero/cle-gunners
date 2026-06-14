@@ -59,7 +59,7 @@
     "@types/react": "^19.1.13",
     "astro-scope": "^3.0.2",
     "get-root-path": "^3.0.1",
-    "postcss": "^8.5.3",
+    "postcss": "^8.5.14",
     "prettier": "^3.5.3",
     "prettier-plugin-astro": "^0.14.1",
     "prettier-plugin-tailwindcss": "^0.6.14",
