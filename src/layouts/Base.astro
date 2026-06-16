@@ -139,6 +139,26 @@ const keywordsArray = keywords || [];
     />
     <meta name="twitter:card" content="summary_large_image" />
 
+    <!-- Google analytics -->
+    {
+      config.usePageAnalytics && (
+        <>
+          <script
+            async
+            src="https://www.googletagmanager.com/gtag/js?id=G-XCWV76HQNY"
+          />
+          <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+              dataLayer.push(arguments);
+            }
+            gtag("js", new Date());
+
+            gtag("config", "G-XCWV76HQNY");
+          </script>
+        </>
+      )
+    }
     <!-- Page analytics -->
     {
       config.usePageAnalytics && (
