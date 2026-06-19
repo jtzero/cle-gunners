@@ -183,7 +183,10 @@ const { styling } = Astro.props;
   import { v4 as uuid } from "uuid";
   import DOMPurify from "dompurify";
   import { type MatchType } from "@/content.types";
-  import { type Season } from "@/lib/dataPipeline/football-data";
+  import {
+    type Season,
+    type Competition,
+  } from "@/lib/dataPipeline/football-data";
 
   const easterEggImage =
     "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
@@ -589,6 +592,22 @@ const { styling } = Astro.props;
     return matchesOnScreen[matchSlotName]?.id === match.id;
   };
 
+  const getCompetition = async (code: string): Promise<Response> => {
+    return fetch(`/api/competitions/${code}.json`);
+  };
+
+  const parseCompetitionResponse = async (
+    response: Response,
+  ): Promise<Competition> => {
+    return response.json();
+  };
+
+  const findLatestSeason = (competition: Competition): Season => {
+    return competition.seasons.sort((a: Season, b: Season) =>
+      b.startDate.localeCompare(a.startDate),
+    )[0];
+  };
+
   const checkForMatches = async (
     today: Date,
     competitionCodes: string[],
@@ -690,6 +709,31 @@ const { styling } = Astro.props;
                 competitionCodes,
               );
               foundWeekID = thirdMidWeek;
+            }
+          },
+        );
+      }
+      if (!nearestMatches[0]) {
+        const latestSeason: Season = await getCompetition("pl")
+          .then(parseCompetitionResponse)
+          .then(findLatestSeason);
+        const futureSeasonMidWeek = format(
+          startOfWeek(latestSeason.startDate, {
+            weekStartsOn: 4,
+          }),
+          "yyyy-MM-dd",
+        );
+
+        await fetch(`${fetchFixturesBase}/${futureSeasonMidWeek}.json`).then(
+          async (futureSeasonMidWeekResponse) => {
+            if (futureSeasonMidWeekResponse.status === 200) {
+              nearestMatches = await filterMatchResponse(
+                nearestMatches,
+                futureSeasonMidWeekResponse,
+                today,
+                competitionCodes,
+              );
+              foundWeekID = futureSeasonMidWeek;
             }
           },
         );
