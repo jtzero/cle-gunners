@@ -10,6 +10,7 @@ import {
   type Competition,
   type Season,
 } from "./football-data";
+import { startOfWeek } from "date-fns";
 
 const fetchArsenalFixtures = async (
   api_key: string,
@@ -172,15 +173,19 @@ export const run = async (
 
   const seasonYear = competition.getSeasonYear(competitionDatum, startDate);
   if (seasonYear instanceof competition.NoSeasonFoundError) {
-    console.log(`No season matched for ${startDate}, ${endDate}`);
-    const futureSeasonYear = competition.hasFutureSeason(
-      competitionDatum,
-      endDate,
+    console.log(
+      `No season matched for ${startDate}, ${endDate}, checking future season`,
     );
-    if (futureSeasonYear instanceof competition.NoSeasonFoundError) {
+    const futureSeason = competition.getFutureSeason(competitionDatum, endDate);
+    if (futureSeason instanceof competition.NoSeasonFoundError) {
       console.log(`No future season found for ${endDate}`);
       return;
     }
+    const futureStartDate = startOfWeek(futureSeason.startDate, {
+      weekStartsOn: 4,
+    });
+    const futureSeasonYear = new Date(futureStartDate).getFullYear();
+    const futureEndDate = date.getNextWeek(futureStartDate);
     const leagueID = competitionDatum.id;
     console.log("Fetching team ID...");
     const id = await team.fetchArsenalID(
@@ -189,12 +194,12 @@ export const run = async (
       fetchFunction,
     );
     console.log("ID fetched:", id);
-    console.log(startDateArg, startDate, endDate, thisMonth);
+    console.log("checking: ", startDateArg, futureStartDate, futureEndDate);
     await saveFixturesFromRange(
       api_key,
       today,
-      startDate,
-      endDate,
+      futureStartDate,
+      futureEndDate,
       leagueID.toString(),
       id,
       futureSeasonYear,
