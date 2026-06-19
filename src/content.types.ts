@@ -1,3 +1,6 @@
+// import { z } from "astro:content" is safer to
+// ensure the correct version of zod is used
+// from astro but cannot be used on the client
 import { z } from "zod";
 
 import * as MediaPost from "@/lib/mediaPost";
