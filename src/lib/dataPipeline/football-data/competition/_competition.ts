@@ -99,17 +99,17 @@ export const getSeasonYear = (
   }
 };
 
-export const hasFutureSeason = (
+export const getFutureSeason = (
   competition: HasSeasons,
   checkDate: Date,
-): number | NoSeasonFoundError => {
+): Season | NoSeasonFoundError => {
   const season = competition.seasons.find((season: Season) => {
     return new Date(season.startDate).getTime() >= checkDate.getTime();
   });
   if (!season) {
     return new NoSeasonFoundError(checkDate);
   } else {
-    return new Date(season.startDate).getFullYear();
+    return season;
   }
 };
 
