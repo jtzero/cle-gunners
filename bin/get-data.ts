@@ -1,5 +1,9 @@
 import { run } from "@/lib/dataPipeline/getData";
 import { LEAGUE_CODES } from "@/lib/dataPipeline/football-data/competition";
+try {
+  require.resolve("dotenv");
+  require("dotenv").config();
+} catch {}
 
 const leagueCodeArg = process.argv[2];
 const startDateArg = process.argv[3];

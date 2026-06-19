@@ -4,7 +4,12 @@ import { formatInTimeZone } from "date-fns-tz";
 import appRoot from "app-root-path";
 import * as json from "./json";
 import * as date from "./date";
-import { team, competition, type Competition } from "./football-data";
+import {
+  team,
+  competition,
+  type Competition,
+  type Season,
+} from "./football-data";
 
 const fetchArsenalFixtures = async (
   api_key: string,
@@ -101,6 +106,11 @@ const getChampionsLeague = async (
   }
 };
 
+const isRequestedEndDateAfterEndDateOfSeason = (
+  season: Season,
+  requestedDate: Date,
+): boolean => new Date(season.endDate).getTime() >= requestedDate.getTime();
+
 const getPremierLeague = async (
   apiKey: string,
   latestDate: Date,
@@ -113,7 +123,7 @@ const getPremierLeague = async (
   if (
     comp &&
     latestSeason &&
-    new Date(latestSeason.endDate).getTime() >= latestDate.getTime()
+    isRequestedEndDateAfterEndDateOfSeason(latestSeason, latestDate)
   ) {
     return comp;
   } else {
@@ -162,47 +172,78 @@ export const run = async (
 
   const seasonYear = competition.getSeasonYear(competitionDatum, startDate);
   if (seasonYear instanceof competition.NoSeasonFoundError) {
-    console.log(`No season yet for ${startDate}`);
-    return;
-  }
+    console.log(`No season matched for ${startDate}, ${endDate}`);
+    const futureSeasonYear = competition.hasFutureSeason(
+      competitionDatum,
+      endDate,
+    );
+    if (futureSeasonYear instanceof competition.NoSeasonFoundError) {
+      console.log(`No future season found for ${endDate}`);
+      return;
+    }
+    const leagueID = competitionDatum.id;
+    console.log("Fetching team ID...");
+    const id = await team.fetchArsenalID(
+      api_key,
+      futureSeasonYear,
+      fetchFunction,
+    );
+    console.log("ID fetched:", id);
+    console.log(startDateArg, startDate, endDate, thisMonth);
+    await saveFixturesFromRange(
+      api_key,
+      today,
+      startDate,
+      endDate,
+      leagueID.toString(),
+      id,
+      futureSeasonYear,
+      competitionCode,
+      fetchFunction,
+      writeDataToFileFunction,
+    );
+  } else {
+    const leagueID = competitionDatum.id;
+    console.log("Fetching team ID...");
+    const id = await team.fetchArsenalID(api_key, seasonYear, fetchFunction);
+    console.log("ID fetched:", id);
+    console.log(startDateArg, startDate, endDate, thisMonth);
+    await saveFixturesFromRange(
+      api_key,
+      today,
+      startDate,
+      endDate,
+      leagueID.toString(),
+      id,
+      seasonYear,
+      competitionCode,
+      fetchFunction,
+      writeDataToFileFunction,
+    );
 
-  const leagueID = competitionDatum.id;
-  console.log("Fetching team ID...");
-  const id = await team.fetchArsenalID(api_key, seasonYear, fetchFunction);
-  console.log("ID fetched:", id);
-  console.log(startDateArg, startDate, endDate, thisMonth);
-  await saveFixturesFromRange(
-    api_key,
-    today,
-    startDate,
-    endDate,
-    leagueID.toString(),
-    id,
-    seasonYear,
-    competitionCode,
-    fetchFunction,
-    writeDataToFileFunction,
-  );
-
-  const secondRoundSeasonYear = competition.getSeasonYear(
-    competitionDatum,
-    secondRoundStartDate,
-  );
-  if (secondRoundSeasonYear instanceof competition.NoSeasonFoundError) {
-    console.log(`No season yet for ${secondRoundSeasonYear}`);
-    return;
+    const secondRoundSeasonYear = competition.getSeasonYear(
+      competitionDatum,
+      secondRoundStartDate,
+    );
+    const secondRoundEndDate = date.getNextWeek(endDate);
+    if (secondRoundSeasonYear instanceof competition.NoSeasonFoundError) {
+      console.log(
+        `No season matched for ${secondRoundStartDate}, ${secondRoundEndDate}`,
+      );
+      return;
+    }
+    console.log(startDateArg, startDate, endDate, thisMonth);
+    await saveFixturesFromRange(
+      api_key,
+      today,
+      secondRoundStartDate,
+      secondRoundEndDate,
+      leagueID.toString(),
+      id,
+      secondRoundSeasonYear,
+      competitionCode,
+      fetchFunction,
+      writeDataToFileFunction,
+    );
   }
-  console.log(startDateArg, startDate, endDate, thisMonth);
-  await saveFixturesFromRange(
-    api_key,
-    today,
-    secondRoundStartDate,
-    date.getNextWeek(endDate),
-    leagueID.toString(),
-    id,
-    secondRoundSeasonYear,
-    competitionCode,
-    fetchFunction,
-    writeDataToFileFunction,
-  );
 };
