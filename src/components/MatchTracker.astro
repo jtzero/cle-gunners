@@ -142,6 +142,15 @@ const { styling } = Astro.props;
       <span updates="away-team-name" class="text-xl font-bold"></span>
     </div>
   </Fragment>
+  <Fragment slot="footer">
+    <span class="text-neutral-400"
+      >data provided by <a
+        class="text-neutral-400"
+        href="https://www.football-data.org/"
+        target="_blank">football-data.org</a
+      ></span
+    >
+  </Fragment>
 </Tile>
 <style>
   .spinner {
@@ -592,22 +601,6 @@ const { styling } = Astro.props;
     return matchesOnScreen[matchSlotName]?.id === match.id;
   };
 
-  const getCompetition = async (code: string): Promise<Response> => {
-    return fetch(`/api/competitions/${code}.json`);
-  };
-
-  const parseCompetitionResponse = async (
-    response: Response,
-  ): Promise<Competition> => {
-    return response.json();
-  };
-
-  const findLatestSeason = (competition: Competition): Season => {
-    return competition.seasons.sort((a: Season, b: Season) =>
-      b.startDate.localeCompare(a.startDate),
-    )[0];
-  };
-
   const checkForMatches = async (
     today: Date,
     competitionCodes: string[],
@@ -640,10 +633,10 @@ const { styling } = Astro.props;
       thirdMidWeek,
       competitionCodes,
     );
+    const fetchFixturesBase = "/api/fixtures";
     if (cachedMatches.length > 0 && foundWeekID) {
       nearestMatches = cachedMatches;
     } else {
-      const fetchFixturesBase = "/api/fixtures";
       await fetch(`/api/manual-fixtures/${midWeek}.json`).then(
         async (response) => {
           if (response.status === 200) {
@@ -713,31 +706,6 @@ const { styling } = Astro.props;
           },
         );
       }
-      if (!nearestMatches[0]) {
-        const latestSeason: Season = await getCompetition("pl")
-          .then(parseCompetitionResponse)
-          .then(findLatestSeason);
-        const futureSeasonMidWeek = format(
-          startOfWeek(latestSeason.startDate, {
-            weekStartsOn: 4,
-          }),
-          "yyyy-MM-dd",
-        );
-
-        await fetch(`${fetchFixturesBase}/${futureSeasonMidWeek}.json`).then(
-          async (futureSeasonMidWeekResponse) => {
-            if (futureSeasonMidWeekResponse.status === 200) {
-              nearestMatches = await filterMatchResponse(
-                nearestMatches,
-                futureSeasonMidWeekResponse,
-                today,
-                competitionCodes,
-              );
-              foundWeekID = futureSeasonMidWeek;
-            }
-          },
-        );
-      }
       localStorage.setItem(
         `${foundWeekID}-v${CACHE_VERSION}`,
         JSON.stringify({
@@ -787,6 +755,49 @@ const { styling } = Astro.props;
           "OFFSEASON",
           randomOffSeasonMessage(),
         );
+      } else {
+        const futureSeasonMidWeek = format(
+          startOfWeek(anySeason.startDate, {
+            weekStartsOn: 4,
+          }),
+          "yyyy-MM-dd",
+        );
+
+        await fetch(`${fetchFixturesBase}/${futureSeasonMidWeek}.json`).then(
+          async (futureSeasonMidWeekResponse) => {
+            if (futureSeasonMidWeekResponse.status === 200) {
+              nearestMatches = await filterMatchResponse(
+                nearestMatches,
+                futureSeasonMidWeekResponse,
+                today,
+                competitionCodes,
+              );
+              foundWeekID = futureSeasonMidWeek;
+            }
+          },
+        );
+      }
+      if (nearestMatches[0]) {
+        let runningUpdates = false;
+        removeSpinner(matchTracker);
+        showDataOffSeasonMessage(
+          "match-tracker",
+          "OFFSEASON",
+          randomOffSeasonMessage(),
+        );
+        matchTrackerDoubleHeader.classList.remove("hidden");
+        if (!isMatchInSlot("match-tracker-double-header", nearestMatches[0])) {
+          runningUpdates = true;
+          updateTracker(
+            matchTrackerDoubleHeader,
+            nearestMatches[0],
+            audioPlayer,
+          );
+        }
+        if (!runningUpdates) {
+          runningUpdates = false;
+          loading_status = LOADING_STATUSES.loaded;
+        }
       } else {
         showDataOffSeasonMessage(
           "match-tracker",
