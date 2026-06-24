@@ -1,6 +1,11 @@
 import { glob } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
-import { matchSchema, seasonSchema, postSchema } from "./content.types";
+import {
+  matchSchema,
+  seasonSchema,
+  postSchema,
+  fixtureSchema,
+} from "./content.types";
 import * as MediaPost from "@/lib/mediaPost";
 
 const postsCollection = defineCollection({
@@ -52,26 +57,7 @@ const pagesCollection = defineCollection({
 
 const fixturesCollection = defineCollection({
   loader: glob({ pattern: "**/*.json", base: "src/content/fixtures" }),
-  schema: z.object({
-    filters: z.object({
-      dateFrom: z.string().date().optional(),
-      dateTo: z.string().date().optional(),
-      permission: z.string(),
-      competitions: z.coerce.number().optional(),
-      limit: z.number(),
-    }),
-    resultSet: z.object({
-      count: z.number(),
-      competitions: z.string().optional(),
-      first: z.string().date().optional(),
-      last: z.string().date().optional(),
-      played: z.number().optional(),
-      wins: z.number().optional(),
-      draws: z.number().optional(),
-      losses: z.number().optional(),
-    }),
-    matches: z.array(matchSchema),
-  }),
+  schema: fixtureSchema,
 });
 
 const manualFixturesCollection = defineCollection({

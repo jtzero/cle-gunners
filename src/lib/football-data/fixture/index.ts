@@ -1,0 +1,1 @@
+export { fetchWeek } from "./fetchWeek";

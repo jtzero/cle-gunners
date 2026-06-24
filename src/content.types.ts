@@ -84,6 +84,29 @@ export const matchSchema = z.object({
     )
     .optional(),
 });
+export type MatchType = z.infer<typeof matchSchema>;
+
+export const fixtureSchema = z.object({
+  filters: z.object({
+    dateFrom: z.string().date().optional(),
+    dateTo: z.string().date().optional(),
+    permission: z.string(),
+    competitions: z.coerce.number().optional(),
+    limit: z.number(),
+  }),
+  resultSet: z.object({
+    count: z.number(),
+    competitions: z.string().optional(),
+    first: z.string().date().optional(),
+    last: z.string().date().optional(),
+    played: z.number().optional(),
+    wins: z.number().optional(),
+    draws: z.number().optional(),
+    losses: z.number().optional(),
+  }),
+  matches: z.array(matchSchema),
+});
+export type FixtureType = z.infer<typeof fixtureSchema>;
 
 export const seasonSchema = z.object({
   id: z.number(),
@@ -93,8 +116,6 @@ export const seasonSchema = z.object({
   winner: seasonWinnerSchema.optional().nullable(),
   stages: z.array(z.string()).optional(),
 });
-
-export type MatchType = z.infer<typeof matchSchema>;
 
 const simplePostSchema = z
   .object({

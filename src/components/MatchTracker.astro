@@ -191,11 +191,21 @@ const { styling } = Astro.props;
   import { fromZonedTime } from "date-fns-tz";
   import { v4 as uuid } from "uuid";
   import DOMPurify from "dompurify";
-  import { type MatchType } from "@/content.types";
   import {
     type Season,
     type Competition,
   } from "@/lib/dataPipeline/football-data";
+  import { type MatchType, type FixtureType } from "@/content.types";
+  import { fixture } from "@/lib/football-data";
+
+  class NearestMatches {
+    matches: MatchType[];
+    foundWeekID: string;
+    constructor(matches: MatchType[], foundWeekID: string) {
+      this.matches = matches;
+      this.foundWeekID = foundWeekID;
+    }
+  }
 
   const easterEggImage =
     "https://raw.githubusercontent.com/twitter/twemoji/8e58ae4745075d4faa5b9190eab578aa7e4c32d5/svg/1f4a9.svg";
@@ -485,7 +495,7 @@ const { styling } = Astro.props;
     response: Response,
     today: Date,
     competitionCodes: string[],
-  ) => {
+  ): Promise<MatchType[]> => {
     const json = await response.json();
 
     const nearestMatches = laterThanNow(
@@ -645,19 +655,39 @@ const { styling } = Astro.props;
           }
         },
       );
-      await fetch(`${fetchFixturesBase}/${midWeek}.json`).then(
-        async (response) => {
-          if (response.status === 200) {
-            nearestMatches = await filterMatchResponse(
-              nearestMatches,
-              response,
-              today,
-              competitionCodes,
-            );
-            foundWeekID = midWeek;
+      const m = await fixture
+        .fetchWeek(fetch, `${fetchFixturesBase}/${midWeek}.json`)
+        .then((json: FixtureType) => {
+          return filterMatchResponse(
+            nearestMatches,
+            json,
+            today,
+            competitionCodes,
+          );
+        })
+        .then((matches: MatchType[]) => {
+          return new NearestMatches(matches, midWeek);
+        })
+        .catch((e) => {
+          switch (e.name) {
+            case "FetchCallError":
+              console.error("FetchCallError", e.error);
+              break;
+            case "FetchResponseError":
+              if (e.response.status !== 404) {
+                console.error("FetchResponseError", e.response);
+              }
+              break;
+            default:
+              console.log("Unknown error", e);
+              break;
           }
-        },
-      );
+          return undefined;
+        });
+      if (m) {
+        nearestMatches = m.matches;
+        foundWeekID = m.foundWeekID;
+      }
       if (!nearestMatches[0]) {
         checks.push(nextMidWeek);
         await fetch(`/api/manual-fixtures/${nextMidWeek}.json`).then(
