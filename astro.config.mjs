@@ -2,7 +2,6 @@ import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
-import scope from "astro-scope";
 import remarkCollapse from "remark-collapse";
 import remarkToc from "remark-toc";
 import config from "./src/config/config.js";
@@ -10,6 +9,7 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
 import { fileURLToPath } from "url";
+import simplestackQuery from "@simplestack/query";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -35,7 +35,7 @@ export default defineConfig({
       },
     },
   },
-  integrations: [react(), sitemap(), mdx(), scope()],
+  integrations: [react(), sitemap(), mdx(), simplestackQuery()],
   markdown: {
     remarkPlugins: [
       remarkToc,

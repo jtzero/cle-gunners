@@ -23,7 +23,8 @@
     ".astro/types.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.astro"
+    "**/*.astro",
+    "astro.config.mjs"
   ],
   "exclude": [
     "node_modules",
