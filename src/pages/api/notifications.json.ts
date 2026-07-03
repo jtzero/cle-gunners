@@ -15,7 +15,6 @@ export const GET: APIRoute = async () => {
     "notifications",
     ({ data }) => data?.push && data?.pushMessage,
   )) as PushNotificationCollectionEntry[];
-  console.log(notifications);
   return new Response(
     JSON.stringify(
       notifications.reduce(
