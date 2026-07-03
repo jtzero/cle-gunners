@@ -1,0 +1,59 @@
+---
+
+---
+
+<script>
+  import { type NotificationAttributesType } from "@/content.types";
+  (async () => {
+    const storageName = "cg-shown-notifications";
+    if (
+      !("Notification" in window || "PushManager" in window) ||
+      !("serviceWorker" in navigator)
+    )
+      return;
+    const base = import.meta.env.BASE_URL;
+
+    try {
+      const swUrl = `${base}sw.js`;
+      const registration = await navigator.serviceWorker.register(swUrl);
+      await navigator.serviceWorker.ready;
+
+      const response = await fetch(`${base}api/notifications.json`);
+      if (response.ok) {
+        const notifications: Array<[string, NotificationAttributesType]> =
+          Object.entries(await response.json());
+        if (notifications.length) {
+          const shown = JSON.parse(localStorage.getItem(storageName) || "[]");
+          for (const [k, n] of notifications) {
+            if (shown.includes(k)) continue;
+
+            if (Notification.permission === "granted" && n["enabled"]) {
+              registration.showNotification(k, {
+                body: n.pushMessage,
+                icon: `${base}images/favicon.png`,
+                badge: `${base}images/favicon.png`,
+                data: { url: base },
+              });
+
+              shown.push(k);
+            }
+          }
+
+          localStorage.setItem(storageName, JSON.stringify(shown));
+        }
+      }
+    } catch (e) {
+      // Service worker or notifications unavailable
+    }
+
+    if (Notification.permission === "default") {
+      const requestOnInteraction = () => {
+        localStorage.setItem(storageName, JSON.stringify([]));
+        Notification.requestPermission();
+      };
+      document.addEventListener("astro:page-load", requestOnInteraction, {
+        once: true,
+      });
+    }
+  })();
+</script>

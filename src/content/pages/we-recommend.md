@@ -10,6 +10,7 @@ posts:
     "arse-cast",
     "poorly-drawn-arsenal",
     "arsenal-vision",
+    "acfc",
     "tifo-football-by-the-athletic",
   ]
 ---
