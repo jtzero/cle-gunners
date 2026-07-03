@@ -10,6 +10,11 @@ export const GET: APIRoute = async ({ params, request }) => {
     "fixtures",
     `${IDPrefix}/${date}`,
   )) as CollectionEntry<"fixtures">;
+  if (!entry) {
+    return new Response(JSON.stringify({ error: "Fixtures not found" }), {
+      status: 404,
+    });
+  }
   return new Response(JSON.stringify(entry.data));
 };
 

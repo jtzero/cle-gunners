@@ -1,15 +1,20 @@
 ---
 import * as fs from "fs";
+import * as path from "path";
+import { fileURLToPath } from "url";
 import * as server from "astro:config/server";
 import Base from "@/layouts/Base.astro";
 import { getCollection, getEntry, getEntries } from "astro:content";
 import Post from "@/components/Post.astro";
 
 export async function getStaticPaths() {
-  const pages = await getCollection("pages", (page) => {
-    return !fs.existsSync(`${server.srcDir}/${page.filePath}`);
+  const srcDir = fileURLToPath(server.srcDir);
+  const pagesDir = path.join(srcDir, "pages");
+  const pagesWithNoExplicitAstroFile = await getCollection("pages", (page) => {
+    const astroPagePath = path.join(pagesDir, `${page.id}.astro`);
+    return !fs.existsSync(astroPagePath);
   });
-  return pages.map((page) => {
+  return pagesWithNoExplicitAstroFile.map((page) => {
     return {
       params: {
         slug: page.id,
