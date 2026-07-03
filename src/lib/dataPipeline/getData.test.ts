@@ -243,6 +243,7 @@ describe("run", () => {
     };
     const data = await getData.run(
       "fake_api_key",
+      "PL",
       "2023-10-18",
       fetchFunction,
       () => { },
