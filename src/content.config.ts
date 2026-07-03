@@ -1,6 +1,11 @@
-import { glob } from "astro/loaders";
+import { glob, file } from "astro/loaders";
 import { defineCollection, reference, z } from "astro:content";
-import { matchSchema, seasonSchema, postSchema } from "./content.types";
+import {
+  matchSchema,
+  seasonSchema,
+  postSchema,
+  notificationAttributesSchema,
+} from "./content.types";
 import * as MediaPost from "@/lib/mediaPost";
 
 const postsCollection = defineCollection({
@@ -117,6 +122,11 @@ const competitionsCollection = defineCollection({
   }),
 });
 
+const notificationsCollection = defineCollection({
+  loader: file("src/content/notifications.json"),
+  schema: notificationAttributesSchema,
+});
+
 export const collections = {
   posts: postsCollection,
   pinnedPosts: pinnedPostsCollection,
@@ -124,4 +134,5 @@ export const collections = {
   fixtures: fixturesCollection,
   manualFixtures: manualFixturesCollection,
   competitions: competitionsCollection,
+  notifications: notificationsCollection,
 };

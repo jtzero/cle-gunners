@@ -233,3 +233,17 @@ export const postSchema = z.union([
 ]);
 
 export type PostType = z.infer<typeof postSchema>;
+
+export const notificationAttributesSchema = z.object({
+  body: z.string(),
+  url: z.string().optional(),
+  image: z.string().optional(),
+  imageLink: z.string().optional(),
+  imageDimensions: z.string().optional(),
+  enabled: z.boolean(),
+  send: z.boolean().optional(),
+});
+
+export type NotificationAttributesType = z.infer<
+  typeof notificationAttributesSchema
+>;
