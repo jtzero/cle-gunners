@@ -1,7 +1,6 @@
 import mdx from "@astrojs/mdx";
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
-import AutoImport from "astro-auto-import";
 import { defineConfig } from "astro/config";
 import scope from "astro-scope";
 import remarkCollapse from "remark-collapse";
