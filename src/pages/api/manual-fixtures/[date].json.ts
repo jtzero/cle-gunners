@@ -1,4 +1,3 @@
-import { format, startOfWeek } from "date-fns";
 import { getCollection, getEntry, type CollectionEntry } from "astro:content";
 import type { APIRoute } from "astro";
 
