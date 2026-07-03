@@ -26,7 +26,7 @@ export interface NavigationLink {
 
 const { main }: { main: NavigationLink[] } = menu;
 ---
-
+<RootElement>
 <header class="header">
   <script>
     import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -150,6 +150,7 @@ const { main }: { main: NavigationLink[] } = menu;
     </div>
   </div>
 </header>
+</RootElement>
 <style>
   @import "@/styles/tailwind.css";
 
@@ -234,24 +235,24 @@ const { main }: { main: NavigationLink[] } = menu;
   }
 </style>
 <script>
-  import scope from "astro:scope";
   document.addEventListener("astro:page-load", () => {
-    const self = document.querySelector(`[data-astro-cid-${scope}]`);
-    const navToggle = self!.querySelector(
-      '[data-name="nav-toggle"]',
-    ) as HTMLInputElement;
-    navToggle.addEventListener("change", function () {
-      if (this.checked) {
-        document.body.classList.add("overflow-hidden");
-      } else {
-        document.body.classList.remove("overflow-hidden");
-      }
-    });
-    [...self!.querySelectorAll("[data-js-close=true]")].map((navItem) => {
-      navItem.addEventListener("click", () => {
-        navToggle!.checked = false;
-        document.body.classList.remove("overflow-hidden");
+    RootElement.ready(($) => {
+      const navToggle = $.self.querySelector(
+        '[data-name="nav-toggle"]',
+      ) as HTMLInputElement;
+      navToggle.addEventListener("change", function () {
+        if (this.checked) {
+          document.body.classList.add("overflow-hidden");
+        } else {
+          document.body.classList.remove("overflow-hidden");
+        }
       });
-    });
+      [...$.self.querySelectorAll("[data-js-close=true]")].map((navItem) => {
+        navItem.addEventListener("click", () => {
+          navToggle!.checked = false;
+          document.body.classList.remove("overflow-hidden");
+        });
+      });
+    })
   });
 </script>
