@@ -706,12 +706,14 @@ const { styling } = Astro.props;
           },
         );
       }
-      localStorage.setItem(
-        `${foundWeekID}-v${CACHE_VERSION}`,
-        JSON.stringify({
-          matches: nearestMatches,
-        }),
-      );
+      if (foundWeekID) {
+        localStorage.setItem(
+          `${foundWeekID}-v${CACHE_VERSION}`,
+          JSON.stringify({
+            matches: nearestMatches,
+          }),
+        );
+      }
     }
     if (nearestMatches[0]) {
       let runningUpdates = false;
