@@ -241,7 +241,8 @@ export const notificationAttributesSchema = z.object({
   imageLink: z.string().optional(),
   imageDimensions: z.string().optional(),
   enabled: z.boolean(),
-  send: z.boolean().optional(),
+  push: z.boolean().optional(),
+  pushMessage: z.string().optional(),
 });
 
 export type NotificationAttributesType = z.infer<
