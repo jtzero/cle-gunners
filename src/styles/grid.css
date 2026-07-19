@@ -2,12 +2,12 @@
 @reference "@/styles/tailwind.css";
 .grid-setup {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, auto));
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   gap: 1rem;
   grid-auto-flow: dense;
   justify-content: center;
   justify-items: center;
-  width: 95%;
+  width: 80%;
 }
 .expanding-rectangle-cell {
   grid-column: span 1;
