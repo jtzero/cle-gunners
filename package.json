@@ -22,7 +22,7 @@
   "dependencies": {
     "@astrojs/check": "^0.9.6",
     "@astrojs/mdx": "^6.0.0",
-    "@astrojs/rss": "4.0.12",
+    "@astrojs/rss": "4.0.19",
     "@fontsource/quantico": "^5.2.7",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@simplestack/query": "^0.3.0",
