@@ -1,0 +1,74 @@
+{
+  "filters": {},
+  "resultSet": {
+    "count": 1
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+      },
+      "competition": {
+        "id": 2056,
+        "name": "FA Community Shield",
+        "code": "COM",
+        "type": "SUPER_CUP",
+        "emblem": "https://upload.wikimedia.org/wikipedia/commons/3/31/CommunityShield.png"
+      },
+      "season": {
+        "id": 0,
+        "startDate": "2026-08-16",
+        "endDate": "2027-05-30",
+        "currentMatchday": null,
+        "winner": null
+      },
+      "id": 2026081316140000,
+      "utcDate": "2026-08-16T14:00:00Z",
+      "status": "TIMED",
+      "matchday": null,
+      "stage": "FINAL",
+      "group": null,
+      "lastUpdated": "2026-08-05T00:00:00Z",
+      "homeTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal",
+        "tla": "ARS",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 65,
+        "name": "Manchester City FC",
+        "shortName": "Man City",
+        "tla": "MCI",
+        "crest": "https://crests.football-data.org/65.png"
+      },
+      "score": {
+        "winner": null,
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": [
+        {
+          "id": 0,
+          "name": "Sam Barrott",
+          "type": "REFEREE",
+          "nationality": null
+        }
+      ]
+    }
+  ]
+}
