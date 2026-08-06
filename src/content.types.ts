@@ -99,6 +99,38 @@ export const seasonSchema = z.object({
 
 export type MatchType = z.infer<typeof matchSchema>;
 
+export const manualFixturesSchema = z.object({
+  filters: z.object({
+    dateFrom: z.string().date().optional(),
+    dateTo: z.string().date().optional(),
+    permission: z.string().optional(),
+    competitions: z.coerce.number().optional(),
+    limit: z.number().optional(),
+  }),
+  resultSet: z.object({
+    count: z.number(),
+    competitions: z.string().optional(),
+    first: z.string().date().optional(),
+    last: z.string().date().optional(),
+    played: z.number().optional(),
+    wins: z.number().optional(),
+    draws: z.number().optional(),
+    losses: z.number().optional(),
+  }),
+  matches: z.array(matchSchema).check((ctx) => {
+    const ids = ctx.value.map((m) => m.id);
+    if (ids.length !== new Set(ids).size) {
+      ctx.issues.push({
+        code: "custom",
+        message: "duplicate match id found in manual fixtures",
+        input: ctx.value,
+      });
+    }
+  }),
+});
+
+export type ManualFixturesType = z.infer<typeof manualFixturesSchema>;
+
 const simplePostSchema = z
   .object({
     type: z.literal("simple").optional(),
