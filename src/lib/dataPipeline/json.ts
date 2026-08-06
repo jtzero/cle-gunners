@@ -1,10 +1,12 @@
-import * as fs from "fs";
+import { mkdir, writeFile } from "node:fs/promises";
+import { dirname } from "node:path";
 
-export const stringifyToFile = async (filePath: string, data: any) => {
-  // Convert the JavaScript object to a JSON string
-  // The 'null' and '2' arguments format the JSON with an indentation of 2 spaces, making it readable
+export const stringifyToFile = async (
+  filePath: string,
+  data: unknown,
+): Promise<void> => {
   const jsonString = JSON.stringify(data, null, 2);
 
-  // TODO: await fs.writeFile
-  fs.writeFileSync(filePath, jsonString, "utf-8");
+  await mkdir(dirname(filePath), { recursive: true });
+  await writeFile(filePath, jsonString, "utf-8");
 };

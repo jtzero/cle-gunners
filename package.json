@@ -12,7 +12,10 @@
     "check": "astro check && prettier --check .",
     "format": "prettier --write .",
     "get-data": "tsx bin/get-data.ts",
-    "test": "vitest run",
+    "test": "vitest run --exclude \"**/*.integration.test.ts\"",
+    "test:unit": "npm run test",
+    "test:integration": "vitest run integration",
+    "test:all": "vitest run",
     "test:e2e": "playwright test"
   },
   "comments": {
