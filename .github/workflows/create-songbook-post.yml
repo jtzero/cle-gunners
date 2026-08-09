@@ -1,0 +1,152 @@
+name: Create Songbook Post
+
+on:
+  workflow_dispatch:
+    inputs:
+      filename:
+        description: "Filename / Slug for the post (e.g. bukayo-saka)"
+        required: true
+        type: string
+      title:
+        description: "Post Title (Optional if imageAlt provided)"
+        required: false
+        type: string
+      date:
+        description: "Post Date in YYYY-MM-DD format (Optional)"
+        required: false
+        type: string
+      image:
+        description: "Image URL (Required, e.g. https://example.com/image.jpg)"
+        required: true
+        type: string
+      imageAlt:
+        description: "Image Alt text (Optional if title provided)"
+        required: false
+        type: string
+      imageDimensions:
+        description: "Image dimensions WxH (Required, e.g. 735x990)"
+        required: true
+        type: string
+      imagePlacement:
+        description: 'Image placement (Required, e.g. header, body, or JSON: {"all":"header","md":"body"})'
+        required: true
+        default: "header"
+        type: string
+      imageLink:
+        description: "Image link URL (Optional)"
+        required: false
+        type: string
+      orientation:
+        description: "Image orientation (Optional, e.g. portrait, landscape, square, banner)"
+        required: false
+        type: string
+      metaTitle:
+        description: "Meta Title for SEO (Optional)"
+        required: false
+        type: string
+      additionalStyling:
+        description: "Additional CSS styling class (Optional)"
+        required: false
+        type: string
+      content:
+        description: "Post Markdown / Song Lyrics content (Optional)"
+        required: false
+        type: string
+      imageFileName:
+        description: "Filename to save the downloaded image in public/ (e.g. my-image.jpg)"
+        required: true
+        type: string
+
+jobs:
+  create-songbook-post:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          token: ${{ secrets.GITHUB_TOKEN }}
+          persist-credentials: false
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Download image
+        id: download-image
+        env:
+          INPUT_IMAGE_FILENAME: ${{ inputs.imageFileName }}
+          INPUT_IMAGE_URL: ${{ inputs.image }}
+        run: |
+          set -euo pipefail
+          IMAGE_PATH="public/${INPUT_IMAGE_FILENAME}"
+          case "${INPUT_IMAGE_URL}" in
+            http://*|https://*) ;;
+            *) echo "error: image URL must use http or https" >&2; exit 1 ;;
+          esac
+          PUBLIC_ROOT="$(realpath -m public)"
+          DEST="$(realpath -m "${IMAGE_PATH}")"
+          case "${DEST}" in
+            "${PUBLIC_ROOT}"/*) ;;
+            *) echo "error: image destination must remain beneath public/" >&2; exit 1 ;;
+          esac
+          mkdir -p "$(dirname "${IMAGE_PATH}")"
+          curl -L -o "${IMAGE_PATH}" "${INPUT_IMAGE_URL}"
+          echo "image-path=${IMAGE_PATH}" >> "${GITHUB_OUTPUT}"
+
+      - name: Create Songbook Post
+        env:
+          INPUT_FILENAME: ${{ inputs.filename }}
+          INPUT_TITLE: ${{ inputs.title }}
+          INPUT_DATE: ${{ inputs.date }}
+          INPUT_IMAGE: /${{ inputs.imageFileName }}
+          INPUT_IMAGE_ALT: ${{ inputs.imageAlt }}
+          INPUT_IMAGE_DIMENSIONS: ${{ inputs.imageDimensions }}
+          INPUT_IMAGE_PLACEMENT: ${{ inputs.imagePlacement }}
+          INPUT_IMAGE_LINK: ${{ inputs.imageLink }}
+          INPUT_ORIENTATION: ${{ inputs.orientation }}
+          INPUT_META_TITLE: ${{ inputs.metaTitle }}
+          INPUT_ADDITIONAL_STYLING: ${{ inputs.additionalStyling }}
+          INPUT_CONTENT: ${{ inputs.content }}
+        run: npm run create-songbook-post
+
+      - name: Format generated post
+        run: npm run format
+
+      - name: Run unit tests
+        run: npm run test:unit
+
+      - name: Log git status
+        run: git status
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          commit-message: "feat(songbook): add songbook post ${{ inputs.filename }}"
+          branch: "songbook-post-${{ inputs.filename }}"
+          base: "main"
+          add-paths: |
+            src/content/posts/*
+            ${{ steps.download-image.outputs.image-path }}
+          title: "New Songbook Post: ${{ inputs.title || inputs.filename }}"
+          body: |
+            This is an automated pull request to create a new songbook post using `imagePost` schema inputs.
+          labels: |
+            songbook-post
+
+      - name: Enable Pull Request Automerge
+        if: steps.cpr.outputs.pull-request-number != ''
+        run: |
+          gh pr merge --rebase --auto "${{ steps.cpr.outputs.pull-request-number }}"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
