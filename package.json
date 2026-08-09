@@ -12,6 +12,7 @@
     "check": "astro check && prettier --check .",
     "format": "prettier --write .",
     "get-data": "tsx bin/get-data.ts",
+    "create-songbook-post": "tsx bin/create-songbook-post.ts",
     "test": "vitest run --exclude \"**/*.integration.test.ts\"",
     "test:unit": "npm run test",
     "test:integration": "vitest run integration",
