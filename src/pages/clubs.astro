@@ -1,0 +1,34 @@
+---
+import Base from "../layouts/Base.astro";
+
+export const meta = {
+  title: "Local Soccer Clubs",
+  description: "A simple list of soccer clubs around Cleveland."
+};
+---
+
+<Base {...meta}>
+  <main class="px-4 py-10 max-w-4xl mx-auto">
+    <h1 class="text-3xl font-bold mb-6">Local Soccer Clubs</h1>
+    <p class="mb-8">
+      Just a running list of local clubs and pickup groups around the city.
+      I’ll keep adding to this as I find more.
+    </p>
+
+    <div class="space-y-6">
+      <div class="bg-white rounded-md p-5 shadow-sm">
+        <h2 class="text-xl font-semibold">Example FC</h2>
+        <p>Neighborhood: Ohio City</p>
+        <p>Plays: Sundays at 2pm</p>
+        <a href="#" class="text-red-600 underline">Website</a>
+      </div>
+
+      <div class="bg-white rounded-md p-5 shadow-sm">
+        <h2 class="text-xl font-semibold">Cleveland Park Kickers</h2>
+        <p>Neighborhood: Tremont</p>
+        <p>Plays: Wednesday evenings</p>
+        <a href="#" class="text-red-600 underline">Facebook</a>
+      </div>
+    </div>
+  </main>
+</Base>
