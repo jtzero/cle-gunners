@@ -35,6 +35,16 @@ const subPosts = await getEntries(
     return { collection: "posts", id: post_id };
   }),
 );
+const sections = await Promise.all(
+  page.data.sections.map(async (section) => {
+    const sectionPosts = await getEntries(
+      section.posts.map((post_id) => {
+        return { collection: "posts", id: post_id };
+      }),
+    );
+    return { title: section.title, posts: sectionPosts };
+  }),
+);
 ---
 
 <Base title={page.data.title} metaTitle={page.data.metaTitle}>
@@ -49,4 +59,23 @@ const subPosts = await getEntries(
       ))
     }
   </div>
+  {
+    sections.map((section) => (
+      <div class="grid-setup">
+        <h2
+          data-testid="page-section-title"
+          class="text-gold col-span-full w-full pt-10 pb-2 text-center"
+        >
+          {section.title}
+        </h2>
+        {section.posts.map((subPost) => (
+          <Post
+            post={subPost}
+            styling={`tile w-[100%] mb-6 shadow bg-white scroll-mt-5 ${subPost.data?.additionalStyling}`}
+            displayReadMore={false}
+          />
+        ))}
+      </div>
+    ))
+  }
 </Base>

@@ -51,8 +51,17 @@ const pagesCollection = defineCollection({
     metaTitle: z.string().optional(),
     image: z.string().optional(),
     imageDimensions: z.string().optional(),
+    imagePlacement: z.string().optional(),
     layout: z.string().optional(),
     posts: z.array(z.string()).default([]),
+    sections: z
+      .array(
+        z.object({
+          title: z.string(),
+          posts: z.array(z.string()).default([]),
+        }),
+      )
+      .default([]),
   }),
 });
 
