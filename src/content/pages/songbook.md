@@ -17,7 +17,6 @@ posts:
     "martinelli",
     "bukayo-saka",
     "zubimendi",
-    "leo-trossard",
     "noni-madueke",
     "calafiori",
     "mik-arteta",
@@ -25,4 +24,7 @@ posts:
     "by-far-the-greatest-team",
     "more",
   ]
+sections:
+  - title: "Past Players"
+    posts: ["leo-trossard"]
 ---
