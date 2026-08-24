@@ -26,5 +26,5 @@ posts:
   ]
 sections:
   - title: "Past Players"
-    posts: ["leo-trossard"]
+    posts: ["arsene-wenger", "leo-trossard"]
 ---
