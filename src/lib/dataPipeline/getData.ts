@@ -88,7 +88,7 @@ const getChampionsLeague = async (
   fetchFunction: Function,
   writeDataToFileFunction: Function,
 ): Promise<Competition> => {
-  const filePath = `${appRoot.path}/src/content/competitions/cl.json`;
+  const filePath = `${appRoot.path}/src/content/competitions/football-data/cl.json`;
   const comp = readCompetitionFromCache(filePath);
   const latestSeason = comp ? competition.latestSeason(comp) : null;
   if (
@@ -118,7 +118,7 @@ const getPremierLeague = async (
   fetchFunction: Function,
   writeDataToFileFunction: Function,
 ): Promise<Competition> => {
-  const filePath = `${appRoot.path}/src/content/competitions/pl.json`;
+  const filePath = `${appRoot.path}/src/content/competitions/football-data/pl.json`;
   const comp = readCompetitionFromCache(filePath);
   const latestSeason = comp ? competition.latestSeason(comp) : null;
   if (
