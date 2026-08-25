@@ -18,6 +18,7 @@ export interface SongbookPostInput {
 }
 
 export interface CreatedSongbookPost {
+  id: string;
   filePath: string;
   content: string;
 }
@@ -162,11 +163,8 @@ export function generateSongbookPostMarkdown(input: SongbookPostInput): string {
   return lines.join("\n");
 }
 
-export function createSongbookPostFile(
-  input: SongbookPostInput,
-  baseDir: string = process.cwd(),
-): CreatedSongbookPost {
-  let cleanFilename = input.filename.trim();
+export const sanitizeSongbookPostFilename = (filename: string): string => {
+  let cleanFilename = filename.trim();
   if (cleanFilename.endsWith(".md")) {
     cleanFilename = cleanFilename.slice(0, -3);
   }
@@ -181,9 +179,17 @@ export function createSongbookPostFile(
     /[\\/]/.test(cleanFilename)
   ) {
     throw new Error(
-      `Invalid filename "${input.filename}": path separators and traversal segments are not allowed.`,
+      `Invalid filename "${filename}": path separators and traversal segments are not allowed.`,
     );
   }
+  return cleanFilename;
+};
+
+export function createSongbookPostFile(
+  input: SongbookPostInput,
+  baseDir: string = process.cwd(),
+): CreatedSongbookPost {
+  const cleanFilename = sanitizeSongbookPostFilename(input.filename);
 
   const markdown = generateSongbookPostMarkdown(input);
   const targetDir = path.join(baseDir, "src", "content", "posts");
@@ -195,6 +201,7 @@ export function createSongbookPostFile(
   fs.writeFileSync(filePath, markdown, "utf-8");
 
   return {
+    id: cleanFilename,
     filePath,
     content: markdown,
   };
