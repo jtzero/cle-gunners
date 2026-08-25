@@ -21,7 +21,11 @@
   },
   "comments": {
     "phin": "added only to force astrojs to use a non vuln version",
-    "file-type": "added only to force astro-imagetools to use a non vuln version"
+    "file-type": "added only to force astro-imagetools to use a non vuln version",
+    "sharp-override": "override added only to force astro and imagetools-core to use a non vuln version (GHSA-f88m-g3jw-g9cj)"
+  },
+  "overrides": {
+    "sharp": "$sharp"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
@@ -72,7 +76,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.2.0",
     "sass": "^1.93.2",
-    "sharp": "^0.35.0",
+    "sharp": "^0.35.3",
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3",
     "vite": "^7.3.5",
