@@ -22,10 +22,12 @@
   "comments": {
     "phin": "added only to force astrojs to use a non vuln version",
     "file-type": "added only to force astro-imagetools to use a non vuln version",
-    "sharp-override": "override added only to force astro and imagetools-core to use a non vuln version (GHSA-f88m-g3jw-g9cj)"
+    "sharp-override": "override added only to force astro and imagetools-core to use a non vuln version (GHSA-f88m-g3jw-g9cj)",
+    "vite-override": "override added only to force @astrojs/react and vite-plugin-simple-scope to use a non vuln version (GHSA-v6wh-96g9-6wx3)"
   },
   "overrides": {
-    "sharp": "$sharp"
+    "sharp": "$sharp",
+    "vite": "$vite"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.6",
