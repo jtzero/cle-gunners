@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-09-03",
-    "dateTo": "2026-09-10",
+    "dateFrom": "2026-09-10",
+    "dateTo": "2026-09-17",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-09-06",
-    "last": "2026-09-06",
+    "first": "2026-09-12",
+    "last": "2026-09-12",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 2,
         "winner": null
       },
-      "id": 560570,
-      "utcDate": "2026-09-06T15:30:00Z",
+      "id": 560577,
+      "utcDate": "2026-09-12T19:00:00Z",
       "status": "TIMED",
-      "matchday": 3,
+      "matchday": 4,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2026-08-27T10:20:37Z",
       "homeTeam": {
+        "id": 71,
+        "name": "Sunderland AFC",
+        "shortName": "Sunderland",
+        "tla": "SUN",
+        "crest": "https://crests.football-data.org/71.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 61,
-        "name": "Chelsea FC",
-        "shortName": "Chelsea",
-        "tla": "CHE",
-        "crest": "https://crests.football-data.org/61.png"
       },
       "score": {
         "winner": null,
