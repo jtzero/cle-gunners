@@ -49,7 +49,6 @@ const saveFixturesFromRange = async (
   seasonYear: number,
   competitionCode: string,
   fetchFunction: Function,
-  writeDataToFileFunction: Function,
 ) => {
   console.log("Season:", seasonYear);
   const startDateStr = formatInTimeZone(startDate, "UTC", "yyyy-MM-dd");
@@ -70,8 +69,7 @@ const saveFixturesFromRange = async (
   );
   console.log("Fixtures fetched:", results.resultSet.count);
   const filePath = `${appRoot.path}/src/content/fixtures/${competitionCode}/${startDateStr}.json`;
-  console.log("Writing data to file...", filePath);
-  writeDataToFileFunction(filePath, results);
+  return { filePath, results };
 };
 
 const readCompetitionFromCache = (filePath: string): Competition | null => {
@@ -195,7 +193,7 @@ export const run = async (
     );
     console.log("ID fetched:", id);
     console.log("checking: ", startDateArg, futureStartDate, futureEndDate);
-    await saveFixturesFromRange(
+    const futureData = await saveFixturesFromRange(
       api_key,
       today,
       futureStartDate,
@@ -205,15 +203,16 @@ export const run = async (
       futureSeasonYear,
       competitionCode,
       fetchFunction,
-      writeDataToFileFunction,
     );
+    console.log("Writing data to file...", futureData.filePath);
+    writeDataToFileFunction(futureData.filePath, futureData.results);
   } else {
     const leagueID = competitionDatum.id;
     console.log("Fetching team ID...");
     const id = await team.fetchArsenalID(api_key, seasonYear, fetchFunction);
     console.log("ID fetched:", id);
     console.log(startDateArg, startDate, endDate, thisMonth);
-    await saveFixturesFromRange(
+    const data = await saveFixturesFromRange(
       api_key,
       today,
       startDate,
@@ -223,8 +222,9 @@ export const run = async (
       seasonYear,
       competitionCode,
       fetchFunction,
-      writeDataToFileFunction,
     );
+    console.log("Writing data to file...", data.filePath);
+    writeDataToFileFunction(data.filePath, data.results);
 
     const secondRoundSeasonYear = competition.getSeasonYear(
       competitionDatum,
@@ -238,7 +238,7 @@ export const run = async (
       return;
     }
     console.log(startDateArg, startDate, endDate, thisMonth);
-    await saveFixturesFromRange(
+    const secondRoundData = await saveFixturesFromRange(
       api_key,
       today,
       secondRoundStartDate,
@@ -248,7 +248,11 @@ export const run = async (
       secondRoundSeasonYear,
       competitionCode,
       fetchFunction,
-      writeDataToFileFunction,
+    );
+    console.log("Writing data to file...", secondRoundData.filePath);
+    writeDataToFileFunction(
+      secondRoundData.filePath,
+      secondRoundData.results,
     );
   }
 };
