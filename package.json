@@ -12,6 +12,7 @@
     "check": "astro check && prettier --check .",
     "format": "prettier --write .",
     "get-data": "tsx bin/get-data.ts",
+    "get-efl-cup": "tsx bin/get-efl-cup.ts",
     "create-songbook-post": "tsx bin/create-songbook-post.ts",
     "test": "vitest run --exclude \"**/*.integration.test.ts\"",
     "test:unit": "npm run test",
@@ -58,6 +59,7 @@
     "ts-node": "^10.9.2",
     "tsx": "^4.21.0",
     "uuid": "^14.0.0",
+    "wtf_wikipedia": "^10.4.2",
     "zod": "^4.4.3"
   },
   "devDependencies": {

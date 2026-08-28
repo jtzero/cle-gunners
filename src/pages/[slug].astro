@@ -58,6 +58,25 @@ const sections = await Promise.all(
         />
       ))
     }
+    {
+      sections.map((section) => (
+        <>
+          <h2
+            data-testid="page-section-title"
+            class="text-gold col-span-full w-full pt-10 pb-2 text-center"
+          >
+            {section.title}
+          </h2>
+          {section.posts.map((subPost) => (
+            <Post
+              post={subPost}
+              styling={`tile w-[100%] mb-6 shadow bg-white scroll-mt-5 ${subPost.data?.additionalStyling}`}
+              displayReadMore={false}
+            />
+          ))}
+        </>
+      ))
+    }
   </div>
   {
     sections.map((section) => (

@@ -76,6 +76,7 @@ export const fetchChampionsLeague = async (
 };
 
 export class NoSeasonFoundError extends Error {
+  readonly _tag = "NoSeasonFoundError" as const;
   constructor(date: Date) {
     super(`No season found for date:'${date}'`);
     this.name = "NoSeasonFoundError";
