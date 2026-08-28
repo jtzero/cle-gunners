@@ -1,0 +1,114 @@
+[
+  {
+    "area": {
+      "id": 2072,
+      "name": "UK",
+      "code": "UK",
+      "flag": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/0c/EFL_%28Carabao%29_Cup_Logo.svg/500px-EFL_%28Carabao%29_Cup_Logo.svg.png"
+    },
+    "competition": {
+      "id": 2483,
+      "name": "EFL Cup",
+      "code": "FLC",
+      "type": "CUP",
+      "emblem": "https://crests.football-data.org/EFLC.png"
+    },
+    "season": {
+      "id": 2483,
+      "startDate": "2026-08-05",
+      "endDate": "2027-03-15",
+      "currentMatchday": null,
+      "winner": null
+    },
+    "id": 0,
+    "utcDate": "2026-09-15T20:00:00.000Z",
+    "status": "FINISHED",
+    "matchday": 0,
+    "stage": "Third round",
+    "group": null,
+    "lastUpdated": "2026-10-06T01:35:44.186Z",
+    "homeTeam": {
+      "id": 0,
+      "name": "Ipswich Town",
+      "shortName": "Ipswich Town",
+      "tla": "N/A",
+      "crest": "https://upload.wikimedia.org/wikipedia/en/placeholder.png"
+    },
+    "awayTeam": {
+      "id": 57,
+      "name": "Arsenal FC",
+      "shortName": "Arsenal FC",
+      "tla": "N/A",
+      "crest": "https://crests.football-data.org/57.png"
+    },
+    "score": {
+      "winner": "AWAY_TEAM",
+      "duration": "REGULAR",
+      "fullTime": {
+        "home": 2,
+        "away": 4
+      },
+      "halfTime": {
+        "home": null,
+        "away": null
+      }
+    },
+    "referees": []
+  },
+  {
+    "area": {
+      "id": 2072,
+      "name": "UK",
+      "code": "UK",
+      "flag": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/0c/EFL_%28Carabao%29_Cup_Logo.svg/500px-EFL_%28Carabao%29_Cup_Logo.svg.png"
+    },
+    "competition": {
+      "id": 2483,
+      "name": "EFL Cup",
+      "code": "FLC",
+      "type": "CUP",
+      "emblem": "https://crests.football-data.org/EFLC.png"
+    },
+    "season": {
+      "id": 2483,
+      "startDate": "2026-08-05",
+      "endDate": "2027-03-15",
+      "currentMatchday": null,
+      "winner": null
+    },
+    "id": 0,
+    "utcDate": "2026-10-27T20:00:00.000Z",
+    "status": "TIMED",
+    "matchday": 0,
+    "stage": "Fourth round",
+    "group": null,
+    "lastUpdated": "2026-10-06T01:35:44.186Z",
+    "homeTeam": {
+      "id": 0,
+      "name": "Fleetwood Town",
+      "shortName": "Fleetwood Town",
+      "tla": "N/A",
+      "crest": "https://upload.wikimedia.org/wikipedia/en/placeholder.png"
+    },
+    "awayTeam": {
+      "id": 57,
+      "name": "Arsenal FC",
+      "shortName": "Arsenal FC",
+      "tla": "N/A",
+      "crest": "https://crests.football-data.org/57.png"
+    },
+    "score": {
+      "winner": null,
+      "duration": "REGULAR",
+      "fullTime": {
+        "home": null,
+        "away": null
+      },
+      "halfTime": {
+        "home": null,
+        "away": null
+      }
+    },
+    "referees": []
+  }
+]

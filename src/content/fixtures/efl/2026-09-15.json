@@ -1,0 +1,74 @@
+{
+  "filters": {
+    "dateFrom": "2026-09-15",
+    "dateTo": "2026-09-15"
+  },
+  "resultSet": {
+    "count": 1,
+    "competitions": "EFLC",
+    "first": "2026-09-15",
+    "last": "2026-09-15",
+    "played": 1,
+    "wins": 1,
+    "draws": 0,
+    "losses": 0
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2072,
+        "name": "UK",
+        "code": "UK",
+        "flag": "https://thumb.wikimedia.org/wikipedia/en/thumb/0/0c/EFL_%28Carabao%29_Cup_Logo.svg/500px-EFL_%28Carabao%29_Cup_Logo.svg.png"
+      },
+      "competition": {
+        "id": 2483,
+        "name": "EFL Cup",
+        "code": "FLC",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/EFLC.png"
+      },
+      "season": {
+        "id": 2483,
+        "startDate": "2026-08-05",
+        "endDate": "2027-03-15",
+        "currentMatchday": null,
+        "winner": null
+      },
+      "id": 0,
+      "utcDate": "2026-09-15T20:00:00.000Z",
+      "status": "FINISHED",
+      "matchday": 0,
+      "stage": "Third round",
+      "group": null,
+      "lastUpdated": "2026-10-06T02:09:46.035Z",
+      "homeTeam": {
+        "id": 0,
+        "name": "Ipswich Town",
+        "shortName": "Ipswich Town",
+        "tla": "N/A",
+        "crest": "https://upload.wikimedia.org/wikipedia/en/placeholder.png"
+      },
+      "awayTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal FC",
+        "tla": "N/A",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": 2,
+          "away": 4
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "referees": []
+    }
+  ]
+}

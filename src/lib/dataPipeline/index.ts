@@ -1,0 +1,1 @@
+export { LeagueCodes } from "./getData";

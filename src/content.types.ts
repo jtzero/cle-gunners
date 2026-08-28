@@ -73,9 +73,11 @@ export const matchSchema = z.object({
       away: z.number().nullable(),
     }),
   }),
-  odds: z.object({
-    msg: z.string(),
-  }),
+  odds: z
+    .object({
+      msg: z.string(),
+    })
+    .optional(),
   referees: z
     .array(
       z.object({
