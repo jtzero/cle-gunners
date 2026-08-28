@@ -1,0 +1,80 @@
+{
+  "filters": {
+    "dateFrom": "2025-09-24",
+    "dateTo": "2025-09-24",
+    "permission": "TIER_ONE",
+    "competitions": "2483",
+    "limit": 100
+  },
+  "resultSet": {
+    "count": 1,
+    "competitions": "EFLC",
+    "first": "2025-09-24",
+    "last": "2025-09-24",
+    "played": 1,
+    "wins": 1,
+    "draws": 0,
+    "losses": 0
+  },
+  "matches": [
+    {
+      "area": {
+        "id": 2072,
+        "name": "England",
+        "code": "ENG",
+        "flag": "https://crests.football-data.org/770.svg"
+      },
+      "competition": {
+        "id": 2483,
+        "name": "EFL Cup",
+        "code": "EFLC",
+        "type": "CUP",
+        "emblem": "https://crests.football-data.org/EFLC.png"
+      },
+      "season": {
+        "id": 2483,
+        "startDate": "2025-08-05",
+        "endDate": "2026-03-15",
+        "currentMatchday": null,
+        "winner": null
+      },
+      "id": 0,
+      "utcDate": "2025-09-24T20:00:00.000Z",
+      "status": "FINISHED",
+      "matchday": 0,
+      "stage": "Third round",
+      "group": null,
+      "lastUpdated": "2026-08-28T16:51:51.196Z",
+      "homeTeam": {
+        "id": 0,
+        "name": "Port Vale",
+        "shortName": "Port Vale",
+        "tla": "N/A",
+        "crest": "https://upload.wikimedia.org/wikipedia/en/placeholder.png"
+      },
+      "awayTeam": {
+        "id": 57,
+        "name": "Arsenal FC",
+        "shortName": "Arsenal FC",
+        "tla": "N/A",
+        "crest": "https://crests.football-data.org/57.png"
+      },
+      "score": {
+        "winner": "AWAY_TEAM",
+        "duration": "REGULAR",
+        "fullTime": {
+          "home": 0,
+          "away": 2
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "odds": {
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+      },
+      "referees": []
+    }
+  ]
+}

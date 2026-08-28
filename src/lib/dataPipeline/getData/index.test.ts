@@ -1,4 +1,5 @@
 import { expect, test, describe } from "vitest";
+import { Effect } from "effect";
 import * as getData from "./getData";
 import { type Competition } from "./football-data/competition";
 
@@ -241,12 +242,120 @@ describe("run", () => {
         }
       }
     };
-    const data = await getData.run(
+    const writtenFiles: { filePath: string; data: unknown }[] = [];
+    const writeDataToFile = (filePath: string, data: unknown): void => {
+      writtenFiles.push({ filePath, data });
+    };
+
+    await getData.run(
       "fake_api_key",
       "PL",
       "2023-10-18",
       fetchFunction,
-      () => { },
+      writeDataToFile,
     );
+
+    expect(writtenFiles.length).toBe(2);
+    expect(writtenFiles[0].filePath).toContain(
+      "/src/content/fixtures/pl/2023-10-18.json",
+    );
+    expect(writtenFiles[1].filePath).toContain(
+      "/src/content/fixtures/pl/2023-10-18.json",
+    );
+  });
+});
+
+describe("writeDataToFileStep", () => {
+  test("writes data to file and logs progress", async () => {
+    const logs: any[][] = [];
+    const writtenFiles: { filePath: string; data: unknown }[] = [];
+    const config: getData.PipelineConfig = {
+      apiKey: "fake_api_key",
+      competitionCode: "PL",
+      startDateArg: "2023-10-18",
+      today: new Date("2023-10-18"),
+      secondRoundStartDate: new Date("2023-10-25"),
+      fetchFunction: () => {},
+      writeDataToFileFunction: (filePath: string, data: unknown) => {
+        writtenFiles.push({ filePath, data });
+      },
+      logger: {
+        log: (...args: any[]) => logs.push(args),
+      },
+    };
+
+    const state: getData.PipelineState = {
+      startDate: new Date("2023-10-18"),
+      endDate: new Date("2023-10-25"),
+      secondRoundStartDate: new Date("2023-10-25"),
+      secondRoundEndDate: new Date("2023-11-01"),
+      competitionDatum: null,
+      leagueID: "2021",
+      teamID: "57",
+      seasonYear: 2023,
+      isFutureSeason: false,
+      firstRoundRequestURL: null,
+      secondRoundRequestURL: null,
+      filePath: "/path/to/fixture.json",
+      fixtures: [{ id: 1, name: "Match" }],
+    };
+
+    const step = getData.writeDataToFileStep();
+    const result = await Effect.runPromise(
+      step(state).pipe(
+        Effect.provideService(getData.PipelineConfigService, config),
+      ),
+    );
+
+    expect(writtenFiles).toEqual([
+      { filePath: "/path/to/fixture.json", data: [{ id: 1, name: "Match" }] },
+    ]);
+    expect(logs).toEqual([
+      ["Writing data to file...", "/path/to/fixture.json"],
+    ]);
+    expect(result._tag).toBe("Right");
+  });
+
+  test("returns done when isFutureSeason is true", async () => {
+    const writtenFiles: { filePath: string; data: unknown }[] = [];
+    const config: getData.PipelineConfig = {
+      apiKey: "fake_api_key",
+      competitionCode: "PL",
+      startDateArg: "2023-10-18",
+      today: new Date("2023-10-18"),
+      secondRoundStartDate: new Date("2023-10-25"),
+      fetchFunction: () => {},
+      writeDataToFileFunction: (filePath: string, data: unknown) => {
+        writtenFiles.push({ filePath, data });
+      },
+      logger: {
+        log: () => {},
+      },
+    };
+
+    const state: getData.PipelineState = {
+      startDate: new Date("2023-10-18"),
+      endDate: new Date("2023-10-25"),
+      secondRoundStartDate: new Date("2023-10-25"),
+      secondRoundEndDate: new Date("2023-11-01"),
+      competitionDatum: null,
+      leagueID: "2021",
+      teamID: "57",
+      seasonYear: 2023,
+      isFutureSeason: true,
+      firstRoundRequestURL: null,
+      secondRoundRequestURL: null,
+      filePath: "/path/to/future_fixture.json",
+      fixtures: [],
+    };
+
+    const step = getData.writeDataToFileStep();
+    const result = await Effect.runPromise(
+      step(state).pipe(
+        Effect.provideService(getData.PipelineConfigService, config),
+      ),
+    );
+
+    expect(result._tag).toBe("Left");
   });
 });

@@ -1,5 +1,5 @@
 import { run } from "@/lib/dataPipeline/getData";
-import { LEAGUE_CODES } from "@/lib/dataPipeline/football-data/competition";
+import { LeagueCodes } from "@/lib/dataPipeline";
 try {
   require.resolve("dotenv");
   require("dotenv").config();
@@ -7,7 +7,7 @@ try {
 
 const leagueCodeArg = process.argv[2];
 const startDateArg = process.argv[3];
-console.log("Fetching data from API Sports...");
+console.log("starting datapipeline from API");
 const apiKey = process.env.FOOTBALL_DATA_API_KEY;
 if (!apiKey) {
   throw new Error(
@@ -19,9 +19,10 @@ try {
   if (!leagueCodeArg) {
     throw new Error("No league code provided.");
   }
-  if (!LEAGUE_CODES.includes(leagueCodeArg.toUpperCase())) {
+  const leagueCodes = Object.values(LeagueCodes);
+  if (!leagueCodes.includes(leagueCodeArg.toUpperCase())) {
     throw new Error(
-      `Invalid league code provided. Valid league codes are: ${LEAGUE_CODES.join(
+      `Invalid league code provided. Valid league codes are: ${leagueCodes.join(
         ", ",
       )}`,
     );
