@@ -36,7 +36,7 @@
     "@fontsource/quantico": "^5.2.7",
     "@fortawesome/fontawesome-free": "^7.2.0",
     "@simplestack/query": "^0.3.0",
-    "@tailwindcss/vite": "^4.1.18",
+    "@tailwindcss/vite": "^4.3.3",
     "alpinejs": "^3.15.8",
     "app-root-path": "^3.1.0",
     "astro": "^6.4.6",
