@@ -1,20 +1,28 @@
+import { execSync } from "child_process";
 import fs from "fs";
 import path from "path";
 import { postSchema } from "@/content.types";
 
+export const getImageDimensions = (imagePath: string): string => {
+  const output = execSync(`identify -format "%wx%h" "${imagePath}"`, {
+    encoding: "utf-8",
+  }).trim();
+  if (!output) {
+    throw new Error(
+      `Could not determine dimensions for image "${imagePath}". Is ImageMagick installed?`,
+    );
+  }
+  return output;
+};
+
 export interface SongbookPostInput {
   filename: string;
   title?: string;
-  date?: string;
   image: string;
   imageAlt?: string;
-  imageDimensions: string;
+  imageDimensions?: string;
   imagePlacement: string;
-  imageLink?: string;
-  orientation?: string;
-  metaTitle?: string;
-  additionalStyling?: string;
-  content?: string;
+  content: string;
 }
 
 export interface CreatedSongbookPost {
@@ -52,46 +60,36 @@ export function formatFrontmatterValue(value: unknown): string {
   return String(value);
 }
 
+export type ImageOrientation = "portrait" | "landscape" | "square";
+
+export const getImageOrientation = (dimensions: string): ImageOrientation => {
+  const [widthString, heightString] = dimensions.split("x");
+  const width = parseInt(widthString, 10);
+  const height = parseInt(heightString, 10);
+  if (width === height) {
+    return "square";
+  }
+  return width > height ? "landscape" : "portrait";
+};
+
 export function generateSongbookPostMarkdown(input: SongbookPostInput): string {
   const imagePlacementParsed = parseImagePlacement(input.imagePlacement);
+  const imageDimensions =
+    input.imageDimensions ?? getImageDimensions(input.image);
 
   const validationObj: Record<string, unknown> = {
     type: "image",
     image: input.image,
-    imageDimensions: input.imageDimensions,
+    imageDimensions,
     imagePlacement: imagePlacementParsed,
+    orientation: getImageOrientation(imageDimensions),
   };
 
   if (input.title && input.title.trim() !== "") {
     validationObj.title = input.title.trim();
   }
-  if (input.date && input.date.trim() !== "") {
-    const trimmedDate = input.date.trim();
-    const parsedDate = new Date(trimmedDate);
-    if (
-      !/^\d{4}-\d{2}-\d{2}$/.test(trimmedDate) ||
-      isNaN(parsedDate.getTime())
-    ) {
-      throw new Error(
-        `Invalid date "${trimmedDate}" for songbook post. Expected format YYYY-MM-DD.`,
-      );
-    }
-    validationObj.date = parsedDate;
-  }
   if (input.imageAlt && input.imageAlt.trim() !== "") {
     validationObj.imageAlt = input.imageAlt.trim();
-  }
-  if (input.imageLink && input.imageLink.trim() !== "") {
-    validationObj.imageLink = input.imageLink.trim();
-  }
-  if (input.orientation && input.orientation.trim() !== "") {
-    validationObj.orientation = input.orientation.trim();
-  }
-  if (input.metaTitle && input.metaTitle.trim() !== "") {
-    validationObj.metaTitle = input.metaTitle.trim();
-  }
-  if (input.additionalStyling && input.additionalStyling.trim() !== "") {
-    validationObj.additionalStyling = input.additionalStyling.trim();
   }
 
   const parseResult = postSchema.safeParse(validationObj);
@@ -107,16 +105,11 @@ export function generateSongbookPostMarkdown(input: SongbookPostInput): string {
   if (validationObj.title) {
     lines.push(`title: ${formatFrontmatterValue(validationObj.title)}`);
   }
-  if (validationObj.date instanceof Date) {
-    lines.push(`date: ${validationObj.date.toISOString().slice(0, 10)}`);
-  }
   lines.push(`image: ${formatFrontmatterValue(input.image)}`);
   if (validationObj.imageAlt) {
     lines.push(`imageAlt: ${formatFrontmatterValue(validationObj.imageAlt)}`);
   }
-  lines.push(
-    `imageDimensions: ${formatFrontmatterValue(input.imageDimensions)}`,
-  );
+  lines.push(`imageDimensions: ${formatFrontmatterValue(imageDimensions)}`);
 
   if (
     typeof imagePlacementParsed === "object" &&
@@ -134,26 +127,15 @@ export function generateSongbookPostMarkdown(input: SongbookPostInput): string {
     );
   }
 
-  if (validationObj.imageLink) {
-    lines.push(`imageLink: ${formatFrontmatterValue(validationObj.imageLink)}`);
-  }
   if (validationObj.orientation) {
     lines.push(
       `orientation: ${formatFrontmatterValue(validationObj.orientation)}`,
     );
   }
-  if (validationObj.metaTitle) {
-    lines.push(`metaTitle: ${formatFrontmatterValue(validationObj.metaTitle)}`);
-  }
-  if (validationObj.additionalStyling) {
-    lines.push(
-      `additionalStyling: ${formatFrontmatterValue(validationObj.additionalStyling)}`,
-    );
-  }
 
   lines.push("---");
 
-  const bodyContent = input.content ? input.content.trim() : "";
+  const bodyContent = input.content.trim();
   if (bodyContent.length > 0) {
     lines.push("");
     lines.push(bodyContent);

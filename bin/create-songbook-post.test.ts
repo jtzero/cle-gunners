@@ -1,6 +1,7 @@
 import fs from "fs";
 import os from "os";
 import path from "path";
+import { execSync } from "child_process";
 import { describe, expect, test } from "vitest";
 import {
   runCreateSongbookPost,
@@ -19,6 +20,12 @@ const MAIN_LIST_PAGE = [
 
 const makeTempRepo = (): string =>
   fs.mkdtempSync(path.join(os.tmpdir(), "songbook-cli-test-"));
+
+const createTestImage = (tmpDir: string, imagePath: string): void => {
+  const fullPath = path.join(tmpDir, "public", imagePath.replace(/^\//, ""));
+  fs.mkdirSync(path.dirname(fullPath), { recursive: true });
+  execSync(`convert -size 100x50 xc:red "${fullPath}"`);
+};
 
 const writeSongbookPage = (tmpDir: string, content: string): void => {
   const pagesDir = path.join(tmpDir, "src", "content", "pages");
@@ -62,18 +69,16 @@ describe("create-songbook-post cli", () => {
         label: "filename",
         env: {
           INPUT_IMAGE: "/images/rice.jpg",
-          INPUT_IMAGE_DIMENSIONS: "1242x828",
         },
       },
       {
         label: "image",
         env: {
           INPUT_FILENAME: "rice-chant",
-          INPUT_IMAGE_DIMENSIONS: "1242x828",
         },
       },
       {
-        label: "imageDimensions",
+        label: "content",
         env: {
           INPUT_FILENAME: "rice-chant",
           INPUT_IMAGE: "/images/rice.jpg",
@@ -100,13 +105,13 @@ describe("create-songbook-post cli", () => {
     const tmpDir = makeTempRepo();
     try {
       writeSongbookPage(tmpDir, MAIN_LIST_PAGE);
+      createTestImage(tmpDir, "/images/saka.jpg");
 
       const result = runCli(tmpDir, {
         env: {
           INPUT_FILENAME: "saka-chant",
           INPUT_TITLE: "Bukayo Saka",
           INPUT_IMAGE: "/images/saka.jpg",
-          INPUT_IMAGE_DIMENSIONS: "735x990",
           INPUT_CONTENT: "We've got Bukayo Saka!",
         },
       });
@@ -124,7 +129,7 @@ describe("create-songbook-post cli", () => {
       const postContent = fs.readFileSync(postPath, "utf-8");
       expect(postContent).toContain('title: "Bukayo Saka"');
       expect(postContent).toContain('image: "/images/saka.jpg"');
-      expect(postContent).toContain('imageDimensions: "735x990"');
+      expect(postContent).toContain('imageDimensions: "100x50"');
       expect(postContent).toContain('imagePlacement: "header"');
       expect(postContent).toContain("We've got Bukayo Saka!");
 
@@ -152,13 +157,14 @@ describe("create-songbook-post cli", () => {
           "---",
         ].join("\n"),
       );
+      createTestImage(tmpDir, "/images/wilshere.jpg");
 
       const result = runCli(tmpDir, {
         env: {
           INPUT_FILENAME: "wilshere-chant",
           INPUT_TITLE: "Jack Wilshere",
           INPUT_IMAGE: "/images/wilshere.jpg",
-          INPUT_IMAGE_DIMENSIONS: "600x800",
+          INPUT_CONTENT: "Wilshere on the ball",
           INPUT_SONGBOOK_SECTION: "Past Players",
         },
       });
@@ -181,15 +187,18 @@ describe("create-songbook-post cli", () => {
     const tmpDir = makeTempRepo();
     try {
       writeSongbookPage(tmpDir, MAIN_LIST_PAGE);
+      createTestImage(tmpDir, "/images/martin.jpg");
 
       const result = runCli(tmpDir, {
-        env: { INPUT_TITLE: "Gabriel Martinelli" },
+        env: {
+          INPUT_TITLE: "Gabriel Martinelli",
+          INPUT_CONTENT: "Martinelli!",
+        },
         argv: [
           "node",
           "bin/create-songbook-post.ts",
           "martin-chant",
           "/images/martin.jpg",
-          "800x600",
           "body",
         ],
       });
@@ -216,20 +225,20 @@ describe("create-songbook-post cli", () => {
     const tmpDir = makeTempRepo();
     try {
       writeSongbookPage(tmpDir, MAIN_LIST_PAGE);
+      createTestImage(tmpDir, "/images/env.jpg");
 
       const result = runCli(tmpDir, {
         env: {
           INPUT_FILENAME: "env-post",
           INPUT_TITLE: "Env Post",
           INPUT_IMAGE: "/images/env.jpg",
-          INPUT_IMAGE_DIMENSIONS: "200x200",
+          INPUT_CONTENT: "Env content",
         },
         argv: [
           "node",
           "bin/create-songbook-post.ts",
           "argv-post",
           "/images/argv.jpg",
-          "100x100",
         ],
       });
 
@@ -249,41 +258,17 @@ describe("create-songbook-post cli", () => {
     }
   });
 
-  test("exits 1 without writing the post when the date is invalid", () => {
-    const tmpDir = makeTempRepo();
-    try {
-      writeSongbookPage(tmpDir, MAIN_LIST_PAGE);
-
-      const result = runCli(tmpDir, {
-        env: {
-          INPUT_FILENAME: "dated-post",
-          INPUT_TITLE: "Dated Post",
-          INPUT_DATE: "not-a-date",
-          INPUT_IMAGE: "/images/dated.jpg",
-          INPUT_IMAGE_DIMENSIONS: "300x300",
-        },
-      });
-
-      expect(result.exitCode).toBe(1);
-      expect(result.output).toContain("Error creating songbook post:");
-      expect(result.output).toContain('Invalid date "not-a-date"');
-      expect(fs.existsSync(path.join(tmpDir, "src", "content", "posts"))).toBe(
-        false,
-      );
-    } finally {
-      cleanupTempRepo(tmpDir);
-    }
-  });
-
   test("exits 1 when the songbook page cannot be found", () => {
     const tmpDir = makeTempRepo();
     try {
+      createTestImage(tmpDir, "/images/orphan.jpg");
+
       const result = runCli(tmpDir, {
         env: {
           INPUT_FILENAME: "orphan-post",
           INPUT_TITLE: "Orphan Post",
           INPUT_IMAGE: "/images/orphan.jpg",
-          INPUT_IMAGE_DIMENSIONS: "400x400",
+          INPUT_CONTENT: "Orphan content",
         },
       });
 

@@ -2,11 +2,12 @@ import path from "path";
 import { pathToFileURL } from "url";
 import {
   createSongbookPostFile,
+  getImageDimensions,
   type SongbookPostInput,
 } from "@/lib/createSongbookPost";
 import { updateSongbookPageFile } from "@/lib/songbookPage";
 
-const REQUIRED_INPUT_KEYS = ["filename", "image", "imageDimensions"] as const;
+const REQUIRED_INPUT_KEYS = ["filename", "image", "content"] as const;
 
 export interface CreateSongbookPostCliDeps {
   env?: NodeJS.ProcessEnv;
@@ -22,16 +23,10 @@ const parseSongbookPostInput = (
 ): SongbookPostInput => ({
   filename: env.INPUT_FILENAME || args[0] || "",
   title: env.INPUT_TITLE || undefined,
-  date: env.INPUT_DATE || undefined,
   image: env.INPUT_IMAGE || args[1] || "",
   imageAlt: env.INPUT_IMAGE_ALT || undefined,
-  imageDimensions: env.INPUT_IMAGE_DIMENSIONS || args[2] || "",
-  imagePlacement: env.INPUT_IMAGE_PLACEMENT || args[3] || "header",
-  imageLink: env.INPUT_IMAGE_LINK || undefined,
-  orientation: env.INPUT_ORIENTATION || undefined,
-  metaTitle: env.INPUT_META_TITLE || undefined,
-  additionalStyling: env.INPUT_ADDITIONAL_STYLING || undefined,
-  content: env.INPUT_CONTENT || undefined,
+  imagePlacement: env.INPUT_IMAGE_PLACEMENT || args[2] || "header",
+  content: env.INPUT_CONTENT || "",
 });
 
 const findMissingRequiredInput = (input: SongbookPostInput): string | null =>
@@ -54,7 +49,14 @@ export const runCreateSongbookPost = (
   }
 
   try {
-    const result = createSongbookPostFile(input, baseDir);
+    const imageRelativePath = input.image.replace(/^\//, "");
+    const resolvedImagePath = path.join(baseDir, "public", imageRelativePath);
+    const imageDimensions = getImageDimensions(resolvedImagePath);
+
+    const result = createSongbookPostFile(
+      { ...input, imageDimensions },
+      baseDir,
+    );
     log(`Successfully created songbook post at: ${result.filePath}`);
 
     const songbookSection = env.INPUT_SONGBOOK_SECTION?.trim();
