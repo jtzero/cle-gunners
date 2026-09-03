@@ -28,11 +28,35 @@ if [ -z "${DIMENSIONS}" ]; then
   exit 1
 fi
 
+FORMAT=$(identify -format "%m" "${IMAGE_PATH}")
+case "$(echo "${FORMAT}" | tr '[:upper:]' '[:lower:]')" in
+jpeg | jpg) EXTENSION="jpg" ;;
+png) EXTENSION="png" ;;
+gif) EXTENSION="gif" ;;
+webp) EXTENSION="webp" ;;
+avif) EXTENSION="avif" ;;
+tiff | tif) EXTENSION="tif" ;;
+bmp) EXTENSION="bmp" ;;
+*)
+  echo "error: unsupported image format '${FORMAT}' for ${IMAGE_PATH}" >&2
+  exit 1
+  ;;
+esac
+
+FINAL_REQUESTED_FILENAME="${INPUT_IMAGE_FILENAME}.${EXTENSION}"
+FINAL_IMAGE_PATH="public/${FINAL_REQUESTED_FILENAME}"
+
+if [[ "${FINAL_IMAGE_PATH}" != "${IMAGE_PATH}" ]]; then
+  mv "${IMAGE_PATH}" "${FINAL_IMAGE_PATH}"
+fi
+
 WIDTH="${DIMENSIONS%x*}"
 HEIGHT="${DIMENSIONS#*x}"
 
 {
-  echo "image-path=${IMAGE_PATH}"
+  echo "image-path=${FINAL_IMAGE_PATH}"
+  echo "image-file-name=${FINAL_REQUESTED_FILENAME}"
+  echo "image-extension=${EXTENSION}"
   echo "image-dimensions=${DIMENSIONS}"
   echo "dimensions=${DIMENSIONS}"
   echo "image-width=${WIDTH}"

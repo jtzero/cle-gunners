@@ -8,7 +8,7 @@ PROJECT_ROOT="$(cd "${SCRIPT_DIR}/../.." && pwd)"
 
 WORKFLOW="create-songbook-post.yml"
 
-FILENAME="ozil.jpg"
+FILENAME="ozil"
 TITLE="Test Dispatch Song"
 CONTENT="Oh when the gunners go marching in"
 IMAGE_FILE="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxWF2IvCfF9E_q16jfkfvoUqHKD3eLbYa0vcdo5qhI8GEUKBiNk3HIMSg&s=10"
@@ -52,7 +52,6 @@ act workflow_dispatch \
   --input "filename=${FILENAME}" \
   --input "title=${TITLE}" \
   --input "image=${IMAGE_FILE}" \
-  --input "content=${CONTENT}" \
-  --input "imageFileName=${IMAGE_FILE}"
+  --input "content=${CONTENT}"
 
 echo "==> Integration test passed"
