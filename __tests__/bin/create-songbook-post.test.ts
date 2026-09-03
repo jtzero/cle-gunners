@@ -3,10 +3,11 @@ import os from "os";
 import path from "path";
 import { execSync } from "child_process";
 import { describe, expect, test } from "vitest";
+// TODO appRoot ?
 import {
   runCreateSongbookPost,
   type CreateSongbookPostCliDeps,
-} from "./create-songbook-post";
+} from "../../bin/create-songbook-post";
 
 const MAIN_LIST_PAGE = [
   "---",
