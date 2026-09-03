@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-09-10",
-    "dateTo": "2026-09-17",
+    "dateFrom": "2026-09-17",
+    "dateTo": "2026-09-24",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-09-12",
-    "last": "2026-09-12",
+    "first": "2026-09-19",
+    "last": "2026-09-19",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,19 +38,19 @@
         "currentMatchday": 2,
         "winner": null
       },
-      "id": 560577,
-      "utcDate": "2026-09-12T19:00:00Z",
+      "id": 560586,
+      "utcDate": "2026-09-19T14:00:00Z",
       "status": "TIMED",
-      "matchday": 4,
+      "matchday": 5,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2026-09-03T05:20:33Z",
       "homeTeam": {
-        "id": 71,
-        "name": "Sunderland AFC",
-        "shortName": "Sunderland",
-        "tla": "SUN",
-        "crest": "https://crests.football-data.org/71.png"
+        "id": 397,
+        "name": "Brighton & Hove Albion FC",
+        "shortName": "Brighton Hove",
+        "tla": "BHA",
+        "crest": "https://crests.football-data.org/397.png"
       },
       "awayTeam": {
         "id": 57,
