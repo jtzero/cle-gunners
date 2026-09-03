@@ -14,7 +14,6 @@ posts:
     "big-gabby",
     "shite-heart-lane",
     "declan-rice",
-    "martinelli",
     "bukayo-saka",
     "zubimendi",
     "noni-madueke",
@@ -26,5 +25,5 @@ posts:
   ]
 sections:
   - title: "Past Players"
-    posts: ["arsene-wenger", "leo-trossard"]
+    posts: ["arsene-wenger", "leo-trossard", "martinelli"]
 ---
