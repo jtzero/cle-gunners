@@ -32,10 +32,6 @@ on:
         description: 'Songbook page section title to file the post under (Optional, e.g. "Past Players"; defaults to the main songbook list)'
         required: false
         type: string
-      imageFileName:
-        description: "Filename to save the downloaded image in public/ (e.g. my-image.jpg)"
-        required: true
-        type: string
 
 jobs:
   create-songbook-post:
@@ -71,7 +67,7 @@ jobs:
       - name: Download image & identify image
         id: download-image
         env:
-          INPUT_IMAGE_FILENAME: ${{ inputs.imageFileName }}
+          INPUT_IMAGE_FILENAME: ${{ inputs.filename }}
           INPUT_IMAGE_URL: ${{ inputs.image }}
         run: ./.github/workflows/scripts/download-and-identify-image.sh
 
@@ -79,7 +75,7 @@ jobs:
         env:
           INPUT_FILENAME: ${{ inputs.filename }}
           INPUT_TITLE: ${{ inputs.title }}
-          INPUT_IMAGE: /${{ inputs.imageFileName }}
+          INPUT_IMAGE: /${{ steps.download-image.outputs.image-file-name }}
           INPUT_IMAGE_ALT: ${{ inputs.imageAlt }}
           INPUT_IMAGE_PLACEMENT: ${{ inputs.imagePlacement }}
           INPUT_CONTENT: ${{ inputs.content }}
