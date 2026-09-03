@@ -23,6 +23,7 @@ posts:
     "hincapie",
     "by-far-the-greatest-team",
     "more",
+    "ozil",
   ]
 sections:
   - title: "Past Players"
