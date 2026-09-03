@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+BIN_DIR="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+ROOT_DIR="$(dirname "${BIN_DIR}")"
+
+INSTALL_ACT="${INSTALL_ACT:-true}"
+ACT_CONTAINER_ARCHITECTURE="${ACT_CONTAINER_ARCHITECTURE:-linux/amd64}"
+ACT_USE_GITIGNORE="${ACT_USE_GITIGNORE:-true}"
+
+export PATH="${BIN_DIR}:${PATH}"
+
+if [[ "${INSTALL_ACT}" == "true" ]] && ! command -v act >/dev/null; then
+  echo "Installing Act"
+  curl -s https://raw.githubusercontent.com/nektos/act/master/install.sh | sudo bash
+fi
+
+"${ROOT_DIR}/__tests__/workflows/test-create-songbook-dispatch.sh"

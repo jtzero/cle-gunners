@@ -44,6 +44,7 @@ trap cleanup EXIT
 
 echo "==> Running create-songbook-post workflow via act"
 act workflow_dispatch \
+  -P ubuntu-latest=catthehacker/ubuntu:act-latest \
   --directory "${PROJECT_ROOT}" \
   --workflows "${PROJECT_ROOT}/.github/workflows/${WORKFLOW}" \
   --container-architecture linux/amd64 \

@@ -15,8 +15,8 @@
     "create-songbook-post": "tsx bin/create-songbook-post.ts",
     "test": "vitest run --exclude \"**/*.integration.test.ts\"",
     "test:unit": "npm run test",
-    "test:integration": "vitest run integration && bash ./__tests__/workflows/test-create-songbook-dispatch.sh",
-    "test:all": "vitest run && bash ./__tests__/workflows/test-create-songbook-dispatch.sh",
+    "test:integration": "vitest run integration && bash ./bin/run-workflow-tests",
+    "test:all": "vitest run && bash ./bin/run-workflow-tests",
     "test:e2e": "playwright test"
   },
   "comments": {
