@@ -50,7 +50,7 @@ export const runCreateSongbookPost = (
 
   try {
     const imageRelativePath = input.image.replace(/^\//, "");
-    const resolvedImagePath = path.join(baseDir, "public", imageRelativePath);
+    const resolvedImagePath = path.join(baseDir, "public", "images", imageRelativePath);
     const imageDimensions = getImageDimensions(resolvedImagePath);
 
     const result = createSongbookPostFile(
