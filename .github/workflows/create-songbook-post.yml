@@ -24,6 +24,10 @@ on:
         required: true
         default: "header"
         type: string
+      toTheTuneOf:
+        description: "Original song"
+        required: false
+        type: string
       content:
         description: "Post Markdown / Song Lyrics content"
         required: true
@@ -78,6 +82,7 @@ jobs:
           INPUT_IMAGE: /${{ steps.download-image.outputs.image-file-name }}
           INPUT_IMAGE_ALT: ${{ inputs.imageAlt }}
           INPUT_IMAGE_PLACEMENT: ${{ inputs.imagePlacement }}
+          INPUT_TO_THE_TUNE_OF: ${{ inputs.toTheTuneOf }}
           INPUT_CONTENT: ${{ inputs.content }}
           INPUT_SONGBOOK_SECTION: ${{ inputs.songbookSection }}
         run: npm run create-songbook-post
