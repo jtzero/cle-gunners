@@ -23,7 +23,7 @@ const makeTempRepo = (): string =>
   fs.mkdtempSync(path.join(os.tmpdir(), "songbook-cli-test-"));
 
 const createTestImage = (tmpDir: string, imagePath: string): void => {
-  const fullPath = path.join(tmpDir, "public", imagePath.replace(/^\//, ""));
+  const fullPath = path.join(tmpDir, "public", "images", imagePath.replace(/^\//, ""));
   fs.mkdirSync(path.dirname(fullPath), { recursive: true });
   execSync(`convert -size 100x50 xc:red "${fullPath}"`);
 };
