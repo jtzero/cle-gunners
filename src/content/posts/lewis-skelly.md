@@ -1,6 +1,6 @@
 ---
 title: "Lewis Skelly"
-image: "/lewis-skelly.jpg"
+image: "/images/lewis-skelly.jpg"
 imageDimensions: "680x425"
 imagePlacement: "body"
 orientation: "landscape"
