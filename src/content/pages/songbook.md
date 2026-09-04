@@ -22,6 +22,7 @@ posts:
     "hincapie",
     "by-far-the-greatest-team",
     "more",
+    "lewis-skelly",
   ]
 sections:
   - title: "Past Players"
