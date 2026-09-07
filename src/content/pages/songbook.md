@@ -5,7 +5,6 @@ posts:
   [
     "kai-havertz",
     "saliba",
-    "gabriel-jesus",
     "viktor-gyokeres",
     "thats-alright",
     "eze",
@@ -26,5 +25,5 @@ posts:
   ]
 sections:
   - title: "Past Players"
-    posts: ["arsene-wenger", "leo-trossard", "martinelli"]
+    posts: ["arsene-wenger", "leo-trossard", "martinelli", "gabriel-jesus"]
 ---
