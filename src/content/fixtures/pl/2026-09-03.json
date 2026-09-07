@@ -11,9 +11,9 @@
     "competitions": "PL",
     "first": "2026-09-06",
     "last": "2026-09-06",
-    "played": 0,
-    "wins": 0,
-    "draws": 1,
+    "played": 1,
+    "wins": 1,
+    "draws": 0,
     "losses": 0
   },
   "matches": [
@@ -35,16 +35,16 @@
         "id": 2502,
         "startDate": "2026-08-21",
         "endDate": "2027-05-30",
-        "currentMatchday": 2,
+        "currentMatchday": 3,
         "winner": null
       },
       "id": 560570,
       "utcDate": "2026-09-06T15:30:00Z",
-      "status": "TIMED",
+      "status": "FINISHED",
       "matchday": 3,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-08-27T10:20:37Z",
+      "lastUpdated": "2026-09-07T00:20:34Z",
       "homeTeam": {
         "id": 57,
         "name": "Arsenal FC",
@@ -60,21 +60,28 @@
         "crest": "https://crests.football-data.org/61.png"
       },
       "score": {
-        "winner": null,
+        "winner": "HOME_TEAM",
         "duration": "REGULAR",
         "fullTime": {
-          "home": null,
-          "away": null
+          "home": 2,
+          "away": 1
         },
         "halfTime": {
-          "home": null,
-          "away": null
+          "home": 1,
+          "away": 1
         }
       },
       "odds": {
         "msg": "Activate Odds-Package in User-Panel to retrieve odds."
       },
-      "referees": []
+      "referees": [
+        {
+          "id": 11443,
+          "name": "Chris Kavanagh",
+          "type": "REFEREE",
+          "nationality": "England"
+        }
+      ]
     }
   ]
 }
