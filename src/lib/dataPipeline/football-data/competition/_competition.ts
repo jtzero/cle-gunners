@@ -104,7 +104,7 @@ export const getFutureSeason = (
   checkDate: Date,
 ): Season | NoSeasonFoundError => {
   const season = competition.seasons.find((season: Season) => {
-    return new Date(season.startDate).getTime() >= checkDate.getTime();
+    return new Date(season.startDate).getTime() <= checkDate.getTime();
   });
   if (!season) {
     return new NoSeasonFoundError(checkDate);
