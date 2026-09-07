@@ -1,13 +1,11 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Trigger the workflow every time you push to the `main` branch
-  # Using a different branch name? Replace `main` with your branch’s name
-  push:
-    branches: [ main ]
-    paths-ignore:
-      - 'README.md'
-      - '.github/dependabot.yml'
+  # Run after the Test workflow completes successfully
+  workflow_run:
+    workflows: [Test]
+    types: [completed]
+    branches: [main]
   # Allows you to run this workflow manually from the Actions tab on GitHub.
   workflow_dispatch:
 
@@ -22,6 +20,11 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
+      - name: Fail if Test workflow did not succeed
+        if: github.event.workflow_run.conclusion != 'success'
+        run: |
+          echo "Test workflow did not succeed (conclusion: ${{ github.event.workflow_run.conclusion }}), skipping deploy."
+          exit 1
       - name: Checkout your repository using git
         uses: actions/checkout@v6
       - name: Install, build, and upload your site
