@@ -14,7 +14,7 @@
     "id": 2502,
     "startDate": "2026-08-21",
     "endDate": "2027-05-30",
-    "currentMatchday": 1,
+    "currentMatchday": 3,
     "winner": null
   },
   "seasons": [
@@ -22,7 +22,7 @@
       "id": 2502,
       "startDate": "2026-08-21",
       "endDate": "2027-05-30",
-      "currentMatchday": 1,
+      "currentMatchday": 3,
       "winner": null
     },
     {
@@ -1311,5 +1311,5 @@
       "winner": null
     }
   ],
-  "lastUpdated": "2026-06-19T12:36:02Z"
+  "lastUpdated": "2026-08-10T07:41:50Z"
 }
