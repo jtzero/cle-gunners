@@ -5,16 +5,18 @@ type Props = {
   location: ClubLocationType;
 };
 const { location } = Astro.props;
+const hasAddress = location.address;
 ---
 
 <Fragment>
-  <Fragment>{location.address ? "address: " : ""}</Fragment>
+  <Fragment>{hasAddress ? "address: " : ""}</Fragment>
   <Fragment>
     {
-      location.address && location.addressLink && (
+      hasAddress && location.addressLink && (
         <a href={location.addressLink}>{location.address}</a>
       )
     }
   </Fragment>
   <Fragment>{!location.addressLink ? location.address : ""}</Fragment>
+  {hasAddress && <br />}
 </Fragment>

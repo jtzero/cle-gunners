@@ -285,6 +285,7 @@ export const clubSchema = z.object({
   name: z.string(),
   type: z.literal("club").optional(),
   locations: z.record(z.string(), clubLocationSchema).default({}),
+  info: z.record(z.string(), z.string()).default({}),
   logo: z.string().optional(),
   logoBackgroundColor: z.string().optional(),
   league: z.string().optional(),
