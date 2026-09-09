@@ -25,7 +25,7 @@ const {
 
 const mediaClasses = (() => {
   const tileBodyClass = "";
-  const tileBodyMediaClass = "items-end";
+  const tileBodyMediaClass = "";
   const tileClass = "tile-with-body-media";
 
   return {
@@ -68,8 +68,13 @@ const logoBorder = post.data?.logoBackgroundColor ? `border-2 border-${post.data
     }
     <span
       data-testid="tile-body-text"
-      class={`flex flex-col items-center px-4 pb-1 max-w-[100%] tile-body-text`}
+      class={`flex flex-col items-center px-4 pb-1 max-w-[100%] tile-body-text a-tag-underline text-center text-lg`}
       >
+      {
+        Object.entries(post.data.info).map(([name, value]) => (
+          <div>{_.startCase(name)}: {value}</div>
+        ))
+      }
       {
         Object.entries(post.data.locations).map(([attrName, value]) => (
         <Fragment>
@@ -81,13 +86,11 @@ const logoBorder = post.data?.logoBackgroundColor ? `border-2 border-${post.data
       {post.data?.league && (<Fragment>league: {post.data?.league}</Fragement>)}
       {
         Object.entries(post.data.links).map(([name, url]) => (
-          <div
-            class={`${heroTextStyling} tile-body-hero-text a-tag-underline text-center text-lg wrap-break-word`}
-          >
+          <span>
             <a href={url} class="text-gold">
               {_.startCase(name)}
             </a>
-          </div>
+          </span>
         ))
       }
       {

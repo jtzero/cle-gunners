@@ -297,6 +297,7 @@ export const clubSchema = z.object({
     website: z.url().optional(),
     youtube: z.url().optional(),
     affiliates: z.url().optional(),
+    // convert to having a "label" instead of reusing the key
     US_SoccerDirectory: z.url().optional(),
   }),
 });
