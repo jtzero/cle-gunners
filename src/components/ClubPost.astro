@@ -71,7 +71,8 @@ const logoBorder = post.data?.logoBackgroundColor ? `border-2 border-${post.data
       class={`flex flex-col items-center px-4 pb-1 max-w-[100%] tile-body-text a-tag-underline text-center text-lg`}
       >
       {
-        Object.entries(post.data.info).map(([name, value]) => (
+        /* build has issue with this despite it having a default value */
+        Object.entries(post.data.info || {}).map(([name, value]) => (
           <div>{_.startCase(name)}: {value}</div>
         ))
       }
