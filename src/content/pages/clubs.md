@@ -14,6 +14,8 @@ sections:
         "cleveland-crunch",
         "akron-city-fc",
       ]
+  - title: USWNT/USMNT
+    clubs: ["us"]
   - title: "Premier League"
     clubs: ["liverpool", "chelsea", "aston-villa", "man-u"]
 ---
