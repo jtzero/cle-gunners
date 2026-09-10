@@ -35,7 +35,7 @@
         "id": 2502,
         "startDate": "2026-08-21",
         "endDate": "2027-05-30",
-        "currentMatchday": 2,
+        "currentMatchday": 4,
         "winner": null
       },
       "id": 560586,
@@ -44,7 +44,7 @@
       "matchday": 5,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-09-03T05:20:33Z",
+      "lastUpdated": "2026-09-10T05:20:28Z",
       "homeTeam": {
         "id": 397,
         "name": "Brighton & Hove Albion FC",
