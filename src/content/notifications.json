@@ -2,14 +2,7 @@
   "Join us at a Guards Game!": {
     "body": "Join us at a Guardians game! [July 17th against Pittsburgh, choose the district ticket](https://mlb.tickets.com/?agency=MLB_MPV&orgid=27&pid=9658549&tfl=Cleveland_Guardians-Tickets-Buy_Guardians_Tickets-Single_Game_Tickets_Buy_Tickets_Button-x0-Desktop-Landscape&adobe_mc=MCMID=84298707086762672553592245839150769889|MCORGID=A65F776A5245B01B0A490D44%40AdobeOrg|TS=1780794896). More info on a District ticket: https://www.mlb.com/guardians/tickets/district-ticket. Wear your Arsenal colors! After all it will match, especially if you throw in some blue. Also, here is a Google Calendar invite to keep you up to date https://calendar.app.google/7XdscuR4rCcaxrgs9",
     "enabled": false,
-    "push": true,
     "pushMessage": "July 17th against Pittsburgh, see you in the district section!"
-  },
-  "Road to 26!": {
-    "image": "/images/road-to-26.png",
-    "imageDimensions": "1200x1200",
-    "body": "",
-    "enabled": false
   },
   "New Kits!": {
     "image": "/images/hell-of-a-season-kits.png",
@@ -17,7 +10,7 @@
     "imageDimensions": "1200x1200",
     "styling": "rectangle-cell",
     "body": "New Kits! The kits commemorating this 'Hell of a Season' are available to order online from RYCO (just a couple blocks over on Madison in fact) so order yours [here](https://rycosportslw.com/clubs/cleveland-gunners/) and you can have it delivered or pick it up before the match!",
-    "enabled": true
+    "enabled": false
   },
   "Arsenal America Membership": {
     "body": "Arsenal America's 2026/27 membership sign ups are Available! You get access to tickets, discounts, perks, and a nationwide fan community [Sign Up Here](https://arsenalamerica.com/become-a-member/)",
