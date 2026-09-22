@@ -97,19 +97,54 @@ test("every referenced image URL is reachable", async () => {
   );
   expect(urls.size).toBeGreaterThan(0);
 
-  const checkUrlReachability = async (url: string) => {
-    try {
-      const response = await fetch(url, {
-        signal: AbortSignal.timeout(15_000),
-      });
-      return { url, reachable: response.ok, detail: response.statusText };
-    } catch (error) {
-      const message = error instanceof Error ? error.message : String(error);
-      return { url, reachable: false, detail: message };
+  const checkUrlReachability = async (url: string, maxRetries = 2) => {
+    let attempts = 0;
+
+    while (attempts <= maxRetries) {
+      try {
+        const response = await fetch(url, {
+          headers: {
+            "User-Agent": "ImageReachabilityTest/1.0 (Automated Test Suite)",
+          },
+          signal: AbortSignal.timeout(15_000),
+        });
+
+        if ((response.status === 429 || response.status === 503) && response.headers.has("Retry-After") && attempts < maxRetries) {
+          const retryAfter = response.headers.get("Retry-After");
+          let waitMs = 1000;
+
+          if (retryAfter) {
+            const seconds = Number(retryAfter);
+            if (!isNaN(seconds)) {
+              waitMs = seconds * 1000;
+            } else {
+              const parsedDate = Date.parse(retryAfter);
+              if (!isNaN(parsedDate)) {
+                waitMs = Math.max(0, parsedDate - Date.now());
+              }
+            }
+          }
+
+          attempts++;
+          await new Promise((resolve) => setTimeout(resolve, waitMs));
+          continue;
+        }
+
+        return { url, reachable: response.ok, detail: response.statusText || String(response.status) };
+      } catch (error) {
+        if (attempts >= maxRetries) {
+          const message = error instanceof Error ? error.message : String(error);
+          return { url, reachable: false, detail: message };
+        }
+        attempts++;
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempts));
+      }
     }
+
+    return { url, reachable: false, detail: "Max retries exceeded due to rate-limiting" };
   };
 
-  const results = await Promise.all([...urls].map(checkUrlReachability));
+  const results = await Promise.all([...urls].map((url) => checkUrlReachability(url)));
   const unreachable = results.filter((result) => !result.reachable);
   const unreachableReport = unreachable.map(
     (result) => `${result.url} (${result.detail})`,
