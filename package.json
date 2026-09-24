@@ -23,11 +23,13 @@
     "phin": "added only to force astrojs to use a non vuln version",
     "file-type": "added only to force astro-imagetools to use a non vuln version",
     "sharp-override": "override added only to force astro and imagetools-core to use a non vuln version (GHSA-f88m-g3jw-g9cj)",
-    "vite-override": "override added only to force @astrojs/react and vite-plugin-simple-scope to use a non vuln version (GHSA-v6wh-96g9-6wx3)"
+    "vite-override": "override added only to force @astrojs/react and vite-plugin-simple-scope to use a non vuln version (GHSA-v6wh-96g9-6wx3)",
+    "fast-xml-parser-override": "override added only to force @astrojs/rss to use a non vuln version (GHSA-gh4j-gqv2-49f6)"
   },
   "overrides": {
     "sharp": "$sharp",
-    "vite": "$vite"
+    "vite": "$vite",
+    "fast-xml-parser": "^5.7.0"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
