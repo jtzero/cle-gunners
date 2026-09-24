@@ -72,7 +72,7 @@
         }
       },
       "odds": {
-        "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+        "msg": "Activate Odds-Package in User-Panel to retrieve odds . "
       },
       "referees": []
     }
