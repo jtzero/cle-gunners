@@ -18,12 +18,12 @@ const isRemoteVideo = url.startsWith("http");
       class="h-full w-full sm:min-h-[300px]"
       src={url}
       title={title}
-      frameborder="0"
+      frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen
     />
   )) || (
-    <!-- TODO: the max-h here is a temp fix -->
+    // TODO: the max-h here is a temp fix
     <video
       class={`h-full max-h-[600px] w-full sm:min-h-[300px]`}
       src={url}
