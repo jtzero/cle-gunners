@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-10-08",
-    "dateTo": "2026-10-15",
+    "dateFrom": "2026-10-15",
+    "dateTo": "2026-10-22",
     "permission": "TIER_ONE",
     "competitions": "2001",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "CL",
-    "first": "2026-10-13",
-    "last": "2026-10-13",
+    "first": "2026-10-21",
+    "last": "2026-10-21",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 2,
         "winner": null
       },
-      "id": 575346,
-      "utcDate": "2026-10-13T19:00:00Z",
+      "id": 575372,
+      "utcDate": "2026-10-21T19:00:00Z",
       "status": "TIMED",
-      "matchday": 2,
+      "matchday": 3,
       "stage": "LEAGUE_STAGE",
       "group": null,
       "lastUpdated": "2026-10-01T05:20:34Z",
       "homeTeam": {
+        "id": 5,
+        "name": "FC Bayern München",
+        "shortName": "Bayern",
+        "tla": "FCB",
+        "crest": "https://crests.football-data.org/5.png"
+      },
+      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
-      },
-      "awayTeam": {
-        "id": 521,
-        "name": "Lille OSC",
-        "shortName": "Lille",
-        "tla": "LIL",
-        "crest": "https://crests.football-data.org/521.png"
       },
       "score": {
         "winner": null,
