@@ -1,7 +1,7 @@
 {
   "filters": {
-    "dateFrom": "2026-10-15",
-    "dateTo": "2026-10-22",
+    "dateFrom": "2026-10-22",
+    "dateTo": "2026-10-29",
     "permission": "TIER_ONE",
     "competitions": "2021",
     "limit": 100
@@ -9,8 +9,8 @@
   "resultSet": {
     "count": 1,
     "competitions": "PL",
-    "first": "2026-10-18",
-    "last": "2026-10-18",
+    "first": "2026-10-24",
+    "last": "2026-10-24",
     "played": 0,
     "wins": 0,
     "draws": 1,
@@ -38,26 +38,26 @@
         "currentMatchday": 6,
         "winner": null
       },
-      "id": 560608,
-      "utcDate": "2026-10-18T15:30:00Z",
+      "id": 560616,
+      "utcDate": "2026-10-24T14:00:00Z",
       "status": "TIMED",
-      "matchday": 7,
+      "matchday": 8,
       "stage": "REGULAR_SEASON",
       "group": null,
       "lastUpdated": "2026-10-08T05:20:36Z",
       "homeTeam": {
-        "id": 351,
-        "name": "Nottingham Forest FC",
-        "shortName": "Nottingham",
-        "tla": "NOT",
-        "crest": "https://crests.football-data.org/351.png"
-      },
-      "awayTeam": {
         "id": 57,
         "name": "Arsenal FC",
         "shortName": "Arsenal",
         "tla": "ARS",
         "crest": "https://crests.football-data.org/57.png"
+      },
+      "awayTeam": {
+        "id": 62,
+        "name": "Everton FC",
+        "shortName": "Everton",
+        "tla": "EVE",
+        "crest": "https://crests.football-data.org/62.png"
       },
       "score": {
         "winner": null,
