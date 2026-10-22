@@ -35,7 +35,7 @@
         "id": 2502,
         "startDate": "2026-08-21",
         "endDate": "2027-05-30",
-        "currentMatchday": 6,
+        "currentMatchday": 7,
         "winner": null
       },
       "id": 560631,
@@ -44,7 +44,7 @@
       "matchday": 9,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-10-15T05:20:33Z",
+      "lastUpdated": "2026-10-22T05:20:28Z",
       "homeTeam": {
         "id": 64,
         "name": "Liverpool FC",

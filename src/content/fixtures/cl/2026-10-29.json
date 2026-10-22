@@ -35,7 +35,7 @@
         "id": 2557,
         "startDate": "2026-09-08",
         "endDate": "2027-01-27",
-        "currentMatchday": 2,
+        "currentMatchday": 3,
         "winner": null
       },
       "id": 575389,
@@ -44,7 +44,7 @@
       "matchday": 4,
       "stage": "LEAGUE_STAGE",
       "group": null,
-      "lastUpdated": "2026-10-15T05:20:31Z",
+      "lastUpdated": "2026-10-22T05:20:27Z",
       "homeTeam": {
         "id": 930,
         "name": "SK Slavia Praha",
