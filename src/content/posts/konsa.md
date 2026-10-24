@@ -2,6 +2,7 @@
 title: Konsa
 image: /images/konsa.jpg
 imageDimensions: 394x221
+image placement: header
 orientation: landscape
 additionalStyling: expanding-rectangle-cell
 ---
