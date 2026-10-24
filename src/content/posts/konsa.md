@@ -1,6 +1,6 @@
 ---
 title: Konsa
-image: /images/kinda.jpg
+image: /images/konsa.jpg
 videoDimensions: 394x221
 orientation: landscape
 additionalStyling: expanding-rectangle-cell
