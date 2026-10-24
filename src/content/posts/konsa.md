@@ -1,7 +1,7 @@
 ---
 title: Konsa
 image: /images/konsa.jpg
-videoDimensions: 394x221
+imageDimensions: 394x221
 orientation: landscape
 additionalStyling: expanding-rectangle-cell
 ---
