@@ -22,6 +22,7 @@ posts:
     "by-far-the-greatest-team",
     "more",
     "lewis-skelly",
+    "konsa",
   ]
 sections:
   - title: "Past Players"
