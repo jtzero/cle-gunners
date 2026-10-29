@@ -35,7 +35,7 @@
         "id": 2502,
         "startDate": "2026-08-21",
         "endDate": "2027-05-30",
-        "currentMatchday": 7,
+        "currentMatchday": 9,
         "winner": null
       },
       "id": 560640,
@@ -44,7 +44,7 @@
       "matchday": 10,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-10-22T05:20:28Z",
+      "lastUpdated": "2026-10-29T05:20:27Z",
       "homeTeam": {
         "id": 57,
         "name": "Arsenal FC",
