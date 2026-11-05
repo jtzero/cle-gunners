@@ -26,6 +26,7 @@ const parseSongbookPostInput = (
   image: env.INPUT_IMAGE || args[1] || "",
   imageAlt: env.INPUT_IMAGE_ALT || undefined,
   imagePlacement: env.INPUT_IMAGE_PLACEMENT || args[2] || "header",
+  toTheTuneOf: env.INPUT_TO_THE_TUNE_OF || null,
   content: env.INPUT_CONTENT || "",
 });
 

@@ -22,6 +22,7 @@ export interface SongbookPostInput {
   imageAlt?: string;
   imageDimensions?: string;
   imagePlacement: string;
+  toTheTuneOf?: string;
   content: string;
 }
 
@@ -134,7 +135,9 @@ export function generateSongbookPostMarkdown(input: SongbookPostInput): string {
   }
 
   lines.push("---");
-
+  if (input.toTheTuneOf) {
+    lines.push(`<span style="color: darkgrey">(${input.toTheTuneOf})</span>\n`);
+  }
   const bodyContent = input.content.trim();
   if (bodyContent.length > 0) {
     lines.push("");
