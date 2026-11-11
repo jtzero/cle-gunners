@@ -5,7 +5,8 @@ import { z } from "zod";
 
 import { manualFixturesSchema, type ManualFixturesType } from "@/content.types";
 
-const isIsoDate = (value: string): boolean => z.iso.date().safeParse(value).success;
+const isIsoDate = (value: string): boolean =>
+  z.iso.date().safeParse(value).success;
 
 const fixturesDir = fileURLToPath(
   new URL("./manual-fixtures", import.meta.url),
@@ -109,7 +110,11 @@ test("every referenced image URL is reachable", async () => {
           signal: AbortSignal.timeout(15_000),
         });
 
-        if ((response.status === 429 || response.status === 503) && response.headers.has("Retry-After") && attempts < maxRetries) {
+        if (
+          (response.status === 429 || response.status === 503) &&
+          response.headers.has("Retry-After") &&
+          attempts < maxRetries
+        ) {
           const retryAfter = response.headers.get("Retry-After");
           let waitMs = 1000;
 
@@ -130,10 +135,23 @@ test("every referenced image URL is reachable", async () => {
           continue;
         }
 
-        return { url, reachable: response.ok, detail: response.statusText || String(response.status) };
+        console.log(
+          "!!!!!!!!!!!!!!",
+          url,
+          response.ok,
+          response.statusText,
+          response.status,
+          response.headers,
+        );
+        return {
+          url,
+          reachable: response.ok,
+          detail: response.statusText || String(response.status),
+        };
       } catch (error) {
         if (attempts >= maxRetries) {
-          const message = error instanceof Error ? error.message : String(error);
+          const message =
+            error instanceof Error ? error.message : String(error);
           return { url, reachable: false, detail: message };
         }
         attempts++;
@@ -141,10 +159,16 @@ test("every referenced image URL is reachable", async () => {
       }
     }
 
-    return { url, reachable: false, detail: "Max retries exceeded due to rate-limiting" };
+    return {
+      url,
+      reachable: false,
+      detail: "Max retries exceeded due to rate-limiting",
+    };
   };
 
-  const results = await Promise.all([...urls].map((url) => checkUrlReachability(url)));
+  const results = await Promise.all(
+    [...urls].map((url) => checkUrlReachability(url)),
+  );
   const unreachable = results.filter((result) => !result.reachable);
   const unreachableReport = unreachable.map(
     (result) => `${result.url} (${result.detail})`,
