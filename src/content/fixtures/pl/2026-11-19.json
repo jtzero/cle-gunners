@@ -35,7 +35,7 @@
         "id": 2502,
         "startDate": "2026-08-21",
         "endDate": "2027-05-30",
-        "currentMatchday": 9,
+        "currentMatchday": 11,
         "winner": null
       },
       "id": 560651,
@@ -44,7 +44,7 @@
       "matchday": 11,
       "stage": "REGULAR_SEASON",
       "group": null,
-      "lastUpdated": "2026-11-05T05:20:33Z",
+      "lastUpdated": "2026-11-12T05:20:35Z",
       "homeTeam": {
         "id": 67,
         "name": "Newcastle United FC",
