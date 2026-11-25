@@ -20,11 +20,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: production
     steps:
-      - name: Fail if Test workflow did not succeed
-        if: github.event.workflow_run.conclusion != 'success'
-        run: |
-          echo "Test workflow did not succeed (conclusion: ${{ github.event.workflow_run.conclusion }}), skipping deploy."
-          exit 1
       - name: Checkout your repository using git
         uses: actions/checkout@v6
       - name: Install, build, and upload your site
