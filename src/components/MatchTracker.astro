@@ -253,6 +253,7 @@ const { styling } = Astro.props;
     arsenalCrest: undefined,
   };
   const ManUShortName = "Man United";
+  const ManCityShortName = "Man City";
   const toggleEasterEgg = (
     element: HTMLImageElement,
     originalSrc: string,
@@ -326,7 +327,11 @@ const { styling } = Astro.props;
             imgTag = new Image();
             imgTag.src = nearestMatch.awayTeam.crest;
           }
-          if (nearestMatch.awayTeam.shortName == ManUShortName) {
+          const awayTeamShortName = nearestMatch.awayTeam.shortName;
+          if (
+            awayTeamShortName == ManUShortName ||
+            awayTeamShortName == ManCityShortName
+          ) {
             if (!listenersForThisTracker.away) {
               listenersForThisTracker.away = () => {
                 toggleEasterEgg(
@@ -382,7 +387,11 @@ const { styling } = Astro.props;
             imgTag = new Image();
             imgTag.src = nearestMatch.homeTeam.crest;
           }
-          if (nearestMatch.homeTeam.shortName == ManUShortName) {
+          const homeTeamShortName = nearestMatch.homeTeam.shortName;
+          if (
+            nearestMatch.homeTeam.shortName == ManUShortName ||
+            homeTeamShortName == ManCityShortName
+          ) {
             if (!listenersForThisTracker.home) {
               listenersForThisTracker.home = () => {
                 toggleEasterEgg(
