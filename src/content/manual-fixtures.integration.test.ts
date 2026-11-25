@@ -112,10 +112,13 @@ test("every referenced image URL is reachable", async () => {
 
         if (
           (response.status === 429 || response.status === 503) &&
-          response.headers.has("Retry-After") &&
+          (response.headers.has("retry-after") ||
+            response.headers.has("Retry-After")) &&
           attempts < maxRetries
         ) {
-          const retryAfter = response.headers.get("Retry-After");
+          const retryAfter =
+            response.headers.get("Retry-After") ||
+            response.headers.get("retry-after");
           let waitMs = 1000;
 
           if (retryAfter) {
